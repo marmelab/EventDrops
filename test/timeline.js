@@ -66,19 +66,27 @@ describe('d3.timeline', function () {
     circles = line.getElementsByTagName('circle');
     expect(circles.length).toBe(3);
 
-    timeline.start(new Date(1402323060 * 1000));
+    timeline.start(new Date(1402323060000));
     timeline();
 
     line = svg.getElementsByClassName('line')[0];
     circles = line.getElementsByTagName('circle');
     expect(circles.length).toBe(2);
 
-    timeline.end(new Date(1402323060 * 1000));
+    timeline.end(new Date(1402323060000));
     timeline();
 
     line = svg.getElementsByClassName('line')[0];
     circles = line.getElementsByTagName('circle');
     expect(circles.length).toBe(1);
+  });
+
+  it ('should display starting date', function () {
+    var startDate = moment(1402323060000);
+    timeline.start(startDate);
+    var startEl = document.getElementsByClassName('start');
+
+    expect(startEl.textContent).toBe(startDate.format('YY-mm-dd'));
   });
 
 });
