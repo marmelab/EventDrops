@@ -39,4 +39,46 @@ describe('d3.timeline', function () {
     expect(timeline.start().unix()).toBe(moment(100).unix());
   });
 
+  it ('should have as many line as eventType', function () {
+    var svg, lines;
+
+    timeline.data([{eventType: "field1", timestamps: []}, {eventType: "field2", timestamps: []}]);
+    timeline();
+    svg = element.getElementsByTagName('svg')[0];
+    lines = svg.getElementsByClassName('line');
+
+    expect(lines.length).toBe(2);
+
+    timeline.data([{eventType: "field1", timestamps: []}]);
+    timeline();
+    svg = element.getElementsByTagName('svg')[0];
+    lines = svg.getElementsByClassName('line');
+
+    expect(lines.length).toBe(1);
+  });
+
+  it ('should have as many circle by eventType as timestamps', function () {
+    var svg, line, circles;
+    timeline.data([{eventType: "field1", timestamps: [1402318080,1402323060,1402332120]}]);
+    timeline();
+    svg = element.getElementsByTagName('svg')[0];
+    line = svg.getElementsByClassName('line')[0];
+    circles = line.getElementsByTagName('circle');
+    expect(circles.length).toBe(3);
+
+    timeline.start(new Date(1402323060 * 1000));
+    timeline();
+
+    line = svg.getElementsByClassName('line')[0];
+    circles = line.getElementsByTagName('circle');
+    expect(circles.length).toBe(2);
+
+    timeline.end(new Date(1402323060 * 1000));
+    timeline();
+
+    line = svg.getElementsByClassName('line')[0];
+    circles = line.getElementsByTagName('circle');
+    expect(circles.length).toBe(1);
+  });
+
 });
