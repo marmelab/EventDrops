@@ -1,6 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var moment =  require('moment');
-require('../node_modules/moment/locale/fr');
+window.moment = require('moment');
 
 var configurable = require('./util/configurable');
 
@@ -13,8 +12,32 @@ var config = {
     top: 60,
     left: 280,
     bottom: 0,
-    right: 50
+    right: 50,
   },
+  locale: {
+    "decimal": ",",
+    "thousands": " ",
+    "grouping": [3],
+    "dateTime": "%A %e %B %Y, %X",
+    "date": "%d/%m/%Y",
+    "time": "%H:%M:%S",
+    "periods": ["AM", "PM"],
+    "days": ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
+    "shortDays": ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."],
+    "months": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+    "shortMonths": ["janv.", "févr.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
+  },
+  tickFormat: [
+    [".%L", function(d) { return d.getMilliseconds(); }],
+    [":%S", function(d) { return d.getSeconds(); }],
+    ["%H:%M", function(d) { return d.getMinutes(); }],
+    ["%Hh", function(d) { return d.getHours(); }],
+    ["%a %d", function(d) { return d.getDay() && d.getDate() != 1; }],
+    ["%b %d", function(d) { return d.getDate() != 1; }],
+    ["%B", function(d) { return d.getMonth(); }],
+    ["%Y", function() { return true; }]
+  ],
+  lang: 'en',
   onZoom: function () {}
 };
 
@@ -72,30 +95,9 @@ d3.timeline = function(element, configData) {
     return filteredArray;
   };
 
-  var locale = d3.locale({
-    "decimal": ",",
-    "thousands": " ",
-    "grouping": [3],
-    "dateTime": "%A %e %B %Y, %X",
-    "date": "%d/%m/%Y",
-    "time": "%H:%M:%S",
-    "periods": ["AM", "PM"],
-    "days": ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
-    "shortDays": ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."],
-    "months": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
-    "shortMonths": ["janv.", "févr.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
-  });
+  var locale = d3.locale(config.locale);
 
-  var tickFormat = locale.timeFormat.multi([
-    [".%L", function(d) { return d.getMilliseconds(); }],
-    [":%S", function(d) { return d.getSeconds(); }],
-    ["%H:%M", function(d) { return d.getMinutes(); }],
-    ["%Hh", function(d) { return d.getHours(); }],
-    ["%a %d", function(d) { return d.getDay() && d.getDate() != 1; }],
-    ["%b %d", function(d) { return d.getDate() != 1; }],
-    ["%B", function(d) { return d.getMonth(); }],
-    ["%Y", function() { return true; }]
-  ]);
+  var tickFormat = locale.timeFormat.multi(config.tickFormat);
 
   function draw() {
     if (d3.event.sourceEvent.toString() === '[object MouseEvent]') {
@@ -212,7 +214,7 @@ d3.timeline = function(element, configData) {
 
     delimiterEl.append('text')
       .text(function () {
-        var start = moment(xScale.invert(0)).locale('fr').format('LLLL');
+        var start = moment(xScale.invert(0)).format('LLLL');
 
         return start;
       })
@@ -221,7 +223,7 @@ d3.timeline = function(element, configData) {
 
     delimiterEl.append('text')
       .text(function () {
-        var end = moment(xScale.invert(width)).locale('fr').format('LLLL');
+        var end = moment(xScale.invert(width)).format('LLLL');
 
         return end;
       })
@@ -266,13 +268,30 @@ d3.timeline = function(element, configData) {
     return this;
   };
 
+  eventTimelineGraph.lang = function (value) {
+    if (!value) {
+      return config.lang;
+    }
+
+    config.lang = value;
+
+    var langScript = document.createElement('script');
+
+    langScript.src = '../node_modules/moment/locale/' + value + '.js';
+
+    document.getElementsByTagName('head')[0].appendChild(langScript);
+    moment.locale(value);
+
+    return this;
+  };
+
   updateXScale(config.start, config.end);
   delimiter();
 
   return eventTimelineGraph;
 };
 
-},{"../node_modules/moment/locale/fr":3,"./util/configurable":2,"moment":4}],2:[function(require,module,exports){
+},{"./util/configurable":2,"moment":3}],2:[function(require,module,exports){
 module.exports = function configurable(targetFunction, config) {
   for (var item in config) {
     (function(item) {
@@ -287,66 +306,6 @@ module.exports = function configurable(targetFunction, config) {
 };
 
 },{}],3:[function(require,module,exports){
-// moment.js locale configuration
-// locale : french (fr)
-// author : John Fischer : https://github.com/jfroffice
-
-(function (factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['moment'], factory); // AMD
-    } else if (typeof exports === 'object') {
-        module.exports = factory(require('../moment')); // Node
-    } else {
-        factory(window.moment); // Browser global
-    }
-}(function (moment) {
-    return moment.defineLocale('fr', {
-        months : 'janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre'.split('_'),
-        monthsShort : 'janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.'.split('_'),
-        weekdays : 'dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi'.split('_'),
-        weekdaysShort : 'dim._lun._mar._mer._jeu._ven._sam.'.split('_'),
-        weekdaysMin : 'Di_Lu_Ma_Me_Je_Ve_Sa'.split('_'),
-        longDateFormat : {
-            LT : 'HH:mm',
-            L : 'DD/MM/YYYY',
-            LL : 'D MMMM YYYY',
-            LLL : 'D MMMM YYYY LT',
-            LLLL : 'dddd D MMMM YYYY LT'
-        },
-        calendar : {
-            sameDay: '[Aujourd\'hui à] LT',
-            nextDay: '[Demain à] LT',
-            nextWeek: 'dddd [à] LT',
-            lastDay: '[Hier à] LT',
-            lastWeek: 'dddd [dernier à] LT',
-            sameElse: 'L'
-        },
-        relativeTime : {
-            future : 'dans %s',
-            past : 'il y a %s',
-            s : 'quelques secondes',
-            m : 'une minute',
-            mm : '%d minutes',
-            h : 'une heure',
-            hh : '%d heures',
-            d : 'un jour',
-            dd : '%d jours',
-            M : 'un mois',
-            MM : '%d mois',
-            y : 'un an',
-            yy : '%d ans'
-        },
-        ordinal : function (number) {
-            return number + (number === 1 ? 'er' : '');
-        },
-        week : {
-            dow : 1, // Monday is the first day of the week.
-            doy : 4  // The week that contains Jan 4th is the first week of the year.
-        }
-    });
-}));
-
-},{"../moment":4}],4:[function(require,module,exports){
 (function (global){
 //! moment.js
 //! version : 2.8.3
