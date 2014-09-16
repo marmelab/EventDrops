@@ -1,5 +1,29 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+"use strict";
+
+module.exports = function filterDate(dates, maxDate, minDate) {
+  dates = dates || [];
+  var filteredDates = [];
+  var maxTime = maxDate.getTime();
+  var minTime = minDate.getTime();
+  dates.forEach(function (date) {
+    var time = date.getTime();
+    if (time < minTime || time > maxTime) {
+      return;
+    }
+    filteredDates.push(date);
+  });
+
+  return filteredDates;
+};
+
+},{}],2:[function(require,module,exports){
+/*global d3 */
+"use strict";
+
+
 var configurable = require('./util/configurable');
+var filterDate = require('./filterDate');
 
 var defaultConfig = {
   start: new Date(0),
@@ -26,21 +50,22 @@ var defaultConfig = {
     "shortMonths": ["janv.", "févr.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   },
   tickFormat: [
-    [".%L", function(d) { return d.getMilliseconds(); }],
-    [":%S", function(d) { return d.getSeconds(); }],
-    ["%H:%M", function(d) { return d.getMinutes(); }],
-    ["%Hh", function(d) { return d.getHours(); }],
-    ["%a %d", function(d) { return d.getDay() && d.getDate() != 1; }],
-    ["%b %d", function(d) { return d.getDate() != 1; }],
-    ["%B", function(d) { return d.getMonth(); }],
-    ["%Y", function() { return true; }]
+    [".%L", function (d) { return d.getMilliseconds(); }],
+    [":%S", function (d) { return d.getSeconds(); }],
+    ["%H:%M", function (d) { return d.getMinutes(); }],
+    ["%Hh", function (d) { return d.getHours(); }],
+    ["%a %d", function (d) { return d.getDay() && d.getDate() !== 1; }],
+    ["%b %d", function (d) { return d.getDate() !== 1; }],
+    ["%B", function (d) { return d.getMonth(); }],
+    ["%Y", function () { return true; }]
   ],
   onZoom: function () {}
 };
 
-d3.timeline = function(element, config) {
+d3.timeline = function (element, config) {
+  var key;
   config = config || {};
-  for(var key in defaultConfig) {
+  for (key in defaultConfig) {
     config[key] = config[key] || defaultConfig[key];
   };
 
@@ -78,19 +103,6 @@ d3.timeline = function(element, config) {
   ;
 
   var xScale;
-
-  var filterArray = function(array, max, min) {
-    var filteredArray = [];
-    array.forEach(function(item) {
-      var time = item.getTime();
-      if (time < min || time > max) {
-        return;
-      }
-      filteredArray.push(item);
-    });
-
-    return filteredArray;
-  };
 
   var locale = d3.locale(config.locale);
 
@@ -172,12 +184,12 @@ d3.timeline = function(element, config) {
         return 'translate(0,' + yScale(d.eventType) + ')';
       });
 
-    var min = xScale.invert(0).getTime();
-    var max = xScale.invert(width).getTime();
+    var min = xScale.invert(0);
+    var max = xScale.invert(width);
 
     eventLine.append('text')
       .text(function(d) {
-        var count = filterArray(d.dates, max, min).length;
+        var count = filterDate(d.dates, max, min).length;
         return config.fields[d.eventType] + (count > 0 ? ' (' + count + ')' : '');
       })
       .attr('text-anchor', 'end')
@@ -187,7 +199,7 @@ d3.timeline = function(element, config) {
       .data(function(d) {
 
         // filter value outside of range
-        return filterArray(d.dates, max, min);
+        return filterDate(d.dates, max, min);
       })
       .enter()
       .append('circle')
@@ -221,7 +233,7 @@ d3.timeline = function(element, config) {
 
     delimiterEl.append('text')
       .text(function () {
-        var end = (new Date(xScale.invert(0)));
+        var end = (new Date(xScale.invert(width)));
 
         return delimiterFormat(end);
       })
@@ -232,11 +244,11 @@ d3.timeline = function(element, config) {
   }
 
 
-  var updateXScale = function (start, end) {
+  var updateXScale = function () {
 
     xScale = d3.time.scale()
       .range([0, width])
-      .domain([start, end]);
+      .domain([config.start, config.end]);
 
     zoom.x(xScale);
   }
@@ -246,7 +258,7 @@ d3.timeline = function(element, config) {
     end: updateXScale
   };
 
-  updateXScale(config.start, config.end);
+  updateXScale();
   delimiter();
 
   configurable(eventTimelineGraph, config, listeners);
@@ -254,7 +266,7 @@ d3.timeline = function(element, config) {
   return eventTimelineGraph;
 };
 
-},{"./util/configurable":2}],2:[function(require,module,exports){
+},{"./filterDate":1,"./util/configurable":3}],3:[function(require,module,exports){
 module.exports = function configurable(targetFunction, config, listeners) {
   listeners = listeners || {};
   for (var item in config) {
@@ -272,4 +284,4 @@ module.exports = function configurable(targetFunction, config, listeners) {
   }
 };
 
-},{}]},{},[1]);
+},{}]},{},[2]);
