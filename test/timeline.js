@@ -1,57 +1,57 @@
 "use strict";
 
-describe('d3.timeline', function () {
-  var timeline, parent, element;
+describe('d3.eventDrops', function () {
+  var eventDrops, parent, element;
 
   beforeEach(function () {
     parent = document.createElement('div');
     element = document.createElement('div');
     parent.appendChild(element);
 
-    timeline = d3.timeline(element);
+    eventDrops = d3.eventDrops(element);
   });
 
-  it('should add a timeline function to d3 that return a function', function () {
-    expect(typeof d3.timeline).toBe('function');
+  it('should add a eventDrops function to d3 that return a function', function () {
+    expect(typeof d3.eventDrops).toBe('function');
 
     var parent = document.createElement('div');
     var element = document.createElement('div');
     parent.appendChild(element);
 
-    expect(typeof d3.timeline(element)).toBe('function');
+    expect(typeof d3.eventDrops(element)).toBe('function');
   });
 
   it ('should append only one svg element to the given element when called', function () {
-    timeline();
+    eventDrops();
     var svgs = element.getElementsByTagName('svg');
     expect(svgs.length).toBe(1);
 
-    timeline();
+    eventDrops();
     var svgs = element.getElementsByTagName('svg');
     expect(svgs.length).toBe(1);
   });
 
   it ('should have a configurable start', function () {
-    expect(typeof timeline.start).toBe('function');
-    expect(timeline.start().getTime()).toBe((new Date(0)).getTime());
+    expect(typeof eventDrops.start).toBe('function');
+    expect(eventDrops.start().getTime()).toBe((new Date(0)).getTime());
 
-    timeline.start(new Date());
-    expect(timeline.start().getTime()).toBe((new Date()).getTime());
+    eventDrops.start(new Date());
+    expect(eventDrops.start().getTime()).toBe((new Date()).getTime());
   });
 
   it ('should have as many line as eventType', function () {
-    timeline();
+    eventDrops();
     var svg, lines;
 
-    timeline.data([{eventType: "field1", dates: []}, {eventType: "field2", dates: []}]);
-    timeline();
+    eventDrops.data([{eventType: "field1", dates: []}, {eventType: "field2", dates: []}]);
+    eventDrops();
     svg = element.getElementsByTagName('svg')[0];
     lines = svg.getElementsByClassName('line');
 
     expect(lines.length).toBe(2);
 
-    timeline.data([{eventType: "field1", dates: []}]);
-    timeline();
+    eventDrops.data([{eventType: "field1", dates: []}]);
+    eventDrops();
     svg = element.getElementsByTagName('svg')[0];
     lines = svg.getElementsByClassName('line');
 
@@ -60,23 +60,23 @@ describe('d3.timeline', function () {
 
   it ('should have as many circle by eventType as timestamps', function () {
     var svg, line, circles;
-    timeline.data([{eventType: "field1", dates: [new Date(1402318080000), new Date(1402323060000), new Date(1402332120000)]}]);
-    timeline();
+    eventDrops.data([{eventType: "field1", dates: [new Date(1402318080000), new Date(1402323060000), new Date(1402332120000)]}]);
+    eventDrops();
     svg = element.getElementsByTagName('svg')[0];
     line = svg.getElementsByClassName('line')[0];
     circles = line.getElementsByTagName('circle');
     expect(circles.length).toBe(3);
 
-    timeline.start(new Date(1402323060000));
-    timeline();
+    eventDrops.start(new Date(1402323060000));
+    eventDrops();
 
     svg = element.getElementsByTagName('svg')[0];
     line = svg.getElementsByClassName('line')[0];
     circles = line.getElementsByTagName('circle');
     expect(circles.length).toBe(2);
 
-    timeline.end(new Date(1402323060000));
-    timeline();
+    eventDrops.end(new Date(1402323060000));
+    eventDrops();
 
     line = svg.getElementsByClassName('line')[0];
     circles = line.getElementsByTagName('circle');
@@ -85,7 +85,7 @@ describe('d3.timeline', function () {
 
   xit ('should display starting date', function () {
     var startDate = new Date(1402323060000);
-    timeline.start(startDate);
+    eventDrops.start(startDate);
     var startEl = document.getElementsByClassName('start');
 
     expect(startEl.textContent).toBe('YY-mm-dd');

@@ -21,7 +21,6 @@ module.exports = function filterDate(dates, maxDate, minDate) {
 /*global d3 */
 "use strict";
 
-
 var configurable = require('./util/configurable');
 var filterDate = require('./filterDate');
 
@@ -62,7 +61,7 @@ var defaultConfig = {
   onZoom: function () {}
 };
 
-d3.timeline = function (element, config) {
+d3.eventDrops = function (element, config) {
   var key;
   config = config || {};
   for (key in defaultConfig) {
@@ -119,10 +118,10 @@ d3.timeline = function (element, config) {
 
     config.onZoom();
 
-    eventTimelineGraph();
+    eventDropGraph();
   }
 
-  function eventTimelineGraph() {
+  function eventDropGraph() {
     if (!config.data) {
       return;
     }
@@ -261,9 +260,9 @@ d3.timeline = function (element, config) {
   updateXScale();
   delimiter();
 
-  configurable(eventTimelineGraph, config, listeners);
+  configurable(eventDropGraph, config, listeners);
 
-  return eventTimelineGraph;
+  return eventDropGraph;
 };
 
 },{"./filterDate":1,"./util/configurable":3}],3:[function(require,module,exports){
