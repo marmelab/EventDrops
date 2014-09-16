@@ -82,7 +82,8 @@ d3.timeline = function(element, config) {
   var filterArray = function(array, max, min) {
     var filteredArray = [];
     array.forEach(function(item) {
-      if (item < min || item > max) {
+      var time = item.getTime();
+      if (time < min || time > max) {
         return;
       }
       filteredArray.push(item);
@@ -171,12 +172,12 @@ d3.timeline = function(element, config) {
         return 'translate(0,' + yScale(d.eventType) + ')';
       });
 
-    var min = Math.round(xScale.invert(0) / 1000);
-    var max = Math.round(xScale.invert(width) / 1000);
+    var min = xScale.invert(0).getTime();
+    var max = xScale.invert(width).getTime();
 
     eventLine.append('text')
       .text(function(d) {
-        var count = filterArray(d.timestamps, max, min).length;
+        var count = filterArray(d.dates, max, min).length;
         return config.fields[d.eventType] + (count > 0 ? ' (' + count + ')' : '');
       })
       .attr('text-anchor', 'end')
@@ -186,12 +187,12 @@ d3.timeline = function(element, config) {
       .data(function(d) {
 
         // filter value outside of range
-        return filterArray(d.timestamps, max, min);
+        return filterArray(d.dates, max, min);
       })
       .enter()
       .append('circle')
       .attr('cx', function(d) {
-        return isNaN(xScale(new Date(d * 1000))) ? 0 : xScale(new Date(d * 1000));
+        return xScale(d);
       })
       .attr('cy', -5)
       .attr('r', 10);
