@@ -37,7 +37,7 @@ var defaultConfig = {
     ["%B", function(d) { return d.getMonth(); }],
     ["%Y", function() { return true; }]
   ],
-  lang: 'en',
+  lang: 'en-gb',
   onZoom: function () {}
 };
 
@@ -182,7 +182,8 @@ d3.timeline = function(element, config) {
         var count = filterArray(d.timestamps, max, min).length;
         return config.fields[d.eventType] + (count > 0 ? ' (' + count + ')' : '');
       })
-      .attr('transform', 'translate(-280)');
+      .attr('text-anchor', 'end')
+      .attr('transform', 'translate(-20)');
 
     eventLine.selectAll('circle')
       .data(function(d) {
@@ -197,8 +198,6 @@ d3.timeline = function(element, config) {
       })
       .attr('cy', -5)
       .attr('r', 10);
-
-
 
     var xAxisElBottom = graph
       .append('g')
@@ -258,14 +257,14 @@ d3.timeline = function(element, config) {
     return this;
   };
 
-  updateXScale(config.start, config.end);
-  delimiter();
-
   var listeners = {
     start: updateXScale,
     end: updateXScale,
     lang: changeLang
   };
+
+  updateXScale(config.start, config.end);
+  delimiter();
 
   configurable(eventTimelineGraph, config, listeners);
 
@@ -274,6 +273,7 @@ d3.timeline = function(element, config) {
 
 },{"./util/configurable":2,"moment":3}],2:[function(require,module,exports){
 module.exports = function configurable(targetFunction, config, listeners) {
+  listeners = listeners || {};
   for (var item in config) {
     (function(item) {
       targetFunction[item] = function(value) {
