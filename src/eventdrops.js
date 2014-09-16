@@ -102,7 +102,7 @@ d3.chart.eventDrops = function (element, config) {
     .attr('transform', 'translate(' + config.margin.left + ', 35)')
   ;
 
-  var xScale;
+  var xScale = d3.time.scale();
 
   var locale = d3.locale(config.locale);
 
@@ -251,9 +251,10 @@ d3.chart.eventDrops = function (element, config) {
 
   var updateXScale = function () {
 
-    xScale = d3.time.scale()
+    xScale
       .range([0, width])
-      .domain([config.start, config.end]);
+      .domain([config.start, config.end])
+    ;
 
     zoom.x(xScale);
   }
