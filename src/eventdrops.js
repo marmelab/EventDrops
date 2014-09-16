@@ -27,7 +27,6 @@ var filterDate = require('./filterDate');
 var defaultConfig = {
   start: new Date(0),
   end: new Date(),
-  fields: {},
   data: [],
   margin: {
     top: 60,
@@ -71,7 +70,7 @@ d3.chart.eventDrops = function (element, config) {
   };
 
   var totalWidth = element.parentNode.width ? element.parentNode.width() : 1000;
-  var height = Object.keys(config.fields).length * 39;
+  var height = config.data.length * 39;
 
   var totalHeight = height + 20 + config.margin.top + config.margin.bottom;
   var width = totalWidth - config.margin.right - config.margin.left;
@@ -147,9 +146,15 @@ d3.chart.eventDrops = function (element, config) {
 
     xAxisEl.call(xAxis);
 
-    var yDomain = Object.keys(config.fields);
+    var yDomain = [];
+    var yRange = [];
 
-    var yScale = d3.scale.ordinal().domain(yDomain).range([0, 40, 80, 120, 160, 200, 240, 280, 320, 360]);
+    config.data.forEach(function (event, index) {
+      yDomain.push(event.eventType);
+      yRange.push(index * 40);
+    });
+
+    var yScale = d3.scale.ordinal().domain(yDomain).range(yRange);
 
     var yAxisEl = graph.append('g')
       .classed('y-axis', true)
@@ -191,7 +196,7 @@ d3.chart.eventDrops = function (element, config) {
     eventLine.append('text')
       .text(function(d) {
         var count = filterDate(d.dates, max, min).length;
-        return config.fields[d.eventType] + (count > 0 ? ' (' + count + ')' : '');
+        return d.eventType + (count > 0 ? ' (' + count + ')' : '');
       })
       .attr('text-anchor', 'end')
       .attr('transform', 'translate(-20)');
@@ -213,7 +218,7 @@ d3.chart.eventDrops = function (element, config) {
     var xAxisElBottom = graph
       .append('g')
       .classed('x-axis', true)
-      .attr('transform', 'translate(' + config.margin.left + ', ' + (height + 20) + ')');
+      .attr('transform', 'translate(' + config.margin.left + ', ' + (height + 30) + ')');
 
     xAxisElBottom.call(xAxisBottom);
   };

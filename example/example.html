@@ -7,61 +7,31 @@
         <script src="../src/eventdrops.js"></script>
         <script>
             var element = document.getElementsByTagName('body')[0];
+
+            var data = [];
+            var endTime = Date.now();
+            var oneMonth = 30 * 24 * 60 * 60 * 1000;
+            var startTime = endTime - oneMonth;
+
+            for (var i = 1; i <= 10; i++) {
+                var event = {};
+                event.eventType = "sample " + i;
+                event.dates = [];
+
+                var max =  Math.floor(Math.random() * 100);
+                for (var j = 0; j < max; j++) {
+                    var time = Math.floor((Math.random() * oneMonth)) + startTime;
+                    event.dates.push(new Date(time));
+                }
+
+                data.push(event);
+            }
+
             var graph = d3.chart.eventDrops(element, {
-                data: [
-                    {
-                        eventType: 'sample',
-                        dates: [
-                            new Date(1402318080000),
-                            new Date(1402319040000),
-                            new Date(1402319100000),
-                            new Date(1402319220000),
-                            new Date(1402319280000),
-                            new Date(1402319340000),
-                            new Date(1402319400000),
-                            new Date(1402319460000),
-                            new Date(1402319520000),
-                            new Date(1402319580000),
-                            new Date(1402319760000),
-                            new Date(1402319940000),
-                            new Date(1402320360000),
-                            new Date(1402320660000),
-                            new Date(1402320840000),
-                            new Date(1402320900000),
-                            new Date(1402321680000),
-                            new Date(1402321740000),
-                            new Date(1402321920000),
-                            new Date(1402322760000),
-                            new Date(1402322820000),
-                            new Date(1402323000000),
-                            new Date(1402323060000),
-                            new Date(1402323600000),
-                            new Date(1402323660000),
-                            new Date(1402323720000),
-                            new Date(1402323960000),
-                            new Date(1402324080000),
-                            new Date(1402324140000),
-                            new Date(1402324800000),
-                            new Date(1402324860000),
-                            new Date(1402324920000),
-                            new Date(1402324980000),
-                            new Date(1402326000000),
-                            new Date(1402327080000),
-                            new Date(1402327140000),
-                            new Date(1402328160000),
-                            new Date(1402328340000),
-                            new Date(1402328400000),
-                            new Date(1402329540000),
-                            new Date(1402329600000),
-                            new Date(1402330380000),
-                            new Date(1402330440000),
-                            new Date(1402332120000)
-                        ]
-                    }
-                ],
+                data: data,
                 fields: {'sample': 'exemple'},
-                start: new Date(1402318080000),
-                end: new Date(1402332120000)
+                start: new Date(startTime),
+                end: new Date(endTime)
             });
 
             graph();
