@@ -1,7 +1,6 @@
 {
   "dependencies": {
-    "d3": "3.4.11",
-    "moment": "2.8.3"
+    "d3": "3.4.11"
   },
   "devDependencies": {
     "karma": "0.12.23",
