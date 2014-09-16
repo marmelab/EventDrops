@@ -61,7 +61,9 @@ var defaultConfig = {
   onZoom: function () {}
 };
 
-d3.eventDrops = function (element, config) {
+d3.chart = d3.chart || {};
+
+d3.chart.eventDrops = function (element, config) {
   var key;
   config = config || {};
   for (key in defaultConfig) {
@@ -241,7 +243,6 @@ d3.eventDrops = function (element, config) {
       .classed('end', true)
     ;
   }
-
 
   var updateXScale = function () {
 

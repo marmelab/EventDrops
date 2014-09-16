@@ -1,6 +1,6 @@
 "use strict";
 
-describe('d3.eventDrops', function () {
+describe('d3.chart.eventDrops', function () {
   var eventDrops, parent, element;
 
   beforeEach(function () {
@@ -8,17 +8,17 @@ describe('d3.eventDrops', function () {
     element = document.createElement('div');
     parent.appendChild(element);
 
-    eventDrops = d3.eventDrops(element);
+    eventDrops = d3.chart.eventDrops(element);
   });
 
   it('should add a eventDrops function to d3 that return a function', function () {
-    expect(typeof d3.eventDrops).toBe('function');
+    expect(typeof d3.chart.eventDrops).toBe('function');
 
     var parent = document.createElement('div');
     var element = document.createElement('div');
     parent.appendChild(element);
 
-    expect(typeof d3.eventDrops(element)).toBe('function');
+    expect(typeof d3.chart.eventDrops(element)).toBe('function');
   });
 
   it ('should append only one svg element to the given element when called', function () {
