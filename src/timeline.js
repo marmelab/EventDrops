@@ -3,7 +3,7 @@ window.moment = require('moment');
 
 var configurable = require('./util/configurable');
 
-var config = {
+var defaultConfig = {
   start: moment(0),
   end: moment(),
   fields: {},
@@ -41,10 +41,10 @@ var config = {
   onZoom: function () {}
 };
 
-d3.timeline = function(element, configData) {
-  configData = configData || {};
-  for(var key in config) {
-    config[key] = configData[key] || config[key];
+d3.timeline = function(element, config) {
+  config = config || {};
+  for(var key in defaultConfig) {
+    config[key] = config[key] || defaultConfig[key];
   };
 
   var totalWidth = element.parentNode.width ? element.parentNode.width() : 1000;
@@ -54,7 +54,6 @@ d3.timeline = function(element, configData) {
   var width = totalWidth - config.margin.right - config.margin.left;
 
   var zoom = d3.behavior.zoom().size([width, height]).center(null).on("zoom", draw).on("zoomend", delimiter);
-
 
   var svg = d3.select(element)
     .append('svg')
@@ -232,8 +231,6 @@ d3.timeline = function(element, configData) {
       .classed('end', true);
   }
 
-  configurable(eventTimelineGraph, config);
-
 
   var updateXScale = function (start, end) {
 
@@ -244,31 +241,7 @@ d3.timeline = function(element, configData) {
     zoom.x(xScale);
   }
 
-  eventTimelineGraph.start = function (value) {
-    if (!value) {
-      return config.start;
-    }
-
-    config.start = value;
-
-    updateXScale(config.start, config.end);
-
-    return this;
-  };
-
-  eventTimelineGraph.end = function (value) {
-    if (!value) {
-      return config.end;
-    }
-
-    config.end = value;
-
-    updateXScale(config.start, config.end);
-
-    return this;
-  };
-
-  eventTimelineGraph.lang = function (value) {
+  changeLang = function changeLang (value) {
     if (!value) {
       return config.lang;
     }
@@ -288,16 +261,27 @@ d3.timeline = function(element, configData) {
   updateXScale(config.start, config.end);
   delimiter();
 
+  var listeners = {
+    start: updateXScale,
+    end: updateXScale,
+    lang: changeLang
+  };
+
+  configurable(eventTimelineGraph, config, listeners);
+
   return eventTimelineGraph;
 };
 
 },{"./util/configurable":2,"moment":3}],2:[function(require,module,exports){
-module.exports = function configurable(targetFunction, config) {
+module.exports = function configurable(targetFunction, config, listeners) {
   for (var item in config) {
     (function(item) {
       targetFunction[item] = function(value) {
         if (!arguments.length) return config[item];
         config[item] = value;
+        if (listeners.hasOwnProperty(item)) {
+          listeners[item](value);
+        }
 
         return targetFunction;
       };
