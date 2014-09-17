@@ -1,7 +1,7 @@
 var assert = require('assert');
 var d3 = require('d3');
 
-var filterData = require('../lib/filterData');
+var filterData = require('../../lib/filterData');
 
 describe('filterData', function () {
   it ('should remove value outside of the range of the given scale', function () {

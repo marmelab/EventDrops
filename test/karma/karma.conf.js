@@ -1,14 +1,14 @@
 // karma.conf.js
 module.exports = function(config) {
   config.set({
-    basePath: '..',
+    basePath: '../..',
     frameworks: ['jasmine'],
     browsers: ['Chrome'],
     files: [
       'node_modules/d3/d3.js',
       'src/eventdrops.js',
       'src/filterDate.js',
-      'test/*'
+      'test/karma/*'
     ]
   });
 };
