@@ -6,6 +6,7 @@
     "karma": "0.12.23",
     "karma-jasmine": "0.1.5",
     "karma-chrome-launcher": "0.1.4",
-    "browserify": "5.11.2"
+    "browserify": "5.11.2",
+    "mocha": "1.21.4"
   }
 }
