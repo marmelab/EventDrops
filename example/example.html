@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="../css/style.css" />
     </head>
     <body>
-        <script src="../node_modules/d3/d3.min.js"></script>
+        <script src="../node_modules/d3/d3.js"></script>
         <script src="../src/eventdrops.js"></script>
         <script>
             var element = document.getElementsByTagName('body')[0];
@@ -29,14 +29,14 @@
                 data.push(event);
             }
 
-            var graph = d3.chart.eventDrops(element, {
+            var graph = d3.chart.eventDrops({
                 data: data,
-                fields: {'sample': 'exemple'},
                 start: new Date(startTime),
                 end: new Date(endTime)
             });
 
-            graph();
+            d3.select(element).data(data).call(graph);
+
         </script>
     </body>
 </html>
