@@ -2,13 +2,13 @@
 "use strict";
 
 var configurable = require('./util/configurable');
-var filterDate = require('./filterDate');
+var filterData = require('./filterData');
 
 var defaultConfig = {
   xScale: null
 };
 
-module.exports = function (config)  {
+module.exports = function (config) {
 
   config = config || {};
   for (var key in defaultConfig) {
@@ -17,20 +17,23 @@ module.exports = function (config)  {
 
   var eventLine = function eventLine(selection) {
     selection.each(function (data) {
+      d3.select(this).selectAll('text').remove();
 
       d3.select(this).append('text')
         .text(function(d) {
-          var count = filterDate(d.dates, config.xScale).length;
+          var count = filterData(d.dates, config.xScale).length;
           return d.name + (count > 0 ? ' (' + count + ')' : '');
         })
         .attr('text-anchor', 'end')
         .attr('transform', 'translate(-20)')
       ;
 
+      d3.select(this).selectAll('circle').remove();
+
       d3.select(this).selectAll('circle')
         .data(function(d) {
           // filter value outside of range
-          return filterDate(d.dates, config.xScale);
+          return filterData(d.dates, config.xScale);
         })
         .enter()
         .append('circle')
@@ -49,24 +52,24 @@ module.exports = function (config)  {
   return eventLine;
 };
 
-},{"./filterDate":2,"./util/configurable":4}],2:[function(require,module,exports){
+},{"./filterData":2,"./util/configurable":4}],2:[function(require,module,exports){
 "use strict";
 
-module.exports = function filterDate(dates, timeScale) {
-  dates = dates || [];
-  var filteredDates = [];
-  var boundary = timeScale.domain();
-  var minTime = boundary[0].getTime();
-  var maxTime = boundary[1].getTime();
-  dates.forEach(function (date) {
-    var time = date.getTime();
-    if (time < minTime || time > maxTime) {
+module.exports = function filterDate(data, scale) {
+  data = data || [];
+  var filteredData = [];
+  var boundary = scale.range();
+  var min = boundary[0];
+  var max = boundary[1];
+  data.forEach(function (datum) {
+    var value = scale(datum);
+    if (value < min || value > max) {
       return;
     }
-    filteredDates.push(date);
+    filteredData.push(datum);
   });
 
-  return filteredDates;
+  return filteredData;
 };
 
 },{}],3:[function(require,module,exports){
@@ -74,7 +77,8 @@ module.exports = function filterDate(dates, timeScale) {
 "use strict";
 
 var configurable = require('./util/configurable');
-var filterDate = require('./filterDate');
+var filterData = require('./filterData');
+var eventLine = require('./eventLine');
 
 var defaultConfig = {
   start: new Date(0),
@@ -113,8 +117,6 @@ var defaultConfig = {
 };
 
 d3.chart = d3.chart || {};
-
-d3.chart.eventLine = require('./eventLine');
 
 d3.chart.eventDrops = function (element, config) {
   var key;
@@ -204,7 +206,7 @@ d3.chart.eventDrops = function (element, config) {
     var yRange = [];
 
     config.data.forEach(function (event, index) {
-      yDomain.push(event.eventType);
+      yDomain.push(event.name);
       yRange.push(index * 40);
     });
 
@@ -236,38 +238,16 @@ d3.chart.eventDrops = function (element, config) {
       .classed('graph-body', true)
       .attr('transform', 'translate(' + config.margin.left + ', ' + (config.margin.top - 15) + ')');
 
-    var eventLine = graphBody.selectAll('g')
+    var lines = graphBody.selectAll('g')
       .data(config.data).enter()
       .append('g')
       .classed('line', true)
       .attr('transform', function(d) {
-        return 'translate(0,' + yScale(d.eventType) + ')';
-      });
-
-    var min = xScale.invert(0);
-    var max = xScale.invert(width);
-
-    eventLine.append('text')
-      .text(function(d) {
-        var count = filterDate(d.dates, max, min).length;
-        return d.eventType + (count > 0 ? ' (' + count + ')' : '');
+        return 'translate(0,' + yScale(d.name) + ')';
       })
-      .attr('text-anchor', 'end')
-      .attr('transform', 'translate(-20)');
+    ;
 
-    eventLine.selectAll('circle')
-      .data(function(d) {
-
-        // filter value outside of range
-        return filterDate(d.dates, max, min);
-      })
-      .enter()
-      .append('circle')
-      .attr('cx', function(d) {
-        return xScale(d);
-      })
-      .attr('cy', -5)
-      .attr('r', 10);
+    lines.call(eventLine({xScale: xScale}));
 
     var xAxisElBottom = graph
       .append('g')
@@ -326,7 +306,7 @@ d3.chart.eventDrops = function (element, config) {
   return eventDropGraph;
 };
 
-},{"./eventLine":1,"./filterDate":2,"./util/configurable":4}],4:[function(require,module,exports){
+},{"./eventLine":1,"./filterData":2,"./util/configurable":4}],4:[function(require,module,exports){
 module.exports = function configurable(targetFunction, config, listeners) {
   listeners = listeners || {};
   for (var item in config) {
