@@ -7,6 +7,7 @@ module.exports = function(config) {
     files: [
       'node_modules/d3/d3.js',
       'src/eventdrops.js',
+      'src/filterDate.js',
       'test/*'
     ]
   });

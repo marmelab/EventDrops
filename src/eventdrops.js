@@ -1,11 +1,63 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
-module.exports = function filterDate(dates, maxDate, minDate) {
+var configurable = require('./util/configurable');
+var filterDate = require('./filterDate');
+
+var defaultConfig = {
+  xScale: null
+};
+
+module.exports = function (config)  {
+
+  config = config || {};
+  for (var key in defaultConfig) {
+    config[key] = config[key] || defaultConfig[key];
+  };
+
+  var eventLine = function eventLine(selection) {
+    selection.each(function (data) {
+
+      d3.select(this).append('text')
+        .text(function(d) {
+          var count = filterDate(d.dates, config.xScale).length;
+          return d.name + (count > 0 ? ' (' + count + ')' : '');
+        })
+        .attr('text-anchor', 'end')
+        .attr('transform', 'translate(-20)')
+      ;
+
+      d3.select(this).selectAll('circle')
+        .data(function(d) {
+          // filter value outside of range
+          return filterDate(d.dates, config.xScale);
+        })
+        .enter()
+        .append('circle')
+        .attr('cx', function(d) {
+          return config.xScale(d);
+        })
+        .attr('cy', -5)
+        .attr('r', 10)
+      ;
+
+    });
+  };
+
+  configurable(eventLine, config);
+
+  return eventLine;
+};
+
+},{"./filterDate":2,"./util/configurable":4}],2:[function(require,module,exports){
+"use strict";
+
+module.exports = function filterDate(dates, timeScale) {
   dates = dates || [];
   var filteredDates = [];
-  var maxTime = maxDate.getTime();
-  var minTime = minDate.getTime();
+  var boundary = timeScale.domain();
+  var minTime = boundary[0].getTime();
+  var maxTime = boundary[1].getTime();
   dates.forEach(function (date) {
     var time = date.getTime();
     if (time < minTime || time > maxTime) {
@@ -17,7 +69,7 @@ module.exports = function filterDate(dates, maxDate, minDate) {
   return filteredDates;
 };
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 /*global d3 */
 "use strict";
 
@@ -61,6 +113,8 @@ var defaultConfig = {
 };
 
 d3.chart = d3.chart || {};
+
+d3.chart.eventLine = require('./eventLine');
 
 d3.chart.eventDrops = function (element, config) {
   var key;
@@ -272,7 +326,7 @@ d3.chart.eventDrops = function (element, config) {
   return eventDropGraph;
 };
 
-},{"./filterDate":1,"./util/configurable":3}],3:[function(require,module,exports){
+},{"./eventLine":1,"./filterDate":2,"./util/configurable":4}],4:[function(require,module,exports){
 module.exports = function configurable(targetFunction, config, listeners) {
   listeners = listeners || {};
   for (var item in config) {
@@ -290,4 +344,4 @@ module.exports = function configurable(targetFunction, config, listeners) {
   }
 };
 
-},{}]},{},[2]);
+},{}]},{},[3]);
