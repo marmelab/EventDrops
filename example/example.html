@@ -5,6 +5,8 @@
         <link rel="stylesheet" href="../css/style.css" />
     </head>
     <body>
+        <label for="delimiter">delimiter:</label>
+        <input name="delimiter" type="checkbox" checked="true" onchange="updateDelimiter()">
         <script src="../node_modules/d3/d3.js"></script>
         <script src="../src/eventdrops.js"></script>
         <script>
@@ -34,7 +36,18 @@
                 end: new Date(endTime)
             });
 
-            d3.select(body).selectAll('div').data([data]).enter().append('div').call(graph);
+            var elements = d3.select(body).selectAll('div').data([data]).enter().append('div');
+            graph(elements);
+
+            var defaultDelimiter = graph.delimiter();
+            var updateDelimiter = function (value) {
+                if (graph.delimiter()) {
+                    graph.delimiter(null);
+                } else {
+                    graph.delimiter(defaultDelimiter);
+                }
+                graph(elements);
+            }
 
         </script>
     </body>

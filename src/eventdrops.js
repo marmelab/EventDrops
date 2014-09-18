@@ -52,7 +52,6 @@ module.exports = function (config) {
 
 var configurable = require('./util/configurable');
 var eventLine = require('./eventLine');
-var delimiter = require('./delimiter');
 
 var defaultConfig = {
   start: new Date(0),
@@ -61,7 +60,7 @@ var defaultConfig = {
   margin: {
     top: 60,
     left: 280,
-    bottom: 0,
+    bottom: 40,
     right: 50,
   },
   locale: d3.locale({
@@ -86,7 +85,8 @@ var defaultConfig = {
     ["%b %d", function(d) { return d.getDate() != 1; }],
     ["%B", function(d) { return d.getMonth(); }],
     ["%Y", function() { return true; }]
-  ]
+  ],
+  delimiter: require('./delimiter')
 };
 
 module.exports = function eventDrops(config) {
@@ -99,9 +99,13 @@ module.exports = function eventDrops(config) {
 
   function eventDropGraph(selection) {
     selection.each(function (data) {
-      var zoom = d3.behavior.zoom().center(null).on("zoom", updateZoom).on("zoomend", redrawDelimiter);
+      var zoom = d3.behavior.zoom().center(null).on("zoom", updateZoom);
+
+      if (config.delimiter) {
+        zoom.on("zoomend", redrawDelimiter);
+      }
       var graphWidth = config.width - config.margin.right - config.margin.left;
-      var graphHeight = data.length * 39;
+      var graphHeight = data.length * 40;
       var height = graphHeight + config.margin.top + config.margin.bottom;
 
       d3.select(this).select('svg').remove();
@@ -157,12 +161,10 @@ module.exports = function eventDrops(config) {
       zoom.x(xScale);
 
       var xAxisTop = d3.svg.axis()
-        .scale(xScale)
         .orient('top')
       ;
 
       var xAxisBottom = d3.svg.axis()
-        .scale(xScale)
         .orient('bottom')
       ;
 
@@ -186,7 +188,7 @@ module.exports = function eventDrops(config) {
           .attr('width', graphWidth)
           .attr('height', 10)
           .attr('transform', 'translate(' + config.margin.left + ', 15)')
-          .call(delimiter({xScale: xScale, dateFormat: config.locale.timeFormat("%d %B %Y")}))
+          .call(config.delimiter({xScale: xScale, dateFormat: config.locale.timeFormat("%d %B %Y")}))
         ;
       }
 
@@ -227,13 +229,15 @@ module.exports = function eventDrops(config) {
         var xAxisElBottom = graph
           .append('g')
           .classed('x-axis-bottom', true)
-          .attr('transform', 'translate(' + config.margin.left + ', ' + (height + 30) + ')')
+          .attr('transform', 'translate(' + config.margin.left + ', ' + (graphHeight + 20) + ')')
           .call(xAxisBottom)
         ;
       }
 
       redraw();
-      redrawDelimiter();
+      if (config.delimiter) {
+        redrawDelimiter();
+      }
     });
   }
 
