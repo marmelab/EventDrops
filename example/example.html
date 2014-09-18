@@ -38,9 +38,13 @@
                 data.push(createEvent("sample " + i));
             }
 
+            var color = d3.scale.category20();
             var graph = d3.chart.eventDrops({
                 start: new Date(startTime),
-                end: new Date(endTime)
+                end: new Date(endTime),
+                eventColor: function (d, i) {
+                    return color(i);
+                }
             });
 
             var element = d3.select(body).append('div').datum(data);

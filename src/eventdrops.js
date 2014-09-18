@@ -92,7 +92,8 @@ var defaultConfig = {
   hasTopAxis: true,
   hasBottomAxis: function (data) {
     return data.length >= 10;
-  }
+  },
+  eventColor: 'black'
 };
 
 module.exports = function eventDrops(config) {
@@ -147,6 +148,7 @@ module.exports = function eventDrops(config) {
           return 'translate(0, ' + yScale(d) + ')';
         })
         .append('line')
+        .classed('y-tick', true)
         .attr('x1', config.margin.left)
         .attr('x2', config.margin.left + graphWidth);
 
@@ -246,6 +248,7 @@ module.exports = function eventDrops(config) {
           .attr('transform', function(d) {
             return 'translate(0,' + yScale(d.name) + ')';
           })
+          .style('fill', config.eventColor)
           .call(eventLine({xScale: xScale}))
         ;
 
@@ -292,6 +295,7 @@ module.exports = function (config) {
         })
         .attr('text-anchor', 'end')
         .attr('transform', 'translate(-20)')
+        .style('fill', 'black')
       ;
 
       d3.select(this).selectAll('circle').remove();
