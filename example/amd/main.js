@@ -2,17 +2,17 @@
 require.config({
     paths: {
         'd3': '../../node_modules/d3/d3',
-        'd3.chart.eventDrop': '../../src/eventDrop'
+        'd3.chart.eventDrops': '../../src/eventDrops'
     },
     shim: {
-        'd3.chart.eventDrop': {
+        'd3.chart.eventDrops': {
             deps: ['d3'],
-            exports: 'd3.chart.eventDrop'
+            exports: 'd3.chart.eventDrops'
         }
     }
 });
 
-require(['d3', 'd3.chart.eventDrop'], function(d3) {
+require(['d3', 'd3.chart.eventDrops'], function(d3) {
     var body = document.getElementsByTagName('body')[0];
 
     var data = [];
@@ -39,7 +39,7 @@ require(['d3', 'd3.chart.eventDrop'], function(d3) {
         data.push(createEvent("sample " + i));
     }
 
-    var graph = d3.chart.eventDrop({
+    var graph = d3.chart.eventDrops({
         start: new Date(startTime),
         end: new Date(endTime)
     });

@@ -11,4 +11,4 @@ test: \
 	karma-test \
 
 browserify:
-	node_modules/browserify/bin/cmd.js lib/main.js > src/eventDrop.js
+	node_modules/browserify/bin/cmd.js lib/main.js > src/eventDrops.js

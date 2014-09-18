@@ -4,16 +4,16 @@ var assert = require('assert');
 var document = require('jsdom').jsdom();
 
 var filterData = require('../../lib/filterData');
-var eventDrop = require('../../lib/eventDrop')(d3);
+var eventDrops = require('../../lib/eventDrops')(d3);
 
-describe('eventDrop', function () {
+describe('eventDrops', function () {
   var graph, elements;
 
   var day = 1000 * 60 * 60 * 24;
   var now = Date.now();
 
   beforeEach(function () {
-    graph = eventDrop({hasBottomAxis: true});
+    graph = eventDrops({hasBottomAxis: true});
     var body = document.createElement('body');
     elements = d3.select(body).selectAll('div')
       .data([[
