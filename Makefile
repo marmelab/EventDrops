@@ -9,3 +9,6 @@ mocha-test:
 test: \
 	mocha-test \
 	karma-test \
+
+browserify:
+	node_modules/browserify/bin/cmd.js lib/main.js > src/eventDrop.js

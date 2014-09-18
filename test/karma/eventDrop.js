@@ -1,7 +1,7 @@
 "use strict";
 
-describe('d3.chart.eventDrops', function () {
-  var eventDrops, elements;
+describe('d3.chart.eventDrop', function () {
+  var eventDrop, elements;
 
   beforeEach(function () {
     var body = d3.select(document.createElement('body'));
@@ -16,15 +16,15 @@ describe('d3.chart.eventDrops', function () {
 
     elements.exit().remove();
 
-    eventDrops = d3.chart.eventDrops();
+    eventDrop = d3.chart.eventDrop();
 
-    eventDrops(elements);
+    eventDrop(elements);
   });
 
-  it('should add a eventDrops function to d3 that return a function', function () {
-    expect(typeof d3.chart.eventDrops).toBe('function');
+  it('should add a eventDrop function to d3 that return a function', function () {
+    expect(typeof d3.chart.eventDrop).toBe('function');
 
-    expect(typeof d3.chart.eventDrops()).toBe('function');
+    expect(typeof d3.chart.eventDrop()).toBe('function');
   });
 
   it ('should append one svg element to the given elements or replace it when called', function () {
@@ -33,7 +33,7 @@ describe('d3.chart.eventDrops', function () {
       expect(svgs.length).toBe(1);
     });
 
-    eventDrops(elements);
+    eventDrop(elements);
 
     elements.each(function (data) {
       var svgs = d3.select(this).selectAll('svg')[0];
@@ -42,11 +42,11 @@ describe('d3.chart.eventDrops', function () {
   });
 
   it ('should have a configurable start', function () {
-    expect(typeof eventDrops.start).toBe('function');
-    expect(eventDrops.start().getTime()).toBe((new Date(0)).getTime());
+    expect(typeof eventDrop.start).toBe('function');
+    expect(eventDrop.start().getTime()).toBe((new Date(0)).getTime());
 
-    eventDrops.start(new Date());
-    expect(eventDrops.start().getTime()).toBe((new Date()).getTime());
+    eventDrop.start(new Date());
+    expect(eventDrop.start().getTime()).toBe((new Date()).getTime());
   });
 
   it ('should have as many line as event', function () {
@@ -59,7 +59,7 @@ describe('d3.chart.eventDrops', function () {
 
     elements = elements.data([[{name: "field1", dates: []}]]);
 
-    eventDrops(elements);
+    eventDrop(elements);
 
     elements.each(function (data) {
       var svg = d3.select(this).select('svg');
@@ -82,7 +82,7 @@ describe('d3.chart.eventDrops', function () {
 
     elements = elements.data([[{name: "field1", dates: [new Date(1402318080000), new Date(1402323060000), new Date(1402332120000)]}]]);
 
-    eventDrops(elements);
+    eventDrop(elements);
 
     elements.each(function (data) {
       var lines = d3.select(this).select('svg').selectAll('.line');

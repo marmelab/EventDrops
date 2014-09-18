@@ -4,7 +4,7 @@ var assert = require('assert');
 var document = require('jsdom').jsdom();
 
 var filterData = require('../../lib/filterData');
-var eventDrop = require('../../lib/eventDrop');
+var eventDrop = require('../../lib/eventDrop')(d3);
 
 describe('eventDrop', function () {
   var graph, elements;

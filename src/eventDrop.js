@@ -47,7 +47,6 @@ module.exports = function (config) {
 };
 
 },{"./util/configurable":6}],2:[function(require,module,exports){
-/*global d3 */
 "use strict";
 
 var configurable = require('./util/configurable');
@@ -99,7 +98,7 @@ module.exports = function (d3) {
     eventColor: 'black'
   };
 
-  d3.chart.eventDrops = function eventDrops(config) {
+    return function eventDrops(config) {
     var xScale = d3.time.scale();
     var yScale = d3.scale.ordinal();
     config = config || {};
@@ -350,19 +349,21 @@ module.exports = function filterDate(data, scale) {
 };
 
 },{}],5:[function(require,module,exports){
-/*global d3 */
 "use strict";
 
 var eventDrop = require('./eventDrop');
 
 if (typeof define === "function" && define.amd) {
   define('d3.chart.eventDrop', ["d3"], function (d3) {
-    eventDrop(d3);
+    d3.chart = d3.chart || {};
+    d3.chart.eventDrop = eventDrop(d3);
   });
+} else if (window) {
+  window.d3.chart = window.d3.chart || {};
+  window.d3.chart.eventDrop = eventDrop(window.d3);
 } else {
-  eventDrop(window.d3);
+  module.exports = eventDrop;
 }
-
 
 },{"./eventDrop":2}],6:[function(require,module,exports){
 module.exports = function configurable(targetFunction, config, listeners) {

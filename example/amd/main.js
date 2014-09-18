@@ -2,7 +2,7 @@
 require.config({
     paths: {
         'd3': '../../node_modules/d3/d3',
-        'd3.chart.eventDrop': '../../src/eventdrops'
+        'd3.chart.eventDrop': '../../src/eventDrop'
     },
     shim: {
         'd3.chart.eventDrop': {
@@ -39,7 +39,7 @@ require(['d3', 'd3.chart.eventDrop'], function(d3) {
         data.push(createEvent("sample " + i));
     }
 
-    var graph = d3.chart.eventDrops({
+    var graph = d3.chart.eventDrop({
         start: new Date(startTime),
         end: new Date(endTime)
     });
