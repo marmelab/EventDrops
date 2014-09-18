@@ -7,6 +7,8 @@
     <body>
         <label for="delimiter">delimiter:</label>
         <input name="delimiter" type="checkbox" checked="true" onchange="updateDelimiter()">
+        <button onclick="addLine()">Add line</button>
+        <button onclick="removeLine()">Remove line</button>
         <script src="../node_modules/d3/d3.js"></script>
         <script src="../src/eventdrops.js"></script>
         <script>
@@ -17,9 +19,9 @@
             var oneMonth = 30 * 24 * 60 * 60 * 1000;
             var startTime = endTime - oneMonth;
 
-            for (var i = 1; i <= 10; i++) {
+            function createEvent (name) {
                 var event = {};
-                event.name = "sample " + i;
+                event.name = name;
                 event.dates = [];
 
                 var max =  Math.floor(Math.random() * 100);
@@ -28,7 +30,12 @@
                     event.dates.push(new Date(time));
                 }
 
-                data.push(event);
+                return event;
+            }
+
+            for (var i = 1; i <= 10; i++) {
+
+                data.push(createEvent("sample " + i));
             }
 
             var graph = d3.chart.eventDrops({
@@ -36,8 +43,8 @@
                 end: new Date(endTime)
             });
 
-            var elements = d3.select(body).selectAll('div').data([data]).enter().append('div');
-            graph(elements);
+            var element = d3.select(body).append('div').datum(data);
+            graph(element);
 
             var defaultDelimiter = graph.delimiter();
             var updateDelimiter = function (value) {
@@ -46,7 +53,22 @@
                 } else {
                     graph.delimiter(defaultDelimiter);
                 }
-                graph(elements);
+                graph(element);
+            }
+
+            var addLine = function () {
+                var data = element.datum();
+                var i = data.length + 1;
+                data.push(createEvent('sample ' + i));
+                elements = element.datum(data);
+                graph(element);
+            }
+
+            var removeLine = function () {
+                var data = element.datum();
+                data.pop();
+                element = element.datum(data);
+                graph(element);
             }
 
         </script>
