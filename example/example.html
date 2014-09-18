@@ -8,7 +8,7 @@
         <script src="../node_modules/d3/d3.js"></script>
         <script src="../src/eventdrops.js"></script>
         <script>
-            var element = document.getElementsByTagName('body')[0];
+            var body = document.getElementsByTagName('body')[0];
 
             var data = [];
             var endTime = Date.now();
@@ -30,12 +30,11 @@
             }
 
             var graph = d3.chart.eventDrops({
-                data: data,
                 start: new Date(startTime),
                 end: new Date(endTime)
             });
 
-            d3.select(element).data(data).call(graph);
+            d3.select(body).selectAll('div').data([data]).enter().append('div').call(graph);
 
         </script>
     </body>

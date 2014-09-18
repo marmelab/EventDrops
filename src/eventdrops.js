@@ -57,7 +57,6 @@ var delimiter = require('./delimiter');
 var defaultConfig = {
   start: new Date(0),
   end: new Date(),
-  data: [],
   width : 1400,
   margin: {
     top: 60,
@@ -79,14 +78,14 @@ var defaultConfig = {
     "shortMonths": ["janv.", "févr.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   }),
   tickFormat: [
-    [".%L", function (d) { return d.getMilliseconds(); }],
-    [":%S", function (d) { return d.getSeconds(); }],
-    ["%H:%M", function (d) { return d.getMinutes(); }],
-    ["%Hh", function (d) { return d.getHours(); }],
-    ["%a %d", function (d) { return d.getDay() && d.getDate() !== 1; }],
-    ["%b %d", function (d) { return d.getDate() !== 1; }],
-    ["%B", function (d) { return d.getMonth(); }],
-    ["%Y", function (d) { return d.getFullYear(); }]
+    [".%L", function(d) { return d.getMilliseconds(); }],
+    [":%S", function(d) { return d.getSeconds(); }],
+    ["%I:%M", function(d) { return d.getMinutes(); }],
+    ["%I %p", function(d) { return d.getHours(); }],
+    ["%a %d", function(d) { return d.getDay() && d.getDate() != 1; }],
+    ["%b %d", function(d) { return d.getDate() != 1; }],
+    ["%B", function(d) { return d.getMonth(); }],
+    ["%Y", function() { return true; }]
   ]
 };
 
@@ -102,7 +101,7 @@ module.exports = function eventDrops(config) {
     selection.each(function (data) {
       var zoom = d3.behavior.zoom().center(null).on("zoom", updateZoom).on("zoomend", redrawDelimiter);
       var graphWidth = config.width - config.margin.right - config.margin.left;
-      var graphHeight = config.data.length * 39;
+      var graphHeight = data.length * 39;
       var height = graphHeight + 20 + config.margin.top + config.margin.bottom;
 
       d3.select(this).select('svg').remove();
@@ -119,7 +118,7 @@ module.exports = function eventDrops(config) {
       var yDomain = [];
       var yRange = [];
 
-      config.data.forEach(function (event, index) {
+      data.forEach(function (event, index) {
         yDomain.push(event.name);
         yRange.push(index * 40);
       });
@@ -137,15 +136,18 @@ module.exports = function eventDrops(config) {
         .attr('y1', -40)
         .attr('y2', height - 30);
 
-      var yTick = yAxisEl.append('g').selectAll('g').data(yDomain).enter()
+      var yTick = yAxisEl.append('g').selectAll('g').data(yDomain);
+
+      yTick.enter()
         .append('g')
         .attr('transform', function(d) {
           return 'translate(0, ' + yScale(d) + ')';
-        });
-
-      yTick.append('line')
+        })
+        .append('line')
         .attr('x1', config.margin.left)
         .attr('x2', config.margin.left + graphWidth);
+
+      yTick.exit().remove();
 
       svg
         .append('rect')
@@ -157,16 +159,19 @@ module.exports = function eventDrops(config) {
       ;
 
       xScale.range([0, graphWidth]).domain([config.start, config.end]);
+      var tickFormat = config.locale.timeFormat.multi(config.tickFormat);
+      xScale.tickFormat(tickFormat);
       zoom.x(xScale);
 
-      var tickFormat = config.locale.timeFormat.multi(config.tickFormat);
       var xAxisTop = d3.svg.axis()
+        .scale(xScale)
         .orient('top')
-        .tickFormat(tickFormat);
+      ;
 
       var xAxisBottom = d3.svg.axis()
+        .scale(xScale)
         .orient('bottom')
-        .tickFormat(tickFormat);
+      ;
 
       function updateZoom() {
         if (d3.event.sourceEvent.toString() === '[object MouseEvent]') {
@@ -212,16 +217,18 @@ module.exports = function eventDrops(config) {
           .classed('graph-body', true)
           .attr('transform', 'translate(' + config.margin.left + ', ' + (config.margin.top - 15) + ')');
 
-        var lines = graphBody.selectAll('g')
-          .data(config.data).enter()
+        var lines = graphBody.selectAll('g').data(data);
+
+        lines.enter()
           .append('g')
           .classed('line', true)
           .attr('transform', function(d) {
             return 'translate(0,' + yScale(d.name) + ')';
           })
+          .call(eventLine({xScale: xScale}))
         ;
 
-        lines.call(eventLine({xScale: xScale}));
+        lines.exit().remove();
 
         graph.select('.x-axis-bottom').remove();
         var xAxisElBottom = graph
@@ -273,12 +280,13 @@ module.exports = function (config) {
 
       d3.select(this).selectAll('circle').remove();
 
-      d3.select(this).selectAll('circle')
+      var circle = d3.select(this).selectAll('circle')
         .data(function(d) {
           // filter value outside of range
           return filterData(d.dates, config.xScale);
-        })
-        .enter()
+        });
+
+      circle.enter()
         .append('circle')
         .attr('cx', function(d) {
           return config.xScale(d);
@@ -286,6 +294,8 @@ module.exports = function (config) {
         .attr('cy', -5)
         .attr('r', 10)
       ;
+
+      circle.exit().remove();
 
     });
   };

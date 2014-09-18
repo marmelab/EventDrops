@@ -16,11 +16,11 @@ describe('eventDrop', function () {
     graph = eventDrop({});
     var body = document.createElement('body');
     elements = d3.select(body).selectAll('div')
-      .data([
+      .data([[
         {name: 'nom1', dates: []},
         {name: 'nom2', dates: [new Date(now - 2 * day)]},
         {name: 'nom3', dates: [new Date(now - 1 * day), new Date(now)]}
-      ])
+      ]])
       .enter().append('div')
     ;
 
