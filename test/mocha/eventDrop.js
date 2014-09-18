@@ -13,7 +13,7 @@ describe('eventDrop', function () {
   var now = Date.now();
 
   beforeEach(function () {
-    graph = eventDrop({});
+    graph = eventDrop({hasBottomAxis: true});
     var body = document.createElement('body');
     elements = d3.select(body).selectAll('div')
       .data([[
@@ -60,7 +60,7 @@ describe('eventDrop', function () {
       assert.equal(zoom[0].length, 1);
       var margin = graph.margin();
       assert.equal(zoom.attr('width'), graph.width() - margin.left - margin.right);
-      assert.equal(zoom.attr('height'), (data.length * 39) + margin.top + margin.bottom);
+      assert.equal(zoom.attr('height'), (data.length * 40) + margin.top + margin.bottom);
     });
   });
 

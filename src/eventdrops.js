@@ -88,7 +88,11 @@ var defaultConfig = {
     ["%B", function(d) { return d.getMonth(); }],
     ["%Y", function() { return true; }]
   ]),
-  delimiter: require('./delimiter')
+  delimiter: require('./delimiter'),
+  hasTopAxis: true,
+  hasBottomAxis: function (data) {
+    return data.length >= 10;
+  }
 };
 
 module.exports = function eventDrops(config) {
@@ -185,29 +189,46 @@ module.exports = function eventDrops(config) {
         ;
       }
 
-      function redraw() {
-
+      function drawXAxis(where) {
         var xAxisTop = d3.svg.axis()
           .tickFormat(config.tickFormat)
           .scale(xScale)
-          .orient('top')
+          .orient(where)
         ;
 
-        var xAxisBottom = d3.svg.axis()
-          .tickFormat(config.tickFormat)
-          .scale(xScale)
-          .orient('bottom')
-        ;
-
-        xAxisBottom.scale(xScale);
-        xAxisTop.scale(xScale);
-
-        graph.select('.x-axis-top').remove();
+        graph.select('.x-axis-' + where).remove();
         var xAxisEl = graph
           .append('g')
-          .classed('x-axis-top', true)
-          .attr('transform', 'translate(' + config.margin.left + ', 20)')
-          .call(xAxisTop);
+          .classed('x-axis-' + where, true)
+          .attr('transform', 'translate(' + config.margin.left + ', ' + (where === 'bottom' ? graphHeight : 0) + 20 + ')')
+          .call(xAxisTop)
+        ;
+      }
+
+      function redraw() {
+
+        var hasTopAxis = typeof config.hasTopAxis === 'function' ? config.hasTopAxis(data) : config.hasTopAxis;
+        if (hasTopAxis) {
+          drawXAxis('top')
+        }
+
+        var hasBottomAxis = typeof config.hasBottomAxis === 'function' ? config.hasBottomAxis(data) : config.hasBottomAxis;
+        if (hasBottomAxis) {
+          var xAxisBottom = d3.svg.axis()
+            .tickFormat(config.tickFormat)
+            .scale(xScale)
+            .orient('bottom')
+          ;
+
+          xAxisBottom.scale(xScale);
+          graph.select('.x-axis-bottom').remove();
+          var xAxisElBottom = graph
+            .append('g')
+            .classed('x-axis-bottom', true)
+            .attr('transform', 'translate(' + config.margin.left + ', ' + (graphHeight + 20) + ')')
+            .call(xAxisBottom)
+          ;
+        }
 
         zoom.size([config.width, height]);
 
@@ -229,14 +250,6 @@ module.exports = function eventDrops(config) {
         ;
 
         lines.exit().remove();
-
-        graph.select('.x-axis-bottom').remove();
-        var xAxisElBottom = graph
-          .append('g')
-          .classed('x-axis-bottom', true)
-          .attr('transform', 'translate(' + config.margin.left + ', ' + (graphHeight + 20) + ')')
-          .call(xAxisBottom)
-        ;
       }
 
       redraw();
