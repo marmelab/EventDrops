@@ -35,7 +35,40 @@ describe('eventDrop', function () {
   });
 
   it ('should add a xscale to each element', function () {
+    elements.each(function () {
+      var axisTop = d3.select(this).selectAll('.x-axis-top')[0];
+      assert.equal(axisTop.length, 1);
+      var axisBottom = d3.select(this).selectAll('.x-axis-bottom')[0];
+      assert.equal(axisBottom.length, 1);
+    });
+  });
 
+  it ('should add a yscale to each element with as many line(tick) as event', function () {
+    elements.each(function () {
+      var yAxis = d3.select(this).selectAll('.y-axis');
+      assert.equal(yAxis.length, 1);
+
+      var lines = yAxis.selectAll('line')[0];
+
+      assert.equal(lines.length, 3);
+    });
+  });
+
+  it ('should add a zoom rect to each element', function () {
+    elements.each(function (data) {
+      var zoom = d3.select(this).selectAll('.zoom');
+      assert.equal(zoom[0].length, 1);
+      var margin = graph.margin();
+      assert.equal(zoom.attr('width'), graph.width() - margin.left - margin.right);
+      assert.equal(zoom.attr('height'), (data.length * 39) + margin.top + margin.bottom);
+    });
+  });
+
+  it ('should add delimiter', function () {
+    elements.each(function (data) {
+      var delimiter = d3.select(this).selectAll('.delimiter');
+      assert.equal(delimiter[0].length, 1);
+    });
   });
 
 });
