@@ -11,4 +11,4 @@ test: \
 	karma-test \
 
 browserify:
-	node_modules/browserify/bin/cmd.js lib/main.js > src/eventDrops.js
+	node_modules/browserify/bin/cmd.js lib/main.js -d -p [minifyify --map bundle.map.json --output bundle.map.json] > src/eventDrops.js
