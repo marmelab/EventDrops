@@ -64,9 +64,14 @@ Configurable values:
 
   - margin: margin of the graph
 
-  - locale: locale of the chart (see [d3.locale](https://github.com/mbostock/d3/wiki/Localization#locale))
+  - locale: locale of the chart
 
-  - tickFormat: tickFormat of the xAxis (see : [d3.timeFormat.multi](https://github.com/mbostock/d3/wiki/Time-Formatting#format_multi))
+    (see [d3.locale](https://github.com/mbostock/d3/wiki/Localization#locale))
+    default to null (d3 default locale)
+
+  - tickFormat: tickFormat for the xAxis
+    see format array asked by [d3.timeFormat.multi()](https://github.com/mbostock/d3/wiki/Time-Formatting#format_multi) method
+    default to d3 default values
 
   - delimiter: A delimiter sub graph.
 
