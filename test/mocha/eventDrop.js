@@ -36,9 +36,9 @@ describe('eventDrops', function () {
 
   it ('should add a xscale to each element', function () {
     elements.each(function () {
-      var axisTop = d3.select(this).selectAll('.x-axis-top')[0];
+      var axisTop = d3.select(this).selectAll('.x-axis.top')[0];
       assert.equal(axisTop.length, 1);
-      var axisBottom = d3.select(this).selectAll('.x-axis-bottom')[0];
+      var axisBottom = d3.select(this).selectAll('.x-axis.bottom')[0];
       assert.equal(axisBottom.length, 1);
     });
   });
