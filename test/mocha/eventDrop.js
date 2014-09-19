@@ -4,16 +4,16 @@ var assert = require('assert');
 var document = require('jsdom').jsdom();
 
 var filterData = require('../../lib/filterData');
-var eventDrop = require('../../lib/eventDrop');
+var eventDrops = require('../../lib/eventDrops')(d3);
 
-describe('eventDrop', function () {
+describe('eventDrops', function () {
   var graph, elements;
 
   var day = 1000 * 60 * 60 * 24;
   var now = Date.now();
 
   beforeEach(function () {
-    graph = eventDrop({hasBottomAxis: true});
+    graph = eventDrops({hasBottomAxis: true});
     var body = document.createElement('body');
     elements = d3.select(body).selectAll('div')
       .data([[
@@ -36,9 +36,9 @@ describe('eventDrop', function () {
 
   it ('should add a xscale to each element', function () {
     elements.each(function () {
-      var axisTop = d3.select(this).selectAll('.x-axis-top')[0];
+      var axisTop = d3.select(this).selectAll('.x-axis.top')[0];
       assert.equal(axisTop.length, 1);
-      var axisBottom = d3.select(this).selectAll('.x-axis-bottom')[0];
+      var axisBottom = d3.select(this).selectAll('.x-axis.bottom')[0];
       assert.equal(axisBottom.length, 1);
     });
   });
