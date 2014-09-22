@@ -39,9 +39,25 @@
             }
 
             var color = d3.scale.category20();
+
+            var locale = d3.locale({
+                "decimal": ",",
+                "thousands": " ",
+                "grouping": [3],
+                "dateTime": "%A %e %B %Y, %X",
+                "date": "%d/%m/%Y",
+                "time": "%H:%M:%S",
+                "periods": ["AM", "PM"],
+                "days": ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
+                "shortDays": ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."],
+                "months": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+                "shortMonths": ["janv.", "févr.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
+            });
+
             var graph = d3.chart.eventDrops({
                 start: new Date(startTime),
                 end: new Date(endTime),
+                locale: locale,
                 eventColor: function (d, i) {
                     return color(i);
                 }
