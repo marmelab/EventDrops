@@ -3,7 +3,7 @@ EventDrops
 
 A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time.
 
-(TODO add video)
+![EventDrops example](http://static.marmelab.com/EventDrops.gif)
 
 ## Usage
 
