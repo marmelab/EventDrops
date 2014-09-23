@@ -2,17 +2,22 @@
 <meta charset="utf-8">
 <html>
     <head>
-        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../../css/style.css" />
     </head>
     <body>
-        <label for="delimiter">Show time boundaries:</label>
-        <input name="delimiter" type="checkbox" checked="true" onchange="updateDelimiter()">
-        <button onclick="addLine()">Add line</button>
-        <button onclick="removeLine()">Remove line</button>
-        <script src="../node_modules/d3/d3.js"></script>
-        <script src="../src/eventDrops.js"></script>
+        <h1>Customized EventDrops Chart</h1>
+        <p>Charts can have custom color lines, width, margins, date locale, etc. Check the source to see how to customize a <code>d3.chart.eventDrops()</code>.</p>
+        <div style="text-align: center">
+            <label for="delimiter">Show time boundaries:</label>
+            <input name="delimiter" type="checkbox" checked="true" onchange="updateDelimiter()">
+            <button onclick="addLine()">Add line</button>
+            <button onclick="removeLine()">Remove line</button>
+        </div>
+        <script src="../../node_modules/d3/d3.js"></script>
+        <script src="../../src/eventDrops.js"></script>
         <script>
             var body = document.getElementsByTagName('body')[0];
+            var names = ["Reverse Proxy hits", "Server requests", "SQL queries", "Cache invalidations", "Cache miss", "Builds", "Websocket messages", "API calls", "Autoscaling", "Incidents", "Explosions", "Ends of the world"];
 
             var data = [];
             var endTime = Date.now();
@@ -24,7 +29,7 @@
                 event.name = name;
                 event.dates = [];
 
-                var max =  Math.floor(Math.random() * 100);
+                var max =  Math.floor(Math.random() * 200);
                 for (var j = 0; j < max; j++) {
                     var time = Math.floor((Math.random() * oneMonth)) + startTime;
                     event.dates.push(new Date(time));
@@ -33,9 +38,8 @@
                 return event;
             }
 
-            for (var i = 1; i <= 10; i++) {
-
-                data.push(createEvent("sample " + i));
+            for (var i = 0; i < 6; i++) {
+                data.push(createEvent(names[i]));
             }
 
             var color = d3.scale.category20();
@@ -54,32 +58,28 @@
                 "shortMonths": ["janv.", "févr.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
             });
 
-            var graph = d3.chart.eventDrops({
-                start: new Date(startTime),
-                end: new Date(endTime),
-                locale: locale,
-                eventColor: function (d, i) {
+            var graph = d3.chart.eventDrops()
+                .start(new Date(startTime))
+                .end(new Date(endTime))
+                .locale(locale)
+                .eventColor(function (d, i) {
                     return color(i);
-                }
-            });
+                })
+                .width(1200)
+                .margin({ top: 100, left: 200, bottom: 60, right: 0 })
+                .hasDelimiter(false);
 
             var element = d3.select(body).append('div').datum(data);
             graph(element);
 
-            var defaultDelimiter = graph.delimiter();
             var updateDelimiter = function (value) {
-                if (graph.delimiter()) {
-                    graph.delimiter(null);
-                } else {
-                    graph.delimiter(defaultDelimiter);
-                }
-                graph(element);
+                graph.hasDelimiter(!graph.hasDelimiter())(element);
             }
 
             var addLine = function () {
                 var data = element.datum();
-                var i = data.length + 1;
-                data.push(createEvent('sample ' + i));
+                var i = data.length;
+                data.push(createEvent(names[i]));
                 elements = element.datum(data);
                 graph(element);
             }
