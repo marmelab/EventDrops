@@ -17,9 +17,9 @@ require(['d3', 'd3.chart.eventDrops'], function(d3) {
     // create dataset
     var data = [];
     var names = ["Lorem", "Ipsum", "Dolor", "Sit", "Amet", "Consectetur", "Adipisicing", "elit", "Eiusmod tempor", "Incididunt"];
+    var endTime = Date.now();
     var month = 30 * 24 * 60 * 60 * 1000;
     var startTime = endTime - 6 * month;
-    var endTime = Date.now();
     function createEvent (name, maxNbEvents) {
         maxNbEvents = maxNbEvents | 200;
         var event = {
