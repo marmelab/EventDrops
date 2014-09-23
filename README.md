@@ -14,7 +14,7 @@ Include the `src/eventDrops.js` script in your page after d3:
 <script src="src/eventDrops.js"></script>
 ```
 
-**Tip**: You can also user RequireJs, see [example/amd](https://github.com/marmelab/EventDrops/tree/master/example/amd) for an implementation.
+**Tip**: You can also use RequireJs, see [example/amd](https://github.com/marmelab/EventDrops/tree/master/example/amd) for an implementation.
 
 In the HTML source, create a new EventDrops chart, bind data to a DOM element, then call the chart on the element.
 
