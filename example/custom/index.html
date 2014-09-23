@@ -13,10 +13,12 @@
             <button onclick="addLine()">Add line</button>
             <button onclick="removeLine()">Remove line</button>
         </div>
+        <div id="chart_placeholder"></div>
+        <div style="text-align: center" id="legend"></div>
         <script src="../../node_modules/d3/d3.js"></script>
         <script src="../../src/eventDrops.js"></script>
         <script>
-            var body = document.getElementsByTagName('body')[0];
+            var chartPlaceholder = document.getElementById('chart_placeholder');
             var names = ["Reverse Proxy hits", "Server requests", "SQL queries", "Cache invalidations", "Cache miss", "Builds", "Websocket messages", "API calls", "Autoscaling", "Incidents", "Explosions", "Ends of the world"];
 
             var data = [];
@@ -66,10 +68,14 @@
                     return color(i);
                 })
                 .width(1200)
-                .margin({ top: 100, left: 200, bottom: 60, right: 0 })
-                .hasDelimiter(false);
+                .margin({ top: 100, left: 200, bottom: 0, right: 0 })
+                .eventHover(function(el) { 
+                    var series = el.parentNode.firstChild.innerHTML;
+                    var timestamp = d3.select(el).data()[0]
+                    document.getElementById('legend').innerHTML = 'Hovering [' + timestamp + '] in series "' + series + '"'; 
+                });
 
-            var element = d3.select(body).append('div').datum(data);
+            var element = d3.select(chartPlaceholder).append('div').datum(data);
             graph(element);
 
             var updateDelimiter = function (value) {
