@@ -3,6 +3,11 @@
 <html>
     <head>
         <link rel="stylesheet" href="../../css/style.css" />
+        <style type="text/css">
+        body {
+            font-family: verdana, sans-serif;
+        }
+        </style>
     </head>
     <body>
         <h1>Customized EventDrops Chart</h1>
@@ -67,8 +72,11 @@
                 .eventColor(function (d, i) {
                     return color(i);
                 })
-                .width(1200)
+                .width(800)
                 .margin({ top: 100, left: 200, bottom: 0, right: 0 })
+                .axisFormat(function(xAxis) {
+                    xAxis.ticks(5);
+                })
                 .eventHover(function(el) { 
                     var series = el.parentNode.firstChild.innerHTML;
                     var timestamp = d3.select(el).data()[0]

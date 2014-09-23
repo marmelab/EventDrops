@@ -52,6 +52,7 @@ Configurable values:
   - `width`: width of the chart in pixels. Default to 1000px.
   - `margin`: margins of the graph in pixels. Defaults to `{ top: 60, left: 200, bottom: 40, right: 50 }`
   - `locale`: locale used for the X axis labels. See [d3.locale](https://github.com/mbostock/d3/wiki/Localization#locale) for the expected format. Defaults to null (i.e. d3 default locale).
+  - `axisFormat`: function receiving the d3 axis object, to customize tick number and size. 
   - `tickFormat`: tickFormat for the X axis. See [d3.timeFormat.multi()](https://github.com/mbostock/d3/wiki/Time-Formatting#format_multi) for expected format.
   - `eventHover`: function to be called when hovering an event in the chart. Receives the DOM element hovered (uses event delegation).
   - `hasDelimiter`: whether to draw time boundaries on top of the chart. Defaults to true.
