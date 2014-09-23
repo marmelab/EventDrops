@@ -51,14 +51,8 @@ Configurable values:
   - `end`: end date of the scale. Defaults to `new Date()`
   - `width`: width of the chart in pixels. Default to 1000px.
   - `margin`: margins of the graph in pixels. Defaults to `{ top: 60, left: 200, bottom: 40, right: 50 }`
-  - `locale`: locale used for the X axis labels. Defaults to null (i.e. d3 default locale).
-
-    (see [d3.locale](https://github.com/mbostock/d3/wiki/Localization#locale) for the expected format)
-
-  - `tickFormat`: tickFormat for the X axis
-  
-    (see [d3.timeFormat.multi()](https://github.com/mbostock/d3/wiki/Time-Formatting#format_multi) for expected format)
-
+  - `locale`: locale used for the X axis labels. See [d3.locale](https://github.com/mbostock/d3/wiki/Localization#locale) for the expected format. Defaults to null (i.e. d3 default locale).
+  - `tickFormat`: tickFormat for the X axis. See [d3.timeFormat.multi()](https://github.com/mbostock/d3/wiki/Time-Formatting#format_multi) for expected format.
   - `hasDelimiter`: whether to draw time boundaries on top of the chart. Defaults to true.
   - `hasTopAxis`: whether the chart has a top X axis. Accepts both a boolean or a function receiving the data of the graph that returns a boolean.
   - `hasBottomAxis`: same as topAxis but for the bottom X axis
