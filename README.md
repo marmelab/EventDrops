@@ -85,3 +85,21 @@ Configurable values:
   - eventColor: The color of the event line
 
     Accept a color (colorname or '#ffffff' notation) or a function receiving the eventData and returning a color (default to 'black')
+
+## Styling
+
+## Extending / Hacking
+
+First, install the dependencies:
+
+```sh
+$ make install
+```
+
+Source files are located under the `lib/` foler. Once your changes are finished, regenerate the combined source under `src/` by calling the following command:
+
+```sh
+$ make browserify
+```
+
+You can test the result by launching a server at the project root, and navigating to the `examples/` directory.
