@@ -69,8 +69,8 @@
                 .start(new Date(startTime))
                 .end(new Date(endTime))
                 .locale(locale)
-                .eventColor(function (d, i) {
-                    return color(i);
+                .eventColor(function (datum, index) {
+                    return color(index);
                 })
                 .width(800)
                 .margin({ top: 100, left: 200, bottom: 0, right: 0 })
