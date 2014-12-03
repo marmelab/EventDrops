@@ -81,14 +81,14 @@ $ gulp browserify
 
 To update your change dynamically and have sourcemap that allow the console to map to the original file type:
 ```
-gulp watch
+$ gulp watch
 ```
 
 To run the test :
 ```
-gulp test // all test
-gulp karma-test
-gulp mocha-test
+$ gulp test // all test
+$ gulp karma-test
+$ gulp mocha-test
 ```
 You can test the result by launching a server at the project root, and navigating to the `examples/` directory.
 
