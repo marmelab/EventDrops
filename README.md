@@ -69,15 +69,27 @@ You can style all elements of the chart in CSS. Check the source to see the avai
 First, install the dependencies:
 
 ```sh
-$ make install
+$ npm install
 ```
 
-Source files are located under the `lib/` folder, and use [browserify](http://browserify.org/) for dependency management. Once your changes are finished, regenerate the combined source under `src/` by calling the following command:
+Source files are located under the `lib/` folder, and use [browserify](http://browserify.org/) for dependency management.
+Once your changes are finished, regenerate the combined and minified source under `src/` by calling the following command:
 
 ```sh
-$ make browserify
+$ gulp browserify
 ```
 
+To update your change dynamically and have sourcemap that allow the console to map to the original file type:
+```
+gulp watch
+```
+
+To run the test :
+```
+gulp test // all test
+gulp karma-test
+gulp mocha-test
+```
 You can test the result by launching a server at the project root, and navigating to the `examples/` directory.
 
 ## License
