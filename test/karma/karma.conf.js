@@ -7,7 +7,6 @@ module.exports = function(config) {
     files: [
       'node_modules/d3/d3.js',
       'src/eventDrops.js',
-      'src/filterDate.js',
       'test/karma/*'
     ]
   });
