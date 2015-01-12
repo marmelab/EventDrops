@@ -69,7 +69,7 @@
                 .start(new Date(startTime))
                 .end(new Date(endTime))
                 .locale(locale)
-                .eventColor(function (datum, index) {
+                .eventLineColor(function (datum, index) {
                     return color(index);
                 })
                 .width(800)
@@ -77,10 +77,10 @@
                 .axisFormat(function(xAxis) {
                     xAxis.ticks(5);
                 })
-                .eventHover(function(el) { 
+                .eventHover(function(el) {
                     var series = el.parentNode.firstChild.innerHTML;
                     var timestamp = d3.select(el).data()[0]
-                    document.getElementById('legend').innerHTML = 'Hovering [' + timestamp + '] in series "' + series + '"'; 
+                    document.getElementById('legend').innerHTML = 'Hovering [' + timestamp + '] in series "' + series + '"';
                 });
 
             var element = d3.select(chartPlaceholder).append('div').datum(data);
