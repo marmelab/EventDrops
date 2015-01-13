@@ -30,6 +30,7 @@
             var endTime = Date.now();
             var oneMonth = 30 * 24 * 60 * 60 * 1000;
             var startTime = endTime - oneMonth;
+            var middleTime = startTime + ((endTime - startTime) / 2);
 
             function createEvent (name) {
                 var event = {};
@@ -69,8 +70,11 @@
                 .start(new Date(startTime))
                 .end(new Date(endTime))
                 .locale(locale)
-                .eventLineColor(function (datum, index) {
-                    return color(index);
+                .eventColor(function (datum, index) {
+                    if (datum.getTime() < middleTime) {
+                        return 'green';
+                    }
+                    return 'red';
                 })
                 .width(800)
                 .margin({ top: 100, left: 200, bottom: 0, right: 0 })
@@ -79,7 +83,7 @@
                 })
                 .eventHover(function(el) {
                     var series = el.parentNode.firstChild.innerHTML;
-                    var timestamp = d3.select(el).data()[0]
+                    var timestamp = d3.select(el).data()[0];
                     document.getElementById('legend').innerHTML = 'Hovering [' + timestamp + '] in series "' + series + '"';
                 });
 
@@ -88,7 +92,7 @@
 
             var updateDelimiter = function (value) {
                 graph.hasDelimiter(!graph.hasDelimiter())(element);
-            }
+            };
 
             var addLine = function () {
                 var data = element.datum();
@@ -96,14 +100,14 @@
                 data.push(createEvent(names[i]));
                 elements = element.datum(data);
                 graph(element);
-            }
+            };
 
             var removeLine = function () {
                 var data = element.datum();
                 data.pop();
                 element = element.datum(data);
                 graph(element);
-            }
+            };
 
         </script>
     </body>

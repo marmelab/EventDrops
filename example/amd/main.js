@@ -20,6 +20,7 @@ require(['d3', 'd3.chart.eventDrops'], function(d3) {
     var endTime = Date.now();
     var month = 30 * 24 * 60 * 60 * 1000;
     var startTime = endTime - 6 * month;
+
     function createEvent (name, maxNbEvents) {
         maxNbEvents = maxNbEvents | 200;
         var event = {
@@ -38,8 +39,12 @@ require(['d3', 'd3.chart.eventDrops'], function(d3) {
         data.push(createEvent(names[i]));
     }
 
+    var color = d3.scale.category20();
     // create chart function
     var eventDropsChart = d3.chart.eventDrops()
+        .eventLineColor(function (datum, index) {
+            return color(index);
+        })
         .start(new Date(startTime))
         .end(new Date(endTime));
 
