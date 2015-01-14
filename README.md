@@ -61,6 +61,8 @@ Configurable values:
   - `hasBottomAxis`: same as topAxis but for the bottom X axis
   - `eventLineColor`: The color of the event line. Accepts a color (color name or `#ffffff` notation), or a function receiving the eventData and returning a color. Defaults to 'black'.
   - `eventColor`: The color of the event. Accepts a color (color name or `#ffffff` notation), or a function receiving the eventData and returning a color. Defaults to null. EventLineColor will be ignored if this is used.
+  - `minScale`: The minimum scaling (zoom out), default to 0.
+  - `maxScale`: The maximum scaling (zoom in), default to Infinity.
 
 ## Styling
 

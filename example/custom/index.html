@@ -70,6 +70,8 @@
             var graph = d3.chart.eventDrops()
                 .start(new Date(startTime))
                 .end(new Date(endTime))
+                .minScale(0.5)
+                .maxScale(100)
                 .locale(locale)
                 .eventColor(function (datum, index) {
                     if (datum.getTime() < middleTime) {
