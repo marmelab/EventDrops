@@ -5,6 +5,18 @@ A time based / event series interactive visualization using d3.js.
 
 (TODO add video)
 
+## Installation
+
+You can use npm to install event-drops
+```
+npm install event-drops --save
+```
+
+Additionally you can also use bower
+```
+bower install event-drops --save
+```
+
 ## Usage
 
 Include the `src/eventDrops.js` script in your page after d3:
