@@ -18,7 +18,7 @@
     "gulp-uglify": "^1.0.1",
     "jsdom": "1.0.0-pre.6",
     "karma": "0.12.23",
-    "karma-chrome-launcher": "0.1.4",
+    "karma-phantomjs-launcher": "0.1.4",
     "karma-jasmine": "0.1.5",
     "mocha": "1.21.4",
     "vinyl-source-stream": "0.1.1",
