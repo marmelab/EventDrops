@@ -10,9 +10,7 @@ var streamify = require('gulp-streamify');
 var karma = require('karma').server;
 var source = require('vinyl-source-stream');
 
-
-
-function bundle(watching) {
+function bundle(watching, done) {
     var bundler, rebundle;
 
     bundler = browserify('./lib/main.js', {
@@ -26,29 +24,36 @@ function bundle(watching) {
         bundler = watchify(bundler);
     }
 
-    rebundle = function () {
+    rebundle = function (done) {
         var stream = bundler.bundle();
         stream.on('error', function (error) {
             console.error(error);
         });
         stream = stream.pipe(source('eventDrops.js'));
         try {
+
             if (!watching) {
                 stream.pipe(streamify(uglify()));
             }
             stream.pipe(gulp.dest('./src/'));
         } catch (e) {
-            console.log(e);
+            if (done) {
+                return done(e);
+            }
+
+        }
+        if(done) {
+            stream.on('end', done);
         }
     };
 
     bundler.on('update', rebundle);
 
-    return rebundle();
+    return rebundle(done);
 }
 
-gulp.task('browserify', function () {
-    return bundle(false);
+gulp.task('browserify', function (done) {
+    return bundle(false, done);
 });
 
 gulp.task('watch', function () {

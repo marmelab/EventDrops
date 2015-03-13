@@ -1,3 +1,5 @@
+'use strict';
+
 // karma.conf.js
 module.exports = function(config) {
   config.set({
@@ -9,9 +11,9 @@ module.exports = function(config) {
       'karma-phantomjs-launcher'
     ],
     files: [
-      'node_modules/d3/d3.js',
-      'src/eventDrops.js',
-      'test/karma/*'
+      './node_modules/d3/d3.js',
+      './src/eventDrops.js',
+      './test/karma/*'
     ]
   });
 };
