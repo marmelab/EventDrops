@@ -68,6 +68,7 @@ Configurable values:
   - `tickFormat`: tickFormat for the X axis. See [d3.timeFormat.multi()](https://github.com/mbostock/d3/wiki/Time-Formatting#format_multi) for expected format.
   - `eventHover`: function to be called when hovering an event in the chart. Receives the DOM element hovered (uses event delegation).
   - `eventZoom`: function to be called when done zooming on the chart. Receives the d3 scale at the end of the zoom.
+  - `eventClick`: function to be called on click event of data-point (circle). Receives the DOM element hovered (uses event delegation).
   - `hasDelimiter`: whether to draw time boundaries on top of the chart. Defaults to true.
   - `hasTopAxis`: whether the chart has a top X axis. Accepts both a boolean or a function receiving the data of the graph that returns a boolean.
   - `hasBottomAxis`: same as topAxis but for the bottom X axis
