@@ -13,7 +13,7 @@
     "event"
   ],
   "dependencies": {
-    "d3": "^3.4.11",
+    "d3": "^3.4.11"
   },
   "license": "MIT",
   "ignore": [
