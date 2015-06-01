@@ -1,10 +1,10 @@
 "use strict";
 
 var assert = require('assert');
+var document = require('jsdom').jsdom("<html><head></head><body></body></html>");
 var d3 = require('d3');
-var document = require('jsdom').jsdom();
 
-var delimiter = require('../../lib/delimiter');
+var delimiter = require('../../lib/delimiter')(d3);
 
 describe('delimiter', function () {
   var graph, element, dateFormat, startDate, endDate;
