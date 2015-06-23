@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "browserify": "5.11.2",
+    "canvas": "1.2.3",
     "grunt-mocha-test": "^0.12.7",
     "jsdom": "1.0.0-pre.6",
     "karma": "0.12.35",
