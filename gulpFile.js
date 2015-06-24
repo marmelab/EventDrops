@@ -57,12 +57,7 @@ gulp.task('browserify', function (done) {
 });
 
 gulp.task('watch', function () {
-    return gulp.watch('./lib/*/*.*', ['default']);
-});
-
-gulp.task('default', function () {
-    return gulp.src('./lib/*/*.*')
-        .pipe(browserify());
+    return gulp.watch('./lib/*.*', ['browserify']);
 });
 
 gulp.task('mocha-test', function () {
