@@ -58,14 +58,11 @@ gulp.task('browserify', function (done) {
 
 gulp.task('watch', function () {
     return gulp.watch('src/*.*', ['default']);
-    //return bundle(true);
 });
 
 gulp.task('default', function () {
     return gulp.src(paths.jsSourcePath)
         .pipe(browserify({transform: 'reactify'}));
-        //.pipe(brfs())
-        //.pipe(concat('main.js'));
 });
 
 gulp.task('mocha-test', function () {
