@@ -57,12 +57,12 @@ gulp.task('browserify', function (done) {
 });
 
 gulp.task('watch', function () {
-    return gulp.watch('src/*.*', ['default']);
+    return gulp.watch('./lib/*/*.*', ['default']);
 });
 
 gulp.task('default', function () {
-    return gulp.src(paths.jsSourcePath)
-        .pipe(browserify({transform: 'reactify'}));
+    return gulp.src('./lib/*/*.*')
+        .pipe(browserify());
 });
 
 gulp.task('mocha-test', function () {
