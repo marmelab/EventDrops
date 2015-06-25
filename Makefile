@@ -1,5 +1,5 @@
 watch:
-	./node_modules/gulp/bin/gulp.js watch
+	./node_modules/watchify/bin/cmd.js lib/main.js -dv -o src/eventDrops.js 
 
 build:
 	./node_modules/browserify/bin/cmd.js lib/main.js -o src/eventDrops.js
