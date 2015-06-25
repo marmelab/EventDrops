@@ -8,6 +8,7 @@ A time based / event series interactive visualization using d3.js. Use drag and 
 ## Installation
 
 You can use npm to install event-drops
+
 ```
 npm install event-drops --save
 ```
@@ -86,26 +87,26 @@ You can style all elements of the chart in CSS. Check the source to see the avai
 First, install the dependencies:
 
 ```sh
-$ npm install
+make install
 ```
 
-Source files are located under the `lib/` folder, and use [browserify](http://browserify.org/) for dependency management.
-Once your changes are finished, regenerate the combined and minified source under `src/` by calling the following command:
+While developing, you can watch your `lib/` folder to refresh automatically the built files using the watch command:
 
-```sh
-$ gulp browserify
-```
-
-To update your change dynamically and have sourcemap that allow the console to map to the original file type:
-```
-$ gulp watch
+``` sh
+make watch
 ```
 
-To run the test :
+Once your changes done, you can build the combined minified sources using the build command:
+
+``` sh
+make build
 ```
-$ gulp test // all test
-$ gulp karma-test
-$ gulp mocha-test
+
+Running tests is as simple as:
+
+
+``` sh
+make test
 ```
 You can test the result by launching a server at the project root, and navigating to the `examples/` directory.
 
