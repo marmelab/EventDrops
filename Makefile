@@ -10,7 +10,7 @@ karma:
 	./node_modules/karma/bin/karma start test/karma/karma.conf.js --single-run
 
 mocha:
-	./node_modules/mocha/b/mocha --recursive test/mocha
+	./node_modules/mocha/bin/mocha --recursive test/mocha
 
 install:
 	npm install

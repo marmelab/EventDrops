@@ -90,7 +90,7 @@ First, install the dependencies:
 make install
 ```
 
-While developing, you can watch your `lib/` folder using the watch command:
+While developing, you can watch your `lib/` folder to refresh automatically the built files using the watch command:
 
 ``` sh
 make watch
