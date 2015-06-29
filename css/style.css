@@ -20,6 +20,7 @@
 	stroke: grey;
 	fill: none;
 	stroke-width: 1px;
+	position : absolute;
 }
 
 .graph-body .line circle {
@@ -28,10 +29,14 @@
 
 body {
 	width : 900px ; position :relative;
-} 
+}
 img {
-	position : absolute ; top :0px ; left :0px; 
-} 
+	position : absolute ; top :0px ; left :0px;
+}
 canvas {
-	position : absolute; top :40px; left: 200px; border: 1px solid #000000;
+	position : absolute; top :40px; left: 200px; border: 1px solid #000000; z-index: 2;
+}
+
+svg {
+	position: absolute; top: 0px; left: 0px; z-index: 50;
 }
