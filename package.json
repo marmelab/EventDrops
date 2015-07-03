@@ -8,15 +8,17 @@
     "url": "https://github.com/marmelab/EventDrops"
   },
   "dependencies": {
-    "d3": "3.4.11"
+    "d3": "3.5.5"
   },
   "devDependencies": {
     "browserify": "5.11.2",
-    "jsdom": "1.0.0-pre.6",
+    "grunt-mocha-test": "^0.12.7",
+    "jsdom": "5.5.0",
     "karma": "0.12.35",
-    "karma-phantomjs-launcher": "0.1.4",
     "karma-jasmine": "0.1.5",
-    "mocha": "1.21.4"
+    "karma-phantomjs-launcher": "0.1.4",
+    "mocha": "1.21.4",
+    "mocha-traceur": "^2.1.0"
   },
   "bugs": {
     "url": "https://github.com/marmelab/EventDrops/issues"
