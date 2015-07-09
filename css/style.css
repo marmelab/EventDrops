@@ -34,7 +34,7 @@ img {
 	position : absolute ; top :0px ; left :0px;
 }
 canvas {
-	position : absolute; top :40px; left: 200px; border: 1px solid #000000; z-index: 2;
+	position : absolute; top :40px; left: 200px; z-index: 2;
 }
 
 svg {
