@@ -18,7 +18,8 @@
     "karma-jasmine": "0.1.5",
     "karma-phantomjs-launcher": "0.1.4",
     "mocha": "1.21.4",
-    "mocha-traceur": "^2.1.0"
+    "mocha-traceur": "^2.1.0",
+    "watchify": "^3.2.3"
   },
   "bugs": {
     "url": "https://github.com/marmelab/EventDrops/issues"
