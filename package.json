@@ -24,6 +24,7 @@
     "mocha": "1.21.4",
     "mocha-traceur": "^2.1.0",
     "requirejs": "^2.1.18",
+    "uglifyjs": "2.3.6",
     "watchify": "^3.2.3"
   },
   "bugs": {
