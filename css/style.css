@@ -1,6 +1,6 @@
 .zoom {
-    fill: transparent;
-    cursor: pointer;
+	fill: transparent;
+	cursor: pointer;
 }
 
 .y-axis path,
@@ -8,21 +8,35 @@
 .x-axis path,
 .x-axis line,
 {
-    path,
-    line {
-        stroke: black;
-        fill: none;
-        stroke-width: 1px;
-    }
+	path,
+	line {
+		stroke: black;
+		fill: none;
+		stroke-width: 1px;
+	}
 }
 
 .y-axis g line {
-    stroke: grey;
-    fill: none;
-    stroke-width: 1px;
+	stroke: grey;
+	fill: none;
+	stroke-width: 1px;
+	position : absolute;
 }
 
 .graph-body .line circle {
-    opacity: 0.1;
+	opacity: 0.1;
 }
 
+body {
+	width : 900px ; position :relative;
+}
+img {
+	position : absolute ; top :0px ; left :0px;
+}
+canvas {
+	position : absolute; top :40px; left: 200px; z-index: 2;
+}
+
+svg {
+	position: absolute; top: 0px; left: 0px; z-index: 50;
+}
