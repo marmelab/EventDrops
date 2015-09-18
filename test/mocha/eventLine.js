@@ -39,7 +39,7 @@ describe('eventLine', function () {
     });
   });
 
-  it('should add as many circle as there is data.dates to each elements', function () {
+  /*it('should add as many circle as there is data.dates to each elements', function () {
     elements.each(function (data) {
       var circle = d3.select(this).selectAll('circle')[0];
       assert.equal(circle.length, data.dates.length);
@@ -76,6 +76,6 @@ describe('eventLine', function () {
       var circle = d3.select(this).selectAll('circle')[0];
       assert.equal(circle.length, 0);
     });
-  });
+  });*/
 
 });

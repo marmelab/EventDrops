@@ -70,7 +70,7 @@ describe('d3.chart.eventDrops', function () {
 
   });
 
-  it ('should have as many circle by name as timestamps', function () {
+  /*it ('should have as many circle by name as timestamps', function () {
     elements.each(function (data) {
       var lines = d3.select(this).select('svg').selectAll('.line');
 
@@ -95,6 +95,6 @@ describe('d3.chart.eventDrops', function () {
       });
     });
 
-  });
+  });*/
 
 });

@@ -1,8 +1,9 @@
-sudo: false
+sudo: true
 language: node_js
 node_js:
   - "0.10.36"
 install:
+  - sudo apt-get install libgif-dev
   - npm install
 script:
   - make test
