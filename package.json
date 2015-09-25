@@ -2,7 +2,7 @@
   "name": "event-drops",
   "version": "0.1.2",
   "description": "A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time.",
-  "main": "src/EventDrop.js",
+  "main": "dist/eventDrop.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/marmelab/EventDrops"
@@ -11,15 +11,23 @@
     "d3": "3.5.3"
   },
   "devDependencies": {
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
     "browserify": "5.11.2",
+    "css-loader": "^0.19.0",
     "grunt-mocha-test": "^0.12.7",
+    "html-loader": "^0.3.0",
     "jsdom": "1.0.0-pre.6",
     "karma": "0.12.35",
     "karma-jasmine": "0.1.5",
     "karma-phantomjs-launcher": "0.1.4",
     "mocha": "1.21.4",
     "mocha-traceur": "^2.1.0",
-    "watchify": "^3.2.3"
+    "scss-loader": "0.0.1",
+    "style-loader": "^0.12.4",
+    "watchify": "^3.2.3",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.11.0"
   },
   "bugs": {
     "url": "https://github.com/marmelab/EventDrops/issues"

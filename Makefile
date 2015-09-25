@@ -1,8 +1,8 @@
-watch:
-	./node_modules/watchify/bin/cmd.js lib/main.js -dv -o src/eventDrops.js
+run:
+	./node_modules/webpack-dev-server/bin/webpack-dev-server.js --colors --devtool cheap-module-inline-source-map
 
 build:
-	./node_modules/browserify/bin/cmd.js lib/main.js -o src/eventDrops.js
+	./node_modules/webpack/bin/webpack.js -p --optimize-minimize --optimize-occurence-order --optimize-dedupe --progress --devtool source-map
 
 test: karma mocha
 
