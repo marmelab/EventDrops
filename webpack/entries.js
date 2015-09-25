@@ -14,6 +14,8 @@ module.exports = function (production) {
         entries.demo = [
             path.join(__dirname, '../demo/demo.js')
         ];
+
+        entries.eventDrops.push('webpack-dev-server/client?http://localhost:8080');
     }
 
     return entries;
