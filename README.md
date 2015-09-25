@@ -65,7 +65,7 @@ Configurable values:
   - `width`: width of the chart in pixels. Default to 1000px.
   - `margin`: margins of the graph in pixels. Defaults to `{ top: 60, left: 200, bottom: 40, right: 50 }`
   - `locale`: locale used for the X axis labels. See [d3.locale](https://github.com/mbostock/d3/wiki/Localization#locale) for the expected format. Defaults to null (i.e. d3 default locale).
-  - `axisFormat`: function receiving the d3 axis object, to customize tick number and size. 
+  - `axisFormat`: function receiving the d3 axis object, to customize tick number and size.
   - `tickFormat`: tickFormat for the X axis. See [d3.timeFormat.multi()](https://github.com/mbostock/d3/wiki/Time-Formatting#format_multi) for expected format.
   - `eventHover`: function to be called when hovering an event in the chart. Receives the DOM element hovered (uses event delegation).
   - `eventZoom`: function to be called when done zooming on the chart. Receives the d3 scale at the end of the zoom.
@@ -90,25 +90,29 @@ First, install the dependencies:
 make install
 ```
 
-While developing, you can watch your `lib/` folder to refresh automatically the built files using the watch command:
+For development purpose, you can use the following command:
 
 ``` sh
-make watch
+make run
 ```
 
-Once your changes done, you can build the combined minified sources using the build command:
+It serves the demo at http://localhost:8080. It also watches source files and live
+reloads your browser as soon as a change is detected.
+
+When your changes are done, ensure that all tests pass with:
+
+``` sh
+make test
+```
+
+Finally, if everything is fine, you can rebuild the library using:
 
 ``` sh
 make build
 ```
 
-Running tests is as simple as:
-
-
-``` sh
-make test
-```
-You can test the result by launching a server at the project root, and navigating to the `examples/` directory.
+However, for better Pull Request reviewing, please do not commit the build files
+in the same PR. You can then rebuild it once merged.
 
 ## License
 
