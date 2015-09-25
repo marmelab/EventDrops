@@ -8,7 +8,7 @@
     "url": "https://github.com/marmelab/EventDrops"
   },
   "dependencies": {
-    "d3": "3.4.11"
+    "d3": "3.5.3"
   },
   "devDependencies": {
     "browserify": "5.11.2",
