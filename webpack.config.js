@@ -1,16 +1,20 @@
+var PRODUCTION = process.argv[2] === '-p';
+
 module.exports = {
-    entry: {
-        'eventDrops': [
-            './lib/eventDrops.js'
-        ]
-    },
+    entry: require('./webpack/entries')(PRODUCTION),
     output: {
-        publicPath: 'http://localhost:8080',
-        filename: 'dist/[name].js'
+        publicPath: '',
+        path: 'dist/',
+        filename: '[name].js',
+        library: 'eventDrops'
     },
     module: {
         loaders: [
             { test: /\.js$/, exclude: /node_modules/, loader: 'babel' }
         ]
-    }
+    },
+    externals: {
+        d3: 'd3'
+    },
+    plugins: require('./webpack/plugins')(PRODUCTION)
 };
