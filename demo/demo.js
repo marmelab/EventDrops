@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 // create dataset
 var data = [];
 var names = ["Lorem", "Ipsum", "Dolor", "Sit", "Amet", "Consectetur", "Adipisicing", "elit", "Eiusmod tempor", "Incididunt"];
@@ -34,8 +36,7 @@ var eventDropsChart = d3.chart.eventDrops()
     .end(new Date(endTime));
 
 // bind data with DOM
-var body = document.getElementsByTagName('body')[0];
-var element = d3.select(body).append('div').datum(data);
+var element = d3.select("body").datum(data);
 
 // draw the chart
 eventDropsChart(element);
