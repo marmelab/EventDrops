@@ -25,7 +25,7 @@ for (var i = 0; i < 10; i++) {
 
 var color = d3.scale.category20();
 // create chart function
-console.log(d3.chart.eventDrops);
+
 var eventDropsChart = d3.chart.eventDrops()
     .eventLineColor(function (datum, index) {
         return color(index);
