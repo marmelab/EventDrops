@@ -19,7 +19,7 @@ deploy-demo: build
 
 test: karma mocha
 
-karma:
+karma: build
 	./node_modules/karma/bin/karma start test/karma/karma.conf.js --single-run
 
 mocha:
