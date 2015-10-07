@@ -15,7 +15,7 @@ deploy-demo: build
 	git subtree push --prefix demo origin gh-pages
 	git reset --soft HEAD~1 # undo the deployment commit
 	git reset HEAD demo
-	rm -Rf demo/dist/
+	rm -Rf demo/dist/ demo/style.css
 
 test: karma mocha
 
