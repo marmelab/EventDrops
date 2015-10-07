@@ -12,7 +12,7 @@ module.exports = function(config) {
     ],
     files: [
       './node_modules/d3/d3.js',
-      './src/eventDrops.js',
+      './dist/eventDrops.js',
       './test/karma/*'
     ]
   });
