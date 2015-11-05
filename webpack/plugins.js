@@ -8,7 +8,7 @@ module.exports = function (production) {
 
     if (!production) {
         plugins.push(new HtmlWebpackPlugin({
-            template: path.join(__dirname, '../demo/index.html'),
+            template: path.join(__dirname, '../demo/index-dev.html'),
             hash: true
         }));
     }
