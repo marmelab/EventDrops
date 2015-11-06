@@ -3,17 +3,10 @@
     cursor: pointer;
 }
 
-.y-axis path,
-.y-axis line,
-.x-axis path,
-.x-axis line,
-{
-    path,
-    line {
-        stroke: black;
-        fill: none;
-        stroke-width: 1px;
-    }
+.y-tick {
+    stroke: black;
+    fill: none;
+    stroke-width: 1px;
 }
 
 .y-axis g line {
