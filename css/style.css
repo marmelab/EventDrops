@@ -36,5 +36,5 @@ text {
 }
 
 .drops-container {
-    clip-path: url(#drops-container)
+    clip-path: url(#drops-container);
 }
