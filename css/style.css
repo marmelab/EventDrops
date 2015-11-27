@@ -34,3 +34,7 @@ text {
     height: 20px;
     padding: 10px;
 }
+
+.drops-container {
+    clip-path: url(#drops-container)
+}
