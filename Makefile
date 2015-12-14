@@ -17,10 +17,11 @@ deploy-demo: build
 	git reset HEAD demo
 	rm -Rf demo/dist/ demo/style.css
 
-test: karma mocha
-
-karma: build
+test:
 	./node_modules/karma/bin/karma start test/karma/karma.conf.js --single-run
+
+test-watch:
+	./node_modules/.bin/babel-node ./node_modules/.bin/karma start test/karma/karma.conf.js
 
 mocha:
 	./node_modules/mocha/bin/mocha --compilers js:mocha-traceur --recursive test/mocha
