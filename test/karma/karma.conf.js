@@ -12,12 +12,13 @@ export default config => {
         files: [
             './node_modules/d3/d3.js',
             './test/karma/bind.shim.js',
-            './test/karma/*'
+            './test/karma/*',
+            './test/karma/**/*.js'
         ],
         plugins: ['karma-webpack', 'karma-jasmine', 'karma-phantomjs-launcher'],
         preprocessors: {
-            'lib/*': 'webpack',
-            'test/karma/*.js': 'webpack'
+            'lib/**/*.js': 'webpack',
+            'test/karma/**/*.js': 'webpack'
         },
         webpackMiddleware: {
             noInfo: true,

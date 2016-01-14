@@ -1,3 +1,5 @@
+.PHONY: test
+
 run:
 	./node_modules/webpack-dev-server/bin/webpack-dev-server.js --colors --devtool cheap-module-inline-source-map --host=0.0.0.0
 
@@ -18,13 +20,10 @@ deploy-demo: build
 	rm -Rf demo/dist/ demo/style.css
 
 test:
-	./node_modules/karma/bin/karma start test/karma/karma.conf.js --single-run
+	./node_modules/.bin/babel-node ./node_modules/.bin/karma start test/karma/karma.conf.js --single-run
 
 test-watch:
 	./node_modules/.bin/babel-node ./node_modules/.bin/karma start test/karma/karma.conf.js
-
-mocha:
-	./node_modules/mocha/bin/mocha --compilers js:mocha-traceur --recursive test/mocha
 
 install:
 	npm install
