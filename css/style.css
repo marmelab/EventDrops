@@ -1,4 +1,4 @@
-.zoom {
+.zoom-area {
     fill: transparent;
     cursor: pointer;
 }
@@ -9,13 +9,32 @@
     stroke-width: 1px;
 }
 
-.y-axis g line {
-    stroke: grey;
+.line-separator, .x-axis
+{
+    stroke: black;
     fill: none;
     stroke-width: 1px;
+}
+
+.line-separator:last-child {
+    display: none;
+}
+
+.x-axis {
+    position: absolute;
+    z-index: 50;
+}
+
+text {
+    stroke: none;
+    fill: black;
 }
 
 .graph-body .line {
     height: 20px;
     padding: 10px;
+}
+
+.drops-container {
+    clip-path: url(#drops-container);
 }

@@ -1,5 +1,7 @@
+.PHONY: test
+
 run:
-	./node_modules/webpack-dev-server/bin/webpack-dev-server.js --colors --devtool cheap-module-inline-source-map
+	./node_modules/webpack-dev-server/bin/webpack-dev-server.js --colors --devtool cheap-module-inline-source-map --host=0.0.0.0
 
 build:
 	./node_modules/webpack/bin/webpack.js -p --optimize-minimize --optimize-occurence-order --optimize-dedupe --progress --devtool source-map
@@ -17,13 +19,11 @@ deploy-demo: build
 	git reset HEAD demo
 	rm -Rf demo/dist/ demo/style.css
 
-test: karma mocha
+test:
+	./node_modules/.bin/babel-node ./node_modules/.bin/karma start test/karma/karma.conf.js --single-run
 
-karma: build
-	./node_modules/karma/bin/karma start test/karma/karma.conf.js --single-run
-
-mocha:
-	./node_modules/mocha/bin/mocha --compilers js:mocha-traceur --recursive test/mocha
+test-watch:
+	./node_modules/.bin/babel-node ./node_modules/.bin/karma start test/karma/karma.conf.js
 
 install:
 	npm install
