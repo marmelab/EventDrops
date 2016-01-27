@@ -20,10 +20,10 @@ deploy-demo: build
 	rm -Rf demo/dist/ demo/style.css
 
 test:
-	./node_modules/.bin/babel-node ./node_modules/.bin/karma start test/karma/karma.conf.js --single-run
+	./node_modules/.bin/karma start test/karma/karma.conf.js --single-run
 
 test-watch:
-	./node_modules/.bin/babel-node ./node_modules/.bin/karma start test/karma/karma.conf.js
+	./node_modules/.bin/karma start test/karma/karma.conf.js
 
 install:
 	npm install
