@@ -1,7 +1,7 @@
-export default config => {
+module.exports = function (config) {
     // Retrieve a Webpack config specialized in tests
-    const webpackConfig = require('../../webpack.config.js');
-    webpackConfig.context = __dirname + '/..';
+    var webpackConfig = require('../../webpack.config.js');
+    webpackConfig.context = __dirname + '/../..';
     delete webpackConfig.entry;
     delete webpackConfig.output;
 
