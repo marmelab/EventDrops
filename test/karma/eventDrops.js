@@ -50,4 +50,19 @@ describe('d3.chart.eventDrops', () => {
 
         expect(div.querySelectorAll('.drop').length).toBe(3);
     });
+
+    it('should enable zoom only if `zoomable` configuration property is true', () => {
+        const data = [ { name: 'foo', dates: [new Date()] }];
+        const test = (zoomable, expectedZoomAreaNumber) => {
+            const div = document.createElement('div');
+
+            const chart = d3.chart.eventDrops().zoomable(zoomable);
+            d3.select(div).datum(data).call(chart);
+
+            expect(div.querySelectorAll('.zoom-area').length).toBe(expectedZoomAreaNumber);
+        };
+
+        test(false, 0);
+        test(true, 1);
+    });
 });
