@@ -8,7 +8,18 @@ describe('d3.chart.eventDrops', () => {
         const chart = d3.chart.eventDrops();
         d3.select(div).datum(data).call(chart);
 
-        expect(div.querySelectorAll('svg').length).toBe(1);
+        expect(div.querySelectorAll('svg.event-drops-chart').length).toBe(1);
+    });
+
+    it('should remove all previously created charts in current selection to prevent duplicates', () => {
+        const div = document.createElement('div');
+        const data = [{ name: 'foo', dates: [] }];
+
+        const chart = d3.chart.eventDrops();
+        d3.select(div).datum(data).call(chart);
+        d3.select(div).datum(data).call(chart);
+
+        expect(div.querySelectorAll('svg.event-drops-chart').length).toBe(1);
     });
 
     describe('start period', () => {
@@ -28,7 +39,7 @@ describe('d3.chart.eventDrops', () => {
         const data = [
             { name: 'foo', dates: [] },
             { name: 'bar', dates: [] },
-            { name: 'quz', dates: [] }
+            { name: 'quz', dates: [] },
         ];
 
         const chart = d3.chart.eventDrops().start(new Date('2010-01-25'));
@@ -42,7 +53,7 @@ describe('d3.chart.eventDrops', () => {
         const data = [
             { name: 'foo', dates: [new Date('2010-01-01')] },
             { name: 'bar', dates: [] },
-            { name: 'quz', dates: [new Date('2011-01-04'), new Date('2012-08-09')] }
+            { name: 'quz', dates: [new Date('2011-01-04'), new Date('2012-08-09')] },
         ];
 
         const chart = d3.chart.eventDrops().start(new Date('2010-01-25'));
