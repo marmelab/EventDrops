@@ -8,7 +8,6 @@ build:
 
 deploy-demo: build
 	mkdir -p demo/dist/
-	cp css/style.css demo/
 	cp ./dist/* demo/dist/
 	cp ./node_modules/d3/d3.min.js demo/dist/
 	git add demo/
@@ -17,7 +16,7 @@ deploy-demo: build
 	git subtree push --prefix demo origin gh-pages
 	git reset --soft HEAD~1 # undo the deployment commit
 	git reset HEAD demo
-	rm -Rf demo/dist/ demo/style.css
+	rm -Rf demo/dist/
 
 test:
 	./node_modules/.bin/karma start test/karma/karma.conf.js --single-run
