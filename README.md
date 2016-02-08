@@ -7,15 +7,20 @@ A time based / event series interactive visualization using d3.js. Use drag and 
 
 ## Installation
 
-You can use npm to install event-drops
+You can use `npm` to install event-drops
 
 ```
 npm install event-drops --save
 ```
 
-Additionally you can also use bower
+For Bower users, even if Bower is not officially supported, you can still use GitHub URL such as:
+
 ```
-bower install event-drops --save
+{
+    "dependencies": {
+        "eventDrops": "marmelab/EventDrops#0.1.2"
+    }
+}
 ```
 
 ## Usage
