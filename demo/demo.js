@@ -33,6 +33,9 @@ var eventDropsChart = d3.chart.eventDrops()
     .eventLineColor(function (datum, index) {
         return color(index);
     })
+    .eventClick(() => { console.log('clicked'); })
+    .eventHover(() => { console.log('hovered'); })
+    .eventZoom(() => { console.log('zoomed'); })
     .start(new Date(startTime))
     .end(new Date(endTime));
 
