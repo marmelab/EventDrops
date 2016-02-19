@@ -15,7 +15,7 @@ describe('Drops drawer', () => {
         const drop = d3.select('.drop');
 
         const event = document.createEvent('UIEvents');
-        event.initUIEvent('click', true, true);
+        event.initUIEvent('click', true, true, null, null);
         drop.node().dispatchEvent(event);
 
         expect(clickSpy.calls.any()).toBe(true);
@@ -31,7 +31,7 @@ describe('Drops drawer', () => {
         const drop = d3.select('.drop');
 
         const event = document.createEvent('UIEvents');
-        event.initUIEvent('mouseover', true, true);
+        event.initUIEvent('mouseover', true, true, null, null);
         drop.node().dispatchEvent(event);
 
         expect(hoverSpy.calls.any()).toBe(true);
