@@ -63,17 +63,21 @@ describe('d3.chart.eventDrops', () => {
     });
 
     it('should enable zoom only if `zoomable` configuration property is true', () => {
+        const zoom = require('../../lib/zoom');
         const data = [ { name: 'foo', dates: [new Date()] }];
-        const test = (zoomable, expectedZoomAreaNumber) => {
+
+        const test = (zoomable, expectedZoomableBehavior) => {
+            zoom.default = jasmine.createSpy();
+
             const div = document.createElement('div');
 
             const chart = d3.chart.eventDrops().zoomable(zoomable);
             d3.select(div).datum(data).call(chart);
 
-            expect(div.querySelectorAll('.zoom-area').length).toBe(expectedZoomAreaNumber);
+            expect(zoom.default.calls.any()).toBe(expectedZoomableBehavior);
         };
 
-        test(false, 0);
-        test(true, 1);
+        test(false, false);
+        test(true, true);
     });
 });
