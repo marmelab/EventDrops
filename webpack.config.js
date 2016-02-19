@@ -1,3 +1,4 @@
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var PRODUCTION = process.argv[2] === '-p';
 
 module.exports = {
@@ -11,11 +12,12 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.js$/, exclude: /node_modules/, loader: 'babel' }
-        ]
+            { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
+            { test: /\.css$/, include: __dirname + '/style.css', loader: ExtractTextPlugin.extract('css') },
+        ],
     },
     externals: {
-        d3: 'd3'
+        d3: 'd3',
     },
-    plugins: require('./webpack/plugins')(PRODUCTION)
+    plugins: require('./webpack/plugins')(PRODUCTION),
 };

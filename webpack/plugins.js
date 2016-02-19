@@ -1,10 +1,15 @@
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ProvidePlugin = require('webpack').ProvidePlugin;
 
 var path = require('path');
 
 module.exports = function (production) {
-    var plugins = [];
+    var plugins = [
+        new ExtractTextPlugin('eventDrops.css', {
+            allChunks: true
+        }),
+    ];
 
     if (!production) {
         plugins.push(new HtmlWebpackPlugin({

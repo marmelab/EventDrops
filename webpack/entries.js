@@ -3,7 +3,8 @@ var path = require('path');
 module.exports = function (production) {
     var entries = {
         eventDrops: [
-            path.join(__dirname, '../lib/eventDrops')
+            path.join(__dirname, '../lib/eventDrops'),
+            path.join(__dirname, '../style.css'),
         ]
     };
 
