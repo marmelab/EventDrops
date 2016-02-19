@@ -6,7 +6,8 @@ module.exports = {
         publicPath: '',
         path: 'dist/',
         filename: '[name].js',
-        library: 'eventDrops'
+        library: 'eventDrops',
+        libraryTarget: 'umd'
     },
     module: {
         loaders: [
