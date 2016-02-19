@@ -7,15 +7,15 @@ module.exports = function (config) {
 
     config.set({
         basePath: '../..',
+        browserNoActivityTimeout: 30000,
         frameworks: ['jasmine'],
-        browsers: ['PhantomJS'],
+        browsers: ['Firefox'],
         files: [
             './node_modules/d3/d3.js',
-            './test/karma/bind.shim.js',
             './test/karma/*',
             './test/karma/**/*.js'
         ],
-        plugins: ['karma-webpack', 'karma-jasmine', 'karma-phantomjs-launcher'],
+        plugins: ['karma-webpack', 'karma-jasmine', 'karma-firefox-launcher'],
         preprocessors: {
             'lib/**/*.js': 'webpack',
             'test/karma/**/*.js': 'webpack'
