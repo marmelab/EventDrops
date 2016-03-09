@@ -48,5 +48,17 @@
     "test": "mocha"
   },
   "author": "Thiery Michel <thiery@marmelab.com>",
+  "contributors": [
+    { "name": "Chad Ramos" },
+    { "name": "Chulki Lee" },
+    { "name": "Emmanuel Quentin" },
+    { "name": "Francois Zaninotto" },
+    { "name": "Joan Yin" },
+    { "name": "Joel Schlosser" },
+    { "name": "Jonathan Petitcolas", "email": "petitcolas.jonathan@gmail.com" },
+    { "name": "Mélodie Benmouffek" },
+    { "name": "messense" },
+    { "name": "Robin Bressan" }
+  ],
   "license": "MIT"
 }
