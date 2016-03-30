@@ -94,4 +94,17 @@ describe('d3.chart.eventDrops', () => {
 
         expect(div.querySelectorAll('.drop').length).toBe(3);
     });
+
+    it('should apply config.labelsWidth on both axis translation and labels\'x property', () => {
+        const div = document.createElement('div');
+        const data = [
+            { name: 'foo', dates: [new Date('2010-01-01')] },
+        ];
+
+        const chart = d3.chart.eventDrops().labelsWidth(50);
+        d3.select(div).datum(data).call(chart);
+
+        expect(div.querySelector('.label').attributes.x.value).toBe('50');
+        expect(div.querySelector('.axes').attributes.transform.value).toBe('translate(60, 55)');
+    });
 });
