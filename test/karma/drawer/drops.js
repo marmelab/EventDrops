@@ -6,7 +6,7 @@ describe('Drops drawer', () => {
     });
 
     it('should add click handler if specified in configuration', () => {
-        const data = [{ name: 'foo', dates: [new Date('2014-04-03')] }];
+        const data = [{ name: 'foo', data: [new Date('2014-04-03')] }];
 
         const clickSpy = jasmine.createSpy();
         const chart = d3.chart.eventDrops().eventClick(clickSpy);
@@ -22,7 +22,7 @@ describe('Drops drawer', () => {
     });
 
     it('should add hover handler if specified in configuration', () => {
-        const data = [{ name: 'foo', dates: [new Date('2014-04-03')] }];
+        const data = [{ name: 'foo', data: [new Date('2014-04-03')] }];
 
         const hoverSpy = jasmine.createSpy();
         const chart = d3.chart.eventDrops().eventHover(hoverSpy);
@@ -38,7 +38,7 @@ describe('Drops drawer', () => {
     });
 
     it('should set `cx` attribute to given scale `x`', () => {
-        const data = [{ name: 'foo', dates: [new Date('2014-04-03')] }];
+        const data = [{ name: 'foo', data: [new Date('2014-04-03')] }];
 
         const chart = d3.chart.eventDrops()
             .start(new Date('2014-04-02'))

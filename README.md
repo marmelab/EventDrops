@@ -43,14 +43,39 @@ d3.select('#chart_placeholder')
   .call(eventDropsChart);
 ```
 
-The data must be an array of named time series. For instance:
+The data can be an array of named time series. For instance:
 
 ```js
 var data = [
-  { name: "http requests", dates: [new Date('2014/09/15 13:24:54'), new Date('2014/09/15 13:25:03'), new Date('2014/09/15 13:25:05'), ...] },
-  { name: "SQL queries", dates: [new Date('2014/09/15 13:24:57'), new Date('2014/09/15 13:25:04'), new Date('2014/09/15 13:25:04'), ...] },
-  { name: "cache invalidations", dates: [new Date('2014/09/15 13:25:12'), ...] }
+  { name: "http requests", data: [new Date('2014/09/15 13:24:54'), new Date('2014/09/15 13:25:03'), new Date('2014/09/15 13:25:05'), ...] },
+  { name: "SQL queries", data: [new Date('2014/09/15 13:24:57'), new Date('2014/09/15 13:25:04'), new Date('2014/09/15 13:25:04'), ...] },
+  { name: "cache invalidations", data: [new Date('2014/09/15 13:25:12'), ...] }
 ];
+```
+
+You can also generate a chart from any type of data array but this requires us
+to supply a function that will return a date from each data point. The complete
+data object will be available during the eventColor and eventClick callbacks
+for example. An example data set:
+
+```js
+var data = [
+  { name: "http requests", data: [{date: new Date('2014/09/15 13:24:54'), foo: 'bar1'}, {date: new Date('2014/09/15 13:25:03'), foo: 'bar2'}, {date: new Date('2014/09/15 13:25:05'), foo: 'bar1'}, ...] },
+  { name: "SQL queries", data: [{date: new Date('2014/09/15 13:24:57'), foo: 'bar4'}, {date: new Date('2014/09/15 13:25:04'), foo: 'bar6'}, {date: new Date('2014/09/15 13:25:04'), foo: 'bar2'}, ...] }
+];
+```
+
+And the corresponding "date" function that returns a date for
+each data point.
+
+```js
+var eventDropsChart = d3.chart.eventDrops();
+d3.select('#chart_placeholder')
+  .datum(data)
+  .date(function(d){
+      return d.date;
+  }),
+  .call(eventDropsChart);
 ```
 
 ## Configuration
@@ -83,6 +108,7 @@ Configurable values:
   - `minScale`: The minimum scaling (zoom out), default to 0.
   - `maxScale`: The maximum scaling (zoom in), default to Infinity.
   - `zoomable`: *true* by default. Enable zoom-in/zoom-out and dragging handlers.
+  - `date`: function that returns the date from each data point when passing objects. Defaults to `d=>d`.
 
 ## Styling
 

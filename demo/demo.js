@@ -11,13 +11,13 @@ function createEvent (name, maxNbEvents) {
     maxNbEvents = maxNbEvents | 200;
     var event = {
         name: name,
-        dates: []
+        data: []
     };
     // add up to 200 events
     var max =  Math.floor(Math.random() * maxNbEvents);
     for (var j = 0; j < max; j++) {
         var time = (Math.random() * (endTime - startTime)) + startTime;
-        event.dates.push(new Date(time));
+        event.data.push(new Date(time));
     }
 
     return event;
