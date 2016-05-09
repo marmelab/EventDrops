@@ -13,7 +13,7 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
-            { test: /\.css$/, include: __dirname + '/style.css', loader: ExtractTextPlugin.extract('css') },
+            { test: /\.css$/, include: __dirname + '\\style.css', loader: ExtractTextPlugin.extract('css') },
         ],
     },
     externals: {
