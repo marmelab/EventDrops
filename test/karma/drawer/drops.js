@@ -37,6 +37,19 @@ describe('Drops drawer', () => {
         expect(hoverSpy.calls.any()).toBe(true);
     });
 
+    it('should set `cx` attribute to given scale `x`', () => {
+        const data = [{ name: 'foo', dates: [new Date('2014-04-03')] }];
+
+        const chart = d3.chart.eventDrops()
+            .start(new Date('2014-04-02'))
+            .end(new Date('2014-04-04'));
+
+        d3.select(wrapper).datum(data).call(chart);
+
+        const drop = d3.select('.drop');
+        expect(+drop.attr('cx')).toBe(375);
+    });
+
     afterEach(() => {
         document.body.removeChild(wrapper);
     });
