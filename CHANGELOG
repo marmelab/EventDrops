@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.3.0
+
+* API Change: The data for each event line object must now be in the `data` property (was `date`).
+* Pass any data object to each drop and specify the date property with a callback.
+
 ## 0.2.0
 
 * Display metaballs by default instead of simple dots
