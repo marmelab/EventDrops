@@ -4,6 +4,7 @@
 
 * API Change: The data for each event line object must now be in the `data` property (was `date`).
 * Pass any data object to each drop and specify the date property with a callback.
+* The SVG is now responsive and fit with its parent
 
 ## 0.2.0
 
