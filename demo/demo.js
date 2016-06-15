@@ -37,7 +37,7 @@ var eventDropsChart = d3.chart.eventDrops()
     .end(new Date(endTime));
 
 // bind data with DOM
-var element = d3.select("body").datum(data);
+var element = d3.select('#eventdrops-demo').datum(data);
 
 // draw the chart
 eventDropsChart(element);
