@@ -2,6 +2,7 @@ describe('Drops drawer', () => {
     let wrapper;
     beforeEach(() => {
         wrapper = document.createElement('div');
+        wrapper.style.width = '100px';
         document.body.appendChild(wrapper);
     });
 
@@ -47,7 +48,7 @@ describe('Drops drawer', () => {
         d3.select(wrapper).datum(data).call(chart);
 
         const drop = d3.select('.drop');
-        expect(+drop.attr('cx')).toBe(375);
+        expect(+drop.attr('cx')).toBe(50);
     });
 
     afterEach(() => {

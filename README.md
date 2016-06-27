@@ -92,7 +92,6 @@ Configurable values:
 
   - `start`: start date of the scale. Defaults to `new Date(0)`.
   - `end`: end date of the scale. Defaults to `new Date()`
-  - `width`: width of the chart in pixels. Default to 1000px.
   - `margin`: margins of the graph in pixels. Defaults to `{ top: 60, left: 200, bottom: 40, right: 50 }`
   - `locale`: locale used for the X axis labels. See [d3.locale](https://github.com/mbostock/d3/wiki/Localization#locale) for the expected format. Defaults to null (i.e. d3 default locale).
   - `axisFormat`: function receiving the d3 axis object, to customize tick number and size.
