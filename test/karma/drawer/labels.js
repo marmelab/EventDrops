@@ -29,6 +29,6 @@ describe('Labels drawer', () => {
     it('should apply labelsWidth config', () => {
         scales.x.domain(domain);
         labels(container, scales, config)(data);
-        expect(svg.select('.label').attr('x')).toBe(config.labelsWidth.toString(10));
+        expect(+svg.select('.label').attr('x')).toBe(50);
     });
 });

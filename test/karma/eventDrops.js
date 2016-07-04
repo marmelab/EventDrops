@@ -95,16 +95,20 @@ describe('d3.chart.eventDrops', () => {
         expect(div.querySelectorAll('.drop').length).toBe(3);
     });
 
-    it('should apply config.labelsWidth on both axis translation and labels\'x property', () => {
+    it('should set up drops lines container correctly relatively to labels column', () => {
         const div = document.createElement('div');
-        const data = [
-            { name: 'foo', dates: [new Date('2010-01-01')] },
-        ];
+        const data = [{
+            name: 'foo',
+            data: [
+                { date: new Date('2010-01-01'), foo: 'bar' },
+            ],
+        }];
 
-        const chart = d3.chart.eventDrops().labelsWidth(50);
+        const chart = d3.chart.eventDrops()
+            .labelsWidth(50)
+            .labelsRightMargin(10);
+
         d3.select(div).datum(data).call(chart);
-
-        expect(div.querySelector('.label').attributes.x.value).toBe('50');
-        expect(div.querySelector('.axes').attributes.transform.value).toBe('translate(60, 55)');
+        expect(div.querySelector('.chart-wrapper').attributes.transform.value).toBe('translate(60, 55)');
     });
 });

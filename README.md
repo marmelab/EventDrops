@@ -94,7 +94,8 @@ Configurable values:
   - `end`: end date of the scale. Defaults to `new Date()`
   - `margin`: margins of the graph in pixels. Defaults to `{ top: 60, left: 200, bottom: 40, right: 50 }`
   - `locale`: locale used for the X axis labels. See [d3.locale](https://github.com/mbostock/d3/wiki/Localization#locale) for the expected format. Defaults to null (i.e. d3 default locale).
-  - `labelsWidth`: width of the labels. Defaults to `210`
+  - `labelsWidth`: width of the labels. Defaults to `210`.
+  - `labelsRightMargin`: margin between labels and drops lines. Defaults to `10`.
   - `axisFormat`: function receiving the d3 axis object, to customize tick number and size.
   - `tickFormat`: tickFormat for the X axis. See [d3.timeFormat.multi()](https://github.com/mbostock/d3/wiki/Time-Formatting#format_multi) for expected format.
   - `eventHover`: function to be called when hovering an event in the chart. Receives the DOM element hovered (uses event delegation).
