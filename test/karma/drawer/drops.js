@@ -38,6 +38,22 @@ describe('Drops drawer', () => {
         expect(hoverSpy.calls.any()).toBe(true);
     });
 
+    it('should call `mouseout` handler when leaving a drop', () => {
+        const data = [{ name: 'foo', data: [new Date('2014-04-03')] }];
+
+        const mouseoutSpy = jasmine.createSpy();
+        const chart = d3.chart.eventDrops().mouseout(mouseoutSpy);
+        d3.select(wrapper).datum(data).call(chart);
+
+        const drop = d3.select('.drop');
+
+        const event = document.createEvent('UIEvents');
+        event.initUIEvent('mouseout', true, true, null, null);
+        drop.node().dispatchEvent(event);
+
+        expect(mouseoutSpy.calls.any()).toBe(true);
+    });
+
     it('should set `cx` attribute to given scale `x`', () => {
         const data = [{ name: 'foo', data: [new Date('2014-04-03')] }];
 
