@@ -108,6 +108,7 @@ Configurable values:
   - `eventColor`: The color of the event. Accepts a color (color name or `#ffffff` notation), or a function receiving the eventData and returning a color. Defaults to `null`. EventLineColor will be ignored if this is used.
   - `minScale`: The minimum scaling (zoom out), default to `0`.
   - `maxScale`: The maximum scaling (zoom in), default to `Infinity`.
+  - `mouseout`: event handler to execute when mouse leave a drop. Default: `() => {}`.
   - `zoomable`: *true* by default. Enable zoom-in/zoom-out and dragging handlers.
   - `date`: function that returns the date from each data point when passing objects. Defaults to `d=>d`.
 
