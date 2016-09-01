@@ -7,7 +7,7 @@ A time based / event series interactive visualization using d3.js. Use drag and 
 
 ## Installation
 
-You can use `npm` to install event-drops
+You can use `npm` to install event-drops <sup>1</sup>
 
 ```
 npm install event-drops --save
@@ -84,7 +84,7 @@ EventDrops follows the [d3.js reusable charts pattern](http://bost.ocks.org/mike
 
 ```js
 var eventDropsChart = d3.chart.eventDrops()
-  .width(1200)
+  .hasDelimiter(false)
   .hasTopAxis(false);
 ```
 
@@ -151,3 +151,6 @@ in the same PR. You can then rebuild it once merged.
 ## License
 
 EventDrops is released under the MIT License, courtesy of [marmelab](http://marmelab.com) and [Canal Plus](https://github.com/canalplus).
+
+## Footnotes
+1. The functionality and behaviour documented is not all available in the `0.2.0` release installed by `npm`
