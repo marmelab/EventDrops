@@ -1,5 +1,6 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var PRODUCTION = process.argv[2] === '-p';
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const PRODUCTION = process.argv[2] === '-p';
+const path = require('path');
 
 module.exports = {
     entry: require('./webpack/entries')(PRODUCTION),
@@ -13,7 +14,7 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
-            { test: /\.css$/, include: __dirname + '/style.css', loader: ExtractTextPlugin.extract('css') },
+            { test: /\.css$/, include: path.join(__dirname, 'style.css'), loader: ExtractTextPlugin.extract('css') },
         ],
     },
     externals: {
