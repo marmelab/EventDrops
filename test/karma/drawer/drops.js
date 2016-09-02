@@ -10,7 +10,7 @@ describe('Drops drawer', () => {
         const data = [{ name: 'foo', data: [new Date('2014-04-03')] }];
 
         const clickSpy = jasmine.createSpy();
-        const chart = d3.chart.eventDrops().eventClick(clickSpy);
+        const chart = d3.chart.eventDrops().click(clickSpy);
         d3.select(wrapper).datum(data).call(chart);
 
         const drop = d3.select('.drop');
@@ -25,8 +25,8 @@ describe('Drops drawer', () => {
     it('should add hover handler if specified in configuration', () => {
         const data = [{ name: 'foo', data: [new Date('2014-04-03')] }];
 
-        const hoverSpy = jasmine.createSpy();
-        const chart = d3.chart.eventDrops().eventHover(hoverSpy);
+        const mouseoverSpy = jasmine.createSpy();
+        const chart = d3.chart.eventDrops().mouseover(mouseoverSpy);
         d3.select(wrapper).datum(data).call(chart);
 
         const drop = d3.select('.drop');
@@ -35,7 +35,7 @@ describe('Drops drawer', () => {
         event.initUIEvent('mouseover', true, true, null, null);
         drop.node().dispatchEvent(event);
 
-        expect(hoverSpy.calls.any()).toBe(true);
+        expect(mouseoverSpy.calls.any()).toBe(true);
     });
 
     it('should call `mouseout` handler when leaving a drop', () => {
