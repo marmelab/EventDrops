@@ -1,43 +1,20 @@
-/*eslint-disable */
+const repositories = [{
+    name: 'EventDrops',
+    data: require('json!./data.json'),
+}, {
+    name: 'ng-admin',
+    data: require('json!./data.json'),
+}];
 
-// create dataset
-var data = [];
-var names = ["Lorem", "Ipsum", "Dolor", "Sit", "Amet", "Consectetur", "Adipisicing", "elit", "Eiusmod tempor", "Incididunt"];
-var endTime = Date.now();
-var month = 30 * 24 * 60 * 60 * 1000;
-var startTime = endTime - 6 * month;
+const colors = d3.scale.category10();
+const [start, end] = d3.extent(repositories[0].data, d => d.commit.author.date)
+    .map(d => new Date(d));
 
-function createEvent (name, maxNbEvents) {
-    maxNbEvents = maxNbEvents | 200;
-    var event = {
-        name: name,
-        data: []
-    };
-    // add up to 200 events
-    var max =  Math.floor(Math.random() * maxNbEvents);
-    for (var j = 0; j < max; j++) {
-        var time = (Math.random() * (endTime - startTime)) + startTime;
-        event.data.push(new Date(time));
-    }
+const chart = d3.chart.eventDrops()
+    .start(start)
+    .end(end)
+    .eventLineColor(() => colors(0))
+    .date(d => new Date(d.commit.author.date));
 
-    return event;
-}
-for (var i = 0; i < 10; i++) {
-    data.push(createEvent(names[i]));
-}
-
-var color = d3.scale.category20();
-
-// create chart function
-var eventDropsChart = d3.chart.eventDrops()
-    .eventLineColor(function (datum, index) {
-        return color(index);
-    })
-    .start(new Date(startTime))
-    .end(new Date(endTime));
-
-// bind data with DOM
-var element = d3.select('#eventdrops-demo').datum(data);
-
-// draw the chart
-eventDropsChart(element);
+const element = d3.select('#eventdrops-demo').datum(repositories);
+chart(element);

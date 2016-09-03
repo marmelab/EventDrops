@@ -4,9 +4,9 @@
   "description": "A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time.",
   "main": "dist/eventDrops.js",
   "files": [
-      "dist/",
-      "style.css",
-      "*.md"
+    "dist/",
+    "style.css",
+    "*.md"
   ],
   "repository": {
     "type": "git",
@@ -30,9 +30,10 @@
     "html-webpack-plugin": "1.6.1",
     "jasmine-core": "2.4.1",
     "jsdom": "1.0.0-pre.6",
+    "json-loader": "^0.5.4",
     "karma": "^0.13.19",
-    "karma-jasmine": "^0.3.6",
     "karma-firefox-launcher": "0.1.7",
+    "karma-jasmine": "^0.3.6",
     "karma-webpack": "^1.7.0",
     "mocha": "1.21.4",
     "mocha-traceur": "2.1.0",
@@ -61,16 +62,37 @@
   },
   "author": "Thiery Michel <thiery@marmelab.com>",
   "contributors": [
-    { "name": "Chad Ramos" },
-    { "name": "Chulki Lee" },
-    { "name": "Emmanuel Quentin" },
-    { "name": "Francois Zaninotto" },
-    { "name": "Joan Yin" },
-    { "name": "Joel Schlosser" },
-    { "name": "Jonathan Petitcolas", "email": "petitcolas.jonathan@gmail.com" },
-    { "name": "Mélodie Benmouffek" },
-    { "name": "messense" },
-    { "name": "Robin Bressan" }
+    {
+      "name": "Chad Ramos"
+    },
+    {
+      "name": "Chulki Lee"
+    },
+    {
+      "name": "Emmanuel Quentin"
+    },
+    {
+      "name": "Francois Zaninotto"
+    },
+    {
+      "name": "Joan Yin"
+    },
+    {
+      "name": "Joel Schlosser"
+    },
+    {
+      "name": "Jonathan Petitcolas",
+      "email": "petitcolas.jonathan@gmail.com"
+    },
+    {
+      "name": "Mélodie Benmouffek"
+    },
+    {
+      "name": "messense"
+    },
+    {
+      "name": "Robin Bressan"
+    }
   ],
   "license": "MIT"
 }

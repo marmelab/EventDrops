@@ -1,0 +1,2106 @@
+[
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/99944?v=3",
+            "events_url": "https://api.github.com/users/fzaninotto/events{/privacy}",
+            "followers_url": "https://api.github.com/users/fzaninotto/followers",
+            "following_url": "https://api.github.com/users/fzaninotto/following{/other_user}",
+            "gists_url": "https://api.github.com/users/fzaninotto/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/fzaninotto",
+            "id": 99944,
+            "login": "fzaninotto",
+            "organizations_url": "https://api.github.com/users/fzaninotto/orgs",
+            "received_events_url": "https://api.github.com/users/fzaninotto/received_events",
+            "repos_url": "https://api.github.com/users/fzaninotto/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/fzaninotto/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/fzaninotto/subscriptions",
+            "type": "User", 
+            "url": "https://api.github.com/users/fzaninotto"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/854d17d21dd30e73128f134574c1a26877663369/comments",
+        "commit": {
+            "author": {
+                "date": "2016-09-02T14:47:24Z",
+                "email": "fzaninotto@gmail.com",
+                "name": "Francois Zaninotto"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-09-02T14:47:24Z",
+                "email": "fzaninotto@gmail.com",
+                "name": "Francois Zaninotto"
+            },
+            "message": "Push v0.3.0-alpha1",
+            "tree": {
+                "sha": "ca087f00d99f9156684b164c112631275f9cfc8c",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/ca087f00d99f9156684b164c112631275f9cfc8c"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/854d17d21dd30e73128f134574c1a26877663369"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/99944?v=3",
+            "events_url": "https://api.github.com/users/fzaninotto/events{/privacy}",
+            "followers_url": "https://api.github.com/users/fzaninotto/followers",
+            "following_url": "https://api.github.com/users/fzaninotto/following{/other_user}",
+            "gists_url": "https://api.github.com/users/fzaninotto/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/fzaninotto",
+            "id": 99944,
+            "login": "fzaninotto",
+            "organizations_url": "https://api.github.com/users/fzaninotto/orgs",
+            "received_events_url": "https://api.github.com/users/fzaninotto/received_events",
+            "repos_url": "https://api.github.com/users/fzaninotto/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/fzaninotto/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/fzaninotto/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/fzaninotto"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/854d17d21dd30e73128f134574c1a26877663369",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/44b9bcb1cd722f7ffcb98755c17faf0bcfe4630a",
+                "sha": "44b9bcb1cd722f7ffcb98755c17faf0bcfe4630a",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/44b9bcb1cd722f7ffcb98755c17faf0bcfe4630a"
+            }
+        ],
+        "sha": "854d17d21dd30e73128f134574c1a26877663369",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/854d17d21dd30e73128f134574c1a26877663369"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/99944?v=3",
+            "events_url": "https://api.github.com/users/fzaninotto/events{/privacy}",
+            "followers_url": "https://api.github.com/users/fzaninotto/followers",
+            "following_url": "https://api.github.com/users/fzaninotto/following{/other_user}",
+            "gists_url": "https://api.github.com/users/fzaninotto/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/fzaninotto",
+            "id": 99944,
+            "login": "fzaninotto",
+            "organizations_url": "https://api.github.com/users/fzaninotto/orgs",
+            "received_events_url": "https://api.github.com/users/fzaninotto/received_events",
+            "repos_url": "https://api.github.com/users/fzaninotto/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/fzaninotto/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/fzaninotto/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/fzaninotto"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/44b9bcb1cd722f7ffcb98755c17faf0bcfe4630a/comments",
+        "commit": {
+            "author": {
+                "date": "2016-09-02T14:40:09Z",
+                "email": "fzaninotto@gmail.com",
+                "name": "Francois Zaninotto"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-09-02T14:40:09Z",
+                "email": "noreply@github.com",
+                "name": "GitHub"
+            },
+            "message": "Merge pull request #95 from marmelab/deployment\n\n[RFR] Exclude built files from repository",
+            "tree": {
+                "sha": "26d80e3ec3438f262fd5c87ce1a4e01222d5c4d7",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/26d80e3ec3438f262fd5c87ce1a4e01222d5c4d7"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/44b9bcb1cd722f7ffcb98755c17faf0bcfe4630a"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=3",
+            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+            "followers_url": "https://api.github.com/users/web-flow/followers",
+            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/web-flow",
+            "id": 19864447,
+            "login": "web-flow",
+            "organizations_url": "https://api.github.com/users/web-flow/orgs",
+            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "repos_url": "https://api.github.com/users/web-flow/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/web-flow"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/44b9bcb1cd722f7ffcb98755c17faf0bcfe4630a",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/a80b351dd0a2979b010c0a85a1958644436e8425",
+                "sha": "a80b351dd0a2979b010c0a85a1958644436e8425",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/a80b351dd0a2979b010c0a85a1958644436e8425"
+            },
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/2e4732cce480cb9fee4aefccdf40a23bb257ea76",
+                "sha": "2e4732cce480cb9fee4aefccdf40a23bb257ea76",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/2e4732cce480cb9fee4aefccdf40a23bb257ea76"
+            }
+        ],
+        "sha": "44b9bcb1cd722f7ffcb98755c17faf0bcfe4630a",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/44b9bcb1cd722f7ffcb98755c17faf0bcfe4630a"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/2e4732cce480cb9fee4aefccdf40a23bb257ea76/comments",
+        "commit": {
+            "author": {
+                "date": "2016-09-02T14:02:40Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-09-02T14:02:40Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "message": "Exclude built files from repository",
+            "tree": {
+                "sha": "26d80e3ec3438f262fd5c87ce1a4e01222d5c4d7",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/26d80e3ec3438f262fd5c87ce1a4e01222d5c4d7"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/2e4732cce480cb9fee4aefccdf40a23bb257ea76"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/2e4732cce480cb9fee4aefccdf40a23bb257ea76",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/a80b351dd0a2979b010c0a85a1958644436e8425",
+                "sha": "a80b351dd0a2979b010c0a85a1958644436e8425",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/a80b351dd0a2979b010c0a85a1958644436e8425"
+            }
+        ],
+        "sha": "2e4732cce480cb9fee4aefccdf40a23bb257ea76",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/2e4732cce480cb9fee4aefccdf40a23bb257ea76"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/99944?v=3",
+            "events_url": "https://api.github.com/users/fzaninotto/events{/privacy}",
+            "followers_url": "https://api.github.com/users/fzaninotto/followers",
+            "following_url": "https://api.github.com/users/fzaninotto/following{/other_user}",
+            "gists_url": "https://api.github.com/users/fzaninotto/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/fzaninotto",
+            "id": 99944,
+            "login": "fzaninotto",
+            "organizations_url": "https://api.github.com/users/fzaninotto/orgs",
+            "received_events_url": "https://api.github.com/users/fzaninotto/received_events",
+            "repos_url": "https://api.github.com/users/fzaninotto/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/fzaninotto/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/fzaninotto/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/fzaninotto"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/a80b351dd0a2979b010c0a85a1958644436e8425/comments",
+        "commit": {
+            "author": {
+                "date": "2016-09-02T13:56:11Z",
+                "email": "fzaninotto@gmail.com",
+                "name": "Francois Zaninotto"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-09-02T13:56:11Z",
+                "email": "noreply@github.com",
+                "name": "GitHub"
+            },
+            "message": "Merge pull request #87 from marmelab/events_renaming\n\n[RFR] Better events naming",
+            "tree": {
+                "sha": "4dff1a132f0940dcf4434aa495230754df04c78c",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/4dff1a132f0940dcf4434aa495230754df04c78c"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/a80b351dd0a2979b010c0a85a1958644436e8425"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=3",
+            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+            "followers_url": "https://api.github.com/users/web-flow/followers",
+            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/web-flow",
+            "id": 19864447,
+            "login": "web-flow",
+            "organizations_url": "https://api.github.com/users/web-flow/orgs",
+            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "repos_url": "https://api.github.com/users/web-flow/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/web-flow"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/a80b351dd0a2979b010c0a85a1958644436e8425",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/050643b0a154f5ecbbc63762d333d8742c392514",
+                "sha": "050643b0a154f5ecbbc63762d333d8742c392514",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/050643b0a154f5ecbbc63762d333d8742c392514"
+            },
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/5733a24c6fbe11f20583b39e6a0c319929259d77",
+                "sha": "5733a24c6fbe11f20583b39e6a0c319929259d77",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/5733a24c6fbe11f20583b39e6a0c319929259d77"
+            }
+        ],
+        "sha": "a80b351dd0a2979b010c0a85a1958644436e8425",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/a80b351dd0a2979b010c0a85a1958644436e8425"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/050643b0a154f5ecbbc63762d333d8742c392514/comments",
+        "commit": {
+            "author": {
+                "date": "2016-09-01T08:46:51Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-09-01T08:46:51Z",
+                "email": "noreply@github.com",
+                "name": "GitHub"
+            },
+            "message": "Merge pull request #92 from Smart-Sports/feature/package-cleanup\n\n[RFR] Package cleanup",
+            "tree": {
+                "sha": "f6e16c6eac5476989a53165c1cc287cc448d69a0",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/f6e16c6eac5476989a53165c1cc287cc448d69a0"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/050643b0a154f5ecbbc63762d333d8742c392514"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=3",
+            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+            "followers_url": "https://api.github.com/users/web-flow/followers",
+            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/web-flow",
+            "id": 19864447,
+            "login": "web-flow",
+            "organizations_url": "https://api.github.com/users/web-flow/orgs",
+            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "repos_url": "https://api.github.com/users/web-flow/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/web-flow"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/050643b0a154f5ecbbc63762d333d8742c392514",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/c55c939e0a71ed285429efbb6d2643b080fec948",
+                "sha": "c55c939e0a71ed285429efbb6d2643b080fec948",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/c55c939e0a71ed285429efbb6d2643b080fec948"
+            },
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/65c41d3b18b55f28d7252d735d4d1202f5f0b403",
+                "sha": "65c41d3b18b55f28d7252d735d4d1202f5f0b403",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/65c41d3b18b55f28d7252d735d4d1202f5f0b403"
+            }
+        ],
+        "sha": "050643b0a154f5ecbbc63762d333d8742c392514",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/050643b0a154f5ecbbc63762d333d8742c392514"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/856194?v=3",
+            "events_url": "https://api.github.com/users/deevus/events{/privacy}",
+            "followers_url": "https://api.github.com/users/deevus/followers",
+            "following_url": "https://api.github.com/users/deevus/following{/other_user}",
+            "gists_url": "https://api.github.com/users/deevus/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/deevus",
+            "id": 856194,
+            "login": "deevus",
+            "organizations_url": "https://api.github.com/users/deevus/orgs",
+            "received_events_url": "https://api.github.com/users/deevus/received_events",
+            "repos_url": "https://api.github.com/users/deevus/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/deevus/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/deevus/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/deevus"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/65c41d3b18b55f28d7252d735d4d1202f5f0b403/comments",
+        "commit": {
+            "author": {
+                "date": "2016-09-01T07:20:54Z",
+                "email": "simon@simonhartcher.com",
+                "name": "Simon Hartcher"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-09-01T08:42:11Z",
+                "email": "simon@simonhartcher.com",
+                "name": "Simon Hartcher"
+            },
+            "message": "Package cleanup\n\n- Fix linter issues in webpack.config.js\n- Fix pathing issue in css loader configuration\n- Convert Makefile to npm scripts where appropriate",
+            "tree": {
+                "sha": "f6e16c6eac5476989a53165c1cc287cc448d69a0",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/f6e16c6eac5476989a53165c1cc287cc448d69a0"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/65c41d3b18b55f28d7252d735d4d1202f5f0b403"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/856194?v=3",
+            "events_url": "https://api.github.com/users/deevus/events{/privacy}",
+            "followers_url": "https://api.github.com/users/deevus/followers",
+            "following_url": "https://api.github.com/users/deevus/following{/other_user}",
+            "gists_url": "https://api.github.com/users/deevus/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/deevus",
+            "id": 856194,
+            "login": "deevus",
+            "organizations_url": "https://api.github.com/users/deevus/orgs",
+            "received_events_url": "https://api.github.com/users/deevus/received_events",
+            "repos_url": "https://api.github.com/users/deevus/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/deevus/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/deevus/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/deevus"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/65c41d3b18b55f28d7252d735d4d1202f5f0b403",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/c55c939e0a71ed285429efbb6d2643b080fec948",
+                "sha": "c55c939e0a71ed285429efbb6d2643b080fec948",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/c55c939e0a71ed285429efbb6d2643b080fec948"
+            }
+        ],
+        "sha": "65c41d3b18b55f28d7252d735d4d1202f5f0b403",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/65c41d3b18b55f28d7252d735d4d1202f5f0b403"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/5733a24c6fbe11f20583b39e6a0c319929259d77/comments",
+        "commit": {
+            "author": {
+                "date": "2016-07-11T15:40:17Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-07-12T16:05:16Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "message": "Better events naming",
+            "tree": {
+                "sha": "c9d55f5e5b066d6a66cc52f6a9c74825c09fd303",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/c9d55f5e5b066d6a66cc52f6a9c74825c09fd303"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/5733a24c6fbe11f20583b39e6a0c319929259d77"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/5733a24c6fbe11f20583b39e6a0c319929259d77",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/c55c939e0a71ed285429efbb6d2643b080fec948",
+                "sha": "c55c939e0a71ed285429efbb6d2643b080fec948",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/c55c939e0a71ed285429efbb6d2643b080fec948"
+            }
+        ],
+        "sha": "5733a24c6fbe11f20583b39e6a0c319929259d77",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/5733a24c6fbe11f20583b39e6a0c319929259d77"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/1819833?v=3",
+            "events_url": "https://api.github.com/users/Kmaschta/events{/privacy}",
+            "followers_url": "https://api.github.com/users/Kmaschta/followers",
+            "following_url": "https://api.github.com/users/Kmaschta/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Kmaschta/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/Kmaschta",
+            "id": 1819833,
+            "login": "Kmaschta",
+            "organizations_url": "https://api.github.com/users/Kmaschta/orgs",
+            "received_events_url": "https://api.github.com/users/Kmaschta/received_events",
+            "repos_url": "https://api.github.com/users/Kmaschta/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/Kmaschta/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Kmaschta/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/Kmaschta"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/c55c939e0a71ed285429efbb6d2643b080fec948/comments",
+        "commit": {
+            "author": {
+                "date": "2016-07-12T16:02:18Z",
+                "email": "kmaschta@users.noreply.github.com",
+                "name": "Kmaschta"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-07-12T16:02:18Z",
+                "email": "noreply@github.com",
+                "name": "GitHub"
+            },
+            "message": "Merge pull request #86 from marmelab/mouseout\n\n[RFR] Implement `mouseout` event",
+            "tree": {
+                "sha": "c9f7f2e59ffe7b0ffa3139196e9588ae0050f47e",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/c9f7f2e59ffe7b0ffa3139196e9588ae0050f47e"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/c55c939e0a71ed285429efbb6d2643b080fec948"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=3",
+            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+            "followers_url": "https://api.github.com/users/web-flow/followers",
+            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/web-flow",
+            "id": 19864447,
+            "login": "web-flow",
+            "organizations_url": "https://api.github.com/users/web-flow/orgs",
+            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "repos_url": "https://api.github.com/users/web-flow/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/web-flow"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/c55c939e0a71ed285429efbb6d2643b080fec948",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/beb984beefbfef512dedc17010c80dcc6699a748",
+                "sha": "beb984beefbfef512dedc17010c80dcc6699a748",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/beb984beefbfef512dedc17010c80dcc6699a748"
+            },
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/6f1cb61925235410cfbcefc4b9c37e47a4313dca",
+                "sha": "6f1cb61925235410cfbcefc4b9c37e47a4313dca",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/6f1cb61925235410cfbcefc4b9c37e47a4313dca"
+            }
+        ],
+        "sha": "c55c939e0a71ed285429efbb6d2643b080fec948",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/c55c939e0a71ed285429efbb6d2643b080fec948"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/6f1cb61925235410cfbcefc4b9c37e47a4313dca/comments",
+        "commit": {
+            "author": {
+                "date": "2016-07-11T15:24:22Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-07-11T15:24:22Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "message": "Update CHANGELOG and README",
+            "tree": {
+                "sha": "c9f7f2e59ffe7b0ffa3139196e9588ae0050f47e",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/c9f7f2e59ffe7b0ffa3139196e9588ae0050f47e"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/6f1cb61925235410cfbcefc4b9c37e47a4313dca"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/6f1cb61925235410cfbcefc4b9c37e47a4313dca",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/35b1e2228413d67376d75216465f7f930c86e392",
+                "sha": "35b1e2228413d67376d75216465f7f930c86e392",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/35b1e2228413d67376d75216465f7f930c86e392"
+            }
+        ],
+        "sha": "6f1cb61925235410cfbcefc4b9c37e47a4313dca",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/6f1cb61925235410cfbcefc4b9c37e47a4313dca"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/35b1e2228413d67376d75216465f7f930c86e392/comments",
+        "commit": {
+            "author": {
+                "date": "2016-07-11T15:22:47Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-07-11T15:22:47Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "message": "Add mouseout handler",
+            "tree": {
+                "sha": "09eafdb278cdf0c9f50563aba9ae3eeced966c84",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/09eafdb278cdf0c9f50563aba9ae3eeced966c84"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/35b1e2228413d67376d75216465f7f930c86e392"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/35b1e2228413d67376d75216465f7f930c86e392",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/beb984beefbfef512dedc17010c80dcc6699a748",
+                "sha": "beb984beefbfef512dedc17010c80dcc6699a748",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/beb984beefbfef512dedc17010c80dcc6699a748"
+            }
+        ],
+        "sha": "35b1e2228413d67376d75216465f7f930c86e392",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/35b1e2228413d67376d75216465f7f930c86e392"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/1819833?v=3",
+            "events_url": "https://api.github.com/users/Kmaschta/events{/privacy}",
+            "followers_url": "https://api.github.com/users/Kmaschta/followers",
+            "following_url": "https://api.github.com/users/Kmaschta/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Kmaschta/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/Kmaschta",
+            "id": 1819833,
+            "login": "Kmaschta",
+            "organizations_url": "https://api.github.com/users/Kmaschta/orgs",
+            "received_events_url": "https://api.github.com/users/Kmaschta/received_events",
+            "repos_url": "https://api.github.com/users/Kmaschta/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/Kmaschta/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Kmaschta/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/Kmaschta"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/beb984beefbfef512dedc17010c80dcc6699a748/comments",
+        "commit": {
+            "author": {
+                "date": "2016-07-06T15:29:50Z",
+                "email": "kmaschta@users.noreply.github.com",
+                "name": "Kmaschta"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-07-06T15:29:50Z",
+                "email": "noreply@github.com",
+                "name": "GitHub"
+            },
+            "message": "Merge pull request #73 from marmelab/labels-width\n\n[RFR] Configurable labels width",
+            "tree": {
+                "sha": "c02d9e8d4d1d444ff65def51284080a98fbaf8bd",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/c02d9e8d4d1d444ff65def51284080a98fbaf8bd"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/beb984beefbfef512dedc17010c80dcc6699a748"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=3",
+            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+            "followers_url": "https://api.github.com/users/web-flow/followers",
+            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/web-flow",
+            "id": 19864447,
+            "login": "web-flow",
+            "organizations_url": "https://api.github.com/users/web-flow/orgs",
+            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "repos_url": "https://api.github.com/users/web-flow/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/web-flow"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/beb984beefbfef512dedc17010c80dcc6699a748",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/0a48a8abeeeb61fe916315696f0d673b22642aaa",
+                "sha": "0a48a8abeeeb61fe916315696f0d673b22642aaa",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/0a48a8abeeeb61fe916315696f0d673b22642aaa"
+            },
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/d71ab2567c3a8bf76764849da9195f79215a34ae",
+                "sha": "d71ab2567c3a8bf76764849da9195f79215a34ae",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/d71ab2567c3a8bf76764849da9195f79215a34ae"
+            }
+        ],
+        "sha": "beb984beefbfef512dedc17010c80dcc6699a748",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/beb984beefbfef512dedc17010c80dcc6699a748"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/d71ab2567c3a8bf76764849da9195f79215a34ae/comments",
+        "commit": {
+            "author": {
+                "date": "2016-07-04T16:19:42Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-07-04T16:19:42Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "message": "Fix tests and first code review",
+            "tree": {
+                "sha": "c02d9e8d4d1d444ff65def51284080a98fbaf8bd",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/c02d9e8d4d1d444ff65def51284080a98fbaf8bd"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/d71ab2567c3a8bf76764849da9195f79215a34ae"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/d71ab2567c3a8bf76764849da9195f79215a34ae",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/c6183995fc8be2e37df1abb57daeb4d001ef5e97",
+                "sha": "c6183995fc8be2e37df1abb57daeb4d001ef5e97",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/c6183995fc8be2e37df1abb57daeb4d001ef5e97"
+            }
+        ],
+        "sha": "d71ab2567c3a8bf76764849da9195f79215a34ae",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/d71ab2567c3a8bf76764849da9195f79215a34ae"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/c6183995fc8be2e37df1abb57daeb4d001ef5e97/comments",
+        "commit": {
+            "author": {
+                "date": "2016-06-29T16:39:41Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-29T16:39:41Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "message": "Remove magical constants",
+            "tree": {
+                "sha": "24897e9c01b52e105af58976f51de7509806c50a",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/24897e9c01b52e105af58976f51de7509806c50a"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/c6183995fc8be2e37df1abb57daeb4d001ef5e97"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/c6183995fc8be2e37df1abb57daeb4d001ef5e97",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/74d335c756e696c3f019bc7c2f76fa99bffe8829",
+                "sha": "74d335c756e696c3f019bc7c2f76fa99bffe8829",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/74d335c756e696c3f019bc7c2f76fa99bffe8829"
+            }
+        ],
+        "sha": "c6183995fc8be2e37df1abb57daeb4d001ef5e97",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/c6183995fc8be2e37df1abb57daeb4d001ef5e97"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/1122076?v=3",
+            "events_url": "https://api.github.com/users/djhi/events{/privacy}",
+            "followers_url": "https://api.github.com/users/djhi/followers",
+            "following_url": "https://api.github.com/users/djhi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/djhi/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/djhi",
+            "id": 1122076,
+            "login": "djhi",
+            "organizations_url": "https://api.github.com/users/djhi/orgs",
+            "received_events_url": "https://api.github.com/users/djhi/received_events",
+            "repos_url": "https://api.github.com/users/djhi/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/djhi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/djhi/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/djhi"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/74d335c756e696c3f019bc7c2f76fa99bffe8829/comments",
+        "commit": {
+            "author": {
+                "date": "2016-03-30T09:58:21Z",
+                "email": "gildas.garcia@gmail.com",
+                "name": "djhi"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-27T16:08:28Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "message": "Trying to fix npm issues",
+            "tree": {
+                "sha": "c9021ee126992981c3e116a51143a8f63bf331e6",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/c9021ee126992981c3e116a51143a8f63bf331e6"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/74d335c756e696c3f019bc7c2f76fa99bffe8829"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/74d335c756e696c3f019bc7c2f76fa99bffe8829",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/a85ed9486555e3105b117f05b4188f4c22e033e9",
+                "sha": "a85ed9486555e3105b117f05b4188f4c22e033e9",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/a85ed9486555e3105b117f05b4188f4c22e033e9"
+            }
+        ],
+        "sha": "74d335c756e696c3f019bc7c2f76fa99bffe8829",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/74d335c756e696c3f019bc7c2f76fa99bffe8829"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/1122076?v=3",
+            "events_url": "https://api.github.com/users/djhi/events{/privacy}",
+            "followers_url": "https://api.github.com/users/djhi/followers",
+            "following_url": "https://api.github.com/users/djhi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/djhi/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/djhi",
+            "id": 1122076,
+            "login": "djhi",
+            "organizations_url": "https://api.github.com/users/djhi/orgs",
+            "received_events_url": "https://api.github.com/users/djhi/received_events",
+            "repos_url": "https://api.github.com/users/djhi/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/djhi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/djhi/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/djhi"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/a85ed9486555e3105b117f05b4188f4c22e033e9/comments",
+        "commit": {
+            "author": {
+                "date": "2016-03-30T09:36:40Z",
+                "email": "gildas.garcia@gmail.com",
+                "name": "djhi"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-27T16:08:28Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "message": "Added tests",
+            "tree": {
+                "sha": "b4ac10810c3fc9033a534b3aa14de7a16dce09a8",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/b4ac10810c3fc9033a534b3aa14de7a16dce09a8"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/a85ed9486555e3105b117f05b4188f4c22e033e9"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/a85ed9486555e3105b117f05b4188f4c22e033e9",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/76766343b793064cd1b09db0e3d1c1f7dd215c52",
+                "sha": "76766343b793064cd1b09db0e3d1c1f7dd215c52",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/76766343b793064cd1b09db0e3d1c1f7dd215c52"
+            }
+        ],
+        "sha": "a85ed9486555e3105b117f05b4188f4c22e033e9",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/a85ed9486555e3105b117f05b4188f4c22e033e9"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/1122076?v=3",
+            "events_url": "https://api.github.com/users/djhi/events{/privacy}",
+            "followers_url": "https://api.github.com/users/djhi/followers",
+            "following_url": "https://api.github.com/users/djhi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/djhi/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/djhi",
+            "id": 1122076,
+            "login": "djhi",
+            "organizations_url": "https://api.github.com/users/djhi/orgs",
+            "received_events_url": "https://api.github.com/users/djhi/received_events",
+            "repos_url": "https://api.github.com/users/djhi/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/djhi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/djhi/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/djhi"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/76766343b793064cd1b09db0e3d1c1f7dd215c52/comments",
+        "commit": {
+            "author": {
+                "date": "2016-03-30T08:01:23Z",
+                "email": "gildas.garcia@gmail.com",
+                "name": "djhi"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-27T16:08:06Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "message": "[RFR] Configurable labels width",
+            "tree": {
+                "sha": "335ccf4c4019d880ea138600d763548bf1775efe",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/335ccf4c4019d880ea138600d763548bf1775efe"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/76766343b793064cd1b09db0e3d1c1f7dd215c52"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/76766343b793064cd1b09db0e3d1c1f7dd215c52",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/0a48a8abeeeb61fe916315696f0d673b22642aaa",
+                "sha": "0a48a8abeeeb61fe916315696f0d673b22642aaa",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/0a48a8abeeeb61fe916315696f0d673b22642aaa"
+            }
+        ],
+        "sha": "76766343b793064cd1b09db0e3d1c1f7dd215c52",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/76766343b793064cd1b09db0e3d1c1f7dd215c52"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/0a48a8abeeeb61fe916315696f0d673b22642aaa/comments",
+        "commit": {
+            "author": {
+                "date": "2016-06-27T15:53:24Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-27T15:53:24Z",
+                "email": "noreply@github.com",
+                "name": "GitHub"
+            },
+            "message": "Merge pull request #80 from marmelab/responsive\n\n[RFR] Responsive",
+            "tree": {
+                "sha": "4aba36e526bfb54221a70d5003ffd22ae2af716f",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/4aba36e526bfb54221a70d5003ffd22ae2af716f"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/0a48a8abeeeb61fe916315696f0d673b22642aaa"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=3",
+            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+            "followers_url": "https://api.github.com/users/web-flow/followers",
+            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/web-flow",
+            "id": 19864447,
+            "login": "web-flow",
+            "organizations_url": "https://api.github.com/users/web-flow/orgs",
+            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "repos_url": "https://api.github.com/users/web-flow/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/web-flow"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/0a48a8abeeeb61fe916315696f0d673b22642aaa",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/23f8aa5d9ef058610071bdef41e116d7753b496a",
+                "sha": "23f8aa5d9ef058610071bdef41e116d7753b496a",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/23f8aa5d9ef058610071bdef41e116d7753b496a"
+            },
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/020b43c90189d36ebfb097faa20e7b31da5c62d9",
+                "sha": "020b43c90189d36ebfb097faa20e7b31da5c62d9",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/020b43c90189d36ebfb097faa20e7b31da5c62d9"
+            }
+        ],
+        "sha": "0a48a8abeeeb61fe916315696f0d673b22642aaa",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/0a48a8abeeeb61fe916315696f0d673b22642aaa"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/1819833?v=3",
+            "events_url": "https://api.github.com/users/Kmaschta/events{/privacy}",
+            "followers_url": "https://api.github.com/users/Kmaschta/followers",
+            "following_url": "https://api.github.com/users/Kmaschta/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Kmaschta/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/Kmaschta",
+            "id": 1819833,
+            "login": "Kmaschta",
+            "organizations_url": "https://api.github.com/users/Kmaschta/orgs",
+            "received_events_url": "https://api.github.com/users/Kmaschta/received_events",
+            "repos_url": "https://api.github.com/users/Kmaschta/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/Kmaschta/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Kmaschta/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/Kmaschta"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/020b43c90189d36ebfb097faa20e7b31da5c62d9/comments",
+        "commit": {
+            "author": {
+                "date": "2016-06-15T12:19:06Z",
+                "email": "kevin@marmelab.com",
+                "name": "Kmaschta"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-15T12:19:06Z",
+                "email": "kevin@marmelab.com",
+                "name": "Kmaschta"
+            },
+            "message": "Update demo",
+            "tree": {
+                "sha": "da4e7c665aeabd3e7c2dedf5273133448dfec778",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/da4e7c665aeabd3e7c2dedf5273133448dfec778"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/020b43c90189d36ebfb097faa20e7b31da5c62d9"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/1819833?v=3",
+            "events_url": "https://api.github.com/users/Kmaschta/events{/privacy}",
+            "followers_url": "https://api.github.com/users/Kmaschta/followers",
+            "following_url": "https://api.github.com/users/Kmaschta/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Kmaschta/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/Kmaschta",
+            "id": 1819833,
+            "login": "Kmaschta",
+            "organizations_url": "https://api.github.com/users/Kmaschta/orgs",
+            "received_events_url": "https://api.github.com/users/Kmaschta/received_events",
+            "repos_url": "https://api.github.com/users/Kmaschta/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/Kmaschta/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Kmaschta/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/Kmaschta"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/020b43c90189d36ebfb097faa20e7b31da5c62d9",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/f4545da382b1ed2956e64e37ee2993537f7e4544",
+                "sha": "f4545da382b1ed2956e64e37ee2993537f7e4544",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/f4545da382b1ed2956e64e37ee2993537f7e4544"
+            }
+        ],
+        "sha": "020b43c90189d36ebfb097faa20e7b31da5c62d9",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/020b43c90189d36ebfb097faa20e7b31da5c62d9"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/23f8aa5d9ef058610071bdef41e116d7753b496a/comments",
+        "commit": {
+            "author": {
+                "date": "2016-06-15T12:13:11Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-15T12:13:11Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "message": "Rebuild lib",
+            "tree": {
+                "sha": "7d35e91e3ffeff313019291d33dbc1a22a180530",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/7d35e91e3ffeff313019291d33dbc1a22a180530"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/23f8aa5d9ef058610071bdef41e116d7753b496a"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/23f8aa5d9ef058610071bdef41e116d7753b496a",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/ad3deff1af6fa2d62174d2391bb23bdee2e47631",
+                "sha": "ad3deff1af6fa2d62174d2391bb23bdee2e47631",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/ad3deff1af6fa2d62174d2391bb23bdee2e47631"
+            }
+        ],
+        "sha": "23f8aa5d9ef058610071bdef41e116d7753b496a",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/23f8aa5d9ef058610071bdef41e116d7753b496a"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/1819833?v=3",
+            "events_url": "https://api.github.com/users/Kmaschta/events{/privacy}",
+            "followers_url": "https://api.github.com/users/Kmaschta/followers",
+            "following_url": "https://api.github.com/users/Kmaschta/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Kmaschta/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/Kmaschta",
+            "id": 1819833,
+            "login": "Kmaschta",
+            "organizations_url": "https://api.github.com/users/Kmaschta/orgs",
+            "received_events_url": "https://api.github.com/users/Kmaschta/received_events",
+            "repos_url": "https://api.github.com/users/Kmaschta/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/Kmaschta/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Kmaschta/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/Kmaschta"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/f4545da382b1ed2956e64e37ee2993537f7e4544/comments",
+        "commit": {
+            "author": {
+                "date": "2016-06-15T12:09:05Z",
+                "email": "kevin@marmelab.com",
+                "name": "Kmaschta"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-15T12:09:05Z",
+                "email": "kevin@marmelab.com",
+                "name": "Kmaschta"
+            },
+            "message": "Code reviews",
+            "tree": {
+                "sha": "12761aa45848bfcb37f098d7ecbf1a36563e3333",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/12761aa45848bfcb37f098d7ecbf1a36563e3333"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/f4545da382b1ed2956e64e37ee2993537f7e4544"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/1819833?v=3",
+            "events_url": "https://api.github.com/users/Kmaschta/events{/privacy}",
+            "followers_url": "https://api.github.com/users/Kmaschta/followers",
+            "following_url": "https://api.github.com/users/Kmaschta/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Kmaschta/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/Kmaschta",
+            "id": 1819833,
+            "login": "Kmaschta",
+            "organizations_url": "https://api.github.com/users/Kmaschta/orgs",
+            "received_events_url": "https://api.github.com/users/Kmaschta/received_events",
+            "repos_url": "https://api.github.com/users/Kmaschta/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/Kmaschta/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Kmaschta/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/Kmaschta"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/f4545da382b1ed2956e64e37ee2993537f7e4544",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/b4ac4b263962ce67dbbae5b678681d36688c1fb0",
+                "sha": "b4ac4b263962ce67dbbae5b678681d36688c1fb0",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/b4ac4b263962ce67dbbae5b678681d36688c1fb0"
+            }
+        ],
+        "sha": "f4545da382b1ed2956e64e37ee2993537f7e4544",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/f4545da382b1ed2956e64e37ee2993537f7e4544"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/1819833?v=3",
+            "events_url": "https://api.github.com/users/Kmaschta/events{/privacy}",
+            "followers_url": "https://api.github.com/users/Kmaschta/followers",
+            "following_url": "https://api.github.com/users/Kmaschta/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Kmaschta/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/Kmaschta",
+            "id": 1819833,
+            "login": "Kmaschta",
+            "organizations_url": "https://api.github.com/users/Kmaschta/orgs",
+            "received_events_url": "https://api.github.com/users/Kmaschta/received_events",
+            "repos_url": "https://api.github.com/users/Kmaschta/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/Kmaschta/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Kmaschta/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/Kmaschta"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/b4ac4b263962ce67dbbae5b678681d36688c1fb0/comments",
+        "commit": {
+            "author": {
+                "date": "2016-06-02T11:47:08Z",
+                "email": "kevin@marmelab.com",
+                "name": "Kmaschta"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-15T12:06:48Z",
+                "email": "kevin@marmelab.com",
+                "name": "Kmaschta"
+            },
+            "message": "Fix tests",
+            "tree": {
+                "sha": "5533c6f9a948de1c0169bd4c34ef9c817e46a242",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/5533c6f9a948de1c0169bd4c34ef9c817e46a242"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/b4ac4b263962ce67dbbae5b678681d36688c1fb0"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/1819833?v=3",
+            "events_url": "https://api.github.com/users/Kmaschta/events{/privacy}",
+            "followers_url": "https://api.github.com/users/Kmaschta/followers",
+            "following_url": "https://api.github.com/users/Kmaschta/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Kmaschta/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/Kmaschta",
+            "id": 1819833,
+            "login": "Kmaschta",
+            "organizations_url": "https://api.github.com/users/Kmaschta/orgs",
+            "received_events_url": "https://api.github.com/users/Kmaschta/received_events",
+            "repos_url": "https://api.github.com/users/Kmaschta/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/Kmaschta/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Kmaschta/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/Kmaschta"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/b4ac4b263962ce67dbbae5b678681d36688c1fb0",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/fd227dc1cd29db0f9ecb77d6b95af9dc81c24225",
+                "sha": "fd227dc1cd29db0f9ecb77d6b95af9dc81c24225",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/fd227dc1cd29db0f9ecb77d6b95af9dc81c24225"
+            }
+        ],
+        "sha": "b4ac4b263962ce67dbbae5b678681d36688c1fb0",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/b4ac4b263962ce67dbbae5b678681d36688c1fb0"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/1819833?v=3",
+            "events_url": "https://api.github.com/users/Kmaschta/events{/privacy}",
+            "followers_url": "https://api.github.com/users/Kmaschta/followers",
+            "following_url": "https://api.github.com/users/Kmaschta/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Kmaschta/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/Kmaschta",
+            "id": 1819833,
+            "login": "Kmaschta",
+            "organizations_url": "https://api.github.com/users/Kmaschta/orgs",
+            "received_events_url": "https://api.github.com/users/Kmaschta/received_events",
+            "repos_url": "https://api.github.com/users/Kmaschta/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/Kmaschta/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Kmaschta/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/Kmaschta"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/fd227dc1cd29db0f9ecb77d6b95af9dc81c24225/comments",
+        "commit": {
+            "author": {
+                "date": "2016-05-24T15:34:09Z",
+                "email": "kevin@marmelab.com",
+                "name": "Kmaschta"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-15T12:06:48Z",
+                "email": "kevin@marmelab.com",
+                "name": "Kmaschta"
+            },
+            "message": "Use clientWidth instead of offsetWidth",
+            "tree": {
+                "sha": "244cd685a8c5c635bbf717641a5f52eb201a031c",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/244cd685a8c5c635bbf717641a5f52eb201a031c"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/fd227dc1cd29db0f9ecb77d6b95af9dc81c24225"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/1819833?v=3",
+            "events_url": "https://api.github.com/users/Kmaschta/events{/privacy}",
+            "followers_url": "https://api.github.com/users/Kmaschta/followers",
+            "following_url": "https://api.github.com/users/Kmaschta/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Kmaschta/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/Kmaschta",
+            "id": 1819833,
+            "login": "Kmaschta",
+            "organizations_url": "https://api.github.com/users/Kmaschta/orgs",
+            "received_events_url": "https://api.github.com/users/Kmaschta/received_events",
+            "repos_url": "https://api.github.com/users/Kmaschta/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/Kmaschta/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Kmaschta/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/Kmaschta"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/fd227dc1cd29db0f9ecb77d6b95af9dc81c24225",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/59b9647a69adbbbf7688649f4969ea7a47375cd9",
+                "sha": "59b9647a69adbbbf7688649f4969ea7a47375cd9",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/59b9647a69adbbbf7688649f4969ea7a47375cd9"
+            }
+        ],
+        "sha": "fd227dc1cd29db0f9ecb77d6b95af9dc81c24225",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/fd227dc1cd29db0f9ecb77d6b95af9dc81c24225"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/1819833?v=3",
+            "events_url": "https://api.github.com/users/Kmaschta/events{/privacy}",
+            "followers_url": "https://api.github.com/users/Kmaschta/followers",
+            "following_url": "https://api.github.com/users/Kmaschta/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Kmaschta/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/Kmaschta",
+            "id": 1819833,
+            "login": "Kmaschta",
+            "organizations_url": "https://api.github.com/users/Kmaschta/orgs",
+            "received_events_url": "https://api.github.com/users/Kmaschta/received_events",
+            "repos_url": "https://api.github.com/users/Kmaschta/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/Kmaschta/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Kmaschta/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/Kmaschta"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/59b9647a69adbbbf7688649f4969ea7a47375cd9/comments",
+        "commit": {
+            "author": {
+                "date": "2016-05-23T16:19:41Z",
+                "email": "kevin@marmelab.com",
+                "name": "Kmaschta"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-15T12:06:48Z",
+                "email": "kevin@marmelab.com",
+                "name": "Kmaschta"
+            },
+            "message": "SVG now fits parent dimensions",
+            "tree": {
+                "sha": "7134bd69c2a9d198c4d38f57ab18d26148b4709d",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/7134bd69c2a9d198c4d38f57ab18d26148b4709d"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/59b9647a69adbbbf7688649f4969ea7a47375cd9"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/1819833?v=3",
+            "events_url": "https://api.github.com/users/Kmaschta/events{/privacy}",
+            "followers_url": "https://api.github.com/users/Kmaschta/followers",
+            "following_url": "https://api.github.com/users/Kmaschta/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Kmaschta/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/Kmaschta",
+            "id": 1819833,
+            "login": "Kmaschta",
+            "organizations_url": "https://api.github.com/users/Kmaschta/orgs",
+            "received_events_url": "https://api.github.com/users/Kmaschta/received_events",
+            "repos_url": "https://api.github.com/users/Kmaschta/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/Kmaschta/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Kmaschta/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/Kmaschta"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/59b9647a69adbbbf7688649f4969ea7a47375cd9",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/ad3deff1af6fa2d62174d2391bb23bdee2e47631",
+                "sha": "ad3deff1af6fa2d62174d2391bb23bdee2e47631",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/ad3deff1af6fa2d62174d2391bb23bdee2e47631"
+            }
+        ],
+        "sha": "59b9647a69adbbbf7688649f4969ea7a47375cd9",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/59b9647a69adbbbf7688649f4969ea7a47375cd9"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/ad3deff1af6fa2d62174d2391bb23bdee2e47631/comments",
+        "commit": {
+            "author": {
+                "date": "2016-06-15T12:02:51Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-15T12:02:51Z",
+                "email": "noreply@github.com",
+                "name": "GitHub"
+            },
+            "message": "Merge pull request #76 from anicke/master\n\nEnable extra information in passed data",
+            "tree": {
+                "sha": "9111633a91c601bd1b1b64f0b328adc69524a568",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/9111633a91c601bd1b1b64f0b328adc69524a568"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/ad3deff1af6fa2d62174d2391bb23bdee2e47631"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=3",
+            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+            "followers_url": "https://api.github.com/users/web-flow/followers",
+            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/web-flow",
+            "id": 19864447,
+            "login": "web-flow",
+            "organizations_url": "https://api.github.com/users/web-flow/orgs",
+            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "repos_url": "https://api.github.com/users/web-flow/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/web-flow"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/ad3deff1af6fa2d62174d2391bb23bdee2e47631",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/78a1520466347640914928d9fb2da3972f88d4e9",
+                "sha": "78a1520466347640914928d9fb2da3972f88d4e9",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/78a1520466347640914928d9fb2da3972f88d4e9"
+            },
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/9a78b424245215a77d45cd1130571e9752f43a62",
+                "sha": "9a78b424245215a77d45cd1130571e9752f43a62",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/9a78b424245215a77d45cd1130571e9752f43a62"
+            }
+        ],
+        "sha": "ad3deff1af6fa2d62174d2391bb23bdee2e47631",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/ad3deff1af6fa2d62174d2391bb23bdee2e47631"
+    },
+    {
+        "author": null,
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/9a78b424245215a77d45cd1130571e9752f43a62/comments",
+        "commit": {
+            "author": {
+                "date": "2016-05-02T11:16:12Z",
+                "email": "niklas.aronsson@ericsson.com",
+                "name": "Niklas Aronsson"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-14T17:14:53Z",
+                "email": "niklas.aronsson@ericsson.com",
+                "name": "Niklas Aronsson"
+            },
+            "message": "Enable extra information in passed data",
+            "tree": {
+                "sha": "9111633a91c601bd1b1b64f0b328adc69524a568",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/9111633a91c601bd1b1b64f0b328adc69524a568"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/9a78b424245215a77d45cd1130571e9752f43a62"
+        },
+        "committer": null,
+        "html_url": "https://github.com/marmelab/EventDrops/commit/9a78b424245215a77d45cd1130571e9752f43a62",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/78a1520466347640914928d9fb2da3972f88d4e9",
+                "sha": "78a1520466347640914928d9fb2da3972f88d4e9",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/78a1520466347640914928d9fb2da3972f88d4e9"
+            }
+        ],
+        "sha": "9a78b424245215a77d45cd1130571e9752f43a62",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/9a78b424245215a77d45cd1130571e9752f43a62"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/99944?v=3",
+            "events_url": "https://api.github.com/users/fzaninotto/events{/privacy}",
+            "followers_url": "https://api.github.com/users/fzaninotto/followers",
+            "following_url": "https://api.github.com/users/fzaninotto/following{/other_user}",
+            "gists_url": "https://api.github.com/users/fzaninotto/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/fzaninotto",
+            "id": 99944,
+            "login": "fzaninotto",
+            "organizations_url": "https://api.github.com/users/fzaninotto/orgs",
+            "received_events_url": "https://api.github.com/users/fzaninotto/received_events",
+            "repos_url": "https://api.github.com/users/fzaninotto/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/fzaninotto/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/fzaninotto/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/fzaninotto"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/78a1520466347640914928d9fb2da3972f88d4e9/comments",
+        "commit": {
+            "author": {
+                "date": "2016-06-01T08:09:25Z",
+                "email": "fzaninotto@gmail.com",
+                "name": "Francois Zaninotto"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-01T08:09:25Z",
+                "email": "fzaninotto@gmail.com",
+                "name": "Francois Zaninotto"
+            },
+            "message": "Merge pull request #79 from marmelab/zoom_center\n\n[RFR] Fix zoom center position (fixes #70)",
+            "tree": {
+                "sha": "815fe333a671c182f505d217cbf4751446f49235",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/815fe333a671c182f505d217cbf4751446f49235"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/78a1520466347640914928d9fb2da3972f88d4e9"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/99944?v=3",
+            "events_url": "https://api.github.com/users/fzaninotto/events{/privacy}",
+            "followers_url": "https://api.github.com/users/fzaninotto/followers",
+            "following_url": "https://api.github.com/users/fzaninotto/following{/other_user}",
+            "gists_url": "https://api.github.com/users/fzaninotto/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/fzaninotto",
+            "id": 99944,
+            "login": "fzaninotto",
+            "organizations_url": "https://api.github.com/users/fzaninotto/orgs",
+            "received_events_url": "https://api.github.com/users/fzaninotto/received_events",
+            "repos_url": "https://api.github.com/users/fzaninotto/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/fzaninotto/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/fzaninotto/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/fzaninotto"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/78a1520466347640914928d9fb2da3972f88d4e9",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/e7ac586020269bef08e9789329339afe01040b0f",
+                "sha": "e7ac586020269bef08e9789329339afe01040b0f",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/e7ac586020269bef08e9789329339afe01040b0f"
+            },
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/db72a2b3983d1b02ec64c97222723672ce4393ab",
+                "sha": "db72a2b3983d1b02ec64c97222723672ce4393ab",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/db72a2b3983d1b02ec64c97222723672ce4393ab"
+            }
+        ],
+        "sha": "78a1520466347640914928d9fb2da3972f88d4e9",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/78a1520466347640914928d9fb2da3972f88d4e9"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/db72a2b3983d1b02ec64c97222723672ce4393ab/comments",
+        "commit": {
+            "author": {
+                "date": "2016-06-01T06:18:48Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-01T06:18:48Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "message": "Add back node_modules cache",
+            "tree": {
+                "sha": "e06b5beac7ee602206ec90f2807d1d4db32af890",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/e06b5beac7ee602206ec90f2807d1d4db32af890"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/db72a2b3983d1b02ec64c97222723672ce4393ab"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/db72a2b3983d1b02ec64c97222723672ce4393ab",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/3c7f5c6e9b46b159c1d6e1e359a22b9d3e93ab46",
+                "sha": "3c7f5c6e9b46b159c1d6e1e359a22b9d3e93ab46",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/3c7f5c6e9b46b159c1d6e1e359a22b9d3e93ab46"
+            }
+        ],
+        "sha": "db72a2b3983d1b02ec64c97222723672ce4393ab",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/db72a2b3983d1b02ec64c97222723672ce4393ab"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/3c7f5c6e9b46b159c1d6e1e359a22b9d3e93ab46/comments",
+        "commit": {
+            "author": {
+                "date": "2016-06-01T06:08:29Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-06-01T06:08:29Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "message": "Try to fix tests",
+            "tree": {
+                "sha": "318e42fa6ef0daba8d3dc9268243924d07741e28",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/318e42fa6ef0daba8d3dc9268243924d07741e28"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/3c7f5c6e9b46b159c1d6e1e359a22b9d3e93ab46"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/3c7f5c6e9b46b159c1d6e1e359a22b9d3e93ab46",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/23ff6a0887802010109c993d9b1874a8c364097c",
+                "sha": "23ff6a0887802010109c993d9b1874a8c364097c",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/23ff6a0887802010109c993d9b1874a8c364097c"
+            }
+        ],
+        "sha": "3c7f5c6e9b46b159c1d6e1e359a22b9d3e93ab46",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/3c7f5c6e9b46b159c1d6e1e359a22b9d3e93ab46"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/23ff6a0887802010109c993d9b1874a8c364097c/comments",
+        "commit": {
+            "author": {
+                "date": "2016-05-23T15:39:37Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-05-23T15:39:37Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "message": "Add unit test to prove zoom center issue resolution",
+            "tree": {
+                "sha": "f3b5ccbc4d5a5c1919d1c0795d184894321f8121",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/f3b5ccbc4d5a5c1919d1c0795d184894321f8121"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/23ff6a0887802010109c993d9b1874a8c364097c"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/23ff6a0887802010109c993d9b1874a8c364097c",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/adccdc8f580999b7b89436ab4901de9e9391bd19",
+                "sha": "adccdc8f580999b7b89436ab4901de9e9391bd19",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/adccdc8f580999b7b89436ab4901de9e9391bd19"
+            }
+        ],
+        "sha": "23ff6a0887802010109c993d9b1874a8c364097c",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/23ff6a0887802010109c993d9b1874a8c364097c"
+    },
+    {
+        "author": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "comments_url": "https://api.github.com/repos/marmelab/EventDrops/commits/adccdc8f580999b7b89436ab4901de9e9391bd19/comments",
+        "commit": {
+            "author": {
+                "date": "2016-05-23T15:33:52Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "comment_count": 0,
+            "committer": {
+                "date": "2016-05-23T15:33:52Z",
+                "email": "petitcolas.jonathan@gmail.com",
+                "name": "Jonathan Petitcolas"
+            },
+            "message": "Fix zoom center position",
+            "tree": {
+                "sha": "d643a92e2a4fc2ad2fc6da934b55de61ad883eca",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/git/trees/d643a92e2a4fc2ad2fc6da934b55de61ad883eca"
+            },
+            "url": "https://api.github.com/repos/marmelab/EventDrops/git/commits/adccdc8f580999b7b89436ab4901de9e9391bd19"
+        },
+        "committer": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/688373?v=3",
+            "events_url": "https://api.github.com/users/jpetitcolas/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jpetitcolas/followers",
+            "following_url": "https://api.github.com/users/jpetitcolas/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jpetitcolas/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jpetitcolas",
+            "id": 688373,
+            "login": "jpetitcolas",
+            "organizations_url": "https://api.github.com/users/jpetitcolas/orgs",
+            "received_events_url": "https://api.github.com/users/jpetitcolas/received_events",
+            "repos_url": "https://api.github.com/users/jpetitcolas/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jpetitcolas/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jpetitcolas/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jpetitcolas"
+        },
+        "html_url": "https://github.com/marmelab/EventDrops/commit/adccdc8f580999b7b89436ab4901de9e9391bd19",
+        "parents": [
+            {
+                "html_url": "https://github.com/marmelab/EventDrops/commit/9aee348a51e5897ac78e92a89b65c8847c9adef4",
+                "sha": "9aee348a51e5897ac78e92a89b65c8847c9adef4",
+                "url": "https://api.github.com/repos/marmelab/EventDrops/commits/9aee348a51e5897ac78e92a89b65c8847c9adef4"
+            }
+        ],
+        "sha": "adccdc8f580999b7b89436ab4901de9e9391bd19",
+        "url": "https://api.github.com/repos/marmelab/EventDrops/commits/adccdc8f580999b7b89436ab4901de9e9391bd19"
+    }
+]
