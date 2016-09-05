@@ -8,7 +8,7 @@ const repositories = [
 ];
 
 const promises = repositories.map(repository => {
-    return fetch('https://api.github.com/repos/marmelab/ng-admin/commits')
+    return fetch(`https://api.github.com/repos/${repository.identifier}/commits`)
         .then(response => {
             if (response.status >= 400) {
                 console.error(`Unable to retrieve commits for "${repository.name}" repository (response ${response.status}).`);
