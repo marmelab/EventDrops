@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 16px;
+    background: #fff;
+}
+
+.drop {
+    cursor: pointer;
+}
+
+.tooltip {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 1rem;
+    padding: .5rem 1rem;
+    width: 30rem;
+    line-height: 1.4rem;
+}
+
+.tooltip .avatar {
+    max-width: 5rem;
+    float: left;
+    border-radius: .5rem;
+    margin-right: 1rem;
+}
+
+.tooltip h3 {
+    margin-bottom: .5rem;
+}
+
+.tooltip p {
+    color: #777;
+}
+
+.tooltip::after {
+    content: '';
+    display: block;
+    clear: both;
+}
