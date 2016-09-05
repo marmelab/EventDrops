@@ -5,6 +5,7 @@
 * API Change: The data for each event line object must now be in the `data` property (was `date`).
 * Pass any data object to each drop and specify the date property with a callback.
 * The SVG is now responsive and fit with its parent
+* Rename `eventHover`, `eventClick` and `eventZoom` events to `mouseover`, `click` and `zoomend` respectively.
 * Adding `mouseout` handler
 
 ## 0.2.0

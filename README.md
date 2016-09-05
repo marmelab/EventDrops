@@ -98,9 +98,9 @@ Configurable values:
   - `labelsRightMargin`: margin between labels and drops lines. Defaults to `10`.
   - `axisFormat`: function receiving the d3 axis object, to customize tick number and size.
   - `tickFormat`: tickFormat for the X axis. See [d3.timeFormat.multi()](https://github.com/mbostock/d3/wiki/Time-Formatting#format_multi) for expected format.
-  - `eventHover`: function to be called when hovering an event in the chart. Receives the DOM element hovered (uses event delegation).
-  - `eventZoom`: function to be called when done zooming on the chart. Receives the d3 scale at the end of the zoom.
-  - `eventClick`: function to be called on click event of data-point (circle). Receives the DOM element hovered (uses event delegation).
+  - `mouseover`: function to be called when hovering an event in the chart. Receives the DOM element hovered (uses event delegation). Default: `() => {}`.
+  - `zoomend`: function to be called when done zooming on the chart. Receives the d3 scale at the end of the zoom. Default: `() => {}`.
+  - `click`: function to be called on click event of data-point (circle). Receives the DOM element hovered (uses event delegation). Default: `() => {}`.
   - `hasDelimiter`: whether to draw time boundaries on top of the chart. Defaults to `true`.
   - `hasTopAxis`: whether the chart has a top X axis. Accepts both a boolean or a function receiving the data of the graph that returns a boolean.
   - `hasBottomAxis`: same as topAxis but for the bottom X axis
