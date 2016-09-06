@@ -36,6 +36,14 @@ const showTooltip = commit => {
         .style('opacity', 1);
 
     const rightOrLeftLimit = FONT_SIZE * TOOLTIP_WIDTH;
+    const direction = d3.event.pageX > rightOrLeftLimit ? 'right' : 'left';
+
+    const ARROW_MARGIN = 1.65;
+    const ARROW_WIDTH = FONT_SIZE;
+    const left = direction === 'right' ?
+        d3.event.pageX - rightOrLeftLimit:
+        d3.event.pageX - ARROW_MARGIN * FONT_SIZE - ARROW_WIDTH / 2;
+
 
     tooltip.html(`
             <div class="commit">
@@ -48,9 +56,10 @@ const showTooltip = commit => {
                 </p>
             </div>
         `)
+        .classed(direction, true)
         .style({
-            left: (d3.event.pageX > rightOrLeftLimit ? d3.event.pageX - rightOrLeftLimit : d3.event.pageX) + 'px',
-            top: (d3.event.pageY + 10) + 'px',
+            left: `${left}px`,
+            top: (d3.event.pageY + 16) + 'px',
         });
 };
 
