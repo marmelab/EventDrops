@@ -41,9 +41,8 @@ const showTooltip = commit => {
     const ARROW_MARGIN = 1.65;
     const ARROW_WIDTH = FONT_SIZE;
     const left = direction === 'right' ?
-        d3.event.pageX - rightOrLeftLimit:
+        d3.event.pageX - rightOrLeftLimit :
         d3.event.pageX - ARROW_MARGIN * FONT_SIZE - ARROW_WIDTH / 2;
-
 
     tooltip.html(`
             <div class="commit">
@@ -51,8 +50,8 @@ const showTooltip = commit => {
                 <h3 class="message">${commit.commit.message}</h3>
                 <p>
                     By <a href="${commit.author.html_url}" class="author">${commit.author.login}</a>
-                    on <span class="date">${humanizeDate(new Date(commit.commit.author.date))}</span><br />
-                    <a class="sha" href="${commit.html_url}">${commit.sha}</a>
+                    on <span class="date">${humanizeDate(new Date(commit.commit.author.date))}</span> -
+                    <a class="sha" href="${commit.html_url}">${commit.sha.substr(0, 10)}...</a>
                 </p>
             </div>
         `)
