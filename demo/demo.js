@@ -47,12 +47,14 @@ const showTooltip = commit => {
     tooltip.html(`
             <div class="commit">
                 <img class="avatar" src="${commit.author.avatar_url}" alt="${commit.author.login}" title="${commit.author.login}" />
-                <h3 class="message">${commit.commit.message}</h3>
-                <p>
-                    By <a href="${commit.author.html_url}" class="author">${commit.author.login}</a>
-                    on <span class="date">${humanizeDate(new Date(commit.commit.author.date))}</span> -
-                    <a class="sha" href="${commit.html_url}">${commit.sha.substr(0, 10)}...</a>
-                </p>
+                <div class="content">
+                    <h3 class="message">${commit.commit.message}</h3>
+                    <p>
+                        By <a href="${commit.author.html_url}" class="author">${commit.author.login}</a>
+                        on <span class="date">${humanizeDate(new Date(commit.commit.author.date))}</span> -
+                        <a class="sha" href="${commit.html_url}">${commit.sha.substr(0, 10)}...</a>
+                    </p>
+                </div>
             </div>
         `)
         .classed(direction, true)

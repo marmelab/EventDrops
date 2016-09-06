@@ -6,6 +6,26 @@
 body {
     font-size: 16px;
     background: #eee;
+    padding: 0 3rem 1rem 3rem;
+    font-family: 'Muli', 'sans serif';
+}
+
+a {
+    color: #ff6e00;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    text-align: center;
+    margin: 1.5rem auto 1rem;
+    font-family: 'Josefin Sans', Serif;
+    font-weight: normal;
+    font-size: 3rem;
+    color: #aaa;
 }
 
 .drop {
@@ -47,24 +67,34 @@ body {
 .tooltip .commit {
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
+
 .tooltip .avatar {
-    max-width: 5rem;
-    float: left;
+    width: 5rem;
+    height: 5rem;
     border-radius: .5rem;
     margin-right: 1rem;
+    flex: 0 0 5rem;
+}
+
+.tooltip .content {
+    flex: 1 0 0;
 }
 
 .tooltip h3 {
-    margin-bottom: .5rem;
+    font-size: 1rem;
 }
 
 .tooltip p {
+    font-size: .9rem;
     color: #777;
 }
 
-.tooltip::after {
-    content: '';
-    display: block;
-    clear: both;
+footer p {
+    text-align: center;
+    color: #888;
+    font-size: .8rem;
 }
