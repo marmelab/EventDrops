@@ -1,8 +1,8 @@
+const md5 = require('./md5');
 const repositories = require('json!./data.json');
 
 const colors = d3.scale.category10();
-const [start, end] = d3.extent(repositories[0].commits, d => d.commit.author.date)
-    .map(d => new Date(d));
+const gravatar = email => `https://www.gravatar.com/avatar/${md5(email.trim().toLowerCase())}`;
 
 // September 4 1986 8:30 PM
 const humanizeDate = date => {
@@ -22,6 +22,8 @@ const TOOLTIP_WIDTH = 30; // in rem
 
 // we're gonna create a tooltip per drop to prevent from transition issues
 const showTooltip = commit => {
+    d3.select('body').selectAll('.tooltip').remove();
+
     const tooltip = d3.select('body')
         .append('div')
         .attr('class', 'tooltip')
@@ -30,7 +32,7 @@ const showTooltip = commit => {
     // show the tooltip with a small animation
     tooltip.transition()
         .duration(200)
-        .each('start', function () {
+        .each('start', function start() {
             d3.select(this).style('block');
         })
         .style('opacity', 1);
@@ -46,13 +48,13 @@ const showTooltip = commit => {
 
     tooltip.html(`
             <div class="commit">
-                <img class="avatar" src="${commit.author.avatar_url}" alt="${commit.author.login}" title="${commit.author.login}" />
+                <img class="avatar" src="${gravatar(commit.author.email)}" alt="${commit.author.name}" title="${commit.author.name}" />
                 <div class="content">
-                    <h3 class="message">${commit.commit.message}</h3>
+                    <h3 class="message">${commit.message}</h3>
                     <p>
-                        By <a href="${commit.author.html_url}" class="author">${commit.author.login}</a>
-                        on <span class="date">${humanizeDate(new Date(commit.commit.author.date))}</span> -
-                        <a class="sha" href="${commit.html_url}">${commit.sha.substr(0, 10)}...</a>
+                        <a href="https://www.github.com/${commit.author.name}" class="author">${commit.author.name}</a>
+                        on <span class="date">${humanizeDate(new Date(commit.date))}</span> -
+                        <a class="sha" href="${commit.sha}">${commit.sha.substr(0, 10)}</a>
                     </p>
                 </div>
             </div>
@@ -67,17 +69,17 @@ const showTooltip = commit => {
 const hideTooltip = () => {
     d3.select('.tooltip').transition()
         .duration(200)
-        .each('end', function () {
+        .each('end', function end() {
             this.remove();
         })
         .style('opacity', 0);
 };
 
 const chart = d3.chart.eventDrops()
-    .start(start)
-    .end(end)
+    .start(new Date(new Date().getTime() - 3600000 * 24 * 365)) // one year ago
+    .end(new Date())
     .eventLineColor((d, i) => colors(i))
-    .date(d => new Date(d.commit.author.date))
+    .date(d => new Date(d.date))
     .mouseover(showTooltip)
     .mouseout(hideTooltip);
 
