@@ -13,7 +13,7 @@ const repositories = [
 ];
 
 const setup = cb => {
-    exec(`mkdir /tmp/event-drops`, cb);
+    exec(`mkdir -p /tmp/event-drops`, cb);
 };
 
 const clone = (repository, cb) => {
