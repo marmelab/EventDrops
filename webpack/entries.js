@@ -13,7 +13,8 @@ module.exports = function (production) {
         include it using the full path to trick Webpack. */
         entries['demo-d3'] = path.join(__dirname, '../node_modules/d3/d3.min.js');
         entries.demo = [
-            path.join(__dirname, '../demo/demo.js')
+            path.join(__dirname, '../demo/demo.js'),
+            path.join(__dirname, '../demo/demo.css'),
         ];
 
         entries.eventDrops.push('webpack-dev-server/client?http://localhost:8080');

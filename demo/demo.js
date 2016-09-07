@@ -1,43 +1,91 @@
-/*eslint-disable */
+const md5 = require('./md5');
+const repositories = require('json!./data.json');
 
-// create dataset
-var data = [];
-var names = ["Lorem", "Ipsum", "Dolor", "Sit", "Amet", "Consectetur", "Adipisicing", "elit", "Eiusmod tempor", "Incididunt"];
-var endTime = Date.now();
-var month = 30 * 24 * 60 * 60 * 1000;
-var startTime = endTime - 6 * month;
+const colors = d3.scale.category10();
+const gravatar = email => `https://www.gravatar.com/avatar/${md5(email.trim().toLowerCase())}`;
 
-function createEvent (name, maxNbEvents) {
-    maxNbEvents = maxNbEvents | 200;
-    var event = {
-        name: name,
-        data: []
-    };
-    // add up to 200 events
-    var max =  Math.floor(Math.random() * maxNbEvents);
-    for (var j = 0; j < max; j++) {
-        var time = (Math.random() * (endTime - startTime)) + startTime;
-        event.data.push(new Date(time));
-    }
+// September 4 1986 8:30 PM
+const humanizeDate = date => {
+    const monthNames = [
+        'Jan.', 'Feb.', 'March', 'Apr.', 'May', 'June',
+        'Jul.', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.',
+    ];
 
-    return event;
-}
-for (var i = 0; i < 10; i++) {
-    data.push(createEvent(names[i]));
-}
+    return `
+        ${monthNames[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}
+        ${date.getHours()}:${date.getMinutes()}
+    `;
+};
 
-var color = d3.scale.category20();
+const FONT_SIZE = 16; // in pixels
+const TOOLTIP_WIDTH = 30; // in rem
 
-// create chart function
-var eventDropsChart = d3.chart.eventDrops()
-    .eventLineColor(function (datum, index) {
-        return color(index);
-    })
-    .start(new Date(startTime))
-    .end(new Date(endTime));
+// we're gonna create a tooltip per drop to prevent from transition issues
+const showTooltip = commit => {
+    d3.select('body').selectAll('.tooltip').remove();
 
-// bind data with DOM
-var element = d3.select('#eventdrops-demo').datum(data);
+    const tooltip = d3.select('body')
+        .append('div')
+        .attr('class', 'tooltip')
+        .style('opacity', 0); // hide it by default
 
-// draw the chart
-eventDropsChart(element);
+    // show the tooltip with a small animation
+    tooltip.transition()
+        .duration(200)
+        .each('start', function start() {
+            d3.select(this).style('block');
+        })
+        .style('opacity', 1);
+
+    const rightOrLeftLimit = FONT_SIZE * TOOLTIP_WIDTH;
+    const direction = d3.event.pageX > rightOrLeftLimit ? 'right' : 'left';
+
+    const ARROW_MARGIN = 1.65;
+    const ARROW_WIDTH = FONT_SIZE;
+    const left = direction === 'right' ?
+        d3.event.pageX - rightOrLeftLimit :
+        d3.event.pageX - ARROW_MARGIN * FONT_SIZE - ARROW_WIDTH / 2;
+
+    tooltip.html(`
+            <div class="commit">
+                <img class="avatar" src="${gravatar(commit.author.email)}" alt="${commit.author.name}" title="${commit.author.name}" />
+                <div class="content">
+                    <h3 class="message">${commit.message}</h3>
+                    <p>
+                        <a href="https://www.github.com/${commit.author.name}" class="author">${commit.author.name}</a>
+                        on <span class="date">${humanizeDate(new Date(commit.date))}</span> -
+                        <a class="sha" href="${commit.sha}">${commit.sha.substr(0, 10)}</a>
+                    </p>
+                </div>
+            </div>
+        `)
+        .classed(direction, true)
+        .style({
+            left: `${left}px`,
+            top: (d3.event.pageY + 16) + 'px',
+        });
+};
+
+const hideTooltip = () => {
+    d3.select('.tooltip').transition()
+        .duration(200)
+        .each('end', function end() {
+            this.remove();
+        })
+        .style('opacity', 0);
+};
+
+const chart = d3.chart.eventDrops()
+    .start(new Date(new Date().getTime() - 3600000 * 24 * 365)) // one year ago
+    .end(new Date())
+    .eventLineColor((d, i) => colors(i))
+    .date(d => new Date(d.date))
+    .mouseover(showTooltip)
+    .mouseout(hideTooltip);
+
+const element = d3.select('#eventdrops-demo').datum(repositories.map(repository => ({
+    name: repository.name,
+    data: repository.commits,
+})));
+
+chart(element);

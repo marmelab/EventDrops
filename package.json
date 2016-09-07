@@ -4,9 +4,9 @@
   "description": "A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time.",
   "main": "dist/eventDrops.js",
   "files": [
-      "dist/",
-      "style.css",
-      "*.md"
+    "dist/",
+    "style.css",
+    "*.md"
   ],
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
     "d3": "3.5.3"
   },
   "devDependencies": {
+    "async": "^2.0.1",
     "babel-core": "6.4.5",
     "babel-eslint": "^4.1.8",
     "babel-loader": "6.2.1",
@@ -30,9 +31,10 @@
     "html-webpack-plugin": "1.6.1",
     "jasmine-core": "2.4.1",
     "jsdom": "1.0.0-pre.6",
+    "json-loader": "^0.5.4",
     "karma": "^0.13.19",
-    "karma-jasmine": "^0.3.6",
     "karma-firefox-launcher": "0.1.7",
+    "karma-jasmine": "^0.3.6",
     "karma-webpack": "^1.7.0",
     "mocha": "1.21.4",
     "mocha-traceur": "2.1.0",
@@ -70,7 +72,9 @@
     { "name": "Jonathan Petitcolas", "email": "petitcolas.jonathan@gmail.com" },
     { "name": "Mélodie Benmouffek" },
     { "name": "messense" },
-    { "name": "Robin Bressan" }
+    { "name": "Robin Bressan" },
+    { "name": "Kévin Maschtaler", "email": "kevin@marmelab.com" },
+    { "name": "deevus" }
   ],
   "license": "MIT"
 }

@@ -6,9 +6,7 @@ var path = require('path');
 
 module.exports = function (production) {
     var plugins = [
-        new ExtractTextPlugin('eventDrops.css', {
-            allChunks: true
-        }),
+        new ExtractTextPlugin('[name].css'),
     ];
 
     if (!production) {
