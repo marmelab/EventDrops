@@ -29,7 +29,6 @@
     "extract-text-webpack-plugin": "1.0.1",
     "html-loader": "0.3.0",
     "html-webpack-plugin": "1.6.1",
-    "isomorphic-fetch": "^2.2.1",
     "jasmine-core": "2.4.1",
     "jsdom": "1.0.0-pre.6",
     "json-loader": "^0.5.4",
@@ -64,37 +63,18 @@
   },
   "author": "Thiery Michel <thiery@marmelab.com>",
   "contributors": [
-    {
-      "name": "Chad Ramos"
-    },
-    {
-      "name": "Chulki Lee"
-    },
-    {
-      "name": "Emmanuel Quentin"
-    },
-    {
-      "name": "Francois Zaninotto"
-    },
-    {
-      "name": "Joan Yin"
-    },
-    {
-      "name": "Joel Schlosser"
-    },
-    {
-      "name": "Jonathan Petitcolas",
-      "email": "petitcolas.jonathan@gmail.com"
-    },
-    {
-      "name": "Mélodie Benmouffek"
-    },
-    {
-      "name": "messense"
-    },
-    {
-      "name": "Robin Bressan"
-    }
+    { "name": "Chad Ramos" },
+    { "name": "Chulki Lee" },
+    { "name": "Emmanuel Quentin" },
+    { "name": "Francois Zaninotto" },
+    { "name": "Joan Yin" },
+    { "name": "Joel Schlosser" },
+    { "name": "Jonathan Petitcolas", "email": "petitcolas.jonathan@gmail.com" },
+    { "name": "Mélodie Benmouffek" },
+    { "name": "messense" },
+    { "name": "Robin Bressan" },
+    { "name": "Kévin Maschtaler", "email": "kevin@marmelab.com" },
+    { "name": "deevus" }
   ],
   "license": "MIT"
 }
