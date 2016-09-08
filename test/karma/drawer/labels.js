@@ -8,6 +8,7 @@ describe('Labels drawer', () => {
 
     const config = {
         labelsWidth: 50,
+        date: d => d // From defaults
     };
 
     const domain = [new Date('2014-01-01'), new Date('2014-05-01')];
@@ -17,6 +18,7 @@ describe('Labels drawer', () => {
     let container;
 
     beforeEach(() => {
+        d3.select('body').html('');
         svg = d3.select('body').append('svg');
         svg.append('g').classed('extremum', true);
 
@@ -30,5 +32,24 @@ describe('Labels drawer', () => {
         scales.x.domain(domain);
         labels(container, scales, config)(data);
         expect(+svg.select('.label').attr('x')).toBe(50);
+    });
+
+    it('should show label count with simple data', () => {
+        const data = [{name: 'foo', data: [new Date('2014-02-01'), new Date('2014-03-01')]}];
+        scales.x.domain(domain);
+        labels(container, scales, config)(data);
+        expect(document.querySelector('.label').textContent).toBe('foo (2)');
+    });
+
+    it('should show label count with complex data', () => {
+        const config =  {
+            date: d => d.date
+        };
+        const complexData = [{ name: 'foo', data: [{ test: 'bar', date: new Date('2014-02-01') }, { test: 'baz', date: new Date('2014-03-01') }]}];
+
+        scales.x.domain(domain);
+        labels(container, scales, config)(complexData);
+
+        expect(document.querySelector('.label').textContent).toBe('foo (2)');
     });
 });
