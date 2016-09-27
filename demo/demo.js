@@ -85,7 +85,7 @@ function toAbsolute(relative) {
 }
 const pad = d3.format("02d");
 const oneYearAgo = new Date(new Date().getTime() - 3600000 * 24 * 365);
-const epoch = Date.UTC(oneYearAgo.getFullYear(), oneYearAgo.getMonth(), oneYearAgo.getDay());
+const epoch = Date.UTC(oneYearAgo.getFullYear(), oneYearAgo.getMonth(), oneYearAgo.getDay(), oneYearAgo.getHours(), oneYearAgo.getMinutes(), oneYearAgo.getSeconds());
 const relativeTime = absolute => {
 
     var delta = absolute - epoch;
@@ -117,7 +117,12 @@ const xAxis = (where, width) => {
 
 const getUtcDate = (date) => {
     const rawDate = new Date(date);
-    return Date.UTC(rawDate.getFullYear(), rawDate.getMonth(), rawDate.getDay());
+    return Date.UTC(rawDate.getFullYear(),
+        rawDate.getMonth(),
+        rawDate.getDay(),
+        rawDate.getHours(),
+        rawDate.getMinutes(),
+        rawDate.getSeconds());
 };
 
 const chart = d3.chart.eventDrops()
