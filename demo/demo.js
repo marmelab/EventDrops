@@ -93,19 +93,18 @@ const relativeTime = absolute => {
     if (!delta) return "0";
     var milliseconds = Math.abs(delta);
     return (delta < 0 ? "-" : "+")
-        + Math.floor(milliseconds / 6e4) + ":"
-        + pad(Math.floor(milliseconds % 6e4 / 1e3));
+        + Math.floor(milliseconds / (1000*60*60*24));
 };
 
-const xScale = (width) => {
+const initialBounds = [epoch, d3.time.year.utc.offset(epoch, +2)];
+
+const xScale = (width, timebounds = initialBounds) => {
     return d3.time.scale.utc()
-        .domain([epoch, d3.time.year.utc.offset(epoch, +2)])
+        .domain(timebounds)
         .range([0, width]);
 };
 
-const xAxis = (where, width) => {
-
-    const scale = xScale(width);
+const xAxis = (scale, where, width) => {
     return d3.svg.axis()
         .scale(scale)
         .orient(where)
@@ -123,10 +122,10 @@ const getUtcDate = (date) => {
 
 const chart = d3.chart.eventDrops()
     .eventLineColor((d, i) => colors(i))
-    .date(d => new Date(d.date))//getUtcDate(d.date))
+    .date(d => getUtcDate(d.date))
     .mouseover(showTooltip)
     .mouseout(hideTooltip)
-    //.customXAxis({xAxis, xScale});
+    .customXAxis({xAxis, xScale});
 
 const element = d3.select('#eventdrops-demo').datum(repositories.map(repository => ({
     name: repository.name,
