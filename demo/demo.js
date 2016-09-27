@@ -121,11 +121,14 @@ const getUtcDate = (date) => {
 };
 
 const chart = d3.chart.eventDrops()
+    .start(new Date(new Date().getTime() - 3600000 * 24 * 365)) // one year ago
+    .end(new Date())
     .eventLineColor((d, i) => colors(i))
-    .date(d => getUtcDate(d.date))
+    .date(d => new Date(d.date))
+    .eventLineColor((d, i) => colors(i))
     .mouseover(showTooltip)
     .mouseout(hideTooltip)
-    .customXAxis({xAxis, xScale});
+    //.customXAxis({xAxis, xScale});
 
 const element = d3.select('#eventdrops-demo').datum(repositories.map(repository => ({
     name: repository.name,
