@@ -93,7 +93,7 @@ const relativeTime = absolute => {
     if (!delta) return "0";
     var milliseconds = Math.abs(delta);
     return (delta < 0 ? "-" : "+")
-        + Math.floor(milliseconds / (1000*60*60*24));
+        + Math.floor(milliseconds / (1000*60*60*24)) + " days";
 };
 
 const initialBounds = [epoch, d3.time.year.utc.offset(epoch, +2)];
