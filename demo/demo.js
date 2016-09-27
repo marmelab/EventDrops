@@ -1,5 +1,6 @@
 const md5 = require('./md5');
 const repositories = require('json!./data.json');
+import moment from 'moment';
 
 const colors = d3.scale.category10();
 const gravatar = email => `https://www.gravatar.com/avatar/${md5(email.trim().toLowerCase())}`;
@@ -89,11 +90,11 @@ const epoch = Date.UTC(oneYearAgo.getFullYear(), oneYearAgo.getMonth(), oneYearA
 const relativeTime = absolute => {
 
     var delta = absolute - epoch;
-  if (!delta) return "0";
-  var milliseconds = Math.abs(delta);
-  return (delta < 0 ? "-" : "+")
-      + Math.floor(milliseconds / 6e4) + ":"
-      + pad(Math.floor(milliseconds % 6e4 / 1e3));
+    if (!delta) return "0";
+    var milliseconds = Math.abs(delta);
+    return (delta < 0 ? "-" : "+")
+        + Math.floor(milliseconds / 6e4) + ":"
+        + pad(Math.floor(milliseconds % 6e4 / 1e3));
 };
 
 const xScale = (width) => {
@@ -116,21 +117,16 @@ const xAxis = (where, width) => {
 };
 
 const getUtcDate = (date) => {
-    const rawDate = new Date(date);
-    return Date.UTC(rawDate.getFullYear(),
-        rawDate.getMonth(),
-        rawDate.getDay(),
-        rawDate.getHours(),
-        rawDate.getMinutes(),
-        rawDate.getSeconds());
+    const rawDate = moment(date);
+    return rawDate.valueOf();
 };
 
 const chart = d3.chart.eventDrops()
     .eventLineColor((d, i) => colors(i))
-    .date(d => getUtcDate(d.date))
+    .date(d => new Date(d.date))//getUtcDate(d.date))
     .mouseover(showTooltip)
     .mouseout(hideTooltip)
-    .customXAxis({xAxis, xScale});
+    //.customXAxis({xAxis, xScale});
 
 const element = d3.select('#eventdrops-demo').datum(repositories.map(repository => ({
     name: repository.name,
