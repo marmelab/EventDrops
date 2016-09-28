@@ -111,6 +111,7 @@ Configurable values:
   - `mouseout`: event handler to execute when mouse leave a drop. Default: `() => {}`.
   - `zoomable`: *true* by default. Enable zoom-in/zoom-out and dragging handlers.
   - `date`: function that returns the date from each data point when passing objects. Defaults to `d=>d`.
+  - `customXAxis`: object containing a function return a d3 scale and a d3 axis `{xAxis: function(scale: d3.scale, where: string, width: number), xScale(width: number, timebound: [Date|number, Date|number])}`. When using this, `start`,  `end` and `locale` config will be ignored
 
 ## Styling
 

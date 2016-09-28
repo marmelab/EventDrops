@@ -1,5 +1,6 @@
 const md5 = require('./md5');
 const repositories = require('json!./data.json');
+import moment from 'moment';
 
 const colors = d3.scale.category10();
 const gravatar = email => `https://www.gravatar.com/avatar/${md5(email.trim().toLowerCase())}`;
@@ -75,13 +76,59 @@ const hideTooltip = () => {
         .style('opacity', 0);
 };
 
+// Convert an absolute time to a time relative to the epoch.
+function toRelative(absolute) {
+  return new Date(absolute - epoch);
+}
+// Convert a time relative to the epoch to an absolute time.
+function toAbsolute(relative) {
+  return new Date(+relative + +epoch);
+}
+const pad = d3.format("02d");
+const oneYearAgo = new Date(new Date().getTime() - 3600000 * 24 * 365);
+const epoch = Date.UTC(oneYearAgo.getFullYear(), oneYearAgo.getMonth(), oneYearAgo.getDay(), oneYearAgo.getHours(), oneYearAgo.getMinutes(), oneYearAgo.getSeconds());
+const relativeTime = absolute => {
+
+    var delta = absolute - epoch;
+    if (!delta) return "0";
+    var milliseconds = Math.abs(delta);
+    return (delta < 0 ? "-" : "+")
+        + Math.floor(milliseconds / (1000*60*60*24)) + " days";
+};
+
+const initialBounds = [epoch, d3.time.year.utc.offset(epoch, +2)];
+
+const xScale = (width, timebounds = initialBounds) => {
+    return d3.time.scale.utc()
+        .domain(timebounds)
+        .range([0, width]);
+};
+
+const xAxis = (scale, where, width) => {
+    return d3.svg.axis()
+        .scale(scale)
+        .orient(where)
+        .tickFormat(relativeTime)
+        .tickValues(d3.time.scale.utc() // Compute ticks relative to epoch.
+            .domain(scale.domain().map(toRelative))
+            .ticks(5)
+            .map(toAbsolute));
+};
+
+const getUtcDate = (date) => {
+    const rawDate = moment(date);
+    return rawDate.valueOf();
+};
+
 const chart = d3.chart.eventDrops()
     .start(new Date(new Date().getTime() - 3600000 * 24 * 365)) // one year ago
     .end(new Date())
     .eventLineColor((d, i) => colors(i))
     .date(d => new Date(d.date))
+    .eventLineColor((d, i) => colors(i))
     .mouseover(showTooltip)
-    .mouseout(hideTooltip);
+    .mouseout(hideTooltip)
+    //.customXAxis({xAxis, xScale});
 
 const element = d3.select('#eventdrops-demo').datum(repositories.map(repository => ({
     name: repository.name,

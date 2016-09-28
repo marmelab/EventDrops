@@ -13,7 +13,8 @@
     "url": "https://github.com/marmelab/EventDrops"
   },
   "dependencies": {
-    "d3": "3.5.3"
+    "d3": "3.5.3",
+    "moment": "^2.15.1"
   },
   "devDependencies": {
     "async": "^2.0.1",
@@ -54,7 +55,7 @@
   "scripts": {
     "prepublish": "make build",
     "postpublish": "make deploy-demo",
-    "start": "webpack-dev-server --colors --devtool cheap-module-inline-source-map --host=0.0.0.0",
+    "start": "webpack-dev-server --colors --host=0.0.0.0",
     "karma": "karma start test/karma/karma.conf.js",
     "test": "npm run karma -- --single-run",
     "test-watch": "npm run karma",
@@ -63,18 +64,44 @@
   },
   "author": "Thiery Michel <thiery@marmelab.com>",
   "contributors": [
-    { "name": "Chad Ramos" },
-    { "name": "Chulki Lee" },
-    { "name": "Emmanuel Quentin" },
-    { "name": "Francois Zaninotto" },
-    { "name": "Joan Yin" },
-    { "name": "Joel Schlosser" },
-    { "name": "Jonathan Petitcolas", "email": "petitcolas.jonathan@gmail.com" },
-    { "name": "Mélodie Benmouffek" },
-    { "name": "messense" },
-    { "name": "Robin Bressan" },
-    { "name": "Kévin Maschtaler", "email": "kevin@marmelab.com" },
-    { "name": "deevus" }
+    {
+      "name": "Chad Ramos"
+    },
+    {
+      "name": "Chulki Lee"
+    },
+    {
+      "name": "Emmanuel Quentin"
+    },
+    {
+      "name": "Francois Zaninotto"
+    },
+    {
+      "name": "Joan Yin"
+    },
+    {
+      "name": "Joel Schlosser"
+    },
+    {
+      "name": "Jonathan Petitcolas",
+      "email": "petitcolas.jonathan@gmail.com"
+    },
+    {
+      "name": "Mélodie Benmouffek"
+    },
+    {
+      "name": "messense"
+    },
+    {
+      "name": "Robin Bressan"
+    },
+    {
+      "name": "Kévin Maschtaler",
+      "email": "kevin@marmelab.com"
+    },
+    {
+      "name": "deevus"
+    }
   ],
   "license": "MIT"
 }
