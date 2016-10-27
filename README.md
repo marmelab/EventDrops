@@ -118,8 +118,7 @@ You can style all elements of the chart in CSS. Check the source to see the avai
 
 ## Programmatic Zoom
 
-A handle on the d3.behaviour.zoom object used to control the zoom level of
-the chart can be obtained like so:
+A handle on the `d3.behaviour.zoom` object used to control the zoom level of the chart can be obtained like so:
 
 ```javascript
 var eventDropsChart = d3.chart.eventDrops();
@@ -128,8 +127,7 @@ eventDropsChart.call(eventDropsChart);
 var zoom = element[0][0].zoom;
 ```
 
-The example here shows how to manipulate it:
-http://bl.ocks.org/mbostock/7ec977c95910dd026812
+The example here shows how to manipulate it: http://bl.ocks.org/mbostock/7ec977c95910dd026812
 
 ## Extending / Hacking
 
