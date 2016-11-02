@@ -17,31 +17,32 @@
   },
   "devDependencies": {
     "async": "^2.0.1",
-    "babel-core": "6.4.5",
-    "babel-eslint": "^4.1.8",
-    "babel-loader": "6.2.1",
-    "babel-preset-es2015": "6.3.13",
-    "babel-preset-stage-0": "^6.3.13",
+    "babel-core": "6.18.0",
+    "babel-eslint": "7.1.0",
+    "babel-loader": "6.2.7",
+    "babel-preset-es2015": "6.18.0",
+    "babel-preset-stage-0": "6.16.0",
     "configurable.js": "0.1.0",
-    "css-loader": "0.19.0",
-    "eslint": "1.6.0",
-    "eslint-config-airbnb": "0.1.0",
+    "css-loader": "0.25.0",
+    "eslint": "3.9.1",
+    "eslint-config-airbnb-base": "9.0.0",
+    "eslint-plugin-import": "2.0.1",
     "extract-text-webpack-plugin": "1.0.1",
-    "html-loader": "0.3.0",
-    "html-webpack-plugin": "1.6.1",
-    "jasmine-core": "2.4.1",
-    "jsdom": "1.0.0-pre.6",
+    "html-loader": "0.4.4",
+    "html-webpack-plugin": "2.24.1",
+    "jasmine-core": "2.5.2",
+    "jsdom": "9.8.3",
     "json-loader": "^0.5.4",
-    "karma": "^0.13.19",
-    "karma-firefox-launcher": "0.1.7",
-    "karma-jasmine": "^0.3.6",
-    "karma-webpack": "^1.7.0",
-    "mocha": "1.21.4",
+    "karma": "1.3.0",
+    "karma-firefox-launcher": "1.0.0",
+    "karma-jasmine": "1.0.2",
+    "karma-webpack": "1.8.0",
+    "mocha": "3.1.2",
     "mocha-traceur": "2.1.0",
     "scss-loader": "0.0.1",
-    "style-loader": "0.12.4",
-    "webpack": "1.12.2",
-    "webpack-dev-server": "1.11.0"
+    "style-loader": "0.13.1",
+    "webpack": "1.13.3",
+    "webpack-dev-server": "1.16.2"
   },
   "bugs": {
     "url": "https://github.com/marmelab/EventDrops/issues"
@@ -63,18 +64,44 @@
   },
   "author": "Thiery Michel <thiery@marmelab.com>",
   "contributors": [
-    { "name": "Chad Ramos" },
-    { "name": "Chulki Lee" },
-    { "name": "Emmanuel Quentin" },
-    { "name": "Francois Zaninotto" },
-    { "name": "Joan Yin" },
-    { "name": "Joel Schlosser" },
-    { "name": "Jonathan Petitcolas", "email": "petitcolas.jonathan@gmail.com" },
-    { "name": "Mélodie Benmouffek" },
-    { "name": "messense" },
-    { "name": "Robin Bressan" },
-    { "name": "Kévin Maschtaler", "email": "kevin@marmelab.com" },
-    { "name": "deevus" }
+    {
+      "name": "Chad Ramos"
+    },
+    {
+      "name": "Chulki Lee"
+    },
+    {
+      "name": "Emmanuel Quentin"
+    },
+    {
+      "name": "Francois Zaninotto"
+    },
+    {
+      "name": "Joan Yin"
+    },
+    {
+      "name": "Joel Schlosser"
+    },
+    {
+      "name": "Jonathan Petitcolas",
+      "email": "petitcolas.jonathan@gmail.com"
+    },
+    {
+      "name": "Mélodie Benmouffek"
+    },
+    {
+      "name": "messense"
+    },
+    {
+      "name": "Robin Bressan"
+    },
+    {
+      "name": "Kévin Maschtaler",
+      "email": "kevin@marmelab.com"
+    },
+    {
+      "name": "deevus"
+    }
   ],
   "license": "MIT"
 }
