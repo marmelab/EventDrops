@@ -13,7 +13,7 @@
     "url": "https://github.com/marmelab/EventDrops"
   },
   "dependencies": {
-      "d3": "3.5.17"
+    "d3": "3.5.17"
   },
   "devDependencies": {
     "async": "^2.0.1",
@@ -24,6 +24,7 @@
     "babel-preset-stage-0": "6.16.0",
     "configurable.js": "0.1.0",
     "css-loader": "0.25.0",
+    "d3-webpack-loader": "^0.1.1",
     "eslint": "3.9.1",
     "eslint-config-airbnb-base": "9.0.0",
     "eslint-plugin-import": "2.0.1",
