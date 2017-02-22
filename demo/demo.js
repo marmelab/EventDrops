@@ -1,7 +1,10 @@
 const md5 = require('./md5');
 const repositories = require('json!./data.json');
+import * as d3 from  'd3-webpack-loader!';
 
-const colors = d3.scale.category10();
+import eventDrops from '../lib/eventDrops';
+
+const colors = d3.schemeCategory10;
 const gravatar = email => `https://www.gravatar.com/avatar/${md5(email.trim().toLowerCase())}`;
 
 // September 4 1986 8:30 PM
@@ -75,7 +78,7 @@ const hideTooltip = () => {
         .style('opacity', 0);
 };
 
-const chart = d3.chart.eventDrops()
+const chart = eventDrops()
     .start(new Date(new Date().getTime() - 3600000 * 24 * 365)) // one year ago
     .end(new Date())
     .eventLineColor((d, i) => colors(i))
