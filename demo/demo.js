@@ -1,3 +1,5 @@
+const d3 = require('d3');
+const eventDrops = require('../lib/eventDrops');
 const md5 = require('./md5');
 const repositories = require('json!./data.json');
 
@@ -75,7 +77,7 @@ const hideTooltip = () => {
         .style('opacity', 0);
 };
 
-const chart = d3.chart.eventDrops()
+const chart = eventDrops()
     .start(new Date(new Date().getTime() - 3600000 * 24 * 365)) // one year ago
     .end(new Date())
     .eventLineColor((d, i) => colors(i))
