@@ -1,13 +1,12 @@
 var path = require('path');
 
 module.exports = function (production) {
+    
     var entries = {
-        eventDrops: [
-            path.join(__dirname, '../lib/eventDrops'),
-            path.join(__dirname, '../style.css'),
+        eventDrops : [
+                path.join(__dirname, '../style.css')
         ]
     };
-
     if (!production) {
         /* D3 is defined as an external, but we need it for the demo. So, let's
         include it using the full path to trick Webpack. */
@@ -18,7 +17,9 @@ module.exports = function (production) {
         ];
 
         entries.eventDrops.push('webpack-dev-server/client?http://localhost:8080');
+    }else{
+        entries.eventDrops.push(path.join(__dirname, '../lib/eventDrops'));
     }
-
+    console.log(entries);
     return entries;
 };

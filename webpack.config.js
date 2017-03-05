@@ -15,9 +15,9 @@ module.exports = {
             { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
             { test: /\.css$/, loader: ExtractTextPlugin.extract('css') },
         ],
-    },/*,
+    },
     externals: {
         d3: 'd3',
-    },*/
+    },
     plugins: require('./webpack/plugins')(PRODUCTION),
 };
