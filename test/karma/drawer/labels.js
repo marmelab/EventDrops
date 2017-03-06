@@ -2,8 +2,8 @@ import labels from '../../../lib/drawer/labels';
 
 describe('Labels drawer', () => {
     const scales = {
-        x: d3.time.scale(),
-        y: d3.scale.ordinal(),
+        x: d3.scaleTime(),
+        y: d3.scaleOrdinal()
     };
 
     const config = {

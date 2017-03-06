@@ -7,11 +7,11 @@ describe('Delimiter drawer', () => {
 
     beforeEach(() => {
         scales = {
-            x: d3.time.scale(),
-            y: d3.scale.ordinal(),
+            x: d3.scaleTime(),
+            y: d3.scaleOrdinal()
         };
 
-        dateFormat = d3.time.format('%d %B %Y');
+        dateFormat = d3.timeFormat('%d %B %Y');
 
         svg = d3.select('body').append('svg');
         svg.append('g').classed('extremum', true);
@@ -19,13 +19,14 @@ describe('Delimiter drawer', () => {
 
     it('should replace all previously existing minimum or maximum', () => {
         ['maximum', 'minimum'].forEach(extremum => {
+            
             svg.select('.extremum')
                 .append('text')
                 .classed(extremum, true);
 
             delimiters(svg, scales, 0, dateFormat);
-
-            expect(svg.selectAll(`.${extremum}`)[0].length).toBe(1, `for ${extremum}`);
+            
+            expect(svg.selectAll(`.${extremum}`).size()).toBe(1, `for ${extremum}`);
         });
     });
 

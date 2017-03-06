@@ -11,7 +11,7 @@ module.exports = function (config) {
         frameworks: ['jasmine'],
         browsers: ['Firefox'],
         files: [
-            './node_modules/d3/d3.js',
+            './node_modules/d3/build/d3.js',
             './test/karma/*',
             './test/karma/**/*.js'
         ],

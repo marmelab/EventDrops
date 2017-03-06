@@ -1,11 +1,12 @@
-require('../../lib/eventDrops');
+import eventDrops from '../../lib/eventDrops';
 
-describe('d3.chart.eventDrops', () => {
+describe('eventDrops', () => {
     it('should append a SVG element to given selection', () => {
+        
         const div = document.createElement('div');
         const data = [{ name: 'foo', data: [] }];
 
-        const chart = d3.chart.eventDrops();
+        const chart = eventDrops();
         d3.select(div).datum(data).call(chart);
 
         expect(div.querySelectorAll('svg.event-drops-chart').length).toBe(1);
@@ -15,7 +16,7 @@ describe('d3.chart.eventDrops', () => {
         const div = document.createElement('div');
         const data = [{ name: 'foo', data: [] }];
 
-        const chart = d3.chart.eventDrops();
+        const chart = eventDrops();
         d3.select(div).datum(data).call(chart);
         d3.select(div).datum(data).call(chart);
 
@@ -27,7 +28,7 @@ describe('d3.chart.eventDrops', () => {
             const div = document.createElement('div');
             const data = [{ name: 'foo', data: [] }];
 
-            const chart = d3.chart.eventDrops().start(new Date('2010-01-25'));
+            const chart = eventDrops().start(new Date('2010-01-25'));
             d3.select(div).datum(data).call(chart);
 
             expect(div.querySelector('.extremum .minimum').textContent).toBe('25 January 2010');
@@ -42,7 +43,7 @@ describe('d3.chart.eventDrops', () => {
             { name: 'quz', data: [] },
         ];
 
-        const chart = d3.chart.eventDrops().start(new Date('2010-01-25'));
+        const chart = eventDrops().start(new Date('2010-01-25'));
         d3.select(div).datum(data).call(chart);
 
         expect(div.querySelectorAll('.drop-line').length).toBe(3);
@@ -56,7 +57,7 @@ describe('d3.chart.eventDrops', () => {
             { name: 'quz', data: [new Date('2011-01-04'), new Date('2012-08-09')] },
         ];
 
-        const chart = d3.chart.eventDrops().start(new Date('2010-01-25'));
+        const chart = eventDrops().start(new Date('2010-01-25'));
         d3.select(div).datum(data).call(chart);
 
         expect(div.querySelectorAll('.drop').length).toBe(3);
@@ -71,7 +72,7 @@ describe('d3.chart.eventDrops', () => {
 
             const div = document.createElement('div');
 
-            const chart = d3.chart.eventDrops().zoomable(zoomable);
+            const chart = eventDrops().zoomable(zoomable);
             d3.select(div).datum(data).call(chart);
 
             expect(zoom.default.calls.any()).toBe(expectedZoomableBehavior);
@@ -89,7 +90,7 @@ describe('d3.chart.eventDrops', () => {
             { name: 'quz', data: [{date: new Date('2011-01-04'), foo: 'bar2'},
                                 {date: new Date('2012-08-09'), foo: 'bar3'}]}];
 
-        const chart = d3.chart.eventDrops().date(d => d.date).start(new Date('2010-01-25'));
+        const chart = eventDrops().date(d => d.date).start(new Date('2010-01-25'));
         d3.select(div).datum(data).call(chart);
 
         expect(div.querySelectorAll('.drop').length).toBe(3);
@@ -104,7 +105,7 @@ describe('d3.chart.eventDrops', () => {
             ],
         }];
 
-        const chart = d3.chart.eventDrops()
+        const chart = eventDrops()
             .labelsWidth(50)
             .labelsRightMargin(10);
 
