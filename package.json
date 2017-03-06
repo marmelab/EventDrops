@@ -13,7 +13,8 @@
     "url": "https://github.com/marmelab/EventDrops"
   },
   "dependencies": {
-    "d3": "^4.7.0"
+    "d3": "^4.7.0",
+    "debounce": "^1.0.0"
   },
   "devDependencies": {
     "async": "^2.0.1",
