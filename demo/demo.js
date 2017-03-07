@@ -1,6 +1,6 @@
 const md5 = require('./md5');
 const repositories = require('json!./data.json');
-import * as  d3 from  'd3/build/d3.js';
+import * as  d3 from  'd3/build/d3';
 
 import eventDrops from '../lib/eventDrops';
 
@@ -24,18 +24,14 @@ const FONT_SIZE = 16; // in pixels
 const TOOLTIP_WIDTH = 30; // in rem
 
 // we're gonna create a tooltip per drop to prevent from transition issues
-const showTooltip = (commit,index,array) => {
+const showTooltip = commit => {
     d3.select('body').selectAll('.tooltip').remove();
-
     
-
     const tooltip = d3.select('body')
         .append('div')
         .attr('class', 'tooltip')
         .style('opacity', 0) // hide it by default
         
-     
-
     const t = d3.transition()
         .duration(750)
         .ease(d3.easeLinear)
@@ -59,7 +55,7 @@ const showTooltip = (commit,index,array) => {
         
     tooltip.html(`
             <div class="commit">
-                <!--<img class="avatar" src="${gravatar(commit.author.email)}" alt="${commit.author.name}" title="${commit.author.name}" />-->
+                <img class="avatar" src="${gravatar(commit.author.email)}" alt="${commit.author.name}" title="${commit.author.name}" />
                 <div class="content">
                     <h3 class="message">${commit.message}</h3>
                     <p>
@@ -77,12 +73,10 @@ const showTooltip = (commit,index,array) => {
 
 const hideTooltip = () => {
      const t = d3.transition()
-    .duration(1000)
+                 .duration(1000);
     
     d3.select('.tooltip').transition(t)
-        .on('end', function end() {
-            this.remove();
-        })
+        .on('end',this.remove)
         .style('opacity', 0);
 };
 

@@ -8,18 +8,16 @@ module.exports = function (production) {
         ]
     };
     if (!production) {
-        /* D3 is defined as an external, but we need it for the demo. So, let's
-        include it using the full path to trick Webpack. */
-        //entries['demo-d3'] = path.join(__dirname, '../node_modules/d3/build/d3.min.js');
         entries.demo = [
             path.join(__dirname, '../demo/demo.js'),
             path.join(__dirname, '../demo/demo.css'),
         ];
 
         entries.eventDrops.push('webpack-dev-server/client?http://localhost:8080');
-    }else{
+    }
+    else{
         entries.eventDrops.push(path.join(__dirname, '../lib/eventDrops'));
     }
-    console.log(entries);
+    
     return entries;
 };
