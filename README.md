@@ -5,6 +5,9 @@ A time based / event series interactive visualization using d3.js. Use drag and 
 
 ![EventDrops example](https://cloud.githubusercontent.com/assets/688373/18343222/c0a897b2-75b2-11e6-96df-e72e4b02335a.gif)
 
+
+Event Drops will support d3 version 4.x 
+
 ## Installation
 
 You can use `npm` to install event-drops <sup>1</sup>
