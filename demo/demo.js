@@ -30,11 +30,11 @@ const showTooltip = commit => {
     const tooltip = d3.select('body')
         .append('div')
         .attr('class', 'tooltip')
-        .style('opacity', 0) // hide it by default
+        .style('opacity', 0); // hide it by default
         
     const t = d3.transition()
         .duration(750)
-        .ease(d3.easeLinear)
+        .ease(d3.easeLinear);
         
     tooltip.transition(t)
         .on('start',()=> {
