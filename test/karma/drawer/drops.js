@@ -1,3 +1,5 @@
+import eventDrops from '../../../lib/eventDrops';
+
 describe('Drops drawer', () => {
     let wrapper;
     beforeEach(() => {
@@ -10,7 +12,7 @@ describe('Drops drawer', () => {
         const data = [{ name: 'foo', data: [new Date('2014-04-03')] }];
 
         const clickSpy = jasmine.createSpy();
-        const chart = d3.chart.eventDrops().click(clickSpy);
+        const chart = eventDrops().click(clickSpy);
         d3.select(wrapper).datum(data).call(chart);
 
         const drop = d3.select('.drop');
@@ -26,7 +28,7 @@ describe('Drops drawer', () => {
         const data = [{ name: 'foo', data: [new Date('2014-04-03')] }];
 
         const mouseoverSpy = jasmine.createSpy();
-        const chart = d3.chart.eventDrops().mouseover(mouseoverSpy);
+        const chart = eventDrops().mouseover(mouseoverSpy);
         d3.select(wrapper).datum(data).call(chart);
 
         const drop = d3.select('.drop');
@@ -42,7 +44,7 @@ describe('Drops drawer', () => {
         const data = [{ name: 'foo', data: [new Date('2014-04-03')] }];
 
         const mouseoutSpy = jasmine.createSpy();
-        const chart = d3.chart.eventDrops().mouseout(mouseoutSpy);
+        const chart = eventDrops().mouseout(mouseoutSpy);
         d3.select(wrapper).datum(data).call(chart);
 
         const drop = d3.select('.drop');
@@ -57,7 +59,7 @@ describe('Drops drawer', () => {
     it('should set `cx` attribute to given scale `x`', () => {
         const data = [{ name: 'foo', data: [new Date('2014-04-03')] }];
 
-        const chart = d3.chart.eventDrops()
+        const chart = eventDrops()
             .start(new Date('2014-04-02'))
             .end(new Date('2014-04-04'));
 
