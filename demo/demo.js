@@ -38,8 +38,7 @@ const TOOLTIP_WIDTH = 30; // in rem
 const showTooltip = commit => {
     d3.select('body').selectAll('.tooltip').remove();
 
-    const tooltip = d3
-        .select('body')
+    const tooltip = d3.select('body')
         .append('div')
         .attr('class', 'tooltip')
         .style('opacity', 0); // hide it by default
@@ -59,38 +58,36 @@ const showTooltip = commit => {
 
     const ARROW_MARGIN = 1.65;
     const ARROW_WIDTH = FONT_SIZE;
-    const left = direction === 'right'
-        ? d3.event.pageX - rightOrLeftLimit
-        : d3.event.pageX - ARROW_MARGIN * FONT_SIZE - ARROW_WIDTH / 2;
+    const left = direction === 'right' ?
+        d3.event.pageX - rightOrLeftLimit :
+        d3.event.pageX - ARROW_MARGIN * FONT_SIZE - ARROW_WIDTH / 2;
 
-    tooltip.html(
-        `
-            <div class="commit">
-                <img class="avatar" src="${gravatar(commit.author.email)}" alt="${commit.author.name}" title="${commit.author.name}" />
-                <div class="content">
-                    <h3 class="message">${commit.message}</h3>
-                    <p>
-                        <a href="https://www.github.com/${commit.author.name}" class="author">${commit.author.name}</a>
-                        on <span class="date">${humanizeDate(new Date(commit.date))}</span> -
-                        <a class="sha" href="${commit.sha}">${commit.sha.substr(0, 10)}</a>
-                    </p>
-                </div>
+    tooltip.html(`
+        <div class="commit">
+            <img class="avatar" src="${gravatar(commit.author.email)}" alt="${commit.author.name}" title="${commit.author.name}" />
+            <div class="content">
+                <h3 class="message">${commit.message}</h3>
+                <p>
+                    <a href="https://www.github.com/${commit.author.name}" class="author">${commit.author.name}</a>
+                    on <span class="date">${humanizeDate(new Date(commit.date))}</span> -
+                    <a class="sha" href="${commit.sha}">${commit.sha.substr(0, 10)}</a>
+                </p>
             </div>
-        `
-    );
-    tooltip
-        .style('left', `${left}px`)
-        .style('top', d3.event.pageY + 16 + 'px')
+        </div>
+    `);
+
+    tooltip.style('left', `${left}px`)
+        .style('top', (d3.event.pageY + 16) + 'px')
         .classed(direction, true);
 };
 
 const hideTooltip = () => {
     const t = d3.transition().duration(1000);
 
-    d3
-        .select('.tooltip')
-        .transition(t)
-        .on('end', this.remove)
+    d3.select('.tooltip').transition(t)
+        .on('end', function end() {
+            this.remove();
+        })
         .style('opacity', 0);
 };
 
