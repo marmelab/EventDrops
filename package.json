@@ -58,8 +58,6 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "prepublish": "make build",
-    "postpublish": "make deploy-demo",
     "start": "webpack-dev-server --colors --devtool cheap-module-inline-source-map --host=0.0.0.0",
     "karma": "karma start test/karma/karma.conf.js",
     "test": "npm run karma -- --single-run",

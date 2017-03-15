@@ -9,6 +9,10 @@ run: ## Run the webpack-dev-server
 build: ## Webpack build the project
 	./node_modules/webpack/bin/webpack.js -p --optimize-minimize --optimize-occurence-order --optimize-dedupe --progress --devtool source-map
 
+publish: build ## Publish current version of EventDrops
+	npm publish
+	$(MAKE) deploy-demo
+
 deploy-demo: build ## Deploy the demo at http://marmelab.com/EventDrops/
 	mkdir -p demo/dist/
 	cp ./dist/* demo/dist/
