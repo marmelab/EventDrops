@@ -32,14 +32,17 @@
     "extract-text-webpack-plugin": "1.0.1",
     "html-loader": "0.4.4",
     "html-webpack-plugin": "2.24.1",
+    "husky": "^0.13.2",
     "jasmine-core": "2.5.2",
     "json-loader": "^0.5.4",
     "karma": "1.3.0",
     "karma-firefox-launcher": "1.0.0",
     "karma-jasmine": "1.0.2",
     "karma-webpack": "1.8.0",
+    "lint-staged": "^3.4.0",
     "mocha": "3.1.2",
     "mocha-traceur": "2.1.0",
+    "prettier": "^0.22.0",
     "scss-loader": "0.0.1",
     "style-loader": "0.13.1",
     "webpack": "1.13.3",
@@ -54,6 +57,7 @@
     "test": "test"
   },
   "scripts": {
+    "precommit": "lint-staged",
     "prepublish": "make build",
     "postpublish": "make deploy-demo",
     "start": "webpack-dev-server --colors --devtool cheap-module-inline-source-map --host=0.0.0.0",
@@ -62,6 +66,12 @@
     "test-watch": "npm run karma",
     "run": "npm start",
     "build": "webpack -p --optimize-minimize --optimize-occurence-order --optimize-dedupe --progress --devtool source-map"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --tab-width 4 --single-quote --trailing-comma es5",
+      "git add"
+    ]
   },
   "author": "Thiery Michel <thiery@marmelab.com>",
   "contributors": [
