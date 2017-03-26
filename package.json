@@ -51,6 +51,7 @@
   "bugs": {
     "url": "https://github.com/marmelab/EventDrops/issues"
   },
+  "typings":"typings.d.ts",
   "homepage": "https://github.com/marmelab/EventDrops",
   "directories": {
     "example": "example",

@@ -5,6 +5,7 @@ import eventDrops from '../src';
 const md5 = require('./md5');
 const repositories = require('./data.json');
 
+
 const colors = d3.schemeCategory10;
 const gravatar = email =>
     `https://www.gravatar.com/avatar/${md5(email.trim().toLowerCase())}`;
