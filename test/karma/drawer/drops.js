@@ -1,5 +1,6 @@
 import eventDrops from '../../../src';
 
+
 describe('Drops drawer', () => {
     let wrapper;
     beforeEach(() => {
