@@ -6,7 +6,8 @@
   "files": [
     "dist/",
     "style.css",
-    "*.md"
+    "*.md",
+    "lib"
   ],
   "repository": {
     "type": "git",
