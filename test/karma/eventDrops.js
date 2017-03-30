@@ -83,6 +83,37 @@ describe('eventDrops', () => {
         test(true, true);
     });
 
+    it('should call configuration.date function in onZoom', () => {
+        const zoom = require('../../lib/zoom');
+        const data = [ { name: 'bar', data: [{time: 1}, {time: 2}] }];
+        const configuration = {
+            date: () => new Date(),
+            zoomable: false
+        };
+        spyOn(configuration, 'date').and.callThrough();
+
+        // Initialize eventDrops to prepare graph elements for us.
+        const element = d3.select(document.createElement('div'))
+            .datum(data);
+        eventDrops(configuration)(element);
+
+        // Reset calls counter on `configuration.date` function after eventDrops initialization.
+        configuration.date.calls.reset();
+
+        // Manually initialize zoom function that is returned by `d3.zoom()`.
+        const zoomFunc = zoom.default(element, undefined, {x: d3.scaleTime()}, configuration, data);
+
+        // Make `requestAnimationFrame` call its callback immediately in this test.
+        spyOn(window, 'requestAnimationFrame').and.callFake((callback) => callback());
+
+        // Trigger zoom event on the element.
+        element.call(zoomFunc)
+            .call(zoomFunc.transform, d3.zoomIdentity);
+
+        expect(configuration.date.calls.count()).toEqual(data[0].data.length);
+        expect(configuration.date.calls.allArgs().map((arg) => arg[0])).toEqual(data[0].data);
+    });
+
     it('should be possible to supply objects as data', () => {
         const div = document.createElement('div');
         const data = [
