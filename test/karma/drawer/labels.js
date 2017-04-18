@@ -3,12 +3,13 @@ import labels from '../../../lib/drawer/labels';
 describe('Labels drawer', () => {
     const scales = {
         x: d3.scaleTime(),
-        y: d3.scaleOrdinal()
+        y: d3.scaleOrdinal(),
     };
 
     const config = {
         labelsWidth: 50,
-        date: d => d // From defaults
+        date: d => d, // From defaults,
+        displayedData: () => {},
     };
 
     const domain = [new Date('2014-01-01'), new Date('2014-05-01')];
@@ -35,17 +36,31 @@ describe('Labels drawer', () => {
     });
 
     it('should show label count with simple data', () => {
-        const data = [{name: 'foo', data: [new Date('2014-02-01'), new Date('2014-03-01')]}];
+        const data = [
+            {
+                name: 'foo',
+                data: [new Date('2014-02-01'), new Date('2014-03-01')],
+            },
+        ];
         scales.x.domain(domain);
         labels(container, scales, config)(data);
         expect(document.querySelector('.label').textContent).toBe('foo (2)');
     });
 
     it('should show label count with complex data', () => {
-        const config =  {
-            date: d => d.date
+        const config = {
+            date: d => d.date,
+            displayedData: () => {},
         };
-        const complexData = [{ name: 'foo', data: [{ test: 'bar', date: new Date('2014-02-01') }, { test: 'baz', date: new Date('2014-03-01') }]}];
+        const complexData = [
+            {
+                name: 'foo',
+                data: [
+                    { test: 'bar', date: new Date('2014-02-01') },
+                    { test: 'baz', date: new Date('2014-03-01') },
+                ],
+            },
+        ];
 
         scales.x.domain(domain);
         labels(container, scales, config)(complexData);
