@@ -57,11 +57,11 @@ function eventDrops(config = {}) {
                 );
 
             scales = getScales(dimensions, finalConfiguration, data);
-            const draw = drawer(svg, dimensions, scales, finalConfiguration);
-            draw(data);
+            this.draw = drawer(svg, dimensions, scales, finalConfiguration);
+            this.draw(data);
 
             if (finalConfiguration.zoomable) {
-                zoom(svg, dimensions, scales, finalConfiguration);
+                this.zoom = zoom(svg, dimensions, scales, finalConfiguration, data);
             }
         });
 

@@ -62,6 +62,16 @@ describe('eventDrops', () => {
         expect(div.querySelectorAll('.drop').length).toBe(3);
     });
 
+    it('should have a programmatic hooks', () => {
+        const div = document.createElement('div');
+        const data = [{ name: 'foo', data: [] }];
+
+        const chart = eventDrops({ zoomable: true });
+        d3.select(div).datum(data).call(chart);
+        expect(div.draw).toBeDefined();
+        expect(div.zoom).toBeDefined();
+    });
+
     it('should enable zoom only if `zoomable` configuration property is true', () => {
         const zoom = require('../../src/zoom');
         const data = [ { name: 'foo', data: [new Date()] }];
