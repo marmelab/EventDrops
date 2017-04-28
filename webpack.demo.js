@@ -3,13 +3,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        d3: 'd3',
-        eventDrops: './src',
         demo: ['./demo/demo.css', './demo/demo.js'],
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'demo/dist'),
+        library: 'eventDrops',
+        libraryTarget: 'umd',
+    },
+    externals: {
+        d3: 'd3',
     },
     module: {
         rules: [
