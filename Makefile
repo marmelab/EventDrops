@@ -13,14 +13,12 @@ publish: build ## Publish current version of EventDrops
 	npm publish
 	$(MAKE) deploy-demo
 
-deploy-demo: build ## Deploy the demo at http://marmelab.com/EventDrops/
-	mkdir -p demo/dist/
-	cp ./dist/* demo/dist/
-	cp ./node_modules/d3/d3.min.js demo/dist/
-	git add demo/
+deploy-demo: ## Deploy the demo at http://marmelab.com/EventDrops/
+	./node_modules/webpack/bin/webpack.js --config webpack.demo.js -p --progress --devtool source-map
+	git add -f demo/
 	git commit -m "Update GitHub pages"
 	git push origin :gh-pages
-	git subtree push --prefix demo origin gh-pages
+	git subtree push --prefix demo/dist origin gh-pages
 	git reset --soft HEAD~1 # undo the deployment commit
 	git reset HEAD demo
 	rm -Rf demo/dist/
