@@ -16,7 +16,7 @@ publish: build ## Publish current version of EventDrops
 deploy-demo: build ## Deploy the demo at http://marmelab.com/EventDrops/
 	mkdir -p demo/dist/
 	cp ./dist/* demo/dist/
-	cp ./node_modules/d3/d3.min.js demo/dist/
+	cp ./node_modules/d3/build/d3.min.js demo/dist/
 	git add demo/
 	git commit -m "Update GitHub pages"
 	git push origin :gh-pages
