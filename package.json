@@ -40,7 +40,7 @@
     "karma-firefox-launcher": "1.0.0",
     "karma-jasmine": "1.0.2",
     "karma-webpack": "1.8.0",
-    "lint-staged": "^3.4.0",
+    "lint-staged": "3.4.0",
     "mocha": "3.1.2",
     "mocha-traceur": "2.1.0",
     "prettier": "^0.22.0",
