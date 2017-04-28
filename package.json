@@ -66,7 +66,7 @@
     "build": "webpack -p --optimize-minimize --optimize-occurence-order --optimize-dedupe --progress --devtool source-map"
   },
   "lint-staged": {
-    "*.js": [
+    "src/*.js": [
       "prettier --write --tab-width 4 --single-quote --trailing-comma es5",
       "git add"
     ]

@@ -14,7 +14,7 @@ publish: build ## Publish current version of EventDrops
 	$(MAKE) deploy-demo
 
 deploy-demo: ## Deploy the demo at http://marmelab.com/EventDrops/
-	./node_modules/webpack/bin/webpack.js --config webpack.demo.js -p --progress --devtool source-map
+	./node_modules/webpack/bin/webpack.js --config webpack.demo.js -p --progress
 	git add -f demo/
 	git commit -m "Update GitHub pages"
 	git push origin :gh-pages
