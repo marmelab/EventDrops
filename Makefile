@@ -18,7 +18,7 @@ deploy-demo: build ## Deploy the demo at http://marmelab.com/EventDrops/
 	cp ./dist/* demo/dist/
 	cp ./node_modules/d3/build/d3.min.js demo/dist/
 	git add demo/
-	git commit -m "Update GitHub pages"
+	git commit -m "Update GitHub pages"	|| true
 	git push origin :gh-pages
 	git subtree push --prefix demo origin gh-pages
 	git reset --soft HEAD~1 # undo the deployment commit
