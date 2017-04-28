@@ -1,23 +1,39 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const PRODUCTION = process.argv[2] === '-p';
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: require('./webpack/entries')(PRODUCTION),
+    entry: {
+        d3: 'd3',
+        eventDrops: './src',
+        demo: ['./demo/demo.css', './demo/demo.js'],
+    },
     output: {
-        publicPath: '',
-        path: 'dist/',
         filename: '[name].js',
-        library: 'eventDrops',
-        libraryTarget: 'umd',
+        path: path.resolve(__dirname, 'dist'),
     },
     module: {
-        loaders: [
-            { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
-            { test: /\.css$/, loader: ExtractTextPlugin.extract('css') },
+        rules: [
+            {
+                use: 'babel-loader',
+                test: /\.js$/,
+                include: [
+                    path.resolve(__dirname, 'src'),
+                    path.resolve(__dirname, 'demo'),
+                ],
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+                include: [
+                    path.resolve(__dirname, 'src'),
+                    path.resolve(__dirname, 'demo'),
+                ],
+            },
         ],
     },
-    externals: {
-        d3: 'd3',
-    },
-    plugins: require('./webpack/plugins')(PRODUCTION),
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'demo/index.html'),
+        }),
+    ],
 };

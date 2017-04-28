@@ -1,8 +1,8 @@
 const md5 = require('./md5');
-const repositories = require('json!./data.json');
+const repositories = require('./data.json');
 import * as d3 from 'd3/build/d3';
 
-import eventDrops from '../lib/eventDrops';
+import eventDrops from '../src';
 
 const colors = d3.schemeCategory10;
 const gravatar = email =>
@@ -38,12 +38,13 @@ const TOOLTIP_WIDTH = 30; // in rem
 const showTooltip = commit => {
     d3.select('body').selectAll('.tooltip').remove();
 
-    const tooltip = d3.select('body')
+    const tooltip = d3
+        .select('body')
         .append('div')
         .attr('class', 'tooltip')
         .style('opacity', 0); // hide it by default
 
-    const t = d3.transition().duration(750).ease(d3.easeLinear);
+    const t = d3.transition().duration(250).ease(d3.easeLinear);
 
     tooltip
         .transition(t)
@@ -58,11 +59,12 @@ const showTooltip = commit => {
 
     const ARROW_MARGIN = 1.65;
     const ARROW_WIDTH = FONT_SIZE;
-    const left = direction === 'right' ?
-        d3.event.pageX - rightOrLeftLimit :
-        d3.event.pageX - ARROW_MARGIN * FONT_SIZE - ARROW_WIDTH / 2;
+    const left = direction === 'right'
+        ? d3.event.pageX - rightOrLeftLimit
+        : d3.event.pageX - ARROW_MARGIN * FONT_SIZE - ARROW_WIDTH / 2;
 
-    tooltip.html(`
+    tooltip.html(
+        `
         <div class="commit">
             <img class="avatar" src="${gravatar(commit.author.email)}" alt="${commit.author.name}" title="${commit.author.name}" />
             <div class="content">
@@ -74,17 +76,21 @@ const showTooltip = commit => {
                 </p>
             </div>
         </div>
-    `);
+    `
+    );
 
-    tooltip.style('left', `${left}px`)
-        .style('top', (d3.event.pageY + 16) + 'px')
+    tooltip
+        .style('left', `${left}px`)
+        .style('top', d3.event.pageY + 16 + 'px')
         .classed(direction, true);
 };
 
 const hideTooltip = () => {
     const t = d3.transition().duration(1000);
 
-    d3.select('.tooltip').transition(t)
+    d3
+        .select('.tooltip')
+        .transition(t)
         .on('end', function end() {
             this.remove();
         })
