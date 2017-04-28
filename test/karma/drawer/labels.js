@@ -1,4 +1,4 @@
-import labels from '../../../lib/drawer/labels';
+import labels from '../../../src/drawer/labels';
 
 describe('Labels drawer', () => {
     const scales = {

@@ -1,8 +1,8 @@
-import eventDrops from '../../lib/eventDrops';
+import eventDrops from '../../src';
 
 describe('eventDrops', () => {
     it('should append a SVG element to given selection', () => {
-        
+
         const div = document.createElement('div');
         const data = [{ name: 'foo', data: [] }];
 
@@ -64,7 +64,7 @@ describe('eventDrops', () => {
     });
 
     it('should enable zoom only if `zoomable` configuration property is true', () => {
-        const zoom = require('../../lib/zoom');
+        const zoom = require('../../src/zoom');
         const data = [ { name: 'foo', data: [new Date()] }];
 
         const test = (zoomable, expectedZoomableBehavior) => {

@@ -1,4 +1,4 @@
-import eventDrops from '../../../lib/eventDrops';
+import eventDrops from '../../../src';
 
 describe('Drops drawer', () => {
     let wrapper;

@@ -1,4 +1,4 @@
-import { delimiters } from '../../../lib/drawer/delimiters';
+import { delimiters } from '../../../src/drawer/delimiters';
 
 describe('Delimiter drawer', () => {
     let dateFormat;
@@ -19,13 +19,13 @@ describe('Delimiter drawer', () => {
 
     it('should replace all previously existing minimum or maximum', () => {
         ['maximum', 'minimum'].forEach(extremum => {
-            
+
             svg.select('.extremum')
                 .append('text')
                 .classed(extremum, true);
 
             delimiters(svg, scales, 0, dateFormat);
-            
+
             expect(svg.selectAll(`.${extremum}`).size()).toBe(1, `for ${extremum}`);
         });
     });
