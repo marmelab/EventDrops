@@ -1,6 +1,6 @@
 module.exports = function (config) {
     // Retrieve a Webpack config specialized in tests
-    var webpackConfig = require('../../webpack.config.js');
+    const webpackConfig = require('../../webpack.lib.js');
     webpackConfig.context = __dirname + '/../..';
     delete webpackConfig.entry;
     delete webpackConfig.output;
@@ -13,17 +13,17 @@ module.exports = function (config) {
         files: [
             './node_modules/d3/build/d3.js',
             './test/karma/*',
-            './test/karma/**/*.js'
+            './test/karma/**/*.js',
         ],
         plugins: ['karma-webpack', 'karma-jasmine', 'karma-firefox-launcher'],
         preprocessors: {
             'lib/**/*.js': 'webpack',
-            'test/karma/**/*.js': 'webpack'
+            'test/karma/**/*.js': 'webpack',
         },
         webpackMiddleware: {
             noInfo: true,
-            devtool: 'inline-source-map'
+            devtool: 'inline-source-map',
         },
-        webpack: webpackConfig
+        webpack: webpackConfig,
     });
 };

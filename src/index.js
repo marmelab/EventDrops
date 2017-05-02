@@ -1,6 +1,8 @@
 import * as d3 from 'd3/build/d3';
-
 import configurable from 'configurable.js';
+
+import './style.css';
+
 import defaultConfig from './config';
 import drawer from './drawer';
 import zoom from './zoom';
