@@ -1,4 +1,3 @@
-import * as d3 from 'd3/build/d3';
 import configurable from 'configurable.js';
 
 import './style.css';

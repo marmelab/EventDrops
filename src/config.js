@@ -1,5 +1,3 @@
-import * as d3 from 'd3/build/d3';
-
 const config = {
     lineHeight: 40,
     start: new Date(0),
