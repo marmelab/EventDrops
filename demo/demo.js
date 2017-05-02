@@ -82,7 +82,7 @@ const showTooltip = commit => {
 
     tooltip
         .style('left', `${left}px`)
-        .style('top', d3.event.pageY + 16 + 'px')
+        .style('top', `${d3.event.pageY + 16}px`)
         .classed(direction, true);
 };
 

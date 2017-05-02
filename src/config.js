@@ -17,16 +17,15 @@ const config = {
     locale: null,
     axisFormat: null,
     tickFormat: date => {
-        const formatMillisecond = d3.timeFormat('.%L'),
-            formatSecond = d3.timeFormat(':%S'),
-            formatMinute = d3.timeFormat('%I:%M'),
-            formatHour = d3.timeFormat('%I %p'),
-            formatDay = d3.timeFormat('%a %d'),
-            formatWeek = d3.timeFormat('%b %d'),
-            formatMonth = d3.timeFormat('%B'),
-            formatYear = d3.timeFormat('%Y');
+        const formatMillisecond = d3.timeFormat('.%L');
+        const formatSecond = d3.timeFormat(':%S');
+        const formatMinute = d3.timeFormat('%I:%M');
+        const formatHour = d3.timeFormat('%I %p');
+        const formatDay = d3.timeFormat('%a %d');
+        const formatWeek = d3.timeFormat('%b %d');
+        const formatMonth = d3.timeFormat('%B');
+        const formatYear = d3.timeFormat('%Y');
 
-        //multiFormat(date) {
         return (d3.timeSecond(date) < date
             ? formatMillisecond
             : d3.timeMinute(date) < date
@@ -42,7 +41,6 @@ const config = {
                                     : d3.timeYear(date) < date
                                           ? formatMonth
                                           : formatYear)(date);
-        //}
     },
     mouseout: () => {},
     mouseover: () => {},
