@@ -37,8 +37,8 @@ function eventDrops(config = {}) {
                 .attr(
                     'width',
                     dimensions.width +
-                        finalConfiguration.margin.left +
-                        finalConfiguration.margin.right
+                        (finalConfiguration.margin.left +
+                            finalConfiguration.margin.right)
                 )
                 .attr(
                     'height',

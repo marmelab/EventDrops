@@ -37,11 +37,11 @@ export default (svg, dimensions, scales, configuration) => {
         .attr(
             'width',
             dimensions.width -
-                (configuration.displayLabels ? configuration.labelsWidth + configuration.labelsRightMargin : 0)
+                (configuration.displayLabels ? configuration.labelsWidth + configuration.labelsRightMargin : configuration.margin.left)
         )
         .attr(
             'transform',
-            `translate(${configuration.displayLabels ? configuration.labelsWidth + configuration.labelsRightMargin : 0}, 55)`
+            `translate(${configuration.displayLabels ? configuration.labelsWidth + configuration.labelsRightMargin : configuration.margin.left}, ${configuration.margin.top})`
         );
 
     const dropsContainer = chartWrapper

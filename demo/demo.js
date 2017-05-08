@@ -99,7 +99,15 @@ const hideTooltip = () => {
         .style('opacity', 0);
 };
 
-const chart = eventDrops()
+const chart = eventDrops({
+        displayLabels: false,
+        margin: {
+            top: 60,
+            left: 10,
+            bottom: 40,
+            right: 50,
+        }
+    })
     .start(new Date(new Date().getTime() - 3600000 * 24 * 365)) // one year ago
     .end(new Date())
     .eventLineColor((d, i) => colors[i])
