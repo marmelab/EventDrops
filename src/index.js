@@ -73,4 +73,4 @@ function eventDrops(config = {}) {
 d3.chart = d3.chart || {};
 d3.chart.eventDrops = eventDrops;
 
-export default eventDrops;
+export { eventDrops };

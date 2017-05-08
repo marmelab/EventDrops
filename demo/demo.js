@@ -1,6 +1,6 @@
 import * as d3 from 'd3/build/d3';
 
-import eventDrops from '../src';
+import { eventDrops } from '../src';
 
 const md5 = require('./md5');
 const repositories = require('./data.json');

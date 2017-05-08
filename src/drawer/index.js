@@ -78,7 +78,7 @@ export default (svg, dimensions, scales, configuration) => {
         delimiters(
             svg,
             scales,
-            onfiguration.displayLabels ? configuration.labelsWidth + configuration.labelsRightMargin : 0,
+            configuration.displayLabels ? configuration.labelsWidth + configuration.labelsRightMargin : 0,
             configuration.dateFormat
         );
         drops(data);

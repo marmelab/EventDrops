@@ -16,7 +16,7 @@ export default (scales, configuration, dimensions) =>
             .attr(
                 'x2',
                 dimensions.width -
-                    (onfiguration.displayLabels ? configuration.labelsWidth +
+                    (configuration.displayLabels ? configuration.labelsWidth +
                         configuration.labelsRightMargin : 0)
             );
 
