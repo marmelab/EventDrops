@@ -27,6 +27,7 @@ export default (container, scales, configuration) =>
             .attr('cy', configuration.lineHeight / 2)
             .attr('fill', configuration.eventColor)
             .on('click', configuration.click)
+            .on('dblclick',configuration.dblclick)
             .on('mouseover', configuration.mouseover)
             .on('mouseout', configuration.mouseout);
 
@@ -34,6 +35,7 @@ export default (container, scales, configuration) =>
         drops
             .exit()
             .on('click', null)
+            .on('dblclick',null)
             .on('mouseout', null)
             .on('mouseover', null)
             .remove();

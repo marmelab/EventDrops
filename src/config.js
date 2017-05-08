@@ -46,6 +46,7 @@ const config = {
     mouseover: () => {},
     zoomend: () => {},
     click: () => {},
+    dblclick: () => {},
     hasDelimiter: true,
     date: d => d,
     hasTopAxis: true,
