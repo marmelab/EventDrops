@@ -8,7 +8,7 @@ import drawer from './drawer';
 import zoom from './zoom';
 
 function eventDrops(config = {}) {
-    const finalConfiguration = Object.assign({}, defaultConfig, config );
+    const finalConfiguration = Object.assign({}, defaultConfig, config);
 
     const yScale = data => {
         return d3
@@ -73,4 +73,4 @@ function eventDrops(config = {}) {
 d3.chart = d3.chart || {};
 d3.chart.eventDrops = eventDrops;
 
-export { eventDrops };
+export default eventDrops;
