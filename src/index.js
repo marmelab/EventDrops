@@ -26,9 +26,7 @@ function eventDrops(config = {}) {
             d3.select(this).select('.event-drops-chart').remove();
 
             const dimensions = {
-                width: this.clientWidth -
-                    finalConfiguration.margin.left -
-                    finalConfiguration.margin.right,
+                width: this.clientWidth,
                 height: data.length * finalConfiguration.lineHeight,
             };
 
@@ -36,7 +34,12 @@ function eventDrops(config = {}) {
                 .select(this)
                 .append('svg')
                 .classed('event-drops-chart', true)
-                .attr('width', dimensions.width)
+                .attr(
+                    'width',
+                    dimensions.width +
+                        finalConfiguration.margin.left +
+                        finalConfiguration.margin.right
+                )
                 .attr(
                     'height',
                     dimensions.height +
@@ -59,8 +62,10 @@ function eventDrops(config = {}) {
         return {
             x: xScale(
                 dimensions.width -
-                    (configuration.labelsWidth +
-                        configuration.labelsRightMargin),
+                    (configuration.displayLabels
+                        ? configuration.labelsWidth +
+                              configuration.labelsRightMargin
+                        : 0),
                 [configuration.start, configuration.end]
             ),
             y: yScale(data),
