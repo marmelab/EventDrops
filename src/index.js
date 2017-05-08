@@ -26,7 +26,9 @@ function eventDrops(config = {}) {
             d3.select(this).select('.event-drops-chart').remove();
 
             const dimensions = {
-                width: this.clientWidth,
+                width: this.clientWidth -
+                    finalConfiguration.margin.left -
+                    finalConfiguration.margin.right,
                 height: data.length * finalConfiguration.lineHeight,
             };
 

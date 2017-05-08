@@ -16,7 +16,7 @@ export default (svg, dimensions, scales, configuration) => {
         .attr(
             'width',
             dimensions.width -
-                (configuration.displayLabels && configuration.labelsWidth + configuration.labelsRightMargin)
+                (configuration.displayLabels ? configuration.labelsWidth + configuration.labelsRightMargin : 0)
         )
         .attr(
             'height',
