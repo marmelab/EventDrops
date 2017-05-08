@@ -12,6 +12,7 @@ const config = {
         bottom: 40,
         right: 50,
     },
+    displayLabels: true,
     labelsWidth: 210,
     labelsRightMargin: 10,
     locale: null,

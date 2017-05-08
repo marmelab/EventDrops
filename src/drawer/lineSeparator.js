@@ -16,8 +16,8 @@ export default (scales, configuration, dimensions) =>
             .attr(
                 'x2',
                 dimensions.width -
-                    (configuration.labelsWidth +
-                        configuration.labelsRightMargin)
+                    (onfiguration.displayLabels ? configuration.labelsWidth +
+                        configuration.labelsRightMargin : 0)
             );
 
         separators.exit().remove();
