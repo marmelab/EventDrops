@@ -37,8 +37,8 @@ export default (svg, dimensions, scales, configuration) => {
         .attr(
             'width',
             dimensions.width -
-                (configuration.displayLabels ? configuration.labelsWidth + configuration.labelsRightMargin : configuration.margin.left)
-        )
+                (configuration.displayLabels ? (configuration.labelsWidth + configuration.labelsRightMargin) : (configuration.margin.left + configuration.margin.right))
+            )
         .attr(
             'transform',
             `translate(${configuration.displayLabels ? configuration.labelsWidth + configuration.labelsRightMargin : configuration.margin.left}, ${configuration.margin.top})`
