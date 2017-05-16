@@ -73,7 +73,7 @@ each data point.
 
 ```js
 var eventDropsChart = d3.chart.eventDrops()
-                              .date(d => d.date);
+    .date(d => d.date);
                               
 d3.select('#chart_placeholder')
   .datum(data)
