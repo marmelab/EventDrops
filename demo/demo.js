@@ -36,7 +36,7 @@ const FONT_SIZE = 16; // in pixels
 const TOOLTIP_WIDTH = 30; // in rem
 
 // we're gonna create a tooltip per drop to prevent from transition issues
-const showTooltip = commit => {
+const showTooltip = (commit) => {
     d3.select('body').selectAll('.tooltip').remove();
 
     const tooltip = d3
@@ -98,13 +98,27 @@ const hideTooltip = () => {
         .style('opacity', 0);
 };
 
+const numberCommits = document.getElementById('numberCommits');
+const zoomStart = document.getElementById('zoomStart');
+const zoomEnd = document.getElementById('zoomEnd');
+
+const getNumberCommits = (data) => {
+    const newScale = d3.event.transform.rescaleX(chart.scales.x);
+    const filteredData = chart.visibleData(data);
+    console.log(filteredData);
+    numberCommits.textContent = +filteredData.length;
+    zoomStart.textContent = newScale.domain()[0].toLocaleDateString('en-US');
+    zoomEnd.textContent = newScale.domain()[1].toLocaleDateString('en-US');
+};
+
 const chart = eventDrops()
     .start(new Date(new Date().getTime() - 3600000 * 24 * 365)) // one year ago
     .end(new Date())
     .eventLineColor((d, i) => colors[i])
     .date(d => new Date(d.date))
     .mouseover(showTooltip)
-    .mouseout(hideTooltip);
+    .mouseout(hideTooltip)
+    .zoomend(getNumberCommits);
 
 const element = d3.select('#eventdrops-demo').datum(
     repositories.map(repository => ({

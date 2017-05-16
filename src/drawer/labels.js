@@ -1,10 +1,10 @@
 import filterData from '../filterData';
 
 export default (container, scales, config) =>
-    data => {
+    (data) => {
         const labels = container.selectAll('.label').data(data);
 
-        const text = d => {
+        const text = (d) => {
             const count = filterData(d.data, scales.x, config.date).length;
             return d.name + (count > 0 ? ` (${count})` : '');
         };
