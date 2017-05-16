@@ -72,12 +72,11 @@ And the corresponding "date" function that returns a date for
 each data point.
 
 ```js
-var eventDropsChart = d3.chart.eventDrops();
+var eventDropsChart = d3.chart.eventDrops()
+    .date(d => d.date);
+                              
 d3.select('#chart_placeholder')
   .datum(data)
-  .date(function(d){
-      return d.date;
-  }),
   .call(eventDropsChart);
 ```
 
