@@ -5,6 +5,7 @@
 
 body {
     font-size: 16px;
+    color: #222;
     background: #eee;
     padding: 0 3rem 1rem 3rem;
     font-family: 'Muli', 'sans serif';
@@ -26,6 +27,15 @@ h1 {
     font-weight: normal;
     font-size: 3rem;
     color: #aaa;
+}
+
+p {
+    line-height: 1.5;
+}
+
+.infos {
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
 .drop {

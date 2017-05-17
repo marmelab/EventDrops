@@ -63,14 +63,11 @@ function eventDrops(config = {}) {
             }
 
             eventDropGraph.scales = scales;
-            eventDropGraph.visibleData = () =>
-                filterData(
-                    data,
-                    eventDropGraph.scales.x,
-                    finalConfiguration.date
-                );
         });
     }
+
+    eventDropGraph.visibleDataInRow = (data, scale) =>
+        filterData(data, scale, finalConfiguration.date);
 
     configurable(eventDropGraph, finalConfiguration);
 
