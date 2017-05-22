@@ -1,18 +1,19 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        demo: ['./demo/demo.css', './demo/demo.js'],
+        demo: [
+            './demo/demo.css',
+            './demo/demo.js',
+        ],
     },
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'demo/dist'),
         library: 'eventDrops',
         libraryTarget: 'umd',
-    },
-    externals: {
-        d3: 'd3',
     },
     module: {
         rules: [
@@ -35,6 +36,9 @@ module.exports = {
         ],
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            d3: 'd3',
+        }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'demo/index.html'),
         }),

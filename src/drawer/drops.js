@@ -1,10 +1,5 @@
-import * as d3 from 'd3/build/d3';
-
 export default (container, scales, configuration) =>
-    data => {
-        const leftOffset = configuration.labelsWidth +
-            configuration.labelsRightMargin;
-
+    (data) => {
         const dropLines = container
             .selectAll('.drop-line')
             .data(data)

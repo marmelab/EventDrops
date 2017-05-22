@@ -1,4 +1,3 @@
-import * as d3 from 'd3/build/d3';
 import xAxis from './xAxis';
 import labels from './drawer/labels';
 import { boolOrReturnValue } from './drawer/xAxis';
