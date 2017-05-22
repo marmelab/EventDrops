@@ -80,7 +80,9 @@ d3.select('#chart_placeholder')
   .call(eventDropsChart);
 ```
 
-## Configuration
+## API
+
+### Configuration
 
 EventDrops follows the [d3.js reusable charts pattern](http://bost.ocks.org/mike/chart/) to let you customize the chart at will:
 
@@ -114,9 +116,32 @@ Configurable values:
   - `zoomable`: *true* by default. Enable zoom-in/zoom-out and dragging handlers.
   - `date`: function that returns the date from each data point when passing objects. Defaults to `d=>d`.
 
-## Styling
+### Exposed Methods
 
-You can style all elements of the chart in CSS. Check the source to see the available selectors.
+EventDrops exposes some of its methods to ease your developer life:
+
+* **scales()**: retrieves both `{ x, y }` scales, especially useful for `visibleDataInRow` method.
+* **visibleDataInRow(data, scale)**: retrieves currently displayed data, filtered within current time range.
+
+## FAQ
+
+### How to get time range and displayed data on `zoomend` event?
+
+When moving across the timeline or (un)zooming it, a `zoomend` event is triggered. To retrieve access to
+current time range and its filtered data, use D3.js `rescale` function and EventDrops `visibleDataInRow` like
+the following:
+
+``` js
+chart.zoomend((data) => {
+    const currentScale = chart.scales.x;
+    const newScale = d3.event ? d3.event.transform.rescaleX(currentScale) : currentScale;
+    const filteredData = data.map(dataRow => chart.visibleDataInRow(dataRow.data, newScale));
+
+    // retrieve start and end dates
+    newScale.domain()[0].toLocaleDateString('en-US');
+    newScale.domain()[1].toLocaleDateString('en-US');
+});
+```
 
 ## Programmatic Zoom
 
@@ -131,7 +156,7 @@ var zoom = element[0][0].zoom;
 
 The example here shows how to manipulate it: http://bl.ocks.org/mbostock/7ec977c95910dd026812
 
-## Extending / Hacking
+## Contributing
 
 First, install the dependencies:
 
