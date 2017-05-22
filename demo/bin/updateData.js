@@ -7,9 +7,8 @@ const repositories = [
     { name: 'admin-on-rest', identifier: 'marmelab/admin-on-rest' },
     { name: 'ng-admin', identifier: 'marmelab/ng-admin' },
     { name: 'EventDrops', identifier: 'marmelab/EventDrops' },
-    { name: 'javascript-boilerplate', identifier: 'marmelab/javascript-boilerplate' },
     { name: 'sedy', identifier: 'marmelab/sedy' },
-    { name: 'restful.js', identifier: 'marmelab/restful.js' },
+    { name: 'comfy', identifier: 'marmelab/comfygure' },
 ];
 
 const setup = cb => {
