@@ -21,7 +21,7 @@ module.exports = {
                 use: 'babel-loader',
                 test: /\.js$/,
                 include: [
-                    path.resolve(__dirname, 'src'),
+                    path.resolve(__dirname, 'dist'),
                     path.resolve(__dirname, 'demo'),
                 ],
             },
@@ -29,7 +29,7 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader'],
                 include: [
-                    path.resolve(__dirname, 'src'),
+                    path.resolve(__dirname, 'dist'),
                     path.resolve(__dirname, 'demo'),
                 ],
             },

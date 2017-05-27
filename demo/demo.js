@@ -1,6 +1,7 @@
 import * as d3 from 'd3/build/d3';
 
-import eventDrops from '../src';
+import eventDrops from '../dist';
+import '../dist/style.css';
 
 const repositories = require('./data.json');
 const { gravatar, humanizeDate } = require('./utils');
