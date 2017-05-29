@@ -6,7 +6,7 @@ help:
 run: ## Run the webpack-dev-server
 	./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.demo.js --hot --inline --colors --host=0.0.0.0
 
-build: ## Webpack build the project
+build: install ## Webpack build the project
 	./node_modules/webpack/bin/webpack.js --config webpack.lib.js -p --progress --devtool source-map
 
 publish: build ## Publish current version of EventDrops
