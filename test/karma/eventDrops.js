@@ -129,4 +129,33 @@ describe('eventDrops', () => {
         expect(scales.x).not.toBe(null);
         expect(scales.y).not.toBe(null);
     });
+
+    it('should expose a "visibleDataInRow" function to get viewport visible data', () => {
+        const div = global.document.createElement('div');
+        const dataSet = [{
+            name: 'foo',
+            data: [
+                { date: new Date('2016-04-04') },
+                { date: new Date('2016-04-05') },
+                { date: new Date('2016-04-06') },
+                { date: new Date('2016-04-07') },
+                { date: new Date('2016-04-08') },
+            ],
+        }];
+
+        // display data between yesterday and tomorrow
+        const configuredEventDrops = eventDrops()
+            .start(new Date('2016-04-05'))
+            .end(new Date('2016-04-07'))
+            .date(d => d.date);
+
+        const chart = d3.select(div).datum(dataSet).call(configuredEventDrops);
+
+        const visibleDatas = chart.visibleDataInRow(dataSet[0].data, chart.scales.x);
+        expect(visibleDatas).toEqual([
+            { date: new Date('2016-04-05') },
+            { date: new Date('2016-04-06') },
+            { date: new Date('2016-04-07') },
+        ]);
+    });
 });
