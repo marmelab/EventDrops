@@ -2,7 +2,6 @@ import eventDrops from '../../src';
 
 describe('eventDrops', () => {
     it('should append a SVG element to given selection', () => {
-
         const div = document.createElement('div');
         const data = [{ name: 'foo', data: [] }];
 
@@ -111,5 +110,23 @@ describe('eventDrops', () => {
 
         d3.select(div).datum(data).call(chart);
         expect(div.querySelector('.chart-wrapper').attributes.transform.value).toBe('translate(60, 55)');
+    });
+
+    it('should expose its scales via scale property', () => {
+        const div = global.document.createElement('div');
+        const data = [
+            { name: 'foo', data: [{ date: new Date('2010-01-01'), foo: 'bar1' }] },
+        ];
+
+        const configuredEventDrops = eventDrops()
+            .start(new Date(new Date().getTime() - (3600000 * 24 * 365))) // one year ago
+            .end(new Date())
+            .date(d => new Date(d.date));
+
+        const chart = d3.select(div).datum(data).call(configuredEventDrops);
+        const scales = chart.scales;
+
+        expect(scales.x).not.toBe(null);
+        expect(scales.y).not.toBe(null);
     });
 });

@@ -89,7 +89,7 @@ const renderStats = (data) => {
     zoomEnd.textContent = newScale.domain()[1].toLocaleDateString('en-US');
 };
 
-const chart = eventDrops()
+const createChart = eventDrops()
     .start(new Date(new Date().getTime() - (3600000 * 24 * 365))) // one year ago
     .end(new Date())
     .eventLineColor((d, i) => colors[i])
@@ -103,7 +103,6 @@ const repositoriesData = repositories.map(repository => ({
     data: repository.commits,
 }));
 
-const element = d3.select('#eventdrops-demo').datum(repositoriesData);
-chart(element);
+const chart = d3.select('#eventdrops-demo').datum(repositoriesData).call(createChart);
 
 renderStats(repositoriesData);

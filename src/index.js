@@ -34,7 +34,9 @@ function eventDrops(config = {}) {
     }
 
     function eventDropGraph(selection) {
-        return selection.each(function selector(data) {
+        let scales;
+
+        const chart = selection.each(function selector(data) {
             d3.select(this).select('.event-drops-chart').remove();
 
             const dimensions = {
@@ -54,20 +56,21 @@ function eventDrops(config = {}) {
                         finalConfiguration.margin.bottom
                 );
 
-            const scales = getScales(dimensions, finalConfiguration, data);
+            scales = getScales(dimensions, finalConfiguration, data);
             const draw = drawer(svg, dimensions, scales, finalConfiguration);
             draw(data);
 
             if (finalConfiguration.zoomable) {
                 zoom(svg, dimensions, scales, finalConfiguration);
             }
-
-            eventDropGraph.scales = scales;
         });
-    }
 
-    eventDropGraph.visibleDataInRow = (data, scale) =>
-        filterData(data, scale, finalConfiguration.date);
+        chart.scales = scales;
+        chart.visibleDataInRow = (data, scale) =>
+            filterData(data, scale, finalConfiguration.date);
+
+        return chart;
+    }
 
     configurable(eventDropGraph, finalConfiguration);
 

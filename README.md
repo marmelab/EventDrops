@@ -118,9 +118,9 @@ Configurable values:
 
 ### Exposed Methods
 
-EventDrops exposes some of its methods to ease your developer life:
+EventDrops exposes some of its attributes and methods to ease your developer life:
 
-* **scales()**: retrieves both `{ x, y }` scales, especially useful for `visibleDataInRow` method.
+* **scales**: object containing both `{ x, y }` scales, especially useful for `visibleDataInRow` method,
 * **visibleDataInRow(data, scale)**: retrieves currently displayed data, filtered within current time range.
 
 ## FAQ
