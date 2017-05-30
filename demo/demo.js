@@ -1,9 +1,10 @@
 import * as d3 from 'd3/build/d3';
 
-import eventDrops from '../src';
+import { eventDrops } from '../src';
 
 const md5 = require('./md5');
 const repositories = require('./data.json');
+
 
 const colors = d3.schemeCategory10;
 const gravatar = email =>
@@ -98,7 +99,15 @@ const hideTooltip = () => {
         .style('opacity', 0);
 };
 
-const chart = eventDrops()
+const chart = eventDrops({
+        displayLabels: false,
+        margin: {
+            top: 60,
+            left: 10,
+            bottom: 40,
+            right: 50,
+        }
+    })
     .start(new Date(new Date().getTime() - 3600000 * 24 * 365)) // one year ago
     .end(new Date())
     .eventLineColor((d, i) => colors[i])

@@ -16,7 +16,7 @@ export default (svg, dimensions, scales, configuration) => {
         .attr(
             'width',
             dimensions.width -
-                (configuration.labelsWidth + configuration.labelsRightMargin)
+                (configuration.displayLabels ? configuration.labelsWidth + configuration.labelsRightMargin : 0)
         )
         .attr(
             'height',
@@ -37,11 +37,11 @@ export default (svg, dimensions, scales, configuration) => {
         .attr(
             'width',
             dimensions.width -
-                (configuration.labelsWidth + configuration.labelsRightMargin)
-        )
+                (configuration.displayLabels ? (configuration.labelsWidth + configuration.labelsRightMargin) : (configuration.margin.left + configuration.margin.right))
+            )
         .attr(
             'transform',
-            `translate(${configuration.labelsWidth + configuration.labelsRightMargin}, 55)`
+            `translate(${configuration.displayLabels ? configuration.labelsWidth + configuration.labelsRightMargin : configuration.margin.left}, ${configuration.margin.top})`
         );
 
     const dropsContainer = chartWrapper
@@ -78,7 +78,7 @@ export default (svg, dimensions, scales, configuration) => {
         delimiters(
             svg,
             scales,
-            configuration.labelsWidth + configuration.labelsRightMargin,
+            configuration.displayLabels ? configuration.labelsWidth + configuration.labelsRightMargin : 0,
             configuration.dateFormat
         );
         drops(data);
