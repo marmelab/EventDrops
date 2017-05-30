@@ -1,5 +1,8 @@
 import configurable from 'configurable.js';
 
+import * as d3 from 'd3/build/d3';
+import filterData from './filterData';
+
 import './style.css';
 
 import defaultConfig from './config';
@@ -9,19 +12,31 @@ import zoom from './zoom';
 function eventDrops(config = {}) {
     const finalConfiguration = { ...defaultConfig, ...config };
 
-    const yScale = data => {
-        return d3
+    const yScale = data =>
+        d3
             .scaleOrdinal()
             .domain(data.map(d => d.name))
             .range(data.map((d, i) => i * finalConfiguration.lineHeight));
-    };
 
-    const xScale = (width, timeBounds) => {
-        return d3.scaleTime().domain(timeBounds).range([0, width]);
-    };
+    const xScale = (width, timeBounds) =>
+        d3.scaleTime().domain(timeBounds).range([0, width]);
+
+    function getScales(dimensions, configuration, data) {
+        return {
+            x: xScale(
+                dimensions.width -
+                    (configuration.labelsWidth +
+                        configuration.labelsRightMargin),
+                [configuration.start, configuration.end]
+            ),
+            y: yScale(data),
+        };
+    }
 
     function eventDropGraph(selection) {
-        return selection.each(function selector(data) {
+        let scales;
+
+        const chart = selection.each(function selector(data) {
             d3.select(this).select('.event-drops-chart').remove();
 
             const dimensions = {
@@ -41,27 +56,20 @@ function eventDrops(config = {}) {
                         finalConfiguration.margin.bottom
                 );
 
-            const scales = getScales(dimensions, finalConfiguration, data);
-
+            scales = getScales(dimensions, finalConfiguration, data);
             const draw = drawer(svg, dimensions, scales, finalConfiguration);
             draw(data);
 
             if (finalConfiguration.zoomable) {
-                zoom(svg, dimensions, scales, finalConfiguration, data);
+                zoom(svg, dimensions, scales, finalConfiguration);
             }
         });
-    }
 
-    function getScales(dimensions, configuration, data) {
-        return {
-            x: xScale(
-                dimensions.width -
-                    (configuration.labelsWidth +
-                        configuration.labelsRightMargin),
-                [configuration.start, configuration.end]
-            ),
-            y: yScale(data),
-        };
+        chart.scales = scales;
+        chart.visibleDataInRow = (data, scale) =>
+            filterData(data, scale, finalConfiguration.date);
+
+        return chart;
     }
 
     configurable(eventDropGraph, finalConfiguration);

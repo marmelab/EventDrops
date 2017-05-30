@@ -2,41 +2,16 @@ import * as d3 from 'd3/build/d3';
 
 import eventDrops from '../src';
 
-const md5 = require('./md5');
 const repositories = require('./data.json');
+const { gravatar, humanizeDate } = require('./utils');
 
 const colors = d3.schemeCategory10;
-const gravatar = email =>
-    `https://www.gravatar.com/avatar/${md5(email.trim().toLowerCase())}`;
-
-// September 4 1986 8:30 PM
-const humanizeDate = date => {
-    const monthNames = [
-        'Jan.',
-        'Feb.',
-        'March',
-        'Apr.',
-        'May',
-        'June',
-        'Jul.',
-        'Aug.',
-        'Sept.',
-        'Oct.',
-        'Nov.',
-        'Dec.',
-    ];
-
-    return `
-        ${monthNames[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}
-        ${date.getHours()}:${date.getMinutes()}
-    `;
-};
 
 const FONT_SIZE = 16; // in pixels
 const TOOLTIP_WIDTH = 30; // in rem
 
 // we're gonna create a tooltip per drop to prevent from transition issues
-const showTooltip = commit => {
+const showTooltip = (commit) => {
     d3.select('body').selectAll('.tooltip').remove();
 
     const tooltip = d3
@@ -62,7 +37,7 @@ const showTooltip = commit => {
     const ARROW_WIDTH = FONT_SIZE;
     const left = direction === 'right'
         ? d3.event.pageX - rightOrLeftLimit
-        : d3.event.pageX - ARROW_MARGIN * FONT_SIZE - ARROW_WIDTH / 2;
+        : d3.event.pageX - ((ARROW_MARGIN * (FONT_SIZE - ARROW_WIDTH)) / 2);
 
     tooltip.html(
         `
@@ -98,19 +73,36 @@ const hideTooltip = () => {
         .style('opacity', 0);
 };
 
-const chart = eventDrops()
-    .start(new Date(new Date().getTime() - 3600000 * 24 * 365)) // one year ago
+const numberCommits = global.document.getElementById('numberCommits');
+const zoomStart = global.document.getElementById('zoomStart');
+const zoomEnd = global.document.getElementById('zoomEnd');
+
+const renderStats = (data) => {
+    const newScale = d3.event ? d3.event.transform.rescaleX(chart.scales.x) : chart.scales.x;
+    const filteredCommits = data.reduce((total, repository) => {
+        const filteredRow = chart.visibleDataInRow(repository.data, newScale);
+        return total + filteredRow.length;
+    }, 0);
+
+    numberCommits.textContent = +filteredCommits;
+    zoomStart.textContent = newScale.domain()[0].toLocaleDateString('en-US');
+    zoomEnd.textContent = newScale.domain()[1].toLocaleDateString('en-US');
+};
+
+const createChart = eventDrops()
+    .start(new Date(new Date().getTime() - (3600000 * 24 * 365))) // one year ago
     .end(new Date())
     .eventLineColor((d, i) => colors[i])
     .date(d => new Date(d.date))
     .mouseover(showTooltip)
-    .mouseout(hideTooltip);
+    .mouseout(hideTooltip)
+    .zoomend(renderStats);
 
-const element = d3.select('#eventdrops-demo').datum(
-    repositories.map(repository => ({
-        name: repository.name,
-        data: repository.commits,
-    }))
-);
+const repositoriesData = repositories.map(repository => ({
+    name: repository.name,
+    data: repository.commits,
+}));
 
-chart(element);
+const chart = d3.select('#eventdrops-demo').datum(repositoriesData).call(createChart);
+
+renderStats(repositoriesData);

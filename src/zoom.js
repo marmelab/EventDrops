@@ -1,17 +1,9 @@
-import xAxis from './xAxis';
+import debounce from 'debounce';
 import labels from './drawer/labels';
 import { boolOrReturnValue } from './drawer/xAxis';
-import debounce from 'debounce';
 
-export default (
-    container,
-    dimensions,
-    scales,
-    configuration,
-    data,
-    callback
-) => {
-    const onZoom = (data, index, element) => {
+export default (container, dimensions, scales, configuration, callback) => {
+    const onZoom = (data) => {
         const scalingFunction = d3.event.transform.rescaleX(scales.x);
 
         if (boolOrReturnValue(configuration.hasTopAxis, data)) {
@@ -35,13 +27,11 @@ export default (
             100
         );
 
-        requestAnimationFrame(() => {
-            const drops = container
+        global.requestAnimationFrame(() => {
+            container
                 .selectAll('.drop-line')
                 .selectAll('.drop')
-                .attr('cx', (d, i) => {
-                    return scalingFunction(new Date(d.date));
-                });
+                .attr('cx', d => scalingFunction(new Date(d.date)));
 
             sumDataCount(data);
 
