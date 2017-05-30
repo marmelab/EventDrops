@@ -35,8 +35,6 @@ Include the `src/eventDrops.js` script in your page after d3:
 <script src="src/eventDrops.js"></script>
 ```
 
-**Tip**: You can also use RequireJs, see [example/amd](https://github.com/marmelab/EventDrops/tree/master/example/amd) for an implementation.
-
 In the HTML source, create a new EventDrops chart, bind data to a DOM element, then call the chart on the element.
 
 ```js
@@ -74,7 +72,7 @@ each data point.
 ```js
 var eventDropsChart = d3.chart.eventDrops()
     .date(d => d.date);
-                              
+
 d3.select('#chart_placeholder')
   .datum(data)
   .call(eventDropsChart);
