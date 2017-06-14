@@ -1,0 +1,8 @@
+.babelrc
+.eslintrc
+.travis.yml
+demo/
+Makefile
+src/
+test/
+webpack*
