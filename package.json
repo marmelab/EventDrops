@@ -12,8 +12,10 @@
     "type": "git",
     "url": "https://github.com/marmelab/EventDrops"
   },
+  "peerDependencies": {
+    "d3": "^4.7.0"
+  },
   "dependencies": {
-    "d3": "^4.7.0",
     "debounce": "^1.0.0"
   },
   "devDependencies": {
@@ -24,6 +26,7 @@
     "babel-preset-stage-0": "6.16.0",
     "configurable.js": "0.1.0",
     "css-loader": "0.25.0",
+    "d3": "^4.7.0",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "14.1.0",
     "eslint-plugin-import": "2.2.0",
@@ -45,7 +48,7 @@
     "prettier": "^0.22.0",
     "scss-loader": "0.0.1",
     "style-loader": "0.13.1",
-    "webpack": "2.4.1",
+    "webpack": "2.6.1",
     "webpack-dev-server": "2.4.5"
   },
   "bugs": {
@@ -63,7 +66,7 @@
     "test": "npm run karma -- --single-run",
     "test-watch": "npm run karma",
     "run": "npm start",
-    "build": "webpack -p --optimize-minimize --optimize-occurence-order --optimize-dedupe --progress --devtool source-map"
+    "build": "webpack --config webpack.lib.js -d --progress --devtool source-map"
   },
   "lint-staged": {
     "src/*.js": [
