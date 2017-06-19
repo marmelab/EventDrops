@@ -66,7 +66,7 @@
     "test": "npm run karma -- --single-run",
     "test-watch": "npm run karma",
     "run": "npm start",
-    "build": "webpack --config webpack.lib.js -d --progress --devtool source-map"
+    "build": "webpack --config webpack.lib.js -p --progress --devtool source-map"
   },
   "lint-staged": {
     "src/*.js": [
