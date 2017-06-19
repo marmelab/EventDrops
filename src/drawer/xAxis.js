@@ -18,8 +18,9 @@ export const drawBottomAxis = (container, xScale, configuration, dimensions) =>
         xScale,
         configuration,
         'bottom',
-        +dimensions.height - 21
+        +dimensions.height - 41
     );
 
 export const boolOrReturnValue = (x, data) =>
     typeof x === 'function' ? x(data) : x;
+

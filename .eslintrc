@@ -5,6 +5,7 @@
         "id-length": [2, { "min": 1 }]
     },
     "env": {
+        "browser": true,
         "jasmine": true
     },
     "globals": {
