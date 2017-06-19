@@ -1,6 +1,6 @@
 {
   "name": "event-drops",
-  "version": "0.3.1-alpha3",
+  "version": "0.3.1-alpha4",
   "description": "A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time.",
   "main": "dist/eventDrops.js",
   "files": [
