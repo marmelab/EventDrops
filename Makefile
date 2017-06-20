@@ -7,13 +7,15 @@ run: ## Run the webpack-dev-server
 	./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.demo.js --hot --inline --colors --host=0.0.0.0
 
 build: install ## Webpack build the project
-	./node_modules/webpack/bin/webpack.js --config webpack.lib.js -p --progress --devtool source-map
+	rm -rf dist/
+	mkdir -p dist
+	./node_modules/.bin/rollup -c
 
 publish: build ## Publish current version of EventDrops
 	npm publish
 	$(MAKE) deploy-demo
 
-deploy-demo: ## Deploy the demo at http://marmelab.com/EventDrops/
+deploy-demo: build ## Deploy the demo at http://marmelab.com/EventDrops/
 	./node_modules/webpack/bin/webpack.js --config webpack.demo.js -p --progress
 	git add -f demo/
 	git commit -m "Update GitHub pages"
