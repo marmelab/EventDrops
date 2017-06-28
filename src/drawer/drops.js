@@ -26,6 +26,7 @@ export default (container, scales, configuration) =>
             .attr('cx', d => scales.x(configuration.date(d)))
             .attr('cy', configuration.lineHeight / 2)
             .attr('fill', configuration.eventColor)
+            .attr("data-id", d => d.id)
             .on('click', configuration.click)
             .on('dblclick',configuration.dblclick)
             .on('mouseover', configuration.mouseover)
