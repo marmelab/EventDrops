@@ -100,7 +100,7 @@ const hideTooltip = () => {
 };
 
 const chart = eventDrops({
-        displayLabels: false,
+        displayLabels: true,
         margin: {
             top: 60,
             left: 10,
@@ -108,8 +108,8 @@ const chart = eventDrops({
             right: 50,
         }
     })
-    .start(new Date(new Date().getTime() - 3600000 * 24 * 365)) // one year ago
-    .end(new Date())
+    .start(new Date(2015,0,1)) //new Date(new Date().getTime() - 3600000 * 24 * 365) one year ago
+    .end(new Date(2016,0,1))
     .eventLineColor((d, i) => colors[i])
     .date(d => new Date(d.date))
     .mouseover(showTooltip)

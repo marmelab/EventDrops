@@ -1,6 +1,7 @@
 import * as d3 from 'd3/build/d3';
 import xAxis from './xAxis';
 import labels from './drawer/labels';
+import { delimiters } from './drawer/delimiters';
 import { boolOrReturnValue } from './drawer/xAxis';
 import debounce from 'debounce';
 
@@ -14,7 +15,7 @@ export default (
 ) => {
     const onZoom = (data, index, element) => {
         const scalingFunction = d3.event.transform.rescaleX(scales.x);
-
+        let result = {};
         if (boolOrReturnValue(configuration.hasTopAxis, data)) {
             container
                 .selectAll('.x-axis.top')
@@ -28,11 +29,25 @@ export default (
         }
 
         const sumDataCount = debounce(
-            labels(
-                container.select('.labels'),
-                { x: scalingFunction },
-                configuration
-            ),
+            (data, callback) => {
+                const result = labels(
+                    container.select('.labels'),
+                    { x: scalingFunction },
+                    configuration
+                )(data);
+                delimiters(
+                    container,
+                    { x: scalingFunction },
+                    configuration.displayLabels
+                        ? configuration.labelsWidth +
+                              configuration.labelsRightMargin
+                        : 0,
+                    configuration.dateFormat
+                );
+                if (callback) {
+                    callback(result);
+                }
+            },
             100
         );
 
@@ -44,11 +59,11 @@ export default (
                     return scalingFunction(new Date(d.date));
                 });
 
-            sumDataCount(data);
-
-            if (callback) {
-                callback(data);
-            }
+            sumDataCount(data, result => {
+                if (callback) {
+                    callback(result);
+                }
+            });
         });
     };
 

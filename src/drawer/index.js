@@ -70,7 +70,9 @@ export default (svg, dimensions, scales, configuration) => {
         configuration,
         dimensions
     );
+    
     const labels = labelsFactory(labelsContainer, scales, configuration);
+    
     const drops = dropsFactory(dropsContainer, scales, configuration);
 
     return data => {
