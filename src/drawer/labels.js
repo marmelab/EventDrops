@@ -4,7 +4,15 @@ export default (container, scales, config) =>
     data => {
         const result = [];
         if(!config.displayLabels) {
-            return;
+            if(data && !data.length){
+                return;
+            }
+            data.forEach( d => {
+                const count = filterData(d.data, scales.x, config.date).length;
+                result.push({name: d.name,count: count});    
+            })
+            
+            return result;
         }
 
         let labels;

@@ -46,6 +46,7 @@ const config = {
     mouseout: () => {},
     mouseover: () => {},
     zoomend: () => {},
+    zoomStreamCallback: () => {},
     click: () => {},
     dblclick: () => {},
     hasDelimiter: true,

@@ -53,7 +53,14 @@ function eventDrops(config = {}) {
             draw(data);
 
             if (finalConfiguration.zoomable) {
-                zoom(svg, dimensions, scales, finalConfiguration, data);
+                zoom(
+                    svg,
+                    dimensions,
+                    scales,
+                    finalConfiguration,
+                    data,
+                    finalConfiguration.zoomStreamCallback
+                );
             }
         });
     }
