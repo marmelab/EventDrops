@@ -30,11 +30,20 @@ export default (
 
         const sumDataCount = debounce(
             (data, callback) => {
-                const result = labels(
-                    container.select('.labels'),
-                    { x: scalingFunction },
-                    configuration
-                )(data);
+                const domain = scalingFunction.domain();
+
+                const result = {
+                    counts: labels(
+                        container.select('.labels'),
+                        { x: scalingFunction },
+                        configuration
+                    )(data),
+                    dates: {
+                        from: domain[0],
+                        to: domain[1]
+                    }
+                };
+
                 delimiters(
                     container,
                     { x: scalingFunction },
