@@ -27,7 +27,7 @@ export default (container, scales, configuration) =>
             .attr('cy', configuration.lineHeight / 2)
             .attr('fill', configuration.eventColor)
             .attr("data-id", d => d.id)
-            .on('click', configuration.click)
+            .on('mousedown', configuration.click)
             .on('dblclick',configuration.dblclick)
             .on('mouseover', configuration.mouseover)
             .on('mouseout', configuration.mouseout);
