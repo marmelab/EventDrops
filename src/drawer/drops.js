@@ -35,7 +35,7 @@ export default (container, scales, configuration) =>
         // unregister previous event handlers to prevent from memory leaks
         drops
             .exit()
-            .on('click', null)
+            .on('mousedown', null)
             .on('dblclick',null)
             .on('mouseout', null)
             .on('mouseover', null)
