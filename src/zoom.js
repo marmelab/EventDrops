@@ -76,11 +76,17 @@ export default (
         });
     };
 
+    const zoomEnd = (data, index, element) => {
+        const scalingFunction = d3.event.transform.rescaleX(scales.x);
+        const domain = scalingFunction.domain();
+        configuration.zoomend({dates: {from: domain[0], to: domain[1]}});
+    };
+
     const zoom = d3
         .zoom()
         .scaleExtent([configuration.minScale, configuration.maxScale])
         .on('zoom', onZoom)
-        .on('end', configuration.zoomend);
+        .on('end', zoomEnd);
 
     container.call(zoom);
     return zoom;
