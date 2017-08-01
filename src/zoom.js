@@ -5,18 +5,20 @@ import { boolOrReturnValue } from './drawer/xAxis';
 export const onRequestAnimationFrameFactory = (
     container,
     configuration,
-    callback
+    callback,
+    sumDataCount,
+    scalingFunction,
+    data
 ) =>
-    (sumDataCount, scalingFunction, data) =>
-        () => {
-            container
-                .selectAll('.drop-line')
-                .selectAll('.drop')
-                .attr('cx', d => scalingFunction(configuration.date(d)));
+    () => {
+        container
+            .selectAll('.drop-line')
+            .selectAll('.drop')
+            .attr('cx', d => scalingFunction(configuration.date(d)));
 
-            sumDataCount(data);
-            callback(data);
-        };
+        sumDataCount(data);
+        callback(data);
+    };
 
 export default (
     container,
@@ -50,7 +52,10 @@ export default (
         }
 
         global.requestAnimationFrame(
-            onRequestAnimationFrameFactory(container, configuration, callback)(
+            onRequestAnimationFrameFactory(
+                container,
+                configuration,
+                callback,
                 sumDataCount,
                 scalingFunction,
                 data

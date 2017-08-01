@@ -19,8 +19,14 @@ describe('Zoom', () => {
         const drops = container.selectAll('.drop').data(data);
 
         const scalingFunction = x => x;
-        const onRequestAnimationFrame = onRequestAnimationFrameFactory(container, configuration, () => {});
-        onRequestAnimationFrame(() => {}, scalingFunction, data)();
+        onRequestAnimationFrameFactory(
+            container,
+            configuration,
+            () => {},
+            () => {},
+            scalingFunction,
+            data
+        )();
 
         // .attr getter returns result of function with first non null data specified
         // @see http://devdocs.io/d3~4/d3-selection#selection_attr
