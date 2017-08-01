@@ -2,9 +2,40 @@ import debounce from 'debounce';
 import labels from './drawer/labels';
 import { boolOrReturnValue } from './drawer/xAxis';
 
-export default (container, dimensions, scales, configuration, callback) => {
-    const onZoom = (data) => {
+export const onRequestAnimationFrameFactory = (
+    container,
+    configuration,
+    callback
+) =>
+    (sumDataCount, scalingFunction, data) =>
+        () => {
+            container
+                .selectAll('.drop-line')
+                .selectAll('.drop')
+                .attr('cx', d => scalingFunction(configuration.date(d)));
+
+            sumDataCount(data);
+            callback(data);
+        };
+
+export default (
+    container,
+    dimensions,
+    scales,
+    configuration,
+    callback = () => {}
+) => {
+    const onZoom = data => {
         const scalingFunction = d3.event.transform.rescaleX(scales.x);
+
+        const sumDataCount = debounce(
+            labels(
+                container.select('.labels'),
+                { x: scalingFunction },
+                configuration
+            ),
+            100
+        );
 
         if (boolOrReturnValue(configuration.hasTopAxis, data)) {
             container
@@ -18,27 +49,13 @@ export default (container, dimensions, scales, configuration, callback) => {
                 .call(d3.axisBottom().scale(scalingFunction));
         }
 
-        const sumDataCount = debounce(
-            labels(
-                container.select('.labels'),
-                { x: scalingFunction },
-                configuration
-            ),
-            100
+        global.requestAnimationFrame(
+            onRequestAnimationFrameFactory(container, configuration, callback)(
+                sumDataCount,
+                scalingFunction,
+                data
+            )
         );
-
-        global.requestAnimationFrame(() => {
-            container
-                .selectAll('.drop-line')
-                .selectAll('.drop')
-                .attr('cx', d => scalingFunction(new Date(d.date)));
-
-            sumDataCount(data);
-
-            if (callback) {
-                callback(data);
-            }
-        });
     };
 
     const zoom = d3
@@ -48,5 +65,6 @@ export default (container, dimensions, scales, configuration, callback) => {
         .on('end', configuration.zoomend);
 
     container.call(zoom);
+
     return zoom;
 };
