@@ -66,9 +66,10 @@ describe('eventDrops', () => {
         const zoom = require('../../src/zoom');
         const data = [ { name: 'foo', data: [new Date()] }];
 
-        const test = (zoomable, expectedZoomableBehavior) => {
-            zoom.default = jasmine.createSpy();
+        spyOn(zoom, 'default').and.callThrough();
 
+        const test = (zoomable, expectedZoomableBehavior) => {
+            zoom.default.calls.reset();
             const div = document.createElement('div');
 
             const chart = eventDrops().zoomable(zoomable);
