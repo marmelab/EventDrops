@@ -5,11 +5,16 @@ import './style.css';
 
 export default (config = defaultConfiguration) =>
     selection => {
-        const { lineHeight, margin } = config;
+        const {
+            line: {
+                height: lineHeight,
+            },
+            margin,
+        } = config;
 
         // Follow margins conventions (https://bl.ocks.org/mbostock/3019563)
         const width = selection.node().clientWidth - margin.left - margin.right;
-        const height = selection.data()[0].length * lineHeight -
+        const height = (selection.data()[0].length + 1) * lineHeight -
             margin.top -
             margin.bottom;
 

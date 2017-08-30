@@ -3,7 +3,10 @@ export default {
         color: null,
         radius: 8,
     },
-    lineHeight: 50,
+    line: {
+        color: (_, index) => d3.schemeCategory10[index],
+        height: 50,
+    },
     margin: {
         top: 20,
         right: 10,

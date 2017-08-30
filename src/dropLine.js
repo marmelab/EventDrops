@@ -2,7 +2,12 @@ import drop from './drop';
 
 export default (config, xScale) =>
     selection => {
-        const { lineHeight } = config;
+        const {
+            line: {
+                color: lineColor,
+                height: lineHeight,
+            },
+        } = config;
 
         const lines = selection.selectAll('.drop-line').data(d => d);
 
@@ -10,6 +15,7 @@ export default (config, xScale) =>
             .enter()
             .append('g')
             .classed('drop-line', true)
+            .attr('fill', lineColor)
             .attr(
                 'transform',
                 (_, index) => `translate(0, ${(index + 0.5) * lineHeight})`
