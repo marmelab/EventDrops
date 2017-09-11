@@ -7,7 +7,14 @@ export default (config, xScale) =>
             },
         } = config;
 
-        const drops = selection.selectAll('.drop').data(d => d.data);
+        const dateBounds = xScale.domain().map(d => new Date(d));
+        const withinRange = d =>
+            new Date(d) >= dateBounds[0] && new Date(d) <= dateBounds[1];
+
+        const drops = selection
+            .selectAll('.drop')
+            .data(repositoryData =>
+                repositoryData.data.filter(d => withinRange(d.date)));
 
         drops
             .enter()

@@ -3,6 +3,9 @@ export default {
         color: null,
         radius: 8,
     },
+    label: {
+        width: 200,
+    },
     line: {
         color: (_, index) => d3.schemeCategory10[index],
         height: 50,

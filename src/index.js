@@ -24,10 +24,5 @@ export default (config = defaultConfiguration) =>
             .attr('height', height)
             .classed('event-drops-chart', true);
 
-        const xScale = d3
-            .scaleTime()
-            .domain([config.range.start, config.range.end])
-            .range([0, width]);
-
-        svg.call(dropLine(config, xScale));
+        svg.call(dropLine(config, width));
     };
