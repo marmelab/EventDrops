@@ -9,7 +9,7 @@ export default {
     },
     line: {
         color: (_, index) => d3.schemeCategory10[index],
-        height: 50,
+        height: 40,
     },
     margin: {
         top: 20,

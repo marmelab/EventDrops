@@ -7,22 +7,16 @@ export default (config, xScale) =>
             },
         } = config;
 
-        const dateBounds = xScale.domain().map(d => new Date(d));
-        const withinRange = d =>
-            new Date(d) >= dateBounds[0] && new Date(d) <= dateBounds[1];
-
-        const drops = selection
-            .selectAll('.drop')
-            .data(repositoryData =>
-                repositoryData.data.filter(d => withinRange(d.date)));
+        const drops = selection.selectAll('.drop').data(d => d.data);
 
         drops
             .enter()
             .append('circle')
             .classed('drop', true)
             .attr('r', dropRadius)
-            .attr('cx', d => xScale(new Date(d.date)))
-            .attr('fill', dropColor);
+            .attr('fill', dropColor)
+            .merge(drops)
+            .attr('cx', d => xScale(new Date(d.date)));
 
         drops.exit().remove();
     };

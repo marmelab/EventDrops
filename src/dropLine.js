@@ -39,7 +39,7 @@ export default (config, xScale) =>
             .attr('y', lineHeight / 2)
             .attr('dy', '0.25em')
             .attr('text-anchor', 'end')
-            .text(d => d.name);
+            .text(d => `${d.name} (${d.data.length})`);
 
         g
             .append('g')
