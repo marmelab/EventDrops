@@ -1,6 +1,6 @@
 import drop from './drop';
 
-export default (config, width) =>
+export default (config, xScale) =>
     selection => {
         const {
             label: {
@@ -11,15 +11,7 @@ export default (config, width) =>
                 color: lineColor,
                 height: lineHeight,
             },
-            drop: {
-                radius: dropRadius,
-            },
         } = config;
-
-        const xScale = d3
-            .scaleTime()
-            .domain([config.range.start, config.range.end])
-            .range([0, width - labelWidth]);
 
         const lines = selection.selectAll('.drop-line').data(d => d);
 
@@ -37,7 +29,7 @@ export default (config, width) =>
             .append('line')
             .classed('line-separator', true)
             .attr('x1', labelWidth)
-            .attr('x2', width)
+            .attr('x2', '100%')
             .attr('y1', () => lineHeight)
             .attr('y2', () => lineHeight);
 

@@ -6,6 +6,9 @@ import './style.css';
 export default (config = defaultConfiguration) =>
     selection => {
         const {
+            label: {
+                width: labelWidth,
+            },
             line: {
                 height: lineHeight,
             },
@@ -24,5 +27,10 @@ export default (config = defaultConfiguration) =>
             .attr('height', height)
             .classed('event-drops-chart', true);
 
-        svg.call(dropLine(config, width));
+        const xScale = d3
+            .scaleTime()
+            .domain([config.range.start, config.range.end])
+            .range([0, width - labelWidth]);
+
+        svg.call(dropLine(config, xScale));
     };
