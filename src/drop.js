@@ -22,7 +22,6 @@ export default (config, xScale) =>
             .classed('drop', true)
             .attr('r', dropRadius)
             .attr('cx', d => xScale(new Date(d.date)))
-            .attr('cy', -2.5)
             .attr('fill', dropColor);
 
         drops.exit().remove();

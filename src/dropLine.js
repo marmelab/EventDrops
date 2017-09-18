@@ -4,11 +4,15 @@ export default (config, width) =>
     selection => {
         const {
             label: {
+                padding: labelPadding,
                 width: labelWidth,
             },
             line: {
                 color: lineColor,
                 height: lineHeight,
+            },
+            drop: {
+                radius: dropRadius,
             },
         } = config;
 
@@ -26,15 +30,32 @@ export default (config, width) =>
             .attr('fill', lineColor)
             .attr(
                 'transform',
-                (_, index) => `translate(0, ${(index + 0.5) * lineHeight})`
+                (_, index) => `translate(0, ${index * lineHeight})`
             );
 
-        g.append('text').text(d => d.name);
+        g
+            .append('line')
+            .classed('line-separator', true)
+            .attr('x1', labelWidth)
+            .attr('x2', width)
+            .attr('y1', () => lineHeight)
+            .attr('y2', () => lineHeight);
+
+        g
+            .append('text')
+            .attr('x', labelWidth - labelPadding)
+            .attr('y', lineHeight / 2)
+            .attr('dy', '0.25em')
+            .attr('text-anchor', 'end')
+            .text(d => d.name);
 
         g
             .append('g')
             .classed('drops', true)
-            .attr('transform', () => `translate(${labelWidth}, 0)`)
+            .attr(
+                'transform',
+                () => `translate(${labelWidth}, ${lineHeight / 2})`
+            )
             .call(drop(config, xScale));
 
         lines.exit().remove();

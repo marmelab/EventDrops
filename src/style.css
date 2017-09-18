@@ -10,12 +10,12 @@
 }
 
 .line-separator, .x-axis {
-    stroke: black;
+    stroke: #777;
     fill: none;
     stroke-width: 1px;
 }
 
-.line-separator:last-child {
+.drop-line:last-child .line-separator {
     display: none;
 }
 

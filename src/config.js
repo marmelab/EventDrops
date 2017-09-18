@@ -5,6 +5,7 @@ export default {
     },
     label: {
         width: 200,
+        padding: 20,
     },
     line: {
         color: (_, index) => d3.schemeCategory10[index],
