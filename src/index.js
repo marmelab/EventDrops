@@ -11,10 +11,16 @@ export const draw = (config, xScale) =>
     selection => {
         const dateBounds = xScale.domain().map(d => new Date(d));
         const filteredData = selection.data().map(dataSet =>
-            dataSet.map(row => ({
-                ...row,
-                data: row.data.filter(d => withinRange(d.date, dateBounds)),
-            })));
+            dataSet.map(row => {
+                if (!row.fullData) {
+                    row.fullData = row.data;
+                }
+
+                row.data = row.fullData.filter(d =>
+                    withinRange(d.date, dateBounds));
+
+                return row;
+            }));
 
         selection.data(filteredData).call(dropLine(config, xScale));
     };

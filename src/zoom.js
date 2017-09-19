@@ -3,7 +3,8 @@ export default (svg, config, xScale, draw) => {
 
     zoom.on('zoom', () => {
         const newScale = d3.event.transform.rescaleX(xScale);
-        svg.call(draw(config, newScale));
+        // @FIXME: remove d3.selectAll to use current selection
+        d3.selectAll('svg').call(draw(config, newScale));
     });
 
     return zoom;

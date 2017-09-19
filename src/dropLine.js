@@ -39,7 +39,7 @@ export default (config, xScale) =>
             .attr('y', lineHeight / 2)
             .attr('dy', '0.25em')
             .attr('text-anchor', 'end')
-            .text(d => `${d.name} (${d.data.length})`);
+            .text(d => `${d.name}`);
 
         g
             .append('g')
@@ -49,6 +49,8 @@ export default (config, xScale) =>
                 () => `translate(${labelWidth}, ${lineHeight / 2})`
             )
             .call(drop(config, xScale));
+
+        lines.selectAll('.drops').call(drop(config, xScale));
 
         lines.exit().remove();
     };
