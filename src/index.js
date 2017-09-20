@@ -1,3 +1,4 @@
+import axis from './axis';
 import defaultConfiguration from './config';
 import dropLine from './dropLine';
 import zoom from './zoom';
@@ -22,7 +23,10 @@ export const draw = (config, xScale) =>
                 return row;
             }));
 
-        selection.data(filteredData).call(dropLine(config, xScale));
+        selection
+            .data(filteredData)
+            .call(dropLine(config, xScale))
+            .call(axis(config, xScale));
     };
 
 export default (config = defaultConfiguration) =>
@@ -49,24 +53,27 @@ export default (config = defaultConfiguration) =>
             .domain([rangeStart, rangeEnd])
             .range([0, width - labelWidth]);
 
-        const svg = selection.selectAll('svg').data(selection.data());
+        const root = selection.selectAll('svg').data(selection.data());
 
-        svg
+        root.exit().remove();
+
+        const svg = root
             .enter()
             .append('svg')
             .attr('width', width)
-            .attr(
-                'height',
-                d => (d.length + 1) * lineHeight - margin.top - margin.bottom
-            )
             .classed('event-drop-chart', true)
-            .call(zoom(svg, config, xScale, draw))
-            .merge(svg)
+            .call(zoom(root, config, xScale, draw));
+
+        svg
+            .merge(root)
             .attr(
                 'height',
-                d => (d.length + 1) * lineHeight - margin.top - margin.bottom
-            )
-            .call(draw(config, xScale));
+                d => (d.length + 1) * lineHeight + margin.top + margin.bottom
+            );
 
-        svg.exit().remove();
+        svg
+            .append('g')
+            .classed('viewport', true)
+            .attr('transform', `translate(${margin.left},${margin.top})`)
+            .call(draw(config, xScale));
     };
