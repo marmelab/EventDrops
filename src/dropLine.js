@@ -4,6 +4,7 @@ export default (config, xScale) =>
     selection => {
         const {
             label: {
+                text: labelText,
                 padding: labelPadding,
                 width: labelWidth,
             },
@@ -39,7 +40,7 @@ export default (config, xScale) =>
             .attr('y', lineHeight / 2)
             .attr('dy', '0.25em')
             .attr('text-anchor', 'end')
-            .text(d => `${d.name}`);
+            .text(labelText);
 
         g
             .append('g')
@@ -50,6 +51,7 @@ export default (config, xScale) =>
             )
             .call(drop(config, xScale));
 
+        lines.selectAll('text').text(d => `${d.name} (${d.data.length})`);
         lines.selectAll('.drops').call(drop(config, xScale));
 
         lines.exit().remove();

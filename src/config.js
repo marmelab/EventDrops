@@ -4,8 +4,9 @@ export default {
         radius: 8,
     },
     label: {
-        width: 200,
         padding: 20,
+        text: d => `${d.name} (${d.data.length})`,
+        width: 200,
     },
     line: {
         color: (_, index) => d3.schemeCategory10[index],
