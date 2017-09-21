@@ -1,3 +1,5 @@
+import defaultsDeep from 'lodash.defaultsdeep';
+
 import axis from './axis';
 import bounds from './bounds';
 import defaultConfiguration from './config';
@@ -32,8 +34,10 @@ export const draw = (config, xScale) =>
             .call(axis(config, xScale));
     };
 
-export default (config = defaultConfiguration) =>
+export default (customConfiguration = {}) =>
     selection => {
+        const config = defaultsDeep(customConfiguration, defaultConfiguration);
+
         const {
             metaballs,
             label: {

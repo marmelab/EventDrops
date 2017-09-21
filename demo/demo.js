@@ -12,10 +12,6 @@ const repositoriesData = repositories.map(repository => ({
     data: repository.commits,
 }));
 
-global.d3 = d3;
-global.c = chart;
-global.d = repositoriesData;
-
 d3.select('#eventdrops-demo')
     .data([repositoriesData])
     .call(chart);

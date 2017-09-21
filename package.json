@@ -16,7 +16,8 @@
     "d3": "~4.7.0"
   },
   "dependencies": {
-    "debounce": "1.0.0"
+    "debounce": "1.0.0",
+    "lodash.defaultsdeep": "^4.6.0"
   },
   "devDependencies": {
     "async": "2.0.1",
