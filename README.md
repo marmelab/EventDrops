@@ -28,11 +28,13 @@ For Bower users, even if Bower is not officially supported, you can still use Gi
 
 ## Usage
 
-Include the `src/eventDrops.js` script in your page after d3:
+You need to import `D3` on your side: `eventDrops` does not include it itself. Then, just `require('event-drops')` in your module bundled script. 
+
+If you don't use any module bundler, you can include the EventDrops latest source using `unpkg`:
 
 ```html
 <script src="path/to/d3.js"></script>
-<script src="src/eventDrops.js"></script>
+<script src="https://unpkg.com/event-drops"></script>
 ```
 
 In the HTML source, create a new EventDrops chart, bind data to a DOM element, then call the chart on the element.
