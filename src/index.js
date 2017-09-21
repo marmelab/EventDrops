@@ -1,4 +1,5 @@
 import axis from './axis';
+import bounds from './bounds';
 import defaultConfiguration from './config';
 import dropLine from './dropLine';
 import zoom from './zoom';
@@ -27,6 +28,7 @@ export const draw = (config, xScale) =>
         selection
             .data(filteredData)
             .call(dropLine(config, xScale))
+            .call(bounds(config, xScale))
             .call(axis(config, xScale));
     };
 

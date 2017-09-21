@@ -3,6 +3,9 @@ export default {
         blurDeviation: 5,
         colorMatrix: '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 25 -7',
     },
+    bound: {
+        format: d3.timeFormat('%d %B %Y'),
+    },
     drop: {
         color: null,
         radius: 8,
