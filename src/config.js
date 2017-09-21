@@ -1,4 +1,8 @@
 export default {
+    metaballs: {
+        blurDeviation: 5,
+        colorMatrix: '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 25 -7',
+    },
     drop: {
         color: null,
         radius: 8,

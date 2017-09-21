@@ -2,6 +2,7 @@ import axis from './axis';
 import defaultConfiguration from './config';
 import dropLine from './dropLine';
 import zoom from './zoom';
+import { addMetaballsDefs } from './metaballs';
 
 import './style.css';
 
@@ -32,6 +33,7 @@ export const draw = (config, xScale) =>
 export default (config = defaultConfiguration) =>
     selection => {
         const {
+            metaballs,
             label: {
                 width: labelWidth,
             },
@@ -63,6 +65,10 @@ export default (config = defaultConfiguration) =>
             .attr('width', width)
             .classed('event-drop-chart', true)
             .call(zoom(root, config, xScale, draw));
+
+        if (metaballs) {
+            svg.call(addMetaballsDefs(config));
+        }
 
         svg
             .merge(root)

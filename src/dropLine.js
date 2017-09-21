@@ -1,8 +1,10 @@
 import drop from './drop';
+import { addMetaballsStyle } from './metaballs';
 
 export default (config, xScale) =>
     selection => {
         const {
+            metaballs,
             label: {
                 text: labelText,
                 padding: labelPadding,
@@ -42,7 +44,7 @@ export default (config, xScale) =>
             .attr('text-anchor', 'end')
             .text(labelText);
 
-        g
+        const drops = g
             .append('g')
             .classed('drops', true)
             .attr(
@@ -50,6 +52,10 @@ export default (config, xScale) =>
                 () => `translate(${labelWidth}, ${lineHeight / 2})`
             )
             .call(drop(config, xScale));
+
+        if (metaballs) {
+            drops.style('filter', 'url(#metaballs)');
+        }
 
         lines.selectAll('text').text(d => `${d.name} (${d.data.length})`);
         lines.selectAll('.drops').call(drop(config, xScale));
