@@ -53,6 +53,14 @@ export default (config, xScale) =>
             )
             .call(drop(config, xScale));
 
+        drops
+            .append('rect')
+            .attr('x', 0)
+            .attr('y', -config.line.height / 2)
+            .attr('width', 1)
+            .attr('height', config.line.height)
+            .attr('fill', 'transparent');
+
         if (metaballs) {
             drops.style('filter', 'url(#metaballs)');
         }

@@ -1,14 +1,14 @@
 export default {
     metaballs: {
-        blurDeviation: 5,
-        colorMatrix: '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 25 -7',
+        blurDeviation: 10,
+        colorMatrix: '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 50 -10',
     },
     bound: {
         format: d3.timeFormat('%d %B %Y'),
     },
     drop: {
         color: null,
-        radius: 8,
+        radius: 5,
     },
     label: {
         padding: 20,
@@ -17,7 +17,7 @@ export default {
     },
     line: {
         color: (_, index) => d3.schemeCategory10[index],
-        height: 40,
+        height: 80,
     },
     margin: {
         top: 20,
