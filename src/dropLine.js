@@ -54,10 +54,10 @@ export default (config, xScale) =>
             .call(drop(config, xScale));
 
         drops
-            .append('rect')
+            .append('rect') // The rect allow us to size the drops g element
             .attr('x', 0)
             .attr('y', -config.line.height / 2)
-            .attr('width', 1)
+            .attr('width', 1) // For the rect to impact its parent size it must have a non zero width
             .attr('height', config.line.height)
             .attr('fill', 'transparent');
 
