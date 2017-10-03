@@ -14,6 +14,7 @@ export default (config, xScale) =>
         } = config;
 
         const bounds = selection.selectAll('.bound').data(d => d);
+        const numberRows = selection.data()[0].length;
 
         bounds.exit().remove();
 
@@ -25,7 +26,7 @@ export default (config, xScale) =>
             .classed('start', true)
             .attr(
                 'transform',
-                `translate(${labelWidth}, ${lineHeight * 5 + margin.bottom})`
+                `translate(${labelWidth}, ${lineHeight * numberRows + margin.top})`
             )
             .append('text')
             .text(dateFormat(xScale.domain()[0]));
@@ -38,7 +39,7 @@ export default (config, xScale) =>
             .classed('end', true)
             .attr(
                 'transform',
-                `translate(${labelWidth}, ${lineHeight * 5 + margin.bottom})`
+                `translate(${labelWidth}, ${lineHeight * numberRows + margin.top})`
             )
             .append('text')
             .attr('x', xScale.range()[1] - margin.right)
