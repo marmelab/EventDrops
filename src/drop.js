@@ -1,3 +1,5 @@
+import uniqBy from 'lodash.uniqby';
+
 export default (config, xScale) =>
     selection => {
         const {
@@ -7,7 +9,9 @@ export default (config, xScale) =>
             },
         } = config;
 
-        const drops = selection.selectAll('.drop').data(d => d.data);
+        const drops = selection
+            .selectAll('.drop')
+            .data(d => uniqBy(d.data, 'date'));
 
         drops
             .enter()

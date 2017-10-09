@@ -1,5 +1,4 @@
 import drop from './drop';
-import { addMetaballsStyle } from './metaballs';
 
 export default (config, xScale) =>
     selection => {

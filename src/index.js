@@ -16,7 +16,8 @@ export const draw = (config, xScale) =>
     selection => {
         const dateBounds = xScale.domain().map(d => new Date(d));
         const filteredData = selection.data().map(dataSet =>
-            dataSet.map(({ data, fullData = data }) => ({
+            dataSet.map(({ name, data, fullData = data }) => ({
+                name,
                 fullData,
                 data: fullData.filter(d => withinRange(d.date, dateBounds)),
             })));
