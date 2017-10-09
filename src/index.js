@@ -16,16 +16,10 @@ export const draw = (config, xScale) =>
     selection => {
         const dateBounds = xScale.domain().map(d => new Date(d));
         const filteredData = selection.data().map(dataSet =>
-            dataSet.map(row => {
-                if (!row.fullData) {
-                    row.fullData = row.data;
-                }
-
-                row.data = row.fullData.filter(d =>
-                    withinRange(d.date, dateBounds));
-
-                return row;
-            }));
+            dataSet.map(({ data, fullData = data }) => ({
+                fullData,
+                data: fullData.filter(d => withinRange(d.date, dateBounds)),
+            })));
 
         selection
             .data(filteredData)
