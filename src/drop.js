@@ -11,7 +11,9 @@ export default (config, xScale) =>
 
         const drops = selection
             .selectAll('.drop')
-            .data(d => uniqBy(d.data, 'date'));
+            .data(d =>
+                uniqBy(d.data, data =>
+                    Math.floor(xScale(new Date(data.date)))));
 
         drops
             .enter()
