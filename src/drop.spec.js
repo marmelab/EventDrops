@@ -1,4 +1,4 @@
-import drop from './drop';
+import drop, { filterOverlappingDrop } from './drop';
 
 const defaultConfig = {
     drop: {
@@ -7,7 +7,12 @@ const defaultConfig = {
     },
 };
 
-const defaultScale = d3.scaleTime();
+const now = Date.now();
+const lastYear = now - 3600 * 24 * 30;
+const yesterday = now - 3600 * 24;
+const tomorrow = now + 3600 * 24;
+
+const defaultScale = d3.scaleTime().domain([lastYear, now]).range([0, 1000]);
 
 describe('Drop', () => {
     beforeEach(() => {
@@ -28,7 +33,7 @@ describe('Drop', () => {
     it('should add classed a "drop" circle per piece of data', () => {
         const selection = d3.select('svg').data([
             {
-                data: [{}, {}],
+                data: [{ date: yesterday }, { date: tomorrow }],
             },
         ]);
 
@@ -114,7 +119,7 @@ describe('Drop', () => {
     it('should remove obsolete drops', () => {
         const selection = d3.select('svg').data([
             {
-                data: [{}, {}],
+                data: [{ date: now }, { date: yesterday }],
             },
         ]);
 
@@ -129,6 +134,47 @@ describe('Drop', () => {
 
         drop(defaultConfig, defaultScale)(selection);
         expect(document.querySelectorAll('.drop').length).toBe(1);
+    });
+
+    it('should remove overlapping drops (same date)', () => {
+        const selection = d3.select('svg').data([
+            {
+                data: [{ date: now }, { date: now }],
+            },
+        ]);
+
+        drop(defaultConfig, defaultScale)(selection);
+        expect(document.querySelectorAll('.drop').length).toBe(1);
+    });
+
+    describe('filterOverlappingDrop', () => {
+        it('should filterOverlappingDrop', () => {
+            const d = {
+                data: [{ date: now }, { date: now }, { date: yesterday }],
+            };
+            const xScale = jest.fn(v => v);
+
+            expect(filterOverlappingDrop(xScale)(d)).toEqual([
+                { date: now },
+                { date: yesterday },
+            ]);
+            expect(xScale).toHaveBeenCalledWith(new Date(now));
+            expect(xScale).toHaveBeenCalledWith(new Date(yesterday));
+            expect(xScale).toHaveBeenCalledTimes(3);
+        });
+
+        it('should keep only one drop if xScale return the same value for all', () => {
+            const d = {
+                data: [{ date: now }, { date: tomorrow }, { date: yesterday }],
+            };
+            const xScale = jest.fn(() => 42);
+
+            expect(filterOverlappingDrop(xScale)(d)).toEqual([{ date: now }]);
+            expect(xScale).toHaveBeenCalledWith(new Date(now));
+            expect(xScale).toHaveBeenCalledWith(new Date(tomorrow));
+            expect(xScale).toHaveBeenCalledWith(new Date(yesterday));
+            expect(xScale).toHaveBeenCalledTimes(3);
+        });
     });
 
     afterEach(() => {
