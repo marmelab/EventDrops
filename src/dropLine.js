@@ -65,7 +65,7 @@ export default (config, xScale) =>
             drops.style('filter', 'url(#metaballs)');
         }
 
-        lines.selectAll('text').text(d => `${d.name} (${d.data.length})`);
+        lines.selectAll('text').text(labelText);
         lines.selectAll('.drops').call(drop(config, xScale));
 
         lines.exit().remove();
