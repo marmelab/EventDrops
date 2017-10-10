@@ -147,36 +147,6 @@ describe('Drop', () => {
         expect(document.querySelectorAll('.drop').length).toBe(1);
     });
 
-    describe('filterOverlappingDrop', () => {
-        it('should filterOverlappingDrop', () => {
-            const d = {
-                data: [{ date: now }, { date: now }, { date: yesterday }],
-            };
-            const xScale = jest.fn(v => v);
-
-            expect(filterOverlappingDrop(xScale)(d)).toEqual([
-                { date: now },
-                { date: yesterday },
-            ]);
-            expect(xScale).toHaveBeenCalledWith(new Date(now));
-            expect(xScale).toHaveBeenCalledWith(new Date(yesterday));
-            expect(xScale).toHaveBeenCalledTimes(3);
-        });
-
-        it('should keep only one drop if xScale return the same value for all', () => {
-            const d = {
-                data: [{ date: now }, { date: tomorrow }, { date: yesterday }],
-            };
-            const xScale = jest.fn(() => 42);
-
-            expect(filterOverlappingDrop(xScale)(d)).toEqual([{ date: now }]);
-            expect(xScale).toHaveBeenCalledWith(new Date(now));
-            expect(xScale).toHaveBeenCalledWith(new Date(tomorrow));
-            expect(xScale).toHaveBeenCalledWith(new Date(yesterday));
-            expect(xScale).toHaveBeenCalledTimes(3);
-        });
-    });
-
     afterEach(() => {
         jest.restoreAllMocks();
     });

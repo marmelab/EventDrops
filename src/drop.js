@@ -1,6 +1,6 @@
 import uniqBy from 'lodash.uniqby';
 
-export const filterOverlappingDrop = xScale =>
+const filterOverlappingDrop = xScale =>
     d => uniqBy(d.data, data => Math.round(xScale(new Date(data.date))));
 
 export default (config, xScale) =>
