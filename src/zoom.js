@@ -1,4 +1,6 @@
 export default (svg, config, xScale, draw) => {
+    console.log({ config });
+    const { d3 } = config;
     const zoom = d3.zoom();
 
     zoom.on('zoom', () => {

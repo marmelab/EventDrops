@@ -7,8 +7,5 @@
     "env": {
         "browser": true,
         "jasmine": true
-    },
-    "globals": {
-        "d3": true
     }
 }

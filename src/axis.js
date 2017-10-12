@@ -1,6 +1,7 @@
 export default (config, xScale) =>
     selection => {
         const {
+            d3,
             label: {
                 width: labelWidth,
             },

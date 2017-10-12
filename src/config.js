@@ -1,4 +1,5 @@
-export default {
+export default (d3 = window.d3) => ({
+    d3,
     metaballs: {
         blurDeviation: 10,
         colorMatrix: '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 50 -10',
@@ -29,4 +30,4 @@ export default {
         start: new Date(new Date().getTime() - 3600000 * 24 * 365), // one year ago
         end: new Date(),
     },
-};
+});

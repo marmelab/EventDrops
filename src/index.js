@@ -36,9 +36,12 @@ export const draw = (config, xScale) =>
 
 export default (customConfiguration = {}) =>
     selection => {
-        const config = defaultsDeep(customConfiguration, defaultConfiguration);
-
+        const config = defaultsDeep(
+            customConfiguration,
+            defaultConfiguration(customConfiguration.d3)
+        );
         const {
+            d3,
             metaballs,
             label: {
                 width: labelWidth,
