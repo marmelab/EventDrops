@@ -1,5 +1,4 @@
-export default (d3 = window.d3) => ({
-    d3,
+export default d3 => ({
     metaballs: {
         blurDeviation: 10,
         colorMatrix: '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 50 -10',

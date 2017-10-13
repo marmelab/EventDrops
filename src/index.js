@@ -12,7 +12,7 @@ import './style.css';
 export const withinRange = (date, dateBounds) =>
     new Date(date) >= dateBounds[0] && new Date(date) <= dateBounds[1];
 
-export const draw = (config, xScale) =>
+export const draw = (d3, config, xScale) =>
     selection => {
         const dateBounds = xScale.domain().map(d => new Date(d));
         const filteredData = selection.data().map(dataSet =>
@@ -31,17 +31,17 @@ export const draw = (config, xScale) =>
             .data(filteredData)
             .call(dropLine(config, xScale))
             .call(bounds(config, xScale))
-            .call(axis(config, xScale));
+            .call(axis(d3, config, xScale));
     };
 
-export default (customConfiguration = {}) =>
+export default (customConfiguration = {}, d3 = window.d3) =>
     selection => {
         const config = defaultsDeep(
             customConfiguration,
-            defaultConfiguration(customConfiguration.d3)
+            defaultConfiguration(d3)
         );
+
         const {
-            d3,
             metaballs,
             label: {
                 width: labelWidth,
@@ -55,6 +55,8 @@ export default (customConfiguration = {}) =>
             },
             margin,
         } = config;
+
+        const getEvent = () => d3.event; // keep d3.event mutable see https://github.com/d3/d3/issues/2733
 
         // Follow margins conventions (https://bl.ocks.org/mbostock/3019563)
         const width = selection.node().clientWidth - margin.left - margin.right;
@@ -73,7 +75,7 @@ export default (customConfiguration = {}) =>
             .append('svg')
             .attr('width', width)
             .classed('event-drop-chart', true)
-            .call(zoom(root, config, xScale, draw));
+            .call(zoom(d3, root, config, xScale, draw, getEvent));
 
         if (metaballs) {
             svg.call(addMetaballsDefs(config));
@@ -90,5 +92,5 @@ export default (customConfiguration = {}) =>
             .append('g')
             .classed('viewport', true)
             .attr('transform', `translate(${margin.left},${margin.top})`)
-            .call(draw(config, xScale));
+            .call(draw(d3, config, xScale));
     };
