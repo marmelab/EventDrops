@@ -34,7 +34,7 @@ export const draw = (d3, config, xScale) =>
             .call(axis(d3, config, xScale));
     };
 
-export default (customConfiguration = {}, d3 = window.d3) =>
+export default ({ config: customConfiguration = {}, d3 = window.d3 }) =>
     selection => {
         const config = defaultsDeep(
             customConfiguration,
