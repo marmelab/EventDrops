@@ -1,4 +1,4 @@
-export default (config, xScale) =>
+export default (d3, config, xScale) =>
     selection => {
         const {
             label: {
