@@ -93,10 +93,10 @@ export default ({ config: customConfiguration = {}, d3 = window.d3 }) => {
                     row.data = row.fullData.filter(d =>
                         withinRange(d.date, dateBounds));
 
-                    chart._displayedData = row.data;
-
                     return row;
                 }));
+
+            chart._displayedData = filteredData[0];
 
             selection
                 .data(filteredData)

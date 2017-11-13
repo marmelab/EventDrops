@@ -2,12 +2,26 @@ import * as d3 from 'd3/build/d3';
 
 import eventDrops from '../src';
 import '../src/style.css';
+import { humanizeDate } from './utils';
 
 const repositories = require('./data.json');
+
+const numberCommitsContainer = document.getElementById('numberCommits');
+const zoomStart = document.getElementById('zoomStart');
+const zoomEnd = document.getElementById('zoomEnd');
 
 const chart = eventDrops({
     d3,
     config: {
+        zoom: {
+            onZoomEnd: () => {
+                const filteredData = chart.displayedData().reduce((total, repo) => total.concat(repo.data), []);
+
+                numberCommitsContainer.textContent = filteredData.length;
+                zoomStart.textContent = humanizeDate(chart.scale().domain()[0]);
+                zoomEnd.textContent = humanizeDate(chart.scale().domain()[1]);
+            },
+        },
     },
 });
 
