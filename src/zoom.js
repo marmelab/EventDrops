@@ -2,7 +2,7 @@ export const getShiftedTransform = (
     originalTransform,
     labelsWidth,
     labelsPadding,
-    d3
+    d3,
 ) => {
     const fullLabelWidth = labelsWidth + labelsPadding;
 
@@ -30,7 +30,7 @@ export default (d3, svg, config, xScale, draw, getEvent) => {
             getEvent().transform,
             labelsWidth,
             labelsPadding,
-            d3
+            d3,
         );
         const newScale = transform.rescaleX(xScale);
         svg.call(draw(d3, config, newScale));

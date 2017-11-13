@@ -12,30 +12,8 @@ import './style.css';
 export const withinRange = (date, dateBounds) =>
     new Date(date) >= dateBounds[0] && new Date(date) <= dateBounds[1];
 
-export const draw = (d3, config, xScale) =>
-    selection => {
-        const dateBounds = xScale.domain().map(d => new Date(d));
-        const filteredData = selection.data().map(dataSet =>
-            dataSet.map(row => {
-                if (!row.fullData) {
-                    row.fullData = row.data;
-                }
-
-                row.data = row.fullData.filter(d =>
-                    withinRange(d.date, dateBounds));
-
-                return row;
-            }));
-
-        selection
-            .data(filteredData)
-            .call(dropLine(config, xScale))
-            .call(bounds(config, xScale))
-            .call(axis(d3, config, xScale));
-    };
-
-export default ({ config: customConfiguration = {}, d3 = window.d3 }) =>
-    selection => {
+export default ({ config: customConfiguration = {}, d3 = window.d3 }) => {
+    const chart = selection => {
         const config = defaultsDeep(
             customConfiguration,
             defaultConfiguration(d3)
@@ -66,6 +44,8 @@ export default ({ config: customConfiguration = {}, d3 = window.d3 }) =>
             .domain([rangeStart, rangeEnd])
             .range([0, width - labelWidth]);
 
+        chart._xscale = xScale;
+
         const root = selection.selectAll('svg').data(selection.data());
 
         root.exit().remove();
@@ -93,5 +73,37 @@ export default ({ config: customConfiguration = {}, d3 = window.d3 }) =>
             .append('g')
             .classed('viewport', true)
             .attr('transform', `translate(${margin.left},${margin.top})`)
-            .call(draw(d3, config, xScale));
+            .call(draw(config, xScale));
     };
+
+    const draw = (config, xScale) =>
+        selection => {
+            chart._scale = xScale;
+
+            const dateBounds = xScale.domain().map(d => new Date(d));
+            const filteredData = selection.data().map(dataSet =>
+                dataSet.map(row => {
+                    if (!row.fullData) {
+                        row.fullData = row.data;
+                    }
+
+                    row.data = row.fullData.filter(d =>
+                        withinRange(d.date, dateBounds));
+
+                    chart._displayedData = row.data;
+
+                    return row;
+                }));
+
+            selection
+                .data(filteredData)
+                .call(dropLine(config, xScale))
+                .call(bounds(config, xScale))
+                .call(axis(d3, config, xScale));
+        };
+
+    chart.scale = () => chart._scale;
+    chart.displayedData = () => chart._displayedData;
+
+    return chart;
+};
