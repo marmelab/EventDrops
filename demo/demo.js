@@ -5,7 +5,12 @@ import '../src/style.css';
 
 const repositories = require('./data.json');
 
-const chart = eventDrops({ d3 });
+const chart = eventDrops({
+    d3,
+    config: {
+    },
+});
+
 const repositoriesData = repositories.map(repository => ({
     name: repository.name,
     data: repository.commits,

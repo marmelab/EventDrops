@@ -21,11 +21,20 @@ export default (d3, svg, config, xScale, draw, getEvent) => {
             width: labelsWidth,
             padding: labelsPadding,
         },
+        zoom: {
+            onZoomStart,
+            onZoom,
+            onZoomEnd,
+        },
     } = config;
 
     const zoom = d3.zoom();
 
-    zoom.on('zoom', () => {
+    zoom
+        .on('zoom.start', onZoomStart)
+        .on('zoom.end', onZoomEnd);
+
+    zoom.on('zoom', (args) => {
         const transform = getShiftedTransform(
             getEvent().transform,
             labelsWidth,
@@ -34,6 +43,10 @@ export default (d3, svg, config, xScale, draw, getEvent) => {
         );
         const newScale = transform.rescaleX(xScale);
         svg.call(draw(d3, config, newScale));
+
+        if (onZoom) {
+            onZoom(args);
+        }
     });
 
     return zoom;

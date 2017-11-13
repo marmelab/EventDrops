@@ -29,4 +29,9 @@ export default d3 => ({
         start: new Date(new Date().getTime() - 3600000 * 24 * 365), // one year ago
         end: new Date(),
     },
+    zoom: {
+        onZoomStart: null,
+        onZoom: null,
+        onZoomEnd: null,
+    },
 });
