@@ -74,8 +74,9 @@ export default ({ config: customConfiguration = {}, d3 = window.d3 }) =>
             .enter()
             .append('svg')
             .attr('width', width)
-            .classed('event-drop-chart', true)
-            .call(zoom(d3, root, config, xScale, draw, getEvent));
+            .classed('event-drop-chart', true);
+
+        svg.call(zoom(d3, svg, config, xScale, draw, getEvent));
 
         if (metaballs) {
             svg.call(addMetaballsDefs(config));
