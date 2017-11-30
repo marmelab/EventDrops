@@ -10,17 +10,19 @@ const numberCommitsContainer = document.getElementById('numberCommits');
 const zoomStart = document.getElementById('zoomStart');
 const zoomEnd = document.getElementById('zoomEnd');
 
+const updateCommitsInformation = (chart) => {
+    const filteredData = chart.displayedData().reduce((total, repo) => total.concat(repo.data), []);
+
+    numberCommitsContainer.textContent = filteredData.length;
+    zoomStart.textContent = humanizeDate(chart.scale().domain()[0]);
+    zoomEnd.textContent = humanizeDate(chart.scale().domain()[1]);
+};
+
 const chart = eventDrops({
     d3,
     config: {
         zoom: {
-            onZoomEnd: () => {
-                const filteredData = chart.displayedData().reduce((total, repo) => total.concat(repo.data), []);
-
-                numberCommitsContainer.textContent = filteredData.length;
-                zoomStart.textContent = humanizeDate(chart.scale().domain()[0]);
-                zoomEnd.textContent = humanizeDate(chart.scale().domain()[1]);
-            },
+            onZoomEnd: () => updateCommitsInformation(chart),
         },
     },
 });
@@ -33,3 +35,5 @@ const repositoriesData = repositories.map(repository => ({
 d3.select('#eventdrops-demo')
     .data([repositoriesData])
     .call(chart);
+
+updateCommitsInformation(chart);
