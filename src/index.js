@@ -96,7 +96,7 @@ export default ({ config: customConfiguration = {}, d3 = window.d3 }) => {
                     return row;
                 }));
 
-            chart._displayedData = filteredData[0];
+            chart._filteredData = filteredData[0];
 
             selection
                 .data(filteredData)
@@ -106,7 +106,7 @@ export default ({ config: customConfiguration = {}, d3 = window.d3 }) => {
         };
 
     chart.scale = () => chart._scale;
-    chart.displayedData = () => chart._displayedData;
+    chart.filteredData = () => chart._filteredData;
 
     return chart;
 };

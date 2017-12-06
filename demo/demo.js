@@ -11,7 +11,7 @@ const zoomStart = document.getElementById('zoomStart');
 const zoomEnd = document.getElementById('zoomEnd');
 
 const updateCommitsInformation = (chart) => {
-    const filteredData = chart.displayedData().reduce((total, repo) => total.concat(repo.data), []);
+    const filteredData = chart.filteredData().reduce((total, repo) => total.concat(repo.data), []);
 
     numberCommitsContainer.textContent = filteredData.length;
     zoomStart.textContent = humanizeDate(chart.scale().domain()[0]);
