@@ -25,8 +25,6 @@ export default (d3, svg, config, xScale, draw, getEvent) => {
 
     const zoom = d3.zoom();
 
-    svg.attr('transform-origin', 'translate(-200)');
-
     zoom.on('zoom', () => {
         const transform = getShiftedTransform(
             getEvent().transform,
