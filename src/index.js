@@ -7,7 +7,7 @@ import dropLine from './dropLine';
 import zoom from './zoom';
 import { addMetaballsDefs } from './metaballs';
 
-import './style.css';
+// import './style.css';
 
 export const withinRange = (date, dateBounds) =>
     new Date(date) >= dateBounds[0] && new Date(date) <= dateBounds[1];
