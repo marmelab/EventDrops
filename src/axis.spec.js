@@ -16,21 +16,21 @@ describe('Axis', () => {
     it('should add a group with class "axis"', () => {
         const selection = d3.select('svg').data([[{}]]);
 
-        axis(defaultConfig, defaultScale)(selection);
+        axis(d3, defaultConfig, defaultScale)(selection);
         expect(document.querySelector('.axis')).toBeTruthy();
     });
 
     it('should append only a single group regardless number of given data', () => {
         const selection = d3.select('svg').data([[{}, {}, {}]]);
 
-        axis(defaultConfig, defaultScale)(selection);
+        axis(d3, defaultConfig, defaultScale)(selection);
         expect(document.querySelectorAll('.axis').length).toBe(1);
     });
 
     it('should be translated of `label.width` to the right', () => {
         const selection = d3.select('svg').data([[{}, {}, {}]]);
 
-        axis(defaultConfig, defaultScale)(selection);
+        axis(d3, defaultConfig, defaultScale)(selection);
         expect(document.querySelector('.axis').getAttribute('transform')).toBe(
             'translate(200,0)'
         );
@@ -40,21 +40,22 @@ describe('Axis', () => {
         const selection = d3.select('svg').data([[{}, {}]]);
 
         const axisTopSpy = jest.spyOn(d3, 'axisTop');
-        axis(defaultConfig, defaultScale)(selection);
+        axis(d3, defaultConfig, defaultScale)(selection);
         expect(axisTopSpy).toHaveBeenCalledWith(defaultScale);
     });
 
     it('should remove "axis" group when data is removed', () => {
         const data = [[{ id: 'foo' }]];
         const selection = d3.select('svg').data(data);
-        axis(defaultConfig, defaultScale)(selection);
+        axis(d3, defaultConfig, defaultScale)(selection);
 
         selection.data([[]]);
-        axis(defaultConfig, defaultScale)(selection);
+        axis(d3, defaultConfig, defaultScale)(selection);
         expect(document.querySelectorAll('.axis').length).toBe(0);
     });
 
     afterEach(() => {
+        document.body.innerHTML = '';
         jest.restoreAllMocks();
     });
 });
