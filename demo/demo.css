@@ -38,6 +38,24 @@ p {
     margin-bottom: 1rem;
 }
 
+#zoomStart, #zoomEnd {
+    display: inline-block;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+#zoomStart {
+    text-align: 'right';
+}
+
+#zoomEnd {
+    text-align: 'left';
+}
+
+.light {
+    color: #AAA;
+}
+
 .drop {
     cursor: pointer;
 }

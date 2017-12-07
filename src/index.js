@@ -9,39 +9,18 @@ import { addMetaballsDefs } from './metaballs';
 
 import './style.css';
 
-export const withinRange = (date, dateBounds) =>
+const withinRange = (date, dateBounds) =>
     new Date(date) >= dateBounds[0] && new Date(date) <= dateBounds[1];
 
-export const draw = (d3, config, xScale) =>
-    selection => {
-        const dateBounds = xScale.domain().map(d => new Date(d));
-        const filteredData = selection.data().map(dataSet =>
-            dataSet.map(row => {
-                if (!row.fullData) {
-                    row.fullData = row.data;
-                }
-
-                row.data = row.fullData.filter(d =>
-                    withinRange(d.date, dateBounds));
-
-                return row;
-            }));
-
-        selection
-            .data(filteredData)
-            .call(dropLine(config, xScale))
-            .call(bounds(config, xScale))
-            .call(axis(d3, config, xScale));
-    };
-
-export default ({ config: customConfiguration = {}, d3 = window.d3 }) =>
-    selection => {
+export default ({ config: customConfiguration = {}, d3 = window.d3 }) => {
+    const chart = selection => {
         const config = defaultsDeep(
             customConfiguration,
             defaultConfiguration(d3)
         );
 
         const {
+            zoom: zoomConfig,
             metaballs,
             label: {
                 width: labelWidth,
@@ -66,6 +45,8 @@ export default ({ config: customConfiguration = {}, d3 = window.d3 }) =>
             .domain([rangeStart, rangeEnd])
             .range([0, width - labelWidth]);
 
+        chart._xscale = xScale;
+
         const root = selection.selectAll('svg').data(selection.data());
 
         root.exit().remove();
@@ -76,7 +57,9 @@ export default ({ config: customConfiguration = {}, d3 = window.d3 }) =>
             .attr('width', width)
             .classed('event-drop-chart', true);
 
-        svg.call(zoom(d3, svg, config, xScale, draw, getEvent));
+        if (zoomConfig) {
+            svg.call(zoom(d3, root, config, xScale, draw, getEvent));
+        }
 
         if (metaballs) {
             svg.call(addMetaballsDefs(config));
@@ -93,5 +76,37 @@ export default ({ config: customConfiguration = {}, d3 = window.d3 }) =>
             .append('g')
             .classed('viewport', true)
             .attr('transform', `translate(${margin.left},${margin.top})`)
-            .call(draw(d3, config, xScale));
+            .call(draw(config, xScale));
     };
+
+    const draw = (config, xScale) =>
+        selection => {
+            chart._scale = xScale;
+
+            const dateBounds = xScale.domain().map(d => new Date(d));
+            const filteredData = selection.data().map(dataSet =>
+                dataSet.map(row => {
+                    if (!row.fullData) {
+                        row.fullData = row.data;
+                    }
+
+                    row.data = row.fullData.filter(d =>
+                        withinRange(d.date, dateBounds));
+
+                    return row;
+                }));
+
+            chart._filteredData = filteredData[0];
+
+            selection
+                .data(filteredData)
+                .call(dropLine(config, xScale))
+                .call(bounds(config, xScale))
+                .call(axis(d3, config, xScale));
+        };
+
+    chart.scale = () => chart._scale;
+    chart.filteredData = () => chart._filteredData;
+
+    return chart;
+};

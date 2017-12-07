@@ -26,10 +26,10 @@ deploy-demo: build ## Deploy the demo at http://marmelab.com/EventDrops/
 	rm -Rf demo/dist/
 
 test: ## Run unit tests
-	./node_modules/.bin/jest --env=jsdom
+	BABEL_ENV=test ./node_modules/.bin/jest --env=jsdom
 
 test-watch:
-	./node_modules/.bin/jest --watch --env=jsdom
+	BABEL_ENV=test ./node_modules/.bin/jest --watch --env=jsdom
 
 install: ## Install dependencies
 	npm install
