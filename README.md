@@ -1,194 +1,196 @@
-EventDrops
-==========
+# EventDrops
 
-A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time. [See the demo](http://marmelab.com/EventDrops/)
+EventDrops is a time based / event series interactive visualization using d3.js. Pan and zoom your data in an eye-candy timeline.
 
 ![EventDrops example](https://cloud.githubusercontent.com/assets/688373/18343222/c0a897b2-75b2-11e6-96df-e72e4b02335a.gif)
 
-
-**Note:** new version of EventDrops requires D3.js version 4. If you need to use D3.js version 3, use 0.2.0 instead.
+[See the demo](http://marmelab.com/EventDrops/)
 
 ## Installation
 
-You can use `npm` to install event-drops <sup>1</sup>
+You can either use `yarn` or `npm` to install event-drops:
 
 ```
-npm install event-drops --save
+yarn add event-drops
+npm install --save event-drops
 ```
 
-For Bower users, even if Bower is not officially supported, you can still use GitHub URL such as:
+Note you don't need this step if you don't use any module bundler.
 
-```
+Since version 4, `event-drops` follows [semantic versionning](https://semver.org/). Hence, we recommend checking your `package.json` file and ensure a `event-drops` version is preceded by a carret:
+
+``` js
 {
-    "dependencies": {
-        "eventDrops": "marmelab/EventDrops#0.1.2"
-    }
+    "event-drops": "^4.0.0"
 }
 ```
 
 ## Usage
 
-Include the `src/eventDrops.js` script in your page after d3:
+### Without a Module Bundler
 
-```html
-<script src="path/to/d3.js"></script>
-<script src="src/eventDrops.js"></script>
+If you **don't** use any module bundler such as Webpack, we recommend using EventDrop script available on [unpkg.com](https://unpkg.com/event-drops). Grabbing last versions of the library is as simple as:
+
+``` xml
+<link href="https://unpkg.com/event-drops/dist/eventDrops.css" rel="stylesheet" />
+
+<script src="https://unpkg.com/d3"></script>
+<script src="https://unpkg.com/event-drops@0.3.1-alpha4/dist/eventDrops.js"></script>
 ```
 
-In the HTML source, create a new EventDrops chart, bind data to a DOM element, then call the chart on the element.
+### With a Module Bundler
 
-```js
-var eventDropsChart = d3.chart.eventDrops();
-d3.select('#chart_placeholder')
-  .datum(data)
-  .call(eventDropsChart);
-```
-
-The data can be an array of named time series. For instance:
-
-```js
-var data = [
-  { name: "http requests", data: [new Date('2014/09/15 13:24:54'), new Date('2014/09/15 13:25:03'), new Date('2014/09/15 13:25:05'), ...] },
-  { name: "SQL queries", data: [new Date('2014/09/15 13:24:57'), new Date('2014/09/15 13:25:04'), new Date('2014/09/15 13:25:04'), ...] },
-  { name: "cache invalidations", data: [new Date('2014/09/15 13:25:12'), ...] }
-];
-```
-
-You can also generate a chart from any type of data array but this requires us
-to supply a function that will return a date from each data point. The complete
-data object will be available during the eventColor and eventClick callbacks
-for example. An example data set:
-
-```js
-var data = [
-  { name: "http requests", data: [{date: new Date('2014/09/15 13:24:54'), foo: 'bar1'}, {date: new Date('2014/09/15 13:25:03'), foo: 'bar2'}, {date: new Date('2014/09/15 13:25:05'), foo: 'bar1'}, ...] },
-  { name: "SQL queries", data: [{date: new Date('2014/09/15 13:24:57'), foo: 'bar4'}, {date: new Date('2014/09/15 13:25:04'), foo: 'bar6'}, {date: new Date('2014/09/15 13:25:04'), foo: 'bar2'}, ...] }
-];
-```
-
-And the corresponding "date" function that returns a date for
-each data point.
-
-```js
-var eventDropsChart = d3.chart.eventDrops()
-    .date(d => d.date);
-
-d3.select('#chart_placeholder')
-  .datum(data)
-  .call(eventDropsChart);
-```
-
-## API
-
-### Configuration
-
-EventDrops follows the [d3.js reusable charts pattern](http://bost.ocks.org/mike/chart/) to let you customize the chart at will:
-
-```js
-var eventDropsChart = d3.chart.eventDrops()
-  .hasDelimiter(false)
-  .hasTopAxis(false);
-```
-
-Configurable values:
-
-  - `start`: start date of the scale. Defaults to `new Date(0)`.
-  - `end`: end date of the scale. Defaults to `new Date()`
-  - `margin`: margins of the graph in pixels. Defaults to `{ top: 60, left: 200, bottom: 40, right: 50 }`
-  - `locale`: locale used for the X axis labels. See [d3.locale](https://github.com/mbostock/d3/wiki/Localization#locale) for the expected format. Defaults to null (i.e. d3 default locale).
-  - `labelsWidth`: width of the labels. Defaults to `210`.
-  - `labelsRightMargin`: margin between labels and drops lines. Defaults to `10`.
-  - `axisFormat`: function receiving the d3 axis object, to customize tick number and size.
-  - `tickFormat`: tickFormat for the X axis. See [d3.timeFormat.multi()](https://github.com/mbostock/d3/wiki/Time-Formatting#format_multi) for expected format.
-  - `mouseover`: function to be called when hovering an event in the chart. Receives the DOM element hovered (uses event delegation). Default: `() => {}`.
-  - `zoomend`: function to be called when done zooming on the chart. Receives the d3 scale at the end of the zoom. Default: `() => {}`.
-  - `click`: function to be called on click event of data-point (circle). Receives the DOM element hovered (uses event delegation). Default: `() => {}`.
-  - `hasDelimiter`: whether to draw time boundaries on top of the chart. Defaults to `true`.
-  - `hasTopAxis`: whether the chart has a top X axis. Accepts both a boolean or a function receiving the data of the graph that returns a boolean.
-  - `hasBottomAxis`: same as topAxis but for the bottom X axis
-  - `eventLineColor`: The color of the event line. Accepts a color (color name or `#ffffff` notation), or a function receiving the eventData and returning a color. Defaults to `'black'`.
-  - `eventColor`: The color of the event. Accepts a color (color name or `#ffffff` notation), or a function receiving the eventData and returning a color. Defaults to `null`. EventLineColor will be ignored if this is used.
-  - `minScale`: The minimum scaling (zoom out), default to `0`.
-  - `maxScale`: The maximum scaling (zoom in), default to `Infinity`.
-  - `mouseout`: event handler to execute when mouse leave a drop. Default: `() => {}`.
-  - `zoomable`: *true* by default. Enable zoom-in/zoom-out and dragging handlers.
-  - `date`: function that returns the date from each data point when passing objects. Defaults to `d=>d`.
-
-### Exposed Methods
-
-EventDrops exposes some of its attributes and methods to ease your developer life:
-
-* **scales**: object containing both `{ x, y }` scales, especially useful for `visibleDataInRow` method,
-* **visibleDataInRow(data, scale)**: retrieves currently displayed data, filtered within current time range.
-
-## FAQ
-
-### How to get time range and displayed data on `zoomend` event?
-
-When moving across the timeline or (un)zooming it, a `zoomend` event is triggered. To retrieve access to
-current time range and its filtered data, use D3.js `rescale` function and EventDrops `visibleDataInRow` like
-the following:
+If you use a module bundler, you can use EventDrops the following way:
 
 ``` js
-chart.zoomend((data) => {
-    const currentScale = chart.scales.x;
-    const newScale = d3.event ? d3.event.transform.rescaleX(currentScale) : currentScale;
-    const filteredData = data.map(dataRow => chart.visibleDataInRow(dataRow.data, newScale));
+import * as d3 from 'd3/build/d3';
 
-    // retrieve start and end dates
-    newScale.domain()[0].toLocaleDateString('en-US');
-    newScale.domain()[1].toLocaleDateString('en-US');
+import eventDrops from 'event-drops';
+
+const chart = eventDrops({ d3 });
+
+const repositoriesData = [
+    { name: "admin-on-rest", data: [{ date: new Date('2014/09/15 14:21:31') }, /* ... */ ,]
+    { name: "event-drops", data: [{ date: new Date('2014/09/15 13:24:57') }, /* ... */ ,]
+    { name: "sedy", data: [{ date: new Date('2014/09/15 13:25:12') }, /* ... */] }
+];
+
+d3.select('#eventdrops-demo')
+    .data([repositoriesData])
+    .call(chart);
+```
+
+You can either use D3 as a specific import (specifying it in first argument of `eventDrops` call), or use the global one. By default, `event-drops` fallbacks to a global defined `d3`.
+
+`event-drops` does not expect any particular data format. You can specify which properties to use for the name of each line or for the date corresponding to each drop. See the `Configuration` section below for more details.
+
+## Configuration
+
+The `eventDrops` function takes a configuration object as only parameter. Here is the default configuration as a reference for all available parameters:
+
+``` js
+({
+    // instance of d3 to use, useful when importing d3 from a module bundler
+    d3: window.d3,
+
+    // if false, disable metaballs feature
+    metaballs: {
+        // blur intensity: higher the value, bigger the metaballs
+        blurDeviation: 10,
+        // metaballs matrix: tweak at your own risks ;)
+        colorMatrix: '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 50 -10',
+    },
+
+    // related to timeline bounds (displayed on bottom left and right)
+    bound: {
+        // formatting function for bounding dates
+        format: d3.timeFormat('%d %B %Y'),
+    },
+
+    line: {
+        // line color, can be a function taking row data as argument
+        color: (_, index) => d3.schemeCategory10[index],
+
+        // line height, can be a function taking row data as argument
+        height: 40,
+    },
+
+    // individual event drop style
+    drop: {
+        // drop color, overriding line color if not null
+        // can be a function taking drop data as argument
+        color: null,
+
+        // drop radius, can be a function taking drop data as argument
+        radius: 5,
+    },
+
+    // left labels style
+    label: {
+        // space between labels and drops container
+        padding: 20,
+
+        // text to display, taking row object as argument
+        text: d => `${d.name} (${d.data.length})`,
+
+        width: 200,
+    },
+
+    // margins around full chart
+    margin: {
+        top: 20,
+        right: 10,
+        bottom: 20,
+        left: 10,
+    },
+
+    // limits of displayed data
+    range: {
+        start: new Date(new Date().getTime() - 3600000 * 24 * 365), // one year ago
+        end: new Date(),
+    },
+
+    // if false, disable zoom and panning features
+    zoom: {
+        // event handler called when starting zooming
+        onZoomStart: null,
+
+        // event handler called while zooming
+        onZoom: null,
+
+        // event handler called when finishing zooming
+        onZoomEnd: null,
+    },
 });
 ```
 
-## Programmatic Zoom
+In addition to this configuration object, `event-drops` exposes two public methods allowing you to customize your application based on filtered data:
 
-A handle on the `d3.behaviour.zoom` object used to control the zoom level of the chart can be obtained like so:
+* **scale()** provides the horizontal scale, allowing you to retrieve bounding dates thanks to `.scale().domain()`,
+* **displayedData()** returns an object with both `data` and `fullData` keys containing respectively bounds filtered data and full dataset.
 
-```javascript
-var eventDropsChart = d3.chart.eventDrops();
-var element = d3.select('#chart_placeholder').datum(...);
-eventDropsChart.call(eventDropsChart);
-var zoom = element[0][0].zoom;
+Hence, if you want to display number of displayed data and time bounds as in the [demo](#), you can use the following code:
+
+``` js
+const updateCommitsInformation = (chart) => {
+    const filteredData = chart.filteredData().reduce((total, repo) => total.concat(repo.data), []);
+
+    numberCommitsContainer.textContent = filteredData.length;
+    zoomStart.textContent = humanizeDate(chart.scale().domain()[0]);
+    zoomEnd.textContent = humanizeDate(chart.scale().domain()[1]);
+};
 ```
-
-The example here shows how to manipulate it: http://bl.ocks.org/mbostock/7ec977c95910dd026812
 
 ## Contributing
 
-First, install the dependencies:
+If you want to contribute to EventDrops, first, thank you!
 
-```sh
+To launch the project locally, grab this repository and install its dependencies:
+
+``` sh
+git clone git@github.com:marmelab/EventDrops.git
+cd EventDrops
 make install
 ```
 
-For development purpose, you can use the following command:
+Then, launch the demo with:
 
 ``` sh
 make run
 ```
 
-It serves the demo at http://localhost:8080. It also watches source files and live
-reloads your browser as soon as a change is detected.
+Demo will then be available on [http://localhost:8080]. Source files are watched automatically. Changing one file would automagically reload your browser.
 
-When your changes are done, ensure that all tests pass with:
+When you are satisfied with your changes, ensure you didn't break anything launching tests:
 
 ``` sh
 make test
 ```
 
-Finally, if everything is fine, you can rebuild the library using:
+Finally, if everything is fine, you can then create a pull request.
 
-``` sh
-make build
-```
-
-However, for better Pull Request reviewing, please do not commit the build files
-in the same PR. You can then rebuild it once merged.
+Feel free to ask some help on [GitHub issue tracker](https://github.com/marmelab/EventDrops/issues). The core team would be glad to help you contributing.
 
 ## License
 
-EventDrops is released under the MIT License, courtesy of [marmelab](http://marmelab.com) and [Canal Plus](https://github.com/canalplus).
-
-## Footnotes
-1. The functionality and behaviour documented is not all available in the `0.2.0` release installed by `npm`
+EventDrops is released under the MIT License, courtesy of [marmelab](http://marmelab.com) and [Canal Plus](https://github.com/canalplus). It means you can visualize all the data you want without any restrictions.
