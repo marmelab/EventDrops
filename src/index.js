@@ -7,16 +7,16 @@ import dropLine from './dropLine';
 import zoom from './zoom';
 import { addMetaballsDefs } from './metaballs';
 
-// import './style.css';
+import './style.css';
 
-export const withinRange = (date, dateBounds) =>
+const withinRange = (date, dateBounds) =>
     new Date(date) >= dateBounds[0] && new Date(date) <= dateBounds[1];
 
 export default ({ config: customConfiguration = {}, d3 = window.d3 }) => {
-    const chart = (selection) => {
+    const chart = selection => {
         const config = defaultsDeep(
             customConfiguration,
-            defaultConfiguration(d3),
+            defaultConfiguration(d3)
         );
 
         const {
@@ -69,7 +69,7 @@ export default ({ config: customConfiguration = {}, d3 = window.d3 }) => {
             .merge(root)
             .attr(
                 'height',
-                d => (d.length + 1) * lineHeight + margin.top + margin.bottom,
+                d => (d.length + 1) * lineHeight + margin.top + margin.bottom
             );
 
         svg
@@ -80,12 +80,12 @@ export default ({ config: customConfiguration = {}, d3 = window.d3 }) => {
     };
 
     const draw = (config, xScale) =>
-        (selection) => {
+        selection => {
             chart._scale = xScale;
 
             const dateBounds = xScale.domain().map(d => new Date(d));
             const filteredData = selection.data().map(dataSet =>
-                dataSet.map((row) => {
+                dataSet.map(row => {
                     if (!row.fullData) {
                         row.fullData = row.data;
                     }
