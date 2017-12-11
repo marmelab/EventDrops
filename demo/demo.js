@@ -21,6 +21,9 @@ const updateCommitsInformation = (chart) => {
 const chart = eventDrops({
     d3,
     config: {
+        drop: {
+            date: d => new Date(d.date),
+        },
         zoom: {
             onZoomEnd: () => updateCommitsInformation(chart),
         },

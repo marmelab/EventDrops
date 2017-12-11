@@ -1,9 +1,10 @@
-import drop, { filterOverlappingDrop } from './drop';
+import drop from './drop';
 
 const defaultConfig = {
     drop: {
         color: 'red',
         radius: 8,
+        date: x => x,
     },
 };
 
@@ -33,7 +34,7 @@ describe('Drop', () => {
     it('should add classed a "drop" circle per piece of data', () => {
         const selection = d3.select('svg').data([
             {
-                data: [{ date: yesterday }, { date: tomorrow }],
+                data: [yesterday, tomorrow],
             },
         ]);
 
@@ -100,7 +101,7 @@ describe('Drop', () => {
     it('should set x position according to current data date', () => {
         const selection = d3.select('svg').data([
             {
-                data: [{ date: new Date('2017-01-15') }],
+                data: [new Date('2017-01-15')],
             },
         ]);
 
@@ -119,7 +120,7 @@ describe('Drop', () => {
     it('should remove obsolete drops', () => {
         const selection = d3.select('svg').data([
             {
-                data: [{ date: now }, { date: yesterday }],
+                data: [now, yesterday],
             },
         ]);
 
@@ -139,7 +140,18 @@ describe('Drop', () => {
     it('should remove overlapping drops (same date)', () => {
         const selection = d3.select('svg').data([
             {
-                data: [{ date: now }, { date: now }],
+                data: [now, now],
+            },
+        ]);
+
+        drop(defaultConfig, defaultScale)(selection);
+        expect(document.querySelectorAll('.drop').length).toBe(1);
+    });
+
+    it('should apply drop date function from configuration to each data', () => {
+        const selection = d3.select('svg').data([
+            {
+                data: [{ date: now }],
             },
         ]);
 
@@ -148,6 +160,7 @@ describe('Drop', () => {
     });
 
     afterEach(() => {
+        document.body.innerHTML = '';
         jest.restoreAllMocks();
     });
 });

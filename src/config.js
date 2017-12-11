@@ -9,6 +9,7 @@ export default d3 => ({
     drop: {
         color: null,
         radius: 5,
+        date: d => new Date(d),
     },
     label: {
         padding: 20,
