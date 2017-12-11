@@ -73,6 +73,9 @@ The `eventDrops` function takes a configuration object as only parameter. Here i
     // instance of d3 to use, useful when importing d3 from a module bundler
     d3: window.d3,
 
+    // @TODO
+    locale: 'en',
+
     // if false, disable metaballs feature
     metaballs: {
         // blur intensity: higher the value, bigger the metaballs
@@ -103,6 +106,9 @@ The `eventDrops` function takes a configuration object as only parameter. Here i
 
         // drop radius, can be a function taking drop data as argument
         radius: 5,
+
+        // @TODO
+        date: d => d.date,
     },
 
     // left labels style
@@ -130,6 +136,16 @@ The `eventDrops` function takes a configuration object as only parameter. Here i
         end: new Date(),
     },
 
+    // @TODO
+    timeAxis: {
+        tickFormat: '',
+        withBoundaries: true,
+        withTopAxis: true,
+        withBottomAxis: true,
+    }
+
+    hasDelimiter
+
     // if false, disable zoom and panning features
     zoom: {
         // event handler called when starting zooming
@@ -140,7 +156,18 @@ The `eventDrops` function takes a configuration object as only parameter. Here i
 
         // event handler called when finishing zooming
         onZoomEnd: null,
+
+        // @TODO
+        minimumScale: 0,
+        maximumScale: Infinity,
     },
+
+    mouse: {
+        // @TODO
+        onHover: null,
+        onClick: null,
+        onMouseOut: null,
+    }
 });
 ```
 
