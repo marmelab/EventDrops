@@ -107,8 +107,8 @@ The `eventDrops` function takes a configuration object as only parameter. Here i
         // drop radius, can be a function taking drop data as argument
         radius: 5,
 
-        // @TODO
-        date: d => d.date,
+        // function to get event date from a row data object
+        date: d => new Date(d),
     },
 
     // left labels style
