@@ -41,7 +41,9 @@ export default (d3, svg, config, xScale, draw, getEvent) => {
         );
 
         const newScale = transform.rescaleX(xScale);
-        svg.call(draw(d3, config, newScale));
+
+        // @TODO: fix me: use `svg` parameter instead of doing a new selection
+        d3.select('svg').call(draw(config, newScale));
 
         if (onZoom) {
             onZoom(args);
