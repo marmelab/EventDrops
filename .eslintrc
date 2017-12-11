@@ -1,11 +1,15 @@
 {
     "extends": "airbnb-base",
+    "globals": {
+        "d3": true
+    },
+    "plugins": ["jest"],
     "rules": {
         "indent": [2, 4],
         "id-length": [2, { "min": 1 }]
     },
     "env": {
         "browser": true,
-        "jasmine": true
+        "jest/globals": true
     }
 }

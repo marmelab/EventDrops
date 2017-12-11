@@ -1,7 +1,7 @@
 import uniqBy from 'lodash.uniqby';
 
-const filterOverlappingDrop = xScale =>
-    d => uniqBy(d.data, data => Math.round(xScale(new Date(data.date))));
+const filterOverlappingDrop = (xScale, dropDate) =>
+    d => uniqBy(d.data, data => Math.round(xScale(dropDate(data))));
 
 export default (config, xScale) =>
     selection => {
@@ -9,12 +9,13 @@ export default (config, xScale) =>
             drop: {
                 color: dropColor,
                 radius: dropRadius,
+                date: dropDate,
             },
         } = config;
 
         const drops = selection
             .selectAll('.drop')
-            .data(filterOverlappingDrop(xScale));
+            .data(filterOverlappingDrop(xScale, dropDate));
 
         drops
             .enter()
@@ -23,7 +24,7 @@ export default (config, xScale) =>
             .attr('r', dropRadius)
             .attr('fill', dropColor)
             .merge(drops)
-            .attr('cx', d => xScale(new Date(d.date)));
+            .attr('cx', d => xScale(dropDate(d)));
 
         drops.exit().remove();
     };
