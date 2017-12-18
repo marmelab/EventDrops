@@ -4,7 +4,7 @@ help:
 	@grep -P '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 run: ## Run the webpack-dev-server
-	./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.demo.js --devtool eval-source-map --hot --inline --colors --host=0.0.0.0
+	./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.demo.js --hot --inline --colors --host=0.0.0.0
 
 build: install ## Webpack build the project
 	rm -rf dist/

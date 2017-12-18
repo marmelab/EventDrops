@@ -5,6 +5,7 @@
     },
     "plugins": ["jest"],
     "rules": {
+        "no-underscore-dangle": "off",
         "indent": [2, 4],
         "id-length": [2, { "min": 1 }]
     },
