@@ -10,6 +10,9 @@ export default d3 => ({
         color: null,
         radius: 5,
         date: d => new Date(d),
+        onClick: () => {},
+        onMouseOver: () => {},
+        onMouseOut: () => {},
     },
     label: {
         padding: 20,
