@@ -4,12 +4,15 @@ const filterOverlappingDrop = (xScale, dropDate) =>
     d => uniqBy(d.data, data => Math.round(xScale(dropDate(data))));
 
 export default (config, xScale) =>
-    selection => {
+    (selection) => {
         const {
             drop: {
                 color: dropColor,
                 radius: dropRadius,
                 date: dropDate,
+                onClick,
+                onMouseOver,
+                onMouseOut,
             },
         } = config;
 
@@ -23,8 +26,16 @@ export default (config, xScale) =>
             .classed('drop', true)
             .attr('r', dropRadius)
             .attr('fill', dropColor)
+            .on('click', onClick)
+            .on('mouseover', onMouseOver)
+            .on('mouseout', onMouseOut)
             .merge(drops)
             .attr('cx', d => xScale(dropDate(d)));
 
-        drops.exit().remove();
+        drops
+            .exit()
+            .on('click', null)
+            .on('mouseover', null)
+            .on('mouseout', null)
+            .remove();
     };

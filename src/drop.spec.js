@@ -159,6 +159,111 @@ describe('Drop', () => {
         expect(document.querySelectorAll('.drop').length).toBe(1);
     });
 
+    it('should call `onMouseOver` configuration listener when hovering a drop', () => {
+        const selection = d3.select('svg').data([
+            {
+                data: [{ date: now }],
+            },
+        ]);
+
+        const config = {
+            ...defaultConfig,
+            drop: {
+                ...defaultConfig.drop,
+                onMouseOver: jest.fn(),
+            },
+        };
+
+        drop(config, defaultScale)(selection);
+
+        const dropElement = d3.select('.drop').node();
+        const event = new MouseEvent('SVGEvents', {});
+        event.initMouseEvent(
+            'mouseover',
+            true,
+            true,
+            global,
+            0,
+            10,
+            10,
+            10,
+            10,
+            false,
+            false,
+            false,
+            false,
+            null,
+            dropElement
+        );
+        dropElement.dispatchEvent(event);
+
+        expect(config.drop.onMouseOver).toHaveBeenCalled();
+    });
+
+    it('should call `onMouseOut` configuration listener when blurring a drop', () => {
+        const selection = d3.select('svg').data([
+            {
+                data: [{ date: now }],
+            },
+        ]);
+
+        const config = {
+            ...defaultConfig,
+            drop: {
+                ...defaultConfig.drop,
+                onMouseOut: jest.fn(),
+            },
+        };
+
+        drop(config, defaultScale)(selection);
+
+        const dropElement = d3.select('.drop').node();
+        const event = new MouseEvent('SVGEvents', {});
+        event.initMouseEvent(
+            'mouseout',
+            true,
+            true,
+            global,
+            0,
+            10,
+            10,
+            10,
+            10,
+            false,
+            false,
+            false,
+            false,
+            null,
+            dropElement
+        );
+        dropElement.dispatchEvent(event);
+
+        expect(config.drop.onMouseOut).toHaveBeenCalled();
+    });
+
+    it('should call `onClick` configuration listener when clicking on drop', () => {
+        const selection = d3.select('svg').data([
+            {
+                data: [{ date: now }],
+            },
+        ]);
+
+        const config = {
+            ...defaultConfig,
+            drop: {
+                ...defaultConfig.drop,
+                onClick: jest.fn(),
+            },
+        };
+
+        drop(config, defaultScale)(selection);
+
+        const dropElement = d3.select('.drop').node();
+        dropElement.click();
+
+        expect(config.drop.onClick).toHaveBeenCalled();
+    });
+
     afterEach(() => {
         document.body.innerHTML = '';
         jest.restoreAllMocks();
