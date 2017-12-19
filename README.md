@@ -109,6 +109,11 @@ The `eventDrops` function takes a configuration object as only parameter. Here i
 
         // function to get event date from a row data object
         date: d => new Date(d),
+
+        // drop mouse event handlers, passing drop data as argument
+        onClick: () => {},
+        onMouseOver: () => {},
+        onMouseOut: () => {},
     },
 
     // left labels style
@@ -161,13 +166,6 @@ The `eventDrops` function takes a configuration object as only parameter. Here i
         minimumScale: 0,
         maximumScale: Infinity,
     },
-
-    mouse: {
-        // @TODO
-        onHover: null,
-        onClick: null,
-        onMouseOut: null,
-    }
 });
 ```
 
