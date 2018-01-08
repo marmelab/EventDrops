@@ -25,13 +25,11 @@ const tooltip = d3.select('body').append('div')
 const chart = eventDrops({
     d3,
     config: {
-        drop: {
-            date: d => new Date(d.date),
-        },
         zoom: {
             onZoomEnd: () => updateCommitsInformation(chart),
         },
         drop: {
+            date: d => new Date(d.date),
             onMouseOver: (commit) => {
                 tooltip.transition()
                     .duration(200)
