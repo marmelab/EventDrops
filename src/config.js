@@ -6,6 +6,18 @@ export default d3 => ({
     bound: {
         format: d3.timeFormat('%d %B %Y'),
     },
+    axis: {
+        formats: {
+            milliseconds: '.%L',
+            seconds: ':%S',
+            minutes: '%I:%M',
+            hours: '%I %p',
+            days: '%a %d',
+            weeks: '%b %d',
+            months: '%B',
+            year: '%Y',
+        },
+    },
     drop: {
         color: null,
         radius: 5,
