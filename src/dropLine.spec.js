@@ -70,9 +70,9 @@ describe('Drop Line', () => {
 
             dropLine(defaultConfig, defaultScale)(selection);
 
-            const positions = [
-                ...document.querySelectorAll('.drop-line'),
-            ].map(e => e.getAttribute('transform'));
+            const positions = [...document.querySelectorAll('.drop-line')].map(
+                e => e.getAttribute('transform')
+            );
             expect(positions).toEqual(['translate(0, 0)', 'translate(0, 40)']);
         });
 
