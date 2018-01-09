@@ -32,24 +32,28 @@ export const tickFormat = (date, formats, d3) => {
     return d3.timeFormat(formats.year)(date);
 };
 
-export default (d3, config, xScale) => selection => {
-    const { label: { width: labelWidth }, axis: { formats } } = config;
+export default (d3, config, xScale) => {
+    const { label: { width: labelWidth }, axis: { formats }, locale } = config;
 
-    const axis = selection.selectAll('.axis').data(d => d);
+    d3.timeFormatDefaultLocale(locale);
 
-    axis.exit().remove();
+    return selection => {
+        const axis = selection.selectAll('.axis').data(d => d);
 
-    const axisTop = d3
-        .axisTop(xScale)
-        .tickFormat(d => tickFormat(d, formats, d3));
+        axis.exit().remove();
 
-    axis
-        .enter()
-        .filter((_, i) => !i)
-        .append('g')
-        .classed('axis', true)
-        .attr('transform', `translate(${labelWidth},0)`)
-        .call(axisTop);
+        const axisTop = d3
+            .axisTop(xScale)
+            .tickFormat(d => tickFormat(d, formats, d3));
 
-    axis.call(axisTop);
+        axis
+            .enter()
+            .filter((_, i) => !i)
+            .append('g')
+            .classed('axis', true)
+            .attr('transform', `translate(${labelWidth},0)`)
+            .call(axisTop);
+
+        axis.call(axisTop);
+    };
 };

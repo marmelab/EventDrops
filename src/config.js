@@ -1,4 +1,7 @@
+import enLocale from 'd3-time-format/locale/en-US.json';
+
 export default d3 => ({
+    locale: enLocale,
     metaballs: {
         blurDeviation: 10,
         colorMatrix: '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 50 -10',
@@ -8,7 +11,7 @@ export default d3 => ({
     },
     axis: {
         formats: {
-            milliseconds: '.%L',
+            milliseconds: '%L',
             seconds: ':%S',
             minutes: '%I:%M',
             hours: '%I %p',
