@@ -1,4 +1,9 @@
-import { getShiftedTransform } from './zoom';
+import zoomFactory, { getShiftedTransform } from './zoom';
+
+const defaultConfig = {
+    label: {},
+    zoom: {},
+};
 
 describe('Zoom', () => {
     beforeEach(() => {
@@ -21,6 +26,20 @@ describe('Zoom', () => {
         expect(shiftedTransform.toString()).toBe(
             'translate(-69.39999999999998,0) scale(1.23)'
         );
+    });
+
+    it('should set scale extent based on given configuration', () => {
+        const config = {
+            ...defaultConfig,
+            zoom: {
+                minimumScale: 15,
+                maximumScale: 25,
+            },
+        };
+
+        const selection = d3.select('svg');
+        const zoom = zoomFactory(d3, selection, config);
+        expect(zoom.scaleExtent()).toEqual([15, 25]);
     });
 
     /* These tests are skipped as I can't find any way to test D3 event at this point. */

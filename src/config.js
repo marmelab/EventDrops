@@ -52,5 +52,7 @@ export default d3 => ({
         onZoomStart: null,
         onZoom: null,
         onZoomEnd: null,
+        minimumScale: 0,
+        maximumScale: Infinity,
     },
 });
