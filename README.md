@@ -1,14 +1,14 @@
 # EventDrops
 
-EventDrops is a time based / event series interactive visualization using d3.js. Pan and zoom your data in an eye-candy timeline.
+EventDrops is a time based / event series interactive visualization tool powered by D3.js.
 
 ![EventDrops example](https://cloud.githubusercontent.com/assets/688373/18343222/c0a897b2-75b2-11e6-96df-e72e4b02335a.gif)
 
-[See the demo](http://marmelab.com/EventDrops/)
+If you want to pan and zoom on previous data on your own, here is the [demo](http://marmelab.com/EventDrops/).
 
 ## Installation
 
-You can either use `yarn` or `npm` to install event-drops:
+EventDrops is provided as an `npm` package. Grab it using the tool of your choice:
 
 ```
 yarn add event-drops
@@ -17,13 +17,15 @@ npm install --save event-drops
 
 Note you don't need this step if you don't use any module bundler.
 
-Since version 4, `event-drops` follows [semantic versionning](https://semver.org/). Hence, we recommend checking your `package.json` file and ensure a `event-drops` version is preceded by a carret:
+Since version 4, `event-drops` follows [semantic versionning](https://semver.org/). Hence, we recommend checking your `package.json` file and ensure that `event-drops` version is preceded by a carret:
 
 ``` js
 {
     "event-drops": "^4.0.0"
 }
 ```
+
+This way, you'll get all bug fixes and non breaking new features.
 
 ## Usage
 
@@ -40,7 +42,7 @@ If you **don't** use any module bundler such as Webpack, we recommend using Even
 
 ### With a Module Bundler
 
-If you use a module bundler, you can use EventDrops the following way:
+If you use a module bundler, you can import EventDrops the following way:
 
 ``` js
 import * as d3 from 'd3/build/d3';
@@ -60,62 +62,231 @@ d3.select('#eventdrops-demo')
     .call(chart);
 ```
 
-You can either use D3 as a specific import (specifying it in first argument of `eventDrops` call), or use the global one. By default, `event-drops` fallbacks to a global defined `d3`.
-
-`event-drops` does not expect any particular data format. You can specify which properties to use for the name of each line or for the date corresponding to each drop. See the `Configuration` section below for more details.
+You can either use D3 as a specific import (specifying it in first argument of `eventDrops` call), or use the global one. By default, it fallbacks to a global defined `d3`.
 
 ## Configuration
 
-The `eventDrops` function takes a configuration object as only parameter. Here is the default configuration as a reference for all available parameters:
+The `eventDrops` function takes a configuration object as only parameter. Here are the details of all available configuration keys.
+
+#### Generic Parameters
+
+##### d3
+
+*Default: global.d3*
+
+Instance of D3 to use within EventDrops. It provides a purer way to use EventDrops from a bundled module:
 
 ``` js
-({
-    // instance of d3 to use, useful when importing d3 from a module bundler
-    d3: window.d3,
+import * as d3 from 'd3/build/d3'; // no global here
+import eventDrops from 'event-drops';
 
-    // @TODO
-    locale: 'en',
+const chart = eventDrops({ d3 });
+```
 
-    // if false, disable metaballs feature
-    metaballs: {
-        // blur intensity: higher the value, bigger the metaballs
-        blurDeviation: 10,
-        // metaballs matrix: tweak at your own risks ;)
-        colorMatrix: '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 50 -10',
-    },
+If you use EventDrops without any module bundler, just include D3 script before EventDrops, and everything should work out of the box.
 
-    // related to timeline bounds (displayed on bottom left and right)
-    bound: {
-        // formatting function for bounding dates
-        format: d3.timeFormat('%d %B %Y'),
-    },
+##### locale
 
+*Default: English locale*
+
+D3 locale to use for dates (months and days for instance). This parameter expects a locale from [d3-time-format](https://github.com/d3/d3-time-format) module.
+
+``` js
+import frLocale from 'd3-time-format/locale/fr-FR.json';
+
+const chart = eventDrops({
+    locale: frLocale,
+});
+```
+
+A list of all available locales can be found in [d3-time-format/src](https://github.com/d3/d3-time-format/tree/master/locale).
+
+#### Metaballs
+
+*Default: metaballs configuration object (see below)*
+
+EventDrops adds an organic-looking effect between two close events, called "metaballs". This effect can be disabled passing `false` to the `metaballs` property.
+
+##### blurDeviation
+
+*Default: 10*
+
+This parameter influences the size of metaballs. The higher the value, the larger the metaballs will be. A too low value prevents the drops from melting. On the contrary, too high a value may dilute the metaballs too much, making them invisible.
+
+##### colorMatrix
+
+*Default: '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 31 -12'*
+
+This parameter with forgotten origins (possibly StackOverflow) is transmitted from EventDrops developer to EventDrops developer. Change it at your own risk!
+
+We're not sure if this setting should be configurable, but for backward compatibility reasons we left it.
+
+#### bound
+
+*Default: bound configuration object*
+
+Bounds are minimum and maximum visible dates, displayed at the bottom of the chart. They are optional and can be disabled passing this property the `false` value.
+
+##### format
+
+*Default: d3.timeFormat('%d %B %Y')*
+
+Display format of bounds. By default, it would be displayed such as "10 January 2018".
+
+#### line
+
+Line parameter contains all line related parameters (thanks Captain Obvious!).
+
+##### color
+
+*Default: (_, index) => d3.schemeCategory10[index]*
+
+This parameter defines color of all drops on a given line (each of these colors can be overwritten at the drop level). It can be either an hard-written value, or a function, taking current data, index, and whole data as arguments.
+
+``` js
+const chart = eventDrops({
     line: {
-        // line color, can be a function taking row data as argument
-        color: (_, index) => d3.schemeCategory10[index],
-
-        // line height, can be a function taking row data as argument
-        height: 40,
+        color: 'lemonChiffon', // yes, this color really exists!
     },
+});
 
-    // individual event drop style
+const anotherChart = eventDrops({
+    line: {
+        (line, index) => index % 2 ? 'lavenderBlush' : 'papayaWhip',
+    },
+});
+```
+
+##### height
+
+*Default: 40*
+
+Should we really explain this parameter? That's the line height.
+
+#### drop
+
+*Default: drop configuration object*
+
+All event drop related configuration is here. Definitely, we made a real effort of naming in this configuration.
+
+##### color
+
+*Default: null*
+
+This parameter defines color of a specific drop. A `null` value means the drop would be of `line.color`. It can be either an hard-written value, or a function, taking current data, index, and whole line data as arguments.
+
+``` js
+const chart = eventDrops({
     drop: {
-        // drop color, overriding line color if not null
-        // can be a function taking drop data as argument
-        color: null,
-
-        // drop radius, can be a function taking drop data as argument
-        radius: 5,
-
-        // function to get event date from a row data object
-        date: d => new Date(d),
-
-        // drop mouse event handlers, passing drop data as argument
-        onClick: () => {},
-        onMouseOver: () => {},
-        onMouseOut: () => {},
+        color: 'firebrick',
     },
+});
 
+const anotherChart = eventDrops({
+    drop: {
+        (d, index) => d.value > 10 ? 'green' : 'red',
+    },
+});
+```
+
+##### radius
+
+*Default: 5
+
+Radius of each drop. It can be either an hard-written value, or a function, taking current data, index, and whole line data as arguments.
+
+``` js
+const chart = eventDrops({
+    drop: {
+        radius: Math.PI,
+    },
+});
+
+const anotherChart = eventDrops({
+    drop: {
+        radius: (d, index) => d.size * 10,
+    },
+});
+```
+
+##### date
+
+*Default: d => new Date(d)*
+
+This is the transformer turning your event data into a date object. It should be a function returning a JavaScript `Date` object. This function takes three arguments: current data, current data index, and the whole line data.
+
+``` js
+const chart = eventDrops({
+    drop: {
+        date: (d) => new Date(d),
+    }
+});
+```
+
+##### onClick
+
+*Default: () => {}*
+
+Function to be executed when user clicks on a drop. By default, it does nothing. Clicked drop related data is passed as the first argument:
+
+``` js
+const chart = eventDrops({
+    drop: {
+        onClick: (data) => {
+            console.log(`Data ${data.id} has been clicked!`);
+        },
+    },
+});
+```
+
+##### onMouseOver
+
+*Default: () => {}*
+
+Function to be executed when user moves the mouse on a drop. By default, it does nothing. Hovered drop related data is passed as the first argument:
+
+``` js
+const chart = eventDrops({
+    drop: {
+        onMouseOver: (data) => {
+            showTooltip(data);
+        },
+    },
+});
+```
+
+This is the function you are looking for if you want to display a tooltip describing some event details.
+
+##### onMouseOut
+
+*Default: () => {}*
+
+Function to be executed when user moves the mouse out of a drop. By default, it does nothing. Blurred drop related data is passed as the first argument:
+
+``` js
+const chart = eventDrops({
+    drop: {
+        onMouseOut: (data) => {
+            hideTooltip(data);
+        },
+    },
+});
+```
+
+This is the function you are looking for if you want to hide a tooltip you previously displayed with `onMouseOver`.
+
+
+
+
+
+
+
+
+
+
+
+
+``` js
     // left labels style
     label: {
         // space between labels and drops container
