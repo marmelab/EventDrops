@@ -21,22 +21,11 @@ export default ({ config: customConfiguration = {}, d3 = window.d3 }) => {
 
         const {
             zoom: zoomConfig,
-            drop: {
-                onClick,
-                onMouseOut,
-                onMouseOver,
-            },
+            drop: { onClick, onMouseOut, onMouseOver },
             metaballs,
-            label: {
-                width: labelWidth,
-            },
-            line: {
-                height: lineHeight,
-            },
-            range: {
-                start: rangeStart,
-                end: rangeEnd,
-            },
+            label: { width: labelWidth },
+            line: { height: lineHeight },
+            range: { start: rangeStart, end: rangeEnd },
             margin,
         } = config;
 
@@ -87,29 +76,30 @@ export default ({ config: customConfiguration = {}, d3 = window.d3 }) => {
     chart.scale = () => chart._scale;
     chart.filteredData = () => chart._filteredData;
 
-    const draw = (config, scale) =>
-        selection => {
-            const dateBounds = scale.domain().map(d => new Date(d));
-            const filteredData = selection.data().map(dataSet =>
-                dataSet.map(row => {
-                    if (!row.fullData) {
-                        row.fullData = row.data;
-                    }
+    const draw = (config, scale) => selection => {
+        const dateBounds = scale.domain().map(d => new Date(d));
+        const filteredData = selection.data().map(dataSet =>
+            dataSet.map(row => {
+                if (!row.fullData) {
+                    row.fullData = row.data;
+                }
 
-                    row.data = row.fullData.filter(d =>
-                        withinRange(d.date, dateBounds));
+                row.data = row.fullData.filter(d =>
+                    withinRange(d.date, dateBounds)
+                );
 
-                    return row;
-                }));
+                return row;
+            })
+        );
 
-            chart._filteredData = filteredData[0];
+        chart._filteredData = filteredData[0];
 
-            selection
-                .data(filteredData)
-                .call(dropLine(config, scale))
-                .call(bounds(config, scale))
-                .call(axis(d3, config, scale));
-        };
+        selection
+            .data(filteredData)
+            .call(dropLine(config, scale))
+            .call(bounds(config, scale))
+            .call(axis(d3, config, scale));
+    };
 
     return chart;
 };

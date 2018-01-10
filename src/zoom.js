@@ -17,15 +17,8 @@ export const getShiftedTransform = (
 
 export default (d3, svg, config, xScale, draw, getEvent) => {
     const {
-        label: {
-            width: labelsWidth,
-            padding: labelsPadding,
-        },
-        zoom: {
-            onZoomStart,
-            onZoom,
-            onZoomEnd,
-        },
+        label: { width: labelsWidth, padding: labelsPadding },
+        zoom: { onZoomStart, onZoom, onZoomEnd },
     } = config;
 
     const zoom = d3.zoom();

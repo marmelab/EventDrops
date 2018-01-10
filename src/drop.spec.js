@@ -13,7 +13,10 @@ const lastYear = now - 3600 * 24 * 30;
 const yesterday = now - 3600 * 24;
 const tomorrow = now + 3600 * 24;
 
-const defaultScale = d3.scaleTime().domain([lastYear, now]).range([0, 1000]);
+const defaultScale = d3
+    .scaleTime()
+    .domain([lastYear, now])
+    .range([0, 1000]);
 
 describe('Drop', () => {
     beforeEach(() => {
