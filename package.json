@@ -16,6 +16,7 @@
     "d3": "~4.7.0"
   },
   "dependencies": {
+    "d3-time-format": "^2.1.1",
     "debounce": "1.0.0",
     "lodash.defaultsdeep": "^4.6.0",
     "lodash.uniqby": "^4.7.0"

@@ -1,10 +1,25 @@
+import enLocale from 'd3-time-format/locale/en-US.json';
+
 export default d3 => ({
+    locale: enLocale,
     metaballs: {
         blurDeviation: 10,
         colorMatrix: '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 50 -10',
     },
     bound: {
         format: d3.timeFormat('%d %B %Y'),
+    },
+    axis: {
+        formats: {
+            milliseconds: '%L',
+            seconds: ':%S',
+            minutes: '%I:%M',
+            hours: '%I %p',
+            days: '%a %d',
+            weeks: '%b %d',
+            months: '%B',
+            year: '%Y',
+        },
     },
     drop: {
         color: null,
