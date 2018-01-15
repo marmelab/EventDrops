@@ -79,7 +79,7 @@
     "build": "webpack --config webpack.lib.js -p --progress --devtool source-map"
   },
   "lint-staged": {
-    "src/*.js": [
+    "*.{js,css,md}": [
       "prettier --write --tab-width 4 --single-quote --trailing-comma es5",
       "git add"
     ]
