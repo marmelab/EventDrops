@@ -19,7 +19,7 @@ Note you don't need this step if you don't use any module bundler.
 
 Since version 4, `event-drops` follows [semantic versionning](https://semver.org/). Hence, we recommend checking your `package.json` file and ensure that `event-drops` version is preceded by a carret:
 
-``` js
+```js
 {
     "event-drops": "^4.0.0"
 }
@@ -33,7 +33,7 @@ This way, you'll get all bug fixes and non breaking new features.
 
 If you **don't** use any module bundler such as Webpack, we recommend using EventDrop script available on [unpkg.com](https://unpkg.com/event-drops). Grabbing last versions of the library is as simple as:
 
-``` xml
+```xml
 <link href="https://unpkg.com/event-drops/dist/eventDrops.css" rel="stylesheet" />
 
 <script src="https://unpkg.com/d3"></script>
@@ -44,7 +44,7 @@ If you **don't** use any module bundler such as Webpack, we recommend using Even
 
 If you use a module bundler, you can import EventDrops the following way:
 
-``` js
+```js
 import * as d3 from 'd3/build/d3';
 
 import eventDrops from 'event-drops';
@@ -77,9 +77,11 @@ In addition to this configuration object, it also exposes two public methods all
 
 Hence, if you want to display number of displayed data and time bounds as in the [demo](https://marmelab.com/EventDrops/), you can use the following code:
 
-``` js
-const updateCommitsInformation = (chart) => {
-    const filteredData = chart.filteredData().reduce((total, repo) => total.concat(repo.data), []);
+```js
+const updateCommitsInformation = chart => {
+    const filteredData = chart
+        .filteredData()
+        .reduce((total, repo) => total.concat(repo.data), []);
 
     numberCommitsContainer.textContent = filteredData.length;
     zoomStart.textContent = humanizeDate(chart.scale().domain()[0]);
@@ -93,7 +95,7 @@ If you want to contribute to EventDrops, first, thank you!
 
 To launch the project locally, grab this repository, install its dependencies, and launch the demo:
 
-``` sh
+```sh
 git clone git@github.com:marmelab/EventDrops.git
 cd EventDrops
 make install
@@ -104,7 +106,7 @@ Demo will then be available on [http://localhost:8080](http://localhost:8080). S
 
 When you are satisfied with your changes, ensure you didn't break anything launching tests:
 
-``` sh
+```sh
 make test
 ```
 
