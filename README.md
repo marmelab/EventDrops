@@ -66,7 +66,9 @@ You can either use D3 as a specific import (specifying it in first argument of `
 
 ## Interface
 
-`eventDrops` function takes as a single argument a configuration object, detailed in the [configuration reference](./docs/configuration.md).
+`eventDrops` function takes as a single argument a configuration object, detailed in the:
+
+**[Configuration Reference](./docs/configuration.md)**
 
 In addition to this configuration object, it also exposes two public methods allowing you to customize your application based on filtered data:
 
