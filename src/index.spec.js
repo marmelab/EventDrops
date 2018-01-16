@@ -19,9 +19,7 @@ describe('EventDrops', () => {
             zoom.mockClear();
 
             const chart = EventDrops({
-                config: {
-                    zoom: zoomConfig,
-                },
+                zoom: zoomConfig,
             });
 
             const root = d3.select('div').data([[{ data: [] }]]);
@@ -36,11 +34,9 @@ describe('EventDrops', () => {
 
     it('should give access to current scale', () => {
         const chart = EventDrops({
-            config: {
-                range: {
-                    start: new Date('2010-01-01'),
-                    end: new Date('2011-01-01'),
-                },
+            range: {
+                start: new Date('2010-01-01'),
+                end: new Date('2011-01-01'),
             },
         });
 
@@ -55,11 +51,9 @@ describe('EventDrops', () => {
 
     it('should give an access to currently filtered data', () => {
         const chart = EventDrops({
-            config: {
-                range: {
-                    start: new Date('2010-01-01'),
-                    end: new Date('2011-01-01'),
-                },
+            range: {
+                start: new Date('2010-01-01'),
+                end: new Date('2011-01-01'),
             },
         });
 

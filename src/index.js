@@ -12,10 +12,10 @@ import './style.css';
 const withinRange = (date, dateBounds) =>
     new Date(date) >= dateBounds[0] && new Date(date) <= dateBounds[1];
 
-export default ({ config: customConfiguration = {}, d3 = window.d3 }) => {
+export default ({ d3 = window.d3, ...customConfiguration }) => {
     const chart = selection => {
         const config = defaultsDeep(
-            customConfiguration,
+            customConfiguration || {},
             defaultConfiguration(d3)
         );
 
