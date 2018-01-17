@@ -92,6 +92,7 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
             })
         );
 
+        chart._scale = scale;
         chart._filteredData = filteredData[0];
 
         selection
@@ -100,6 +101,8 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
             .call(bounds(config, scale))
             .call(axis(d3, config, scale));
     };
+
+    chart.draw = draw;
 
     return chart;
 };

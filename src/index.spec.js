@@ -8,6 +8,16 @@ const resetDom = () => {
     document.body.appendChild(document.createElement('div'));
 };
 
+const defaultConfig = {
+    label: {},
+    line: {},
+    drop: {},
+    bound: {},
+    margin: {},
+    axis: {},
+    locale: {},
+};
+
 describe('EventDrops', () => {
     beforeEach(() => {
         resetDom();
@@ -76,6 +86,34 @@ describe('EventDrops', () => {
         expect(data).toEqual([
             { date: new Date('2010-01-01') },
             { date: new Date('2011-01-01') },
+        ]);
+    });
+
+    it('should update exposed scale at each draw', () => {
+        const chart = EventDrops(defaultConfig);
+        const root = d3.select('div').data([
+            [
+                {
+                    data: [
+                        { date: new Date('2009-01-01') },
+                        { date: new Date('2010-01-01') },
+                        { date: new Date('2011-01-01') },
+                        { date: new Date('2012-01-01') },
+                    ],
+                },
+            ],
+        ]);
+
+        root.call(chart);
+
+        const newScale = d3
+            .scaleTime()
+            .domain([new Date('2010-01-01'), new Date('2011-01-01')]);
+        chart.draw(defaultConfig, newScale)(root);
+
+        expect(chart.scale().domain()).toEqual([
+            new Date('2010-01-01'),
+            new Date('2011-01-01'),
         ]);
     });
 
