@@ -8,7 +8,7 @@
 * Fix zoom and panning center
 * Better integration with module bundlers (allowing to pass a local D3 object instead of the global one)
 
-We took profit of this major version change to improve the API without taking care of the previous one. See the [migration guide](./MIGRATION-4.0.md) for more informations.
+We took profit of this major version change to improve the API - unfortunately, we couldn't keep backwards compatibility. See the [migration guide](./MIGRATION-4.0.md) for more informations.
 
 ## 3.0.0
 
