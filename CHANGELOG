@@ -5,7 +5,7 @@
 * Huge performance boost (almost 10 times faster when zooming or panning)
 * Review configuration to get more intuitive naming
 * Simplify tick format configuration passing only time formats instead of a whole function
-* Fixing zoom and panning center
+* Fix zoom and panning center
 * Better integration with module bundlers (allowing to pass a local D3 object instead of the global one)
 
 We took profit of this major version change to improve the API without taking care of the previous one. See the [migration guide](./MIGRATION-4.0.md) for more informations.
