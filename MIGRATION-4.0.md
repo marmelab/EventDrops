@@ -2,7 +2,7 @@
 
 ## In theory...
 
-API has been deeply reviewed to both simplify configuration and improve overall performances. We didn't take care of backward compatibility during this major changes. Hence, you will probably need to rewrite your current scripts to make it work with this fourth version.
+The API has been deeply reviewed to both simplify configuration, and improve overall performances. We chose to break backward compatibility to allow the implementation of the new features. That means you will probably need to rewrite your current scripts to make them work with the new version.
 
 Here is a mapping of common configuration parameters, before and after this change:
 
