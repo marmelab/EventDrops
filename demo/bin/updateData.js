@@ -5,7 +5,6 @@ const exec = require('child_process').exec;
 
 const repositories = [
     { name: 'admin-on-rest', identifier: 'marmelab/admin-on-rest' },
-    { name: 'ng-admin', identifier: 'marmelab/ng-admin' },
     { name: 'EventDrops', identifier: 'marmelab/EventDrops' },
     { name: 'sedy', identifier: 'marmelab/sedy' },
     { name: 'comfy', identifier: 'marmelab/comfygure' },
@@ -16,18 +15,25 @@ const setup = cb => {
 };
 
 const clone = (repository, cb) => {
-    exec(`git clone https://www.github.com/${repository.identifier} /tmp/event-drops/${repository.name}`, cb);
+    exec(
+        `git clone https://www.github.com/${
+            repository.identifier
+        } /tmp/event-drops/${repository.name}`,
+        cb
+    );
 };
+
+const oneYearAgo = new Date();
+oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
 
 const commitsHistory = (repository, cb) => {
     const command = `cd /tmp/event-drops/${repository.name} && \
-    git log --pretty=format:'{\
+    git log --since="${oneYearAgo.toISOString()}" --pretty=format:'{\
         "sha": "%H",\
         "message": "%f",\
         "author": {"name": "%aN", "email": "%aE" },\
         "date": "%aD"\
     },'`;
-
 
     exec(command, { maxBuffer: 1024 * 2000 }, (err, out) => {
         if (err) {
@@ -35,10 +41,12 @@ const commitsHistory = (repository, cb) => {
         }
 
         // do not forget to remove final comma
-        cb(null, JSON.parse(`[${out.substr(0, out.length - 1)}]`));
+        out = out.substr(0, out.length - 1);
+        out = out.replace('\\', '\\\\');
+
+        cb(null, JSON.parse(`[${out}]`));
     });
 };
-
 
 const writeDataFixtures = (commits, cb) => {
     const data = repositories.map((r, index) => ({
@@ -55,20 +63,27 @@ const clean = cb => {
 
 console.log('Hang on, generating fixtures file may take several minutes...');
 
-async.series([
-    clean,
-    setup,
-    cb => async.map(repositories, clone, cb),
-    cb => async.waterfall([
-        cb2 => async.map(repositories, commitsHistory, cb2),
-        writeDataFixtures,
-    ], cb),
-    clean,
-], err => {
-    if (err) {
-        console.error(err);
-        process.exit(1);
-    }
+async.series(
+    [
+        clean,
+        setup,
+        cb => async.map(repositories, clone, cb),
+        cb =>
+            async.waterfall(
+                [
+                    cb2 => async.map(repositories, commitsHistory, cb2),
+                    writeDataFixtures,
+                ],
+                cb
+            ),
+        clean,
+    ],
+    err => {
+        if (err) {
+            console.error(err);
+            process.exit(1);
+        }
 
-    process.exit(0);
-});
+        process.exit(0);
+    }
+);
