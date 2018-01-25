@@ -1,75 +1,47 @@
-import debounce from 'debounce';
-import labels from './drawer/labels';
-import { boolOrReturnValue } from './drawer/xAxis';
-
-export const onRequestAnimationFrameFactory = (
-    container,
-    configuration,
-    callback,
-    sumDataCount,
-    scalingFunction,
-    data
-) =>
-    () => {
-        container
-            .selectAll('.drop-line')
-            .selectAll('.drop')
-            .attr('cx', d => scalingFunction(configuration.date(d)));
-
-        sumDataCount(data);
-        callback(data);
-    };
-
-export default (
-    container,
-    dimensions,
-    scales,
-    configuration,
-    callback = () => {}
+export const getShiftedTransform = (
+    originalTransform,
+    labelsWidth,
+    labelsPadding,
+    d3
 ) => {
-    const onZoom = data => {
-        const scalingFunction = d3.event.transform.rescaleX(scales.x);
+    const fullLabelWidth = labelsWidth + labelsPadding;
 
-        const sumDataCount = debounce(
-            labels(
-                container.select('.labels'),
-                { x: scalingFunction },
-                configuration
-            ),
-            100
+    const { x, y, k } = originalTransform;
+
+    return d3.zoomIdentity
+        .translate(-fullLabelWidth, 0) // move origin as if there were no labels
+        .translate(x, y) // apply zoom transformation panning
+        .scale(k) // apply zoom transformation scaling
+        .translate(labelsWidth + labelsPadding, 0); // put origin at its original position
+};
+
+export default (d3, svg, config, xScale, draw, getEvent) => {
+    const {
+        label: { width: labelsWidth, padding: labelsPadding },
+        zoom: { onZoomStart, onZoom, onZoomEnd, minimumScale, maximumScale },
+    } = config;
+
+    const zoom = d3.zoom().scaleExtent([minimumScale, maximumScale]);
+
+    zoom.on('zoom.start', onZoomStart).on('zoom.end', onZoomEnd);
+
+    zoom.on('zoom', args => {
+        const transform = getShiftedTransform(
+            getEvent().transform,
+            labelsWidth,
+            labelsPadding,
+            d3
         );
 
-        if (boolOrReturnValue(configuration.hasTopAxis, data)) {
-            container
-                .selectAll('.x-axis.top')
-                .call(d3.axisTop().scale(scalingFunction));
+        const newScale = transform.rescaleX(xScale);
+
+        // @TODO: fix me: use `svg` parameter instead of doing a new selection
+        d3.select('svg').call(draw(config, newScale));
+
+        if (onZoom) {
+            onZoom(args);
         }
-
-        if (boolOrReturnValue(configuration.hasBottomAxis, data)) {
-            container
-                .selectAll('.x-axis.bottom')
-                .call(d3.axisBottom().scale(scalingFunction));
-        }
-
-        global.requestAnimationFrame(
-            onRequestAnimationFrameFactory(
-                container,
-                configuration,
-                callback,
-                sumDataCount,
-                scalingFunction,
-                data
-            )
-        );
-    };
-
-    const zoom = d3
-        .zoom()
-        .scaleExtent([configuration.minScale, configuration.maxScale])
-        .on('zoom', onZoom)
-        .on('end', configuration.zoomend);
-
-    container.call(zoom);
+    });
 
     return zoom;
 };

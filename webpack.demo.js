@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
 
 module.exports = {
     entry: {
@@ -35,10 +34,8 @@ module.exports = {
             },
         ],
     },
+    devtool: 'cheap-module-eval-source-map',
     plugins: [
-        new webpack.ProvidePlugin({
-            d3: 'd3',
-        }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'demo/index.html'),
         }),

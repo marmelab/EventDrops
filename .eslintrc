@@ -1,14 +1,17 @@
 {
-    "extends": "airbnb-base",
-    "rules": {
-        "indent": [2, 4],
-        "id-length": [2, { "min": 1 }]
-    },
-    "env": {
-        "browser": true,
-        "jasmine": true
-    },
+    "extends": [
+        "airbnb",
+        "prettier"
+    ],
     "globals": {
         "d3": true
+    },
+    "plugins": ["jest", "prettier"],
+    "env": {
+        "browser": true,
+        "jest/globals": true
+    },
+    "rules": {
+        "prettier/prettier": "error"
     }
 }

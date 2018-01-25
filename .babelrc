@@ -1,8 +1,12 @@
 {
-    "presets": [
-        "stage-0",
-        ["es2015", {
-            "modules": false
-        }]
-    ]
+    "env": {
+        "test": {
+            "plugins": [
+                ["transform-require-ignore", {
+                    "extensions": [".css"]
+                }]
+            ]
+        }
+    },
+    "presets": ["es2015", "stage-0"]
 }

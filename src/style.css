@@ -1,8 +1,3 @@
-.zoom-area {
-    fill: transparent;
-    cursor: pointer;
-}
-
 .y-tick {
     stroke: black;
     fill: none;
@@ -10,26 +5,16 @@
 }
 
 .line-separator, .x-axis {
-    stroke: black;
+    stroke: #777;
     fill: none;
     stroke-width: 1px;
 }
 
-.line-separator:last-child {
+.drop-line:last-child .line-separator {
     display: none;
-}
-
-.x-axis {
-    position: absolute;
-    z-index: 50;
 }
 
 text {
     stroke: none;
     fill: black;
-}
-
-.graph-body .line {
-    height: 20px;
-    padding: 10px;
 }

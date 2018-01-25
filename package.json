@@ -16,12 +16,17 @@
     "d3": "~4.7.0"
   },
   "dependencies": {
-    "debounce": "1.0.0"
+    "d3-time-format": "^2.1.1",
+    "debounce": "1.0.0",
+    "lodash.defaultsdeep": "^4.6.0",
+    "lodash.uniqby": "^4.7.0"
   },
   "devDependencies": {
     "async": "2.0.1",
     "babel-core": "6.18.0",
+    "babel-jest": "^21.2.0",
     "babel-loader": "6.2.7",
+    "babel-plugin-transform-require-ignore": "^0.1.1",
     "babel-preset-es2015": "6.18.0",
     "babel-preset-stage-0": "6.16.0",
     "configurable.js": "0.1.0",
@@ -29,7 +34,9 @@
     "d3": "~4.7.0",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "14.1.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jest": "^21.4.2",
     "eslint-plugin-jsx-a11y": "4.0.0",
     "eslint-plugin-react": "6.10.3",
     "extract-text-webpack-plugin": "2.1.0",
@@ -37,6 +44,7 @@
     "html-webpack-plugin": "2.28.0",
     "husky": "0.13.2",
     "jasmine-core": "2.5.2",
+    "jest": "^21.2.1",
     "json-loader": "0.5.4",
     "karma": "1.3.0",
     "karma-firefox-launcher": "1.0.0",
@@ -45,7 +53,7 @@
     "lint-staged": "3.4.0",
     "mocha": "3.1.2",
     "mocha-traceur": "2.1.0",
-    "prettier": "0.22.0",
+    "prettier": "^1.10.2",
     "rollup": "0.41.6",
     "rollup-plugin-babel": "2.7.1",
     "rollup-plugin-commonjs": "8.0.2",
@@ -61,21 +69,17 @@
     "url": "https://github.com/marmelab/EventDrops/issues"
   },
   "homepage": "https://github.com/marmelab/EventDrops",
-  "directories": {
-    "example": "example",
-    "test": "test"
-  },
   "scripts": {
     "precommit": "lint-staged",
     "start": "webpack-dev-server --colors --devtool cheap-module-inline-source-map --host=0.0.0.0",
     "karma": "karma start test/karma/karma.conf.js",
-    "test": "npm run karma -- --single-run",
-    "test-watch": "npm run karma",
+    "test": "jest",
+    "test-watch": "jest --watch",
     "run": "npm start",
     "build": "webpack --config webpack.lib.js -p --progress --devtool source-map"
   },
   "lint-staged": {
-    "src/*.js": [
+    "*.{js,css,md}": [
       "prettier --write --tab-width 4 --single-quote --trailing-comma es5",
       "git add"
     ]

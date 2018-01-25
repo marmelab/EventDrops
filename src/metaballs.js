@@ -1,25 +1,29 @@
-export const metaballs = defs => {
-    const filters = defs.append('filter');
+const METABALL_DEF_ID = 'metaballs';
 
-    filters.attr('id', 'metaballs');
+export const addMetaballsDefs = config => selection => {
+    const { metaballs: { blurDeviation, colorMatrix } } = config;
 
-    filters
+    const defs = selection.append('defs');
+    const filter = defs.append('filter').attr('id', METABALL_DEF_ID);
+
+    filter
         .append('feGaussianBlur')
         .attr('in', 'SourceGraphic')
-        .attr('stdDeviation', 10)
+        .attr('stdDeviation', blurDeviation)
         .attr('result', 'blur');
 
-    filters
+    filter
         .append('feColorMatrix')
         .attr('in', 'blur')
         .attr('mode', 'matrix')
-        .attr('values', '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 50 -10')
+        .attr('values', colorMatrix)
         .attr('result', 'contrast');
 
-    filters
+    filter
         .append('feBlend')
         .attr('in', 'SourceGraphic')
         .attr('in2', 'contrast');
-
-    return filters;
 };
+
+export const addMetaballsStyle = selection =>
+    selection.style('filter', `url(${METABALL_DEF_ID})`);

@@ -38,8 +38,32 @@ p {
     margin-bottom: 1rem;
 }
 
+#zoomStart, #zoomEnd {
+    display: inline-block;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+#zoomStart {
+    text-align: 'right';
+}
+
+#zoomEnd {
+    text-align: 'left';
+}
+
+.light {
+    color: #AAA;
+}
+
 .drop {
     cursor: pointer;
+}
+
+footer p {
+    text-align: center;
+    color: #888;
+    font-size: .8rem;
 }
 
 .tooltip {
@@ -101,10 +125,4 @@ p {
 .tooltip p {
     font-size: .9rem;
     color: #777;
-}
-
-footer p {
-    text-align: center;
-    color: #888;
-    font-size: .8rem;
 }

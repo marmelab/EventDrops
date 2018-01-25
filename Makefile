@@ -26,10 +26,10 @@ deploy-demo: build ## Deploy the demo at http://marmelab.com/EventDrops/
 	rm -Rf demo/dist/
 
 test: ## Run unit tests
-	./node_modules/.bin/karma start test/karma/karma.conf.js --single-run
+	BABEL_ENV=test ./node_modules/.bin/jest --env=jsdom
 
-test-watch: ## Run unit tests with hot reloading
-	./node_modules/.bin/karma start test/karma/karma.conf.js
+test-watch:
+	BABEL_ENV=test ./node_modules/.bin/jest --watch --env=jsdom
 
 install: ## Install dependencies
 	npm install
