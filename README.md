@@ -21,7 +21,7 @@ Since version 4, `event-drops` follows [semantic versionning](https://semver.org
 
 ```js
 {
-    "event-drops": "^4.0.0"
+    "event-drops": "^1.0.0"
 }
 ```
 
@@ -37,7 +37,7 @@ If you **don't** use any module bundler such as Webpack, we recommend using Even
 <link href="https://unpkg.com/event-drops/dist/eventDrops.css" rel="stylesheet" />
 
 <script src="https://unpkg.com/d3"></script>
-<script src="https://unpkg.com/event-drops@0.3.1-alpha4/dist/eventDrops.js"></script>
+<script src="https://unpkg.com/event-drops/dist/eventDrops.js"></script>
 ```
 
 ### With a Module Bundler
