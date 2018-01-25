@@ -1,11 +1,10 @@
 {
   "name": "event-drops",
-  "version": "0.3.1-alpha3",
+  "version": "1.0.0",
   "description": "A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time.",
   "main": "dist/index.js",
   "files": [
     "dist/",
-    "style.css",
     "*.md"
   ],
   "repository": {
@@ -86,44 +85,27 @@
   },
   "author": "Thiery Michel <thiery@marmelab.com>",
   "contributors": [
-    {
-      "name": "Chad Ramos"
-    },
-    {
-      "name": "Chulki Lee"
-    },
-    {
-      "name": "Emmanuel Quentin"
-    },
-    {
-      "name": "Francois Zaninotto"
-    },
-    {
-      "name": "Joan Yin"
-    },
-    {
-      "name": "Joel Schlosser"
-    },
-    {
-      "name": "Jonathan Petitcolas",
-      "email": "petitcolas.jonathan@gmail.com"
-    },
-    {
-      "name": "Mélodie Benmouffek"
-    },
-    {
-      "name": "messense"
-    },
-    {
-      "name": "Robin Bressan"
-    },
-    {
-      "name": "Kévin Maschtaler",
-      "email": "kevin@marmelab.com"
-    },
-    {
-      "name": "deevus"
-    }
+    "Jonathan Petitcolas (https://github.com/jpetitcolas)",
+    "ThieryMichel (https://github.com/ThieryMichel)",
+    "Francois Zaninotto (https://github.com/fzaninotto)",
+    "Kmaschta (https://github.com/Kmaschta)",
+    "Ohad (https://github.com/osadan)",
+    "Robin Bressan (https://github.com/RobinBressan)",
+    "Gildas Garcia (https://github.com/djhi)",
+    "Tristan Newmann (https://github.com/twisty-n)",
+    "Julien Demangeon (https://github.com/jdemangeon)",
+    "Sedy Bot (https://github.com/sedy-bot)",
+    "Chad Ramos (https://github.com/chad-ramos)",
+    "Juliano Alves de Oliveira (https://github.com/JulianoEngineer)",
+    "Chulki Lee (https://github.com/chulkilee)",
+    "Emmanuel Quentin (https://github.com/manuquentin)",
+    "Joan Yin (https://github.com/JoanYin)",
+    "Korney Czukowski (https://github.com/czukowski)",
+    "Nathan Breit (https://github.com/nathanathan)",
+    "Simon Hartcher (https://github.com/deevus)",
+    "benmoufm (https://github.com/benmoufm)",
+    "marmelab-bot (https://github.com/marmelab-bot)",
+    "messense (https://github.com/messense)"
   ],
   "license": "MIT"
 }
