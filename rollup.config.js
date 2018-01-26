@@ -3,12 +3,14 @@ import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import css from 'rollup-plugin-css-only';
 import uglify from 'rollup-plugin-uglify';
+import json from 'rollup-plugin-json';
 
 export default {
     entry: 'src/index.js',
     format: 'umd',
     moduleName: 'eventDrops',
     plugins: [
+        json(),
         css({ output: 'dist/style.css' }),
         resolve({
             customResolveOptions: {
