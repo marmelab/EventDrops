@@ -37,7 +37,7 @@ If you **don't** use any module bundler such as Webpack, we recommend using Even
 <link href="https://unpkg.com/event-drops/dist/eventDrops.css" rel="stylesheet" />
 
 <script src="https://unpkg.com/d3"></script>
-<script src="https://unpkg.com/event-drops/dist/eventDrops.js"></script>
+<script src="https://unpkg.com/event-drops/dist/index.js"></script>
 ```
 
 ### With a Module Bundler
