@@ -17,13 +17,13 @@ publish: build ## Publish current version of EventDrops
 
 deploy-demo: build ## Deploy the demo at http://marmelab.com/EventDrops/
 	./node_modules/webpack/bin/webpack.js --config webpack.demo.js -p --progress
-	git add -f demo/
-	git commit -m "Update GitHub pages"
-	git push origin :gh-pages
-	git subtree push --prefix demo/dist origin gh-pages
-	git reset --soft HEAD~1 # undo the deployment commit
-	git reset HEAD demo
-	rm -Rf demo/dist/
+	cd demo/dist && \
+	git init && \
+	git add . && \
+	git commit -m "Update demo" && \
+	git remote add origin git@github.com:marmelab/EventDrops.git && \
+	git push --force origin master:gh-pages
+	rm -Rf demo/dist
 
 test: ## Run unit tests
 	BABEL_ENV=test ./node_modules/.bin/jest --env=jsdom
