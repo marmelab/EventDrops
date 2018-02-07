@@ -52,7 +52,7 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
             .classed('event-drop-chart', true);
 
         if (zoomConfig) {
-            svg.call(zoom(d3, root, config, xScale, draw, getEvent));
+            svg.call(zoom(d3, svg, config, xScale, draw, getEvent));
         }
 
         if (metaballs) {
