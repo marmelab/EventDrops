@@ -1,6 +1,13 @@
 # CHANGELOG
 
-## 4.0.0
+### 1.0.1
+
+[#212](https://github.com/marmelab/EventDrops/pull/212): fix issue when having other SVG elements than EventDrops
+[#210](https://github.com/marmelab/EventDrops/pull/210): fix demo deployment
+[#208](https://github.com/marmelab/EventDrops/pull/208): fix documentation wrong asset path
+
+
+## 1.0.0
 
 * Huge performance boost (almost 10 times faster when zooming or panning)
 * Review configuration to get more intuitive naming
@@ -9,10 +16,6 @@
 * Better integration with module bundlers (allowing to pass a local D3 object instead of the global one)
 
 We took profit of this major version change to improve the API - unfortunately, we couldn't keep backwards compatibility. See the [migration guide](./MIGRATION-4.0.md) for more informations.
-
-## 3.0.0
-
-Probably a lot of changes, but we didn't update the changelog at this time. :/
 
 ## 0.3.0
 
