@@ -34,7 +34,7 @@ This way, you'll get all bug fixes and non breaking new features.
 If you **don't** use any module bundler such as Webpack, we recommend using EventDrop script available on [unpkg.com](https://unpkg.com/event-drops). Grabbing last versions of the library is as simple as:
 
 ```xml
-<link href="https://unpkg.com/event-drops/dist/eventDrops.css" rel="stylesheet" />
+<link href="https://unpkg.com/event-drops/dist/style.css" rel="stylesheet" />
 
 <script src="https://unpkg.com/d3"></script>
 <script src="https://unpkg.com/event-drops/dist/index.js"></script>
