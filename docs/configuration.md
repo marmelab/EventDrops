@@ -2,9 +2,9 @@
 
 `eventDrops` function takes a configuration object as only parameter. Here are the details of all available configuration keys.
 
-## Generic Parameters
+See the [config.js source](https://github.com/marmelab/EventDrops/blob/master/src/config.js) for additional information.
 
-### d3
+## d3
 
 _Default: global.d3_
 
@@ -19,7 +19,7 @@ const chart = eventDrops({ d3 });
 
 If you use EventDrops without any module bundler, just include D3 script before EventDrops, and everything should work out of the box.
 
-### locale
+## locale
 
 _Default: English locale_
 
@@ -35,7 +35,7 @@ const chart = eventDrops({
 
 A list of all available locales can be found in [d3-time-format/src](https://github.com/d3/d3-time-format/tree/master/locale).
 
-### Metaballs
+## metaballs
 
 _Default: metaballs configuration object (see below)_
 
@@ -55,7 +55,7 @@ This parameter with forgotten origins (possibly StackOverflow) is transmitted fr
 
 We're not sure if this setting should be configurable, but for backward compatibility reasons we left it.
 
-### bound
+## bound
 
 _Default: bound configuration object_
 
@@ -69,7 +69,7 @@ Display format of bounds. By default, it would be displayed such as "10 January 
 
 A list of all available shortcuts can be found on [D3.js README](https://github.com/d3/d3-time-format/blob/master/README.md#locale_format).
 
-### line
+## line
 
 Line parameter contains all line related parameters (thanks Captain Obvious!).
 
@@ -97,9 +97,9 @@ const anotherChart = eventDrops({
 
 _Default: 40_
 
-Should we really explain this parameter? That's the line height.
+Line height in pixels.
 
-### drop
+## drop
 
 _Default: drop configuration object_
 
@@ -211,13 +211,13 @@ const chart = eventDrops({
 
 This is the function you are looking for if you want to hide a tooltip you previously displayed with `onMouseOver`.
 
-### label
+## label
 
 ### padding
 
 _Default: 20_
 
-Space between labels and drop lines margin. Should be a number.
+Space between labels and drop lines margin in pixels. Should be a number.
 
 ### text
 
@@ -237,15 +237,15 @@ const chart = eventDrops({
 
 _Default: 200_
 
-Width of label columns. It can't be dynamic for now and should be hard-written. However, feel free to submit a pull request!
+Width of label columns in pixels. It can't be dynamic for now and should be hard-written. However, feel free to submit a pull request!
 
-### margin
+## margin
 
 _Default: { top: 20, right: 10, bottom: 20, left: 10 }_
 
 Margins around the chart, following the [D3.js margin conventions](http://bl.ocks.org/binaworks/9dce0a385915e8953a45cc6be7fbde42).
 
-### range
+## range
 
 _Default: { start: [one year ago], end: [now] }_
 
@@ -253,7 +253,7 @@ Range allows to restrict visible data during a given time frame. By default, it 
 
 To change this behavior, pass it an object with a `start` and `end` key, both of them being a JavaScript `Date` object.
 
-### axis
+## axis
 
 ### formats
 
@@ -281,7 +281,7 @@ const chart = eventDrops({
 });
 ```
 
-### zoom
+## zoom
 
 This section is related to `zoom` (and pan) behavior. If you want to disable interactivity on your chart, just set this parameter to `false`.
 
