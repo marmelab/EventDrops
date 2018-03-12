@@ -10,6 +10,7 @@ import { addMetaballsDefs } from './metaballs';
 import './style.css';
 
 const withinRange = (date, dateBounds) =>
+    // @TODO: remove the `new Date()` constructor in the next major version: we need to force it at configuration level.
     new Date(date) >= dateBounds[0] && new Date(date) <= dateBounds[1];
 
 export default ({ d3 = window.d3, ...customConfiguration }) => {
@@ -77,6 +78,8 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
     chart.filteredData = () => chart._filteredData;
 
     const draw = (config, scale) => selection => {
+        const { drop: { date: dropDate } } = config;
+
         const dateBounds = scale.domain().map(d => new Date(d));
         const filteredData = selection.data().map(dataSet =>
             dataSet.map(row => {
@@ -85,7 +88,7 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
                 }
 
                 row.data = row.fullData.filter(d =>
-                    withinRange(d.date, dateBounds)
+                    withinRange(dropDate(d), dateBounds)
                 );
 
                 return row;
