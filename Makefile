@@ -12,9 +12,11 @@ build: install ## Webpack build the project
 	./node_modules/.bin/rollup -c
 
 publish: build ## Publish current version of EventDrops (need to set a VERSION=[major|minor|patch])
-ifndef VERSION
-$(error VERSION is not set. Should be of one of the following values: major, minor, patch)
-endif
+	@if [ -z ${VERSION} ]; then \
+		echo "Error: please set VERSION envvar to one of the following value: major, minor, or patch.\n"; \
+		exit 1; \
+	fi
+
 	npm version ${VERSION}
 	git push --tags
 	npm publish
