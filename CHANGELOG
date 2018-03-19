@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 1.0.2
+
+[#213](https://github.com/marmelab/EventDrops/pull/212): publish Git tag automatically when publishing on npm
+
 ### 1.0.1
 
 [#212](https://github.com/marmelab/EventDrops/pull/212): fix issue when having other SVG elements than EventDrops

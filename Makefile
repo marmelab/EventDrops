@@ -11,7 +11,14 @@ build: install ## Webpack build the project
 	mkdir -p dist
 	./node_modules/.bin/rollup -c
 
-publish: build ## Publish current version of EventDrops
+publish: test build ## Publish current version of EventDrops (need to set a VERSION=[major|minor|patch])
+	@if [ -z ${VERSION} ]; then \
+		echo "Error: please set VERSION envvar to one of the following value: major, minor, or patch.\n"; \
+		exit 1; \
+	fi
+
+	npm version ${VERSION}
+	git push --tags
 	npm publish
 	$(MAKE) deploy-demo
 
