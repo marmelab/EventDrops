@@ -9,9 +9,13 @@ import { addMetaballsDefs } from './metaballs';
 
 import './style.css';
 
-const withinRange = (date, dateBounds) =>
+export const withinRange = (date, dateBounds) => {
+    const startingDate = Math.min(...dateBounds);
+    const endingDate = Math.max(...dateBounds);
+
     // @TODO: remove the `new Date()` constructor in the next major version: we need to force it at configuration level.
-    new Date(date) >= dateBounds[0] && new Date(date) <= dateBounds[1];
+    return new Date(date) >= startingDate && new Date(date) <= endingDate;
+};
 
 export default ({ d3 = window.d3, ...customConfiguration }) => {
     const chart = selection => {
