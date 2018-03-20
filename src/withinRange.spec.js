@@ -13,7 +13,7 @@ describe('withinRange', () => {
         test('2018-05-19', false);
     });
 
-    it('should return true if date is in given reverse date range (start date higher than end date', () => {
+    it('should return true if date is in given reverse date range (start date older than end date', () => {
         const dateRange = [new Date('2018-05-01'), new Date('2018-04-01')];
         const test = (date, expectedResult) => {
             expect(withinRange(date, dateRange)).toBe(expectedResult);
