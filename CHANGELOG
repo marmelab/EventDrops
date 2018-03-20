@@ -1,6 +1,12 @@
 # CHANGELOG
 
-### 1.1.0
+### 1.1.1
+
+**1.1.1:**
+
+[#233](https://github.com/marmelab/EventDrops/pull/233): fix default export for users without module bundler
+
+**1.1.0:**
 
 [#232](https://github.com/marmelab/EventDrops/pull/232): minor README fixes
 [#231](https://github.com/marmelab/EventDrops/pull/231): allow to display chart from end to start
