@@ -8,15 +8,9 @@ import zoom from './zoom';
 import { addMetaballsDefs } from './metaballs';
 
 import './style.css';
+import { withinRange } from './withinRange';
 
-export const withinRange = (date, dateBounds) => {
-    const startingDate = Math.min(...dateBounds);
-    const endingDate = Math.max(...dateBounds);
-
-    // @TODO: remove the `new Date()` constructor in the next major version: we need to force it at configuration level.
-    return new Date(date) >= startingDate && new Date(date) <= endingDate;
-};
-
+// do not export anything else here to keep window.eventDrops as a function
 export default ({ d3 = window.d3, ...customConfiguration }) => {
     const chart = selection => {
         const config = defaultsDeep(
