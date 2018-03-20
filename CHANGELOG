@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 1.1.0
+
+[#232](https://github.com/marmelab/EventDrops/pull/232): minor README fixes
+[#231](https://github.com/marmelab/EventDrops/pull/231): allow to display chart from end to start
+
 ### 1.0.2
 
 [#228](https://github.com/marmelab/EventDrops/pull/228): use configuration date getter when filtering data
