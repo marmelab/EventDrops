@@ -16,7 +16,7 @@ Please do not submit support requests or "How to" questions here. For that, go t
 
 <!-- If you are able to illustrate the bug or feature request with an example, please provide a sample application via one of the following means:
 
-* JSFiddle (https://jsfiddle.net/6rqxusw5/6/)
+* JSFiddle (https://jsfiddle.net/6rqxusw5/9/)
 * A sample application via GitHub
 -->
 

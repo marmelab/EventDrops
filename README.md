@@ -37,8 +37,10 @@ If you **don't** use any module bundler such as Webpack, we recommend using Even
 <link href="https://unpkg.com/event-drops/dist/style.css" rel="stylesheet" />
 
 <script src="https://unpkg.com/d3"></script>
-<script src="https://unpkg.com/event-drops/dist/index.js"></script>
+<script src="https://unpkg.com/event-drops"></script>
 ```
+
+Then, the code is similar to the one with module bundler (see next paragraph), except you are not forced to specify D3 configuration parameter.
 
 ### With a Module Bundler
 
@@ -52,12 +54,22 @@ import eventDrops from 'event-drops';
 const chart = eventDrops({ d3 });
 
 const repositoriesData = [
-    { name: "admin-on-rest", data: [{ date: new Date('2014/09/15 14:21:31') }, /* ... */] },
-    { name: "event-drops", data: [{ date: new Date('2014/09/15 13:24:57') }, /* ... */] },
-    { name: "sedy", data: [{ date: new Date('2014/09/15 13:25:12') }, /* ... */] }
+    {
+        name: 'admin-on-rest',
+        data: [{ date: new Date('2014/09/15 14:21:31') } /* ... */],
+    },
+    {
+        name: 'event-drops',
+        data: [{ date: new Date('2014/09/15 13:24:57') } /* ... */],
+    },
+    {
+        name: 'sedy',
+        data: [{ date: new Date('2014/09/15 13:25:12') } /* ... */],
+    },
 ];
 
-d3.select('#eventdrops-demo')
+d3
+    .select('#eventdrops-demo')
     .data([repositoriesData])
     .call(chart);
 ```
