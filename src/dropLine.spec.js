@@ -174,6 +174,33 @@ describe('Drop Line', () => {
                     .getAttribute('text-anchor')
             ).toBe('end');
         });
+
+        it('should be over drops (case of labels overlapping drops using negative padding)', () => {
+            const selection = d3.select('svg').data([[{ name: 'foo' }]]);
+
+            dropLine(defaultConfig, defaultScale)(selection);
+
+            const lineChildren = document.querySelector('.drop-line').children;
+
+            let textIndex = null;
+            let dropsIndex = null;
+            for (let childIndex in lineChildren) {
+                const child = lineChildren[childIndex];
+                if (child.classList.contains('drops')) {
+                    dropsIndex = +childIndex;
+                    continue;
+                }
+
+                if (child.tagName === 'TEXT') {
+                    textIndex = +childIndex;
+                    continue;
+                }
+            }
+
+            expect(textIndex).not.toBe(-1);
+            expect(dropsIndex).not.toBe(-1);
+            expect(textIndex > dropsIndex).toBe(true);
+        });
     });
 
     describe('Drops Container', () => {

@@ -24,14 +24,6 @@ export default (config, xScale) => selection => {
         .attr('y1', () => lineHeight)
         .attr('y2', () => lineHeight);
 
-    g
-        .append('text')
-        .attr('x', labelWidth - labelPadding)
-        .attr('y', lineHeight / 2)
-        .attr('dy', '0.25em')
-        .attr('text-anchor', 'end')
-        .text(labelText);
-
     const drops = g
         .append('g')
         .classed('drops', true)
@@ -49,6 +41,14 @@ export default (config, xScale) => selection => {
     if (metaballs) {
         drops.style('filter', 'url(#metaballs)');
     }
+
+    g
+        .append('text')
+        .attr('x', labelWidth - labelPadding)
+        .attr('y', lineHeight / 2)
+        .attr('dy', '0.25em')
+        .attr('text-anchor', 'end')
+        .text(labelText);
 
     lines.selectAll('text').text(labelText);
     lines.selectAll('.drops').call(drop(config, xScale));
