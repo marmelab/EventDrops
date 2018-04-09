@@ -19,6 +19,7 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
         );
 
         const {
+            drops,
             zoom: zoomConfig,
             drop: { onClick, onMouseOut, onMouseOver },
             metaballs,
@@ -79,10 +80,21 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
         const { drop: { date: dropDate } } = config;
 
         const dateBounds = scale.domain().map(d => new Date(d));
-        const filteredData = selection.data().map(dataSet =>
-            dataSet.map(row => {
+        const filteredData = selection.data().map(dataSet => {
+            if (!Array.isArray(dataSet)) {
+                throw new Error(
+                    'Selection data is not an array. Are you sure you provided an array of arrays to `data` function?'
+                );
+            }
+
+            return dataSet.map(row => {
                 if (!row.fullData) {
-                    row.fullData = row.data;
+                    row.fullData = config.drops(row);
+                    if (!row.fullData) {
+                        throw new Error(
+                            'No drops data has been found. It looks by default in the `data` property. You can use the `drops` configuration parameter to tune it.'
+                        );
+                    }
                 }
 
                 row.data = row.fullData.filter(d =>
@@ -90,8 +102,8 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
                 );
 
                 return row;
-            })
-        );
+            });
+        });
 
         chart._scale = scale;
         chart._filteredData = filteredData[0];

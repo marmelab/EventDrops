@@ -59,6 +59,29 @@ describe('EventDrops', () => {
         ]);
     });
 
+    it('should allow to select custom data properties', () => {
+        const chart = EventDrops({
+            range: {
+                start: new Date('2010-01-01'),
+                end: new Date('2015-01-01'),
+            },
+            drops: row => row.bar,
+        });
+
+        const root = d3.select('div').data([
+            [
+                {
+                    bar: ['2010-01-01', '2011-01-01'],
+                },
+            ],
+        ]);
+
+        root.call(chart);
+
+        const drops = document.querySelectorAll('.drop');
+        expect(drops.length).toBe(2);
+    });
+
     describe('Data Filtering', () => {
         it('should give an access to currently filtered data', () => {
             const chart = EventDrops({
