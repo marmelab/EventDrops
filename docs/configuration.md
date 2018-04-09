@@ -99,6 +99,12 @@ _Default: 40_
 
 Line height in pixels.
 
+## drops
+
+_Default: row => row.data_
+
+Where are located drops in your row object?
+
 ## drop
 
 _Default: drop configuration object_

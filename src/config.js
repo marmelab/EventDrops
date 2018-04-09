@@ -21,6 +21,7 @@ export default d3 => ({
             year: '%Y',
         },
     },
+    drops: row => row.data,
     drop: {
         color: null,
         radius: 5,
