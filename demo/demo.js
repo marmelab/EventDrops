@@ -24,7 +24,8 @@ const tooltip = d3
     .select('body')
     .append('div')
     .classed('tooltip', true)
-    .style('opacity', 0);
+    .style('opacity', 0)
+    .style('pointer-events', 'auto');
 
 const chart = eventDrops({
     d3,
@@ -37,7 +38,8 @@ const chart = eventDrops({
             tooltip
                 .transition()
                 .duration(200)
-                .style('opacity', 1);
+                .style('opacity', 1)
+                .style('pointer-events', 'auto');
 
             tooltip
                 .html(
@@ -71,7 +73,8 @@ const chart = eventDrops({
             tooltip
                 .transition()
                 .duration(500)
-                .style('opacity', 0);
+                .style('opacity', 0)
+                .style('pointer-events', 'none');
         },
     },
 });

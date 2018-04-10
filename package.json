@@ -71,7 +71,7 @@
   "homepage": "https://github.com/marmelab/EventDrops",
   "scripts": {
     "precommit": "lint-staged",
-    "start": "webpack-dev-server --colors --devtool cheap-module-inline-source-map --host=0.0.0.0",
+    "start": "webpack-dev-server --config webpack.demo.js --colors --devtool cheap-module-inline-source-map --host=0.0.0.0",
     "karma": "karma start test/karma/karma.conf.js",
     "test": "jest",
     "test-watch": "jest --watch",
