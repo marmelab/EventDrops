@@ -1,10 +1,12 @@
 {
     "name": "event-drops",
     "version": "1.1.1",
-    "description":
-        "A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time.",
+    "description": "A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time.",
     "main": "dist/index.js",
-    "files": ["dist/", "*.md"],
+    "files": [
+        "dist/",
+        "*.md"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/marmelab/EventDrops"
@@ -19,6 +21,7 @@
         "lodash.uniqby": "^4.7.0"
     },
     "devDependencies": {
+        "@types/d3": "^5.0.0",
         "@types/node": "^10.1.4",
         "async": "^2.6.1",
         "awesome-typescript-loader": "^5.0.0",
@@ -65,8 +68,7 @@
     "homepage": "https://github.com/marmelab/EventDrops",
     "scripts": {
         "precommit": "lint-staged",
-        "start":
-            "webpack-dev-server --config webpack.demo.js --colors --devtool cheap-module-inline-source-map --host=0.0.0.0",
+        "start": "webpack-dev-server --config webpack.demo.js --colors --devtool cheap-module-inline-source-map --host=0.0.0.0",
         "karma": "karma start test/karma/karma.conf.js",
         "test": "jest",
         "test-watch": "jest --watch",
