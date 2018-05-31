@@ -1,8 +1,11 @@
+import { timeSaturday } from "d3";
+
 export type funcOrString = string | ((d: any, index?: number) => string);
 export type funcOrDate = Date | ((d: any, index?: number) => Date);
 export type funcOrNumber = number | ((d: any, index?: number) => number);
 
 export interface ConfigInterface {
+    d3: any,
     locale: d3.TimeLocaleDefinition,
     metaballs: {
         blurDeviation: number,
@@ -27,7 +30,7 @@ export interface ConfigInterface {
     drop: {
         color: funcOrString,
         radius: funcOrNumber,
-        date: funcOrDate,
+        date: (d: any, index?: number) => Date,
         onClick: () => void,
         onMouseOver: () => void,
         onMouseOut: () => void,
@@ -35,11 +38,11 @@ export interface ConfigInterface {
     label: {
         padding: funcOrNumber,
         text: funcOrString,
-        width: funcOrNumber,
+        width: number,
     },
     line: {
         color: funcOrString,
-        height: funcOrNumber,
+        height: number,
     },
     margin: {
         top: number,
@@ -58,4 +61,15 @@ export interface ConfigInterface {
         minimumScale: number,
         maximumScale: number,
     },
+}
+
+export type timeScale = d3.ScaleTime<number, number>;
+
+export type anySelection = d3.Selection<any, any, any, any>;
+
+export interface EventDropsInterface {
+    draw: (anySelection) => void,
+    scale: (anySelection) => timeScale
+    width: (anySelection) => number,
+    visibleData: (anySelection) => any[],
 }
