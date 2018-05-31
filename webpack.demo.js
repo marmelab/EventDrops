@@ -3,11 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        demo: [
-            './demo/demo.css',
-            './demo/demo.js',
-        ],
+        demo: ['./demo/demo.css', './demo/demo.js'],
     },
+    mode: 'development',
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'demo/dist'),
@@ -34,7 +32,6 @@ module.exports = {
             },
         ],
     },
-    devtool: 'cheap-module-eval-source-map',
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'demo/index.html'),

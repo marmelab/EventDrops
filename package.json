@@ -1,114 +1,113 @@
 {
-  "name": "event-drops",
-  "version": "1.1.1",
-  "description": "A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time.",
-  "main": "dist/index.js",
-  "files": [
-    "dist/",
-    "*.md"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/marmelab/EventDrops"
-  },
-  "peerDependencies": {
-    "d3": "~4.7.0"
-  },
-  "dependencies": {
-    "d3-time-format": "^2.1.1",
-    "debounce": "1.0.0",
-    "lodash.defaultsdeep": "^4.6.0",
-    "lodash.uniqby": "^4.7.0"
-  },
-  "devDependencies": {
-    "async": "2.0.1",
-    "babel-core": "6.18.0",
-    "babel-jest": "^21.2.0",
-    "babel-loader": "6.2.7",
-    "babel-plugin-transform-require-ignore": "^0.1.1",
-    "babel-preset-es2015": "6.18.0",
-    "babel-preset-stage-0": "6.16.0",
-    "configurable.js": "0.1.0",
-    "css-loader": "0.25.0",
-    "d3": "~4.7.0",
-    "eslint": "3.19.0",
-    "eslint-config-airbnb": "14.1.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "2.2.0",
-    "eslint-plugin-jest": "^21.4.2",
-    "eslint-plugin-jsx-a11y": "4.0.0",
-    "eslint-plugin-react": "6.10.3",
-    "extract-text-webpack-plugin": "2.1.0",
-    "html-loader": "0.4.4",
-    "html-webpack-plugin": "2.28.0",
-    "husky": "0.13.2",
-    "jasmine-core": "2.5.2",
-    "jest": "^21.2.1",
-    "json-loader": "0.5.4",
-    "karma": "1.3.0",
-    "karma-firefox-launcher": "1.0.0",
-    "karma-jasmine": "1.0.2",
-    "karma-webpack": "2.0.3",
-    "lint-staged": "3.4.0",
-    "mocha": "3.1.2",
-    "mocha-traceur": "2.1.0",
-    "prettier": "^1.10.2",
-    "rollup": "0.41.6",
-    "rollup-plugin-babel": "2.7.1",
-    "rollup-plugin-commonjs": "8.0.2",
-    "rollup-plugin-css-only": "0.2.0",
-    "rollup-plugin-json": "^2.3.0",
-    "rollup-plugin-node-resolve": "3.0.0",
-    "rollup-plugin-uglify": "2.0.1",
-    "scss-loader": "0.0.1",
-    "style-loader": "0.13.1",
-    "webpack": "2.6.1",
-    "webpack-dev-server": "2.4.5"
-  },
-  "bugs": {
-    "url": "https://github.com/marmelab/EventDrops/issues"
-  },
-  "homepage": "https://github.com/marmelab/EventDrops",
-  "scripts": {
-    "precommit": "lint-staged",
-    "start": "webpack-dev-server --config webpack.demo.js --colors --devtool cheap-module-inline-source-map --host=0.0.0.0",
-    "karma": "karma start test/karma/karma.conf.js",
-    "test": "jest",
-    "test-watch": "jest --watch",
-    "run": "npm start",
-    "build": "webpack --config webpack.lib.js -p --progress --devtool source-map"
-  },
-  "lint-staged": {
-    "*.{js,css,md}": [
-      "prettier --write --tab-width 4 --single-quote --trailing-comma es5",
-      "git add"
-    ]
-  },
-  "author": "Thiery Michel <thiery@marmelab.com>",
-  "contributors": [
-    "Jonathan Petitcolas (https://github.com/jpetitcolas)",
-    "ThieryMichel (https://github.com/ThieryMichel)",
-    "Francois Zaninotto (https://github.com/fzaninotto)",
-    "Kmaschta (https://github.com/Kmaschta)",
-    "Ohad (https://github.com/osadan)",
-    "Gildas Garcia (https://github.com/djhi)",
-    "Robin Bressan (https://github.com/RobinBressan)",
-    "Tristan Newmann (https://github.com/twisty-n)",
-    "Julien Demangeon (https://github.com/jdemangeon)",
-    "Chad Ramos (https://github.com/chad-ramos)",
-    "Sedy Bot (https://github.com/sedy-bot)",
-    "Juliano Alves de Oliveira (https://github.com/JulianoEngineer)",
-    "Christian Gass (https://github.com/gassc)",
-    "Chulki Lee (https://github.com/chulkilee)",
-    "Emmanuel Quentin (https://github.com/manuquentin)",
-    "Joan Yin (https://github.com/JoanYin)",
-    "Korney Czukowski (https://github.com/czukowski)",
-    "Nathan Breit (https://github.com/nathanathan)",
-    "Sam Lai (https://github.com/slai)",
-    "Simon Hartcher (https://github.com/deevus)",
-    "Mélodie Benmouffek (https://github.com/benmoufm)",
-    "marmelab-bot (https://github.com/marmelab-bot)",
-    "messense (https://github.com/messense)"
-  ],
-  "license": "MIT"
+    "name": "event-drops",
+    "version": "1.1.1",
+    "description":
+        "A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time.",
+    "main": "dist/index.js",
+    "files": ["dist/", "*.md"],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/marmelab/EventDrops"
+    },
+    "peerDependencies": {
+        "d3": "~4.7.0"
+    },
+    "dependencies": {
+        "d3-time-format": "^2.1.1",
+        "debounce": "1.0.0",
+        "lodash.defaultsdeep": "^4.6.0",
+        "lodash.uniqby": "^4.7.0"
+    },
+    "devDependencies": {
+        "async": "2.0.1",
+        "babel-core": "^6.26.3",
+        "babel-jest": "^23.0.1",
+        "babel-loader": "^7.1.4",
+        "babel-plugin-transform-require-ignore": "^0.1.1",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-stage-0": "^6.24.1",
+        "configurable.js": "0.1.0",
+        "css-loader": "0.25.0",
+        "d3": "~4.7.0",
+        "eslint": "3.19.0",
+        "eslint-config-airbnb": "14.1.0",
+        "eslint-config-prettier": "^2.9.0",
+        "eslint-plugin-import": "2.2.0",
+        "eslint-plugin-jest": "^21.4.2",
+        "eslint-plugin-jsx-a11y": "4.0.0",
+        "eslint-plugin-react": "6.10.3",
+        "extract-text-webpack-plugin": "2.1.0",
+        "html-webpack-plugin": "^3.2.0",
+        "husky": "0.13.2",
+        "jasmine-core": "2.5.2",
+        "jest": "^21.2.1",
+        "json-loader": "0.5.4",
+        "karma": "1.3.0",
+        "karma-firefox-launcher": "1.0.0",
+        "karma-jasmine": "1.0.2",
+        "karma-webpack": "2.0.3",
+        "lint-staged": "3.4.0",
+        "mocha": "3.1.2",
+        "prettier": "^1.10.2",
+        "rollup": "0.41.6",
+        "rollup-plugin-babel": "2.7.1",
+        "rollup-plugin-commonjs": "8.0.2",
+        "rollup-plugin-css-only": "0.2.0",
+        "rollup-plugin-json": "^2.3.0",
+        "rollup-plugin-node-resolve": "3.0.0",
+        "rollup-plugin-uglify": "2.0.1",
+        "scss-loader": "0.0.1",
+        "style-loader": "0.13.1",
+        "webpack": "^4.10.2",
+        "webpack-cli": "^2.1.4",
+        "webpack-dev-server": "^3.1.4"
+    },
+    "bugs": {
+        "url": "https://github.com/marmelab/EventDrops/issues"
+    },
+    "homepage": "https://github.com/marmelab/EventDrops",
+    "scripts": {
+        "precommit": "lint-staged",
+        "start":
+            "webpack-dev-server --config webpack.demo.js --colors --devtool cheap-module-inline-source-map --host=0.0.0.0",
+        "karma": "karma start test/karma/karma.conf.js",
+        "test": "jest",
+        "test-watch": "jest --watch",
+        "run": "npm start",
+        "build":
+            "webpack --config webpack.lib.js -p --progress --devtool source-map"
+    },
+    "lint-staged": {
+        "*.{js,css,md}": [
+            "prettier --write --tab-width 4 --single-quote --trailing-comma es5",
+            "git add"
+        ]
+    },
+    "author": "Thiery Michel <thiery@marmelab.com>",
+    "contributors": [
+        "Jonathan Petitcolas (https://github.com/jpetitcolas)",
+        "ThieryMichel (https://github.com/ThieryMichel)",
+        "Francois Zaninotto (https://github.com/fzaninotto)",
+        "Kmaschta (https://github.com/Kmaschta)",
+        "Ohad (https://github.com/osadan)",
+        "Gildas Garcia (https://github.com/djhi)",
+        "Robin Bressan (https://github.com/RobinBressan)",
+        "Tristan Newmann (https://github.com/twisty-n)",
+        "Julien Demangeon (https://github.com/jdemangeon)",
+        "Chad Ramos (https://github.com/chad-ramos)",
+        "Sedy Bot (https://github.com/sedy-bot)",
+        "Juliano Alves de Oliveira (https://github.com/JulianoEngineer)",
+        "Christian Gass (https://github.com/gassc)",
+        "Chulki Lee (https://github.com/chulkilee)",
+        "Emmanuel Quentin (https://github.com/manuquentin)",
+        "Joan Yin (https://github.com/JoanYin)",
+        "Korney Czukowski (https://github.com/czukowski)",
+        "Nathan Breit (https://github.com/nathanathan)",
+        "Sam Lai (https://github.com/slai)",
+        "Simon Hartcher (https://github.com/deevus)",
+        "Mélodie Benmouffek (https://github.com/benmoufm)",
+        "marmelab-bot (https://github.com/marmelab-bot)",
+        "messense (https://github.com/messense)"
+    ],
+    "license": "MIT"
 }
