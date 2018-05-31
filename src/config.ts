@@ -1,4 +1,4 @@
-import enLocale from 'd3-time-format/locale/en-US.json';
+var enLocale = require('d3-time-format/locale/en-US.json');
 
 export default d3 => ({
     locale: enLocale,
