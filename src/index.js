@@ -12,7 +12,16 @@ import { withinRange } from './withinRange';
 
 // do not export anything else here to keep window.eventDrops as a function
 export default ({ d3 = window.d3, ...customConfiguration }) => {
-    const chart = selection => {
+    const onResize = callback => {
+        if (window.attachEvent) {
+            // IE < 9
+            window.attachEvent('onresize', callback);
+        } else if (window.addEventListener) {
+            window.addEventListener('resize', callback, true);
+        }
+    };
+
+    const createChart = (root, selection) => {
         const config = defaultsDeep(
             customConfiguration || {},
             defaultConfiguration(d3)
@@ -41,10 +50,6 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
 
         chart._scale = xScale;
 
-        const root = selection.selectAll('svg').data(selection.data());
-
-        root.exit().remove();
-
         const svg = root
             .enter()
             .append('svg')
@@ -71,6 +76,18 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
             .classed('viewport', true)
             .attr('transform', `translate(${margin.left},${margin.top})`)
             .call(draw(config, xScale));
+    };
+
+    const chart = selection => {
+        const root = selection.selectAll('svg').data(selection.data());
+        root.exit().remove();
+
+        createChart(root, selection);
+
+        onResize(() => {
+            selection.selectAll('svg').remove();
+            createChart(root, selection);
+        });
     };
 
     chart.scale = () => chart._scale;
