@@ -12,15 +12,10 @@ import { withinRange } from './withinRange';
 
 // do not export anything else here to keep window.eventDrops as a function
 export default ({ d3 = window.d3, ...customConfiguration }) => {
-    const onResize = callback => {
-        window.addEventListener('resize', callback, true);
-    };
+    const initChart = selection => {
+        const root = selection.selectAll('svg').data(selection.data());
+        root.exit().remove();
 
-    const removeOnResize = callback => {
-        window.removeEventListener('resize', callback, true);
-    };
-
-    const createChart = (root, selection) => {
         const config = defaultsDeep(
             customConfiguration || {},
             defaultConfiguration(d3)
@@ -78,23 +73,25 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
     };
 
     const chart = selection => {
-        const root = selection.selectAll('svg').data(selection.data());
-        root.exit().remove();
-
-        createChart(root, selection);
+        initChart(selection);
 
         const updateChart = () => {
             selection.selectAll('svg').remove();
-            createChart(root, selection);
+            initChart(selection);
         };
 
-        onResize(updateChart);
-        chart._removeOnResize = () => removeOnResize(updateChart);
+        window.addEventListener('resize', updateChart, true);
+
+        chart._removeOnResize = () =>
+            window.removeEventListener('resize', updateChart, true);
     };
 
     chart.scale = () => chart._scale;
     chart.filteredData = () => chart._filteredData;
-    chart.removeOnResize = () => chart._removeOnResize();
+    chart.destroy = callback => {
+        chart._removeOnResize();
+        callback();
+    };
 
     const draw = (config, scale) => selection => {
         const { drop: { date: dropDate } } = config;
