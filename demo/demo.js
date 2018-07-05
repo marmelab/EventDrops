@@ -15,15 +15,15 @@ const numberCommitsContainer = document.getElementById('numberCommits');
 const zoomStart = document.getElementById('zoomStart');
 const zoomEnd = document.getElementById('zoomEnd');
 
-const updateCommitsInformation = chart => {
-    const filteredData = chart
-        .filteredData()
-        .reduce((total, repo) => total.concat(repo.data), []);
+// const updateCommitsInformation = chart => {
+//     const filteredData = chart
+//         .filteredData()
+//         .reduce((total, repo) => total.concat(repo.data), []);
 
-    numberCommitsContainer.textContent = filteredData.length;
-    zoomStart.textContent = humanizeDate(chart.scale().domain()[0]);
-    zoomEnd.textContent = humanizeDate(chart.scale().domain()[1]);
-};
+//     numberCommitsContainer.textContent = filteredData.length;
+//     zoomStart.textContent = humanizeDate(chart.scale().domain()[0]);
+//     zoomEnd.textContent = humanizeDate(chart.scale().domain()[1]);
+// };
 
 const randomDateFactory = (minimum, maximum) => () => {
     return new Date(
@@ -117,4 +117,4 @@ d3
     .data([repositoriesData])
     .call(chart);
 
-updateCommitsInformation(chart);
+// updateCommitsInformation(chart);

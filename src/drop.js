@@ -17,24 +17,29 @@ export default (config, xScale) => selection => {
 
     const drops = selection
         .selectAll('.drop')
-        .data(filterOverlappingDrop(xScale, dropDate));
+        .data(filterOverlappingDrop(xScale, dropDate), d => d.date);
 
     drops
         .enter()
         .append('circle')
         .classed('drop', true)
-        .attr('r', dropRadius)
         .attr('fill', dropColor)
         .on('click', onClick)
         .on('mouseover', onMouseOver)
         .on('mouseout', onMouseOut)
-        .merge(drops)
-        .attr('cx', d => xScale(dropDate(d)));
+        .attr('cx', d => xScale(dropDate(d)))
+        .attr('r', 0)
+        .transition()
+        .duration(500)
+        .attr('r', dropRadius);
 
     drops
         .exit()
         .on('click', null)
         .on('mouseover', null)
         .on('mouseout', null)
+        .transition()
+        .attr('r', 0)
+        .duration(300)
         .remove();
 };
