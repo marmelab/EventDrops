@@ -60,7 +60,9 @@ export default (d3, config, xScale) => {
             .tickFormat(d => tickFormat(d, formats, d3));
 
         const breakpoint = getBreakpointLabel(window.innerWidth) || 'extra';
-        axisTop.ticks(numberDisplayedTicks[breakpoint]);
+        if (numberDisplayedTicks) {
+            axisTop.ticks(numberDisplayedTicks[breakpoint]);
+        }
 
         axis
             .enter()
