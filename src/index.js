@@ -21,6 +21,15 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
         }
     };
 
+    const removeEventListener = callback => {
+        if (window.detachEvent) {
+            // IE < 9
+            window.detachEvent('onresize', callback);
+        } else if (window.removeEventListener) {
+            window.removeEventListener('resize', callback, true);
+        }
+    };
+
     const createChart = (root, selection) => {
         const config = defaultsDeep(
             customConfiguration || {},
@@ -84,14 +93,18 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
 
         createChart(root, selection);
 
-        onResize(() => {
+        const updateChart = () => {
             selection.selectAll('svg').remove();
             createChart(root, selection);
-        });
+        };
+
+        onResize(updateChart);
+        chart._removeEventListener = () => removeEventListener(updateChart);
     };
 
     chart.scale = () => chart._scale;
     chart.filteredData = () => chart._filteredData;
+    chart.removeEventListener = () => chart._removeEventListener();
 
     const draw = (config, scale) => selection => {
         const { drop: { date: dropDate } } = config;
