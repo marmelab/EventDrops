@@ -1,10 +1,15 @@
 import * as d3 from 'd3/build/d3';
+import { subYears } from 'date-fns';
 
 import eventDrops from '../src';
 import '../src/style.css';
 import { gravatar, humanizeDate } from './utils';
 
 const repositories = require('./data.json');
+const repositoriesData = repositories.map(repository => ({
+    name: repository.name,
+    data: repository.commits,
+}));
 
 const numberCommitsContainer = document.getElementById('numberCommits');
 const zoomStart = document.getElementById('zoomStart');
@@ -19,6 +24,34 @@ const updateCommitsInformation = chart => {
     zoomStart.textContent = humanizeDate(chart.scale().domain()[0]);
     zoomEnd.textContent = humanizeDate(chart.scale().domain()[1]);
 };
+
+const randomDateFactory = (minimum, maximum) => () => {
+    return new Date(
+        minimum.getTime() +
+            Math.random() * (maximum.getTime() - minimum.getTime())
+    );
+};
+
+const randomizeData = () => {
+    const randomDate = randomDateFactory(subYears(new Date(), 1), new Date());
+
+    const data = repositoriesData.map(repositoryData => ({
+        ...repositoryData,
+        data: repositoryData.data.map(datum => ({
+            ...datum,
+            date: randomDate(),
+        })),
+    }));
+
+    d3
+        .select('#eventdrops-demo')
+        .data([data])
+        .call(chart);
+};
+
+document
+    .getElementById('randomize-button')
+    .addEventListener('click', randomizeData);
 
 const tooltip = d3
     .select('body')
@@ -78,11 +111,6 @@ const chart = eventDrops({
         },
     },
 });
-
-const repositoriesData = repositories.map(repository => ({
-    name: repository.name,
-    data: repository.commits,
-}));
 
 d3
     .select('#eventdrops-demo')
