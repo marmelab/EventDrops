@@ -1,6 +1,6 @@
 import defaultLocale from 'd3-time-format/locale/en-US.json';
 
-import axis, { tickFormat } from './axis';
+import axis, { tickFormat, getBreakpointLabel } from './axis';
 
 const defaultConfig = {
     label: {
@@ -123,5 +123,14 @@ describe('Axis', () => {
     afterEach(() => {
         document.body.innerHTML = '';
         jest.restoreAllMocks();
+    });
+});
+
+describe('Breakpoint Label', () => {
+    it('should return breakpoint label correctly depending of current point', () => {
+        expect(getBreakpointLabel(400)).toBe('small');
+        expect(getBreakpointLabel(600)).toBe('medium');
+        expect(getBreakpointLabel(800)).toBe('large');
+        expect(getBreakpointLabel(1000)).toBe('extra');
     });
 });
