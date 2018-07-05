@@ -13,21 +13,11 @@ import { withinRange } from './withinRange';
 // do not export anything else here to keep window.eventDrops as a function
 export default ({ d3 = window.d3, ...customConfiguration }) => {
     const onResize = callback => {
-        if (window.attachEvent) {
-            // IE < 9
-            window.attachEvent('onresize', callback);
-        } else if (window.addEventListener) {
-            window.addEventListener('resize', callback, true);
-        }
+        window.addEventListener('resize', callback, true);
     };
 
-    const removeEventListener = callback => {
-        if (window.detachEvent) {
-            // IE < 9
-            window.detachEvent('onresize', callback);
-        } else if (window.removeEventListener) {
-            window.removeEventListener('resize', callback, true);
-        }
+    const removeOnResize = callback => {
+        window.removeEventListener('resize', callback, true);
     };
 
     const createChart = (root, selection) => {
@@ -99,12 +89,12 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
         };
 
         onResize(updateChart);
-        chart._removeEventListener = () => removeEventListener(updateChart);
+        chart._removeOnResize = () => removeOnResize(updateChart);
     };
 
     chart.scale = () => chart._scale;
     chart.filteredData = () => chart._filteredData;
-    chart.removeEventListener = () => chart._removeEventListener();
+    chart.removeOnResize = () => chart._removeOnResize();
 
     const draw = (config, scale) => selection => {
         const { drop: { date: dropDate } } = config;
