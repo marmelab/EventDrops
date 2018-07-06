@@ -120,6 +120,26 @@ describe('Axis', () => {
         expect(timeFormatDefaultLocaleSpy).toHaveBeenCalledWith(defaultLocale);
     });
 
+    it('should display tick using configuration locale', () => {
+        const data = [[{ id: 'foo' }]];
+        const selection = d3.select('svg').data(data);
+
+        let config = {
+            ...defaultConfig,
+            numberDisplayedTicks: { extra: 9 },
+        };
+
+        axis(d3, config, defaultScale)(selection);
+        expect(document.querySelectorAll('.tick').length).toBe(9);
+
+        config = {
+            ...defaultConfig,
+            numberDisplayedTicks: { extra: 5 },
+        };
+        axis(d3, config, defaultScale)(selection);
+        expect(document.querySelectorAll('.tick').length).toBe(5);
+    });
+
     afterEach(() => {
         document.body.innerHTML = '';
         jest.restoreAllMocks();
