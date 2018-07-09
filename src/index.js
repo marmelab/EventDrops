@@ -13,6 +13,8 @@ import { withinRange } from './withinRange';
 // do not export anything else here to keep window.eventDrops as a function
 export default ({ d3 = window.d3, ...customConfiguration }) => {
     const initChart = selection => {
+        selection.selectAll('svg').remove();
+
         const root = selection.selectAll('svg').data(selection.data());
         root.exit().remove();
 
@@ -73,23 +75,16 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
     };
 
     const chart = selection => {
-        initChart(selection);
+        chart._initialize = () => initChart(selection);
+        chart._initialize();
 
-        const updateChart = () => {
-            selection.selectAll('svg').remove();
-            initChart(selection);
-        };
-
-        window.addEventListener('resize', updateChart, true);
-
-        chart._removeOnResize = () =>
-            window.removeEventListener('resize', updateChart, true);
+        global.addEventListener('resize', chart._initialize, true);
     };
 
     chart.scale = () => chart._scale;
     chart.filteredData = () => chart._filteredData;
-    chart.destroy = callback => {
-        chart._removeOnResize();
+    chart.destroy = (callback = () => {}) => {
+        global.removeEventListener('resize', chart._initialize, true);
         callback();
     };
 
