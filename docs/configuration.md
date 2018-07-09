@@ -333,13 +333,22 @@ This parameter configures the maximum zoom level available. Set it to a lower va
 
 ```js
 const chart = eventDrops({
-   numberDisplayedTicks: {
+    numberDisplayedTicks: {
         small: 3,
         medium: 5,
         large: 7,
         extra: 12,
     },
 });
+```
 
-This parameter configures the number of ticks display in the header
+When reducing chart width, we need to display less labels on the horizontal axis to keep a readable chart. This parameter aims to solve the issue. Hence, on smallest devices, it displays only 3 labels by default at the same time.
+
+Responsive breakpoints:
+
+```
+small: 576px
+medium: 768px
+large: 992px
+extra: 1200px
 ```
