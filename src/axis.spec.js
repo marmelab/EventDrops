@@ -137,13 +137,6 @@ describe('Axis', () => {
 
         axis(d3, config, defaultScale)(selection);
         expect(document.querySelectorAll('.tick').length).toBe(9);
-
-        config = {
-            ...defaultConfig,
-            numberDisplayedTicks: { extra: 5 },
-        };
-        axis(d3, config, defaultScale)(selection);
-        expect(document.querySelectorAll('.tick').length).toBe(5);
     });
 
     afterEach(() => {
