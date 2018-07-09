@@ -327,12 +327,6 @@ _Default: Infinity_
 
 This parameter configures the maximum zoom level available. Set it to a lower value to prevent your users from zooming in too deeply.
 
-### destroy
-
-_Default: () => {}_
-
-Function to be executed when you want to destroy the chart. By default, it remove `resize` event and execute the callback.
-
 ### numberDisplayedTicks
 
 \_Default:
