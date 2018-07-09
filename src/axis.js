@@ -1,14 +1,15 @@
 import { timeFormat } from 'd3-time-format';
 import breakpoints from './breakpoints';
 
-export const getBreakpointLabel = point =>
-    Object.keys(breakpoints).reduce((accumulator, label) => {
-        if (!accumulator.length && point <= breakpoints[label]) {
+export const getBreakpointLabel = point => {
+    for (const label in breakpoints) {
+        if (point <= breakpoints[label]) {
             return label;
         }
+    }
 
-        return accumulator;
-    }, '');
+    return 'extra';
+};
 
 export const tickFormat = (date, formats, d3) => {
     if (d3.timeSecond(date) < date) {
@@ -52,17 +53,14 @@ export default (d3, config, xScale) => {
     d3.timeFormatDefaultLocale(locale);
     return selection => {
         const axis = selection.selectAll('.axis').data(d => d);
+        const breakpoint = getBreakpointLabel(window.innerWidth);
 
         axis.exit().remove();
 
         const axisTop = d3
             .axisTop(xScale)
-            .tickFormat(d => tickFormat(d, formats, d3));
-
-        const breakpoint = getBreakpointLabel(window.innerWidth) || 'extra';
-        if (numberDisplayedTicks) {
-            axisTop.ticks(numberDisplayedTicks[breakpoint]);
-        }
+            .tickFormat(d => tickFormat(d, formats, d3))
+            .ticks(numberDisplayedTicks[breakpoint]);
 
         axis
             .enter()

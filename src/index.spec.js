@@ -16,6 +16,7 @@ const defaultConfig = {
     margin: {},
     axis: {},
     locale: {},
+    numberDisplayedTicks: {},
 };
 
 describe('EventDrops', () => {

@@ -19,6 +19,9 @@ const defaultConfig = {
             year: '%Y',
         },
     },
+    numberDisplayedTicks: {
+        extra: 12,
+    },
 };
 
 const defaultScale = d3.scaleTime();
@@ -79,7 +82,10 @@ describe('Axis', () => {
     });
 
     it('should use tick formats passed in configuration', () => {
-        const tickFormatSpy = jest.fn(() => () => {});
+        const ticksSpy = jest.fn(() => () => {});
+        const tickFormatSpy = jest.fn(() => ({
+            ticks: ticksSpy,
+        }));
         jest.spyOn(d3, 'axisTop').mockImplementation(() => ({
             tickFormat: tickFormatSpy,
         }));
@@ -120,7 +126,7 @@ describe('Axis', () => {
         expect(timeFormatDefaultLocaleSpy).toHaveBeenCalledWith(defaultLocale);
     });
 
-    it('should display tick using configuration locale', () => {
+    it('should display number of ticks passed in configuration', () => {
         const data = [[{ id: 'foo' }]];
         const selection = d3.select('svg').data(data);
 
