@@ -22,6 +22,12 @@ const defaultConfig = {
     numberDisplayedTicks: {
         extra: 12,
     },
+    breakpoints: {
+        small: 576,
+        medium: 768,
+        large: 992,
+        extra: 1200,
+    },
 };
 
 const defaultScale = d3.scaleTime();
@@ -147,9 +153,17 @@ describe('Axis', () => {
 
 describe('Breakpoint Label', () => {
     it('should return breakpoint label correctly depending of current point', () => {
-        expect(getBreakpointLabel(400)).toBe('small');
-        expect(getBreakpointLabel(600)).toBe('medium');
-        expect(getBreakpointLabel(800)).toBe('large');
-        expect(getBreakpointLabel(1000)).toBe('extra');
+        expect(getBreakpointLabel(defaultConfig.breakpoints, 400)).toBe(
+            'small'
+        );
+        expect(getBreakpointLabel(defaultConfig.breakpoints, 600)).toBe(
+            'medium'
+        );
+        expect(getBreakpointLabel(defaultConfig.breakpoints, 800)).toBe(
+            'large'
+        );
+        expect(getBreakpointLabel(defaultConfig.breakpoints, 1000)).toBe(
+            'extra'
+        );
     });
 });

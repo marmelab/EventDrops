@@ -344,11 +344,19 @@ const chart = eventDrops({
 
 When reducing chart width, we need to display less labels on the horizontal axis to keep a readable chart. This parameter aims to solve the issue. Hence, on smallest devices, it displays only 3 labels by default at the same time.
 
-Responsive breakpoints:
+### breakpoints
 
+\_Default:
+
+```js
+const chart = eventDrops({
+    breakpoints: {
+        small: 576,
+        medium: 768,
+        large: 992,
+        extra: 1200,
+    },
+});
 ```
-small: 576px
-medium: 768px
-large: 992px
-extra: 1200px
-```
+
+When reducing chart width, we need to display less labels on the horizontal axis to keep a readable chart. This parameter aims to solve the issue. Hence, we can define breakpoints in pixels.

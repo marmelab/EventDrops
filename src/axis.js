@@ -1,7 +1,6 @@
 import { timeFormat } from 'd3-time-format';
-import breakpoints from './breakpoints';
 
-export const getBreakpointLabel = point => {
+export const getBreakpointLabel = (breakpoints, point) => {
     for (const label in breakpoints) {
         if (point <= breakpoints[label]) {
             return label;
@@ -49,11 +48,12 @@ export default (d3, config, xScale) => {
         axis: { formats },
         locale,
         numberDisplayedTicks,
+        breakpoints,
     } = config;
     d3.timeFormatDefaultLocale(locale);
     return selection => {
         const axis = selection.selectAll('.axis').data(d => d);
-        const breakpoint = getBreakpointLabel(window.innerWidth);
+        const breakpoint = getBreakpointLabel(breakpoints, window.innerWidth);
 
         axis.exit().remove();
 
