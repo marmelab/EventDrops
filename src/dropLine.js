@@ -1,5 +1,6 @@
-import drop from './drop';
-import indicator from './indicator';
+import { lineSeparatorFactory } from './lines/lineSeparator';
+import { labelFactory } from './lines/label';
+import { dropsAreaFactory } from './lines/dropsArea';
 
 export default (config, xScale) => {
     const {
@@ -9,13 +10,14 @@ export default (config, xScale) => {
         indicator: indicatorEnabled,
     } = config;
 
-    return function(selection) {
-        const lines = selection.selectAll('.drop-line').data(d => d);
+    return function(viewport) {
+        const lines = viewport.selectAll('.drop-line').data(d => d);
 
         lines.exit().remove();
 
-        const g = lines
-            .enter()
+        const enteringLines = lines.enter();
+
+        const enteringDropLine = enteringLines
             .append('g')
             .classed('drop-line', true)
             .attr('fill', lineColor)
@@ -26,27 +28,10 @@ export default (config, xScale) => {
                         lineHeight / 2})`
             );
 
-        g
-            .append('line')
-            .classed('line-separator', true)
-            .attr('x1', labelWidth)
-            .attr('x2', '100%')
-            .attr('y1', () => lineHeight)
-            .attr('y2', () => lineHeight);
-
-        g
-            .append('text')
-            .classed('line-label', true)
-            .attr('x', labelWidth - labelPadding)
-            .attr('y', lineHeight / 2)
-            .attr('dy', '0.25em')
-            .attr('text-anchor', 'end')
-            .text(labelText);
-
-        // if (metaballs) {
-        //     drops.style('filter', 'url(#metaballs)');
-        // }
-
-        lines.call(drop(config, xScale));
+        enteringDropLine
+            .merge(lines)
+            .each(lineSeparatorFactory(config))
+            .each(labelFactory(config))
+            .call(dropsAreaFactory(config, xScale));
     };
 };

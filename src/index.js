@@ -11,8 +11,6 @@ import './style.css';
 import { withinRange } from './withinRange';
 import { selection } from 'd3/build/d3';
 
-const getEvent = () => d3.event; // keep d3.event mutable see https://github.com/d3/d3/issues/2733
-
 // do not export anything else here to keep window.eventDrops as a function
 export default ({ d3 = window.d3, ...customConfiguration }) => {
     const config = defaultsDeep(
@@ -20,18 +18,20 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
         defaultConfiguration(d3)
     );
 
-    const chart = selection => {
-        const {
-            drops,
-            zoom: zoomConfig,
-            drop: { onClick, onMouseOut, onMouseOver },
-            metaballs,
-            label: { width: labelWidth },
-            line: { height: lineHeight },
-            range: { start: rangeStart, end: rangeEnd },
-            margin,
-        } = config;
+    const getEvent = () => d3.event; // keep d3.event mutable see https://github.com/d3/d3/issues/2733
 
+    const {
+        drops,
+        zoom: zoomConfig,
+        drop: { onClick, onMouseOut, onMouseOver },
+        metaballs,
+        label: { width: labelWidth },
+        line: { height: lineHeight },
+        range: { start: rangeStart, end: rangeEnd },
+        margin,
+    } = config;
+
+    const chart = selection => {
         // Follow margins conventions (https://bl.ocks.org/mbostock/3019563)
         const width = selection.node().clientWidth - margin.left - margin.right;
 
@@ -40,33 +40,45 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
             .domain([rangeStart, rangeEnd])
             .range([0, width - labelWidth]);
 
-        chart._scale = xScale;
+        const draw = data => selection => {
+            const svg = selection.selectAll('svg').data(data);
 
-        const svg = selection.selectAll('svg').data(selection.data());
+            svg.exit().remove();
 
-        svg.exit().remove();
+            const enteringSvg = svg
+                .enter()
+                .append('svg')
+                .attr('width', width)
+                .attr(
+                    'height',
+                    d =>
+                        (d.length + 1) * lineHeight + margin.top + margin.bottom
+                )
+                .classed('event-drop-chart', true);
 
-        svg
-            .enter()
-            .append('svg')
-            .attr('width', width)
-            .classed('event-drop-chart', true)
-            .merge(svg)
-            .attr(
-                'height',
-                d => (d.length + 1) * lineHeight + margin.top + margin.bottom
-            )
-            .call(dropLine(config, xScale));
+            const enteringViewport = enteringSvg
+                .append('g')
+                .classed('viewport', true)
+                .attr('transform', `translate(${margin.left},${margin.top})`);
 
-        // @TODO: add back viewport
+            enteringViewport
+                .merge(svg.selectAll('.viewport'))
+                .call(dropLine(config, xScale))
+                .call(axis(d3, config, xScale))
+                .call(bounds(config, xScale));
 
-        // if (zoomConfig) {
-        //     svg.call(zoom(d3, svg, config, xScale, draw, getEvent));
-        // }
+            // if (zoomConfig) {
+            //     selection.call(zoom(d3, config, xScale, draw, getEvent));
+            // }
 
-        // if (metaballs) {
-        //     svg.call(addMetaballsDefs(config));
-        // }
+            // if (metaballs) {
+            //     svg.call(addMetaballsDefs(config));
+            // }
+        };
+
+        chart.draw = draw;
+
+        draw(selection.data())(selection);
     };
 
     // chart.scale = () => chart._scale;
@@ -104,11 +116,8 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
     //     // selection
     //     //     .data(filteredData)
     //     //     .call(dropLine(config, scale))
-    //     //     .call(bounds(config, scale))
-    //     //     .call(axis(d3, config, scale));
-    // };
 
-    // chart.draw = selection => draw(config, chart._scale)(selection);
+    // };
 
     return chart;
 };

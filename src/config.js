@@ -1,6 +1,7 @@
 import enLocale from 'd3-time-format/locale/en-US.json';
 
 export default d3 => ({
+    d3,
     locale: enLocale,
     metaballs: {
         blurDeviation: 10,
@@ -29,6 +30,7 @@ export default d3 => ({
         onClick: () => {},
         onMouseOver: () => {},
         onMouseOut: () => {},
+        key: d => d.id,
     },
     label: {
         padding: 20,
@@ -40,6 +42,7 @@ export default d3 => ({
         nextText: '▶',
     },
     line: {
+        key: d => d.id,
         color: (_, index) => d3.schemeCategory10[index],
         height: 40,
     },

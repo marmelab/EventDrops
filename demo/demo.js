@@ -43,10 +43,7 @@ const randomizeData = () => {
         })),
     }));
 
-    d3
-        .select('#eventdrops-demo')
-        .data([data])
-        .call(chart);
+    d3.select('#eventdrops-demo').call(chart.draw([data]));
 };
 
 document
@@ -62,10 +59,15 @@ const tooltip = d3
 
 const chart = eventDrops({
     d3,
+    metaballs: false,
     zoom: {
-        onZoomEnd: () => updateCommitsInformation(chart),
+        // onZoomEnd: () => updateCommitsInformation(chart),
+    },
+    line: {
+        key: d => d.name,
     },
     drop: {
+        key: d => d.date,
         date: d => new Date(d.date),
         onMouseOver: commit => {
             tooltip
