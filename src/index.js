@@ -41,7 +41,7 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
             .range([0, width - labelWidth]);
 
         const draw = data => selection => {
-            const svg = selection.selectAll('svg').data(data);
+            const svg = selection.selectAll('.viewport').data(data);
 
             svg.exit().remove();
 
@@ -62,7 +62,7 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
                 .attr('transform', `translate(${margin.left},${margin.top})`);
 
             enteringViewport
-                .merge(selection.selectAll('svg'))
+                .merge(selection.selectAll('.viewport'))
                 .call(dropLine(config, xScale))
                 .call(axis(d3, config, xScale))
                 .call(bounds(config, xScale));
