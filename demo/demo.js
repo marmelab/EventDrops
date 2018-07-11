@@ -59,7 +59,6 @@ const tooltip = d3
 
 const chart = eventDrops({
     d3,
-    metaballs: false,
     zoom: {
         // onZoomEnd: () => updateCommitsInformation(chart),
     },

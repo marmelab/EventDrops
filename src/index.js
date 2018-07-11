@@ -71,9 +71,9 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
             //     selection.call(zoom(d3, config, xScale, draw, getEvent));
             // }
 
-            // if (metaballs) {
-            //     svg.call(addMetaballsDefs(config));
-            // }
+            if (metaballs) {
+                enteringViewport.call(addMetaballsDefs(config));
+            }
         };
 
         chart.draw = draw;
