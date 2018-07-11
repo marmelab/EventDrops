@@ -1,4 +1,5 @@
 import drop from './drop';
+import indicator from './indicator';
 
 export default (config, xScale) => selection => {
     const {
@@ -50,8 +51,14 @@ export default (config, xScale) => selection => {
         .attr('text-anchor', 'end')
         .text(labelText);
 
-    lines.selectAll('text').text(labelText);
     lines.selectAll('.drops').call(drop(config, xScale));
+
+    g
+        .append('g')
+        .classed('indicators', true)
+        .call(indicator(config, xScale));
+
+    lines.selectAll('.indicators').call(indicator(config, xScale));
 
     lines.exit().remove();
 };
