@@ -1,7 +1,7 @@
 import { isBefore } from './isBefore';
 import { isAfter } from './isAfter';
 
-export default (config, xScale, side) => selection => {
+export default (config, xScale) => selection => {
     const {
         label: { width: labelWidth },
         line: { height: lineHeight },

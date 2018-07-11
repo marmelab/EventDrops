@@ -45,12 +45,14 @@ export default (config, xScale) => selection => {
 
     g
         .append('text')
+        .classed('line-label', true)
         .attr('x', labelWidth - labelPadding)
         .attr('y', lineHeight / 2)
         .attr('dy', '0.25em')
         .attr('text-anchor', 'end')
         .text(labelText);
 
+    lines.selectAll('.line-label').text(labelText);
     lines.selectAll('.drops').call(drop(config, xScale));
 
     g

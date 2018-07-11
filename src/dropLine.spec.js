@@ -1,4 +1,5 @@
 import dropLine from './dropLine';
+import indicator from './indicator';
 
 const defaultConfig = {
     metaballs: true,
@@ -16,6 +17,7 @@ const defaultConfig = {
 const defaultScale = d3.scaleTime();
 
 jest.mock('./drop');
+jest.mock('./indicator');
 
 describe('Drop Line', () => {
     beforeEach(() => {
@@ -29,6 +31,7 @@ describe('Drop Line', () => {
                 .data([[{ name: 'foo' }, { name: 'bar' }]]);
 
             dropLine(defaultConfig, defaultScale)(selection);
+
             expect(document.querySelectorAll('.drop-line').length).toBe(2);
         });
 
