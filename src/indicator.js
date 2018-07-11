@@ -13,12 +13,13 @@ export default (config, xScale) => selection => {
 
     const indicators = selection.selectAll('.indicator').data(d => {
         const data = [];
-        if (d.fullData.some(d => isBefore(dropDate(d), dateBounds))) {
+        if (d.fullData.some(event => isBefore(dropDate(event), dateBounds))) {
             data.push('before');
         }
-        if (d.fullData.some(d => isAfter(dropDate(d), dateBounds))) {
+        if (d.fullData.some(event => isAfter(dropDate(event), dateBounds))) {
             data.push('after');
         }
+        // console.log(d, data, dateBounds);
         return data;
     });
 

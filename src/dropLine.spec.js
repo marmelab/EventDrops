@@ -12,6 +12,14 @@ const defaultConfig = {
         color: 'black',
         height: 40,
     },
+    indicators: {
+        previousText: '◀',
+        nextText: '▶',
+    },
+    range: {
+        start: new Date('2015-01-01'),
+        end: new Date('2015-02-01'),
+    },
 };
 
 const defaultScale = d3.scaleTime();
@@ -203,6 +211,33 @@ describe('Drop Line', () => {
             expect(textIndex).not.toBe(-1);
             expect(dropsIndex).not.toBe(-1);
             expect(textIndex > dropsIndex).toBe(true);
+        });
+    });
+
+    describe.only('Indicators', () => {
+        it('should add indicators container for each line if enabled', () => {
+            const selection = d3
+                .select('svg')
+                .data([[{ name: 'foo' }, { name: 'bar' }]]);
+
+            dropLine(defaultConfig, defaultScale)(selection);
+
+            expect(document.querySelectorAll('.indicators').length).toBe(2);
+        });
+
+        it('should not add indicators container at all if disabled', () => {
+            const selection = d3
+                .select('svg')
+                .data([[{ name: 'foo' }, { name: 'bar' }]]);
+
+            const config = {
+                ...defaultConfig,
+                indicators: false,
+            };
+
+            dropLine(config, defaultScale)(selection);
+
+            expect(document.querySelectorAll('.indicators').length).toBe(0);
         });
     });
 
