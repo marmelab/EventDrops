@@ -10,15 +10,15 @@ const numberCommitsContainer = document.getElementById('numberCommits');
 const zoomStart = document.getElementById('zoomStart');
 const zoomEnd = document.getElementById('zoomEnd');
 
-const updateCommitsInformation = chart => {
-    const filteredData = chart
-        .filteredData()
-        .reduce((total, repo) => total.concat(repo.data), []);
+// const updateCommitsInformation = chart => {
+//     const filteredData = chart
+//         .filteredData()
+//         .reduce((total, repo) => total.concat(repo.data), []);
 
-    numberCommitsContainer.textContent = filteredData.length;
-    zoomStart.textContent = humanizeDate(chart.scale().domain()[0]);
-    zoomEnd.textContent = humanizeDate(chart.scale().domain()[1]);
-};
+//     numberCommitsContainer.textContent = filteredData.length;
+//     zoomStart.textContent = humanizeDate(chart.scale().domain()[0]);
+//     zoomEnd.textContent = humanizeDate(chart.scale().domain()[1]);
+// };
 
 const tooltip = d3
     .select('body')
@@ -84,9 +84,8 @@ const repositoriesData = repositories.map(repository => ({
     data: repository.commits,
 }));
 
-d3
-    .select('#eventdrops-demo')
+d3.select('#eventdrops-demo')
     .data([repositoriesData])
-    .call(chart);
+    .call(chart.draw);
 
-updateCommitsInformation(chart);
+// updateCommitsInformation(chart);

@@ -12,15 +12,18 @@ module.exports = {
         library: 'eventDrops',
         libraryTarget: 'umd',
     },
+    resolve: {
+        extensions: ['.ts', '.js'],
+    },
     module: {
         rules: [
             {
-                use: 'babel-loader',
-                test: /\.js$/,
+                test: /\.(t|j)s$/,
                 include: [
                     path.resolve(__dirname, 'src'),
                     path.resolve(__dirname, 'demo'),
                 ],
+                use: 'awesome-typescript-loader?module=es6',
             },
             {
                 test: /\.css$/,

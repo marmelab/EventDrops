@@ -1,12 +1,10 @@
 {
     "name": "event-drops",
     "version": "1.1.1",
-    "description": "A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time.",
+    "description":
+        "A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time.",
     "main": "dist/index.js",
-    "files": [
-        "dist/",
-        "*.md"
-    ],
+    "files": ["dist/", "*.md"],
     "repository": {
         "type": "git",
         "url": "https://github.com/marmelab/EventDrops"
@@ -21,7 +19,10 @@
         "lodash.uniqby": "^4.7.0"
     },
     "devDependencies": {
+        "@types/d3": "^5.0.0",
+        "@types/node": "^10.1.4",
         "async": "^2.6.1",
+        "awesome-typescript-loader": "^5.0.0",
         "babel-core": "^6.26.3",
         "babel-jest": "^23.0.1",
         "babel-loader": "^7.1.4",
@@ -52,7 +53,9 @@
         "rollup-plugin-node-resolve": "3.0.0",
         "rollup-plugin-uglify": "2.0.1",
         "scss-loader": "0.0.1",
+        "source-map-loader": "^0.2.3",
         "style-loader": "^0.21.0",
+        "typescript": "^2.8.4",
         "webpack": "^4.10.2",
         "webpack-cli": "^2.1.4",
         "webpack-dev-server": "^3.1.4"
@@ -63,8 +66,8 @@
     "homepage": "https://github.com/marmelab/EventDrops",
     "scripts": {
         "precommit": "lint-staged",
-        "start": "webpack-dev-server --config webpack.demo.js --colors --devtool cheap-module-inline-source-map --host=0.0.0.0",
-        "karma": "karma start test/karma/karma.conf.js",
+        "start":
+            "webpack-dev-server --config webpack.demo.js --colors --devtool cheap-module-inline-source-map --host=0.0.0.0",
         "test": "jest",
         "test-watch": "jest --watch",
         "run": "npm start"

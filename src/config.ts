@@ -1,6 +1,9 @@
-import enLocale from 'd3-time-format/locale/en-US.json';
+import { ConfigInterface } from "./eventDrops";
 
-export default d3 => ({
+var enLocale = require('d3-time-format/locale/en-US.json');
+
+export default (d3): ConfigInterface => ({
+    d3,
     locale: enLocale,
     metaballs: {
         blurDeviation: 10,
