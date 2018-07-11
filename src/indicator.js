@@ -1,10 +1,10 @@
-import { isAfter } from './isAfter';
 import { isBefore } from './isBefore';
+import { isAfter } from './isAfter';
 
 export default (config, xScale, side) => selection => {
     const {
-        label: { text: labelText, padding: labelPadding, width: labelWidth },
-        line: { color: lineColor, height: lineHeight },
+        label: { width: labelWidth },
+        line: { height: lineHeight },
         drop: { date: dropDate },
     } = config;
 
