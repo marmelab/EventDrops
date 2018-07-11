@@ -1,7 +1,18 @@
 import uniqBy from 'lodash.uniqby';
+import { withinRange } from './withinRange';
 
-const filterOverlappingDrop = (xScale, dropDate) => d =>
-    uniqBy(d.data, data => Math.round(xScale(dropDate(data))));
+const filterDrops = (xScale, dropDate) => d => {
+    const dateBounds = xScale.domain().map(d => console.log(d) || new Date(d));
+    const withinRangeData = d.data.filter(data =>
+        withinRange(dropDate(data), dateBounds)
+    );
+
+    const distinctData = uniqBy(withinRangeData, data =>
+        Math.round(xScale(dropDate(data)))
+    );
+
+    return distinctData;
+};
 
 export default (config, xScale) => selection => {
     const {
@@ -17,7 +28,7 @@ export default (config, xScale) => selection => {
 
     const drops = selection
         .selectAll('.drop')
-        .data(filterOverlappingDrop(xScale, dropDate), d => d.date);
+        .data(filterDrops(xScale, dropDate));
 
     drops
         .enter()

@@ -12,7 +12,7 @@ export const lineSeparatorFactory = config => {
         line
             .append('line')
             .classed('line-separator', true)
-            .attr('x1', labelWidth)
+            .attr('x1', 0)
             .attr('x2', '100%')
             .attr('y1', () => lineHeight)
             .attr('y2', () => lineHeight);

@@ -23,7 +23,7 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
     const {
         drops,
         zoom: zoomConfig,
-        drop: { onClick, onMouseOut, onMouseOver },
+        drop: { onClick, onMouseOut, onMouseOver, date: dropDate },
         metaballs,
         label: { width: labelWidth },
         line: { height: lineHeight },
@@ -62,7 +62,7 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
                 .attr('transform', `translate(${margin.left},${margin.top})`);
 
             enteringViewport
-                .merge(svg.selectAll('.viewport'))
+                .merge(selection.selectAll('svg'))
                 .call(dropLine(config, xScale))
                 .call(axis(d3, config, xScale))
                 .call(bounds(config, xScale));

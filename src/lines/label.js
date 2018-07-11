@@ -12,7 +12,7 @@ export const labelFactory = config => {
         line
             .append('text')
             .classed('label', true)
-            .attr('x', labelWidth - labelPadding)
+            .attr('x', -labelPadding)
             .attr('y', lineHeight / 2)
             .attr('dy', '0.25em')
             .attr('text-anchor', 'end')

@@ -23,15 +23,13 @@ export default (config, xScale) => {
             .attr('fill', lineColor)
             .attr(
                 'transform',
-                (_, index) =>
-                    `translate(${labelWidth}, ${index * lineHeight +
-                        lineHeight / 2})`
+                (_, index) => `translate(${labelWidth}, ${index * lineHeight})`
             );
 
         enteringDropLine
             .merge(lines)
             .each(lineSeparatorFactory(config))
             .each(labelFactory(config))
-            .call(dropsAreaFactory(config, xScale));
+            .each(dropsAreaFactory(config, xScale));
     };
 };

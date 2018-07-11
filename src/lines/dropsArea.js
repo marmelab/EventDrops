@@ -3,30 +3,24 @@ import drop from '../drop';
 export const dropsAreaFactory = (config, xScale) => {
     const {
         d3,
-        label: { width: labelWidth },
+        label: { width: labelWidth, padding: labelPadding },
         line: { height: lineHeight },
         metaballs,
     } = config;
 
-    return function(selection) {
-        // @TODO: find why there is no data here
-        const areas = selection.selectAll('.drops').data(d => d);
-        console.log(areas.data());
-        areas.exit().remove();
+    return function() {
+        const area = d3.select(this);
 
-        const enteringAreas = areas.enter();
+        area.select('.drops').remove();
 
-        enteringAreas
+        area
             .append('g')
             .classed('drops', true)
-            .attr(
-                'transform',
-                () => `translate(${labelWidth}, ${lineHeight / 2})`
-            );
-        // .call(drop(config, xScale));
+            .attr('transform', d => `translate(0, ${lineHeight / 2})`)
+            .call(drop(config, xScale));
 
         if (metaballs) {
-            enteringAreas.style('filter', 'url(#metaballs)');
+            area.style('filter', 'url(#metaballs)');
         }
     };
 };
