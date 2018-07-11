@@ -12,7 +12,7 @@ const defaultConfig = {
         color: 'black',
         height: 40,
     },
-    indicators: {
+    indicator: {
         previousText: '◀',
         nextText: '▶',
     },
@@ -232,7 +232,7 @@ describe('Drop Line', () => {
 
             const config = {
                 ...defaultConfig,
-                indicators: false,
+                indicator: false,
             };
 
             dropLine(config, defaultScale)(selection);

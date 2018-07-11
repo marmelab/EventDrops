@@ -12,7 +12,7 @@ const defaultConfig = {
     line: {
         height: 20,
     },
-    indicators: {
+    indicator: {
         previousText: '◀',
         nextText: '▶',
     },
@@ -101,7 +101,7 @@ describe('Indicator', () => {
         ]);
         const config = {
             ...defaultConfig,
-            indicators: {
+            indicator: {
                 previousText: 'prev',
                 nextText: 'next',
             },

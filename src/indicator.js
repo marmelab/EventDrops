@@ -6,7 +6,7 @@ export default (config, xScale) => selection => {
         label: { width: labelWidth },
         line: { height: lineHeight },
         drop: { date: dropDate },
-        indicators: { previousText, nextText },
+        indicator: { previousText, nextText },
     } = config;
 
     const dateBounds = xScale.domain().map(d => new Date(d));

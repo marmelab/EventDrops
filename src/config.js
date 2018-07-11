@@ -35,7 +35,7 @@ export default d3 => ({
         text: d => `${d.name} (${d.data.length})`,
         width: 200,
     },
-    indicators: {
+    indicator: {
         previousText: '◀',
         nextText: '▶',
     },
