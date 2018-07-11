@@ -6,7 +6,7 @@ export default (config, xScale) => selection => {
         metaballs,
         label: { text: labelText, padding: labelPadding, width: labelWidth },
         line: { color: lineColor, height: lineHeight },
-        indicator,
+        indicator: indicatorEnabled,
     } = config;
 
     const lines = selection.selectAll('.drop-line').data(d => d);
@@ -56,7 +56,7 @@ export default (config, xScale) => selection => {
     lines.selectAll('.line-label').text(labelText);
     lines.selectAll('.drops').call(drop(config, xScale));
 
-    if (indicator) {
+    if (indicatorEnabled) {
         g
             .append('g')
             .classed('indicators', true)

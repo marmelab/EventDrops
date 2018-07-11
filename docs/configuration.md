@@ -239,11 +239,11 @@ const chart = eventDrops({
 });
 ```
 
-## indicators
+## indicator
 
-_Default: indicators configuration object_
+_Default: indicator configuration object_
 
-Indicators show up when there are data out of the set range accessible through scroll or zoom. They can be disabled passing `false` to the `indicators` property.
+Indicators show up when there are data out of the set range accessible through scroll or zoom. They can be disabled passing `false` to the `indicator` property.
 
 ### previousText
 
