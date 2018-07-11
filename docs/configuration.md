@@ -239,6 +239,24 @@ const chart = eventDrops({
 });
 ```
 
+## indicator
+
+_Default: indicator configuration object_
+
+Indicators show up when there are data out of the set range accessible through scroll or zoom. They can be disabled passing `false` to the `indicator` property.
+
+### previousText
+
+_Default: ◀_
+
+Text to display when there are events before the displayed date range.
+
+## nextText
+
+_Default: ▶_
+
+Text to display when there are events after the displayed date range.
+
 ### width
 
 _Default: 200_

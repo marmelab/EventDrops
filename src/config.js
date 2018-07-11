@@ -35,6 +35,10 @@ export default d3 => ({
         text: d => `${d.name} (${d.data.length})`,
         width: 200,
     },
+    indicator: {
+        previousText: '◀',
+        nextText: '▶',
+    },
     line: {
         color: (_, index) => d3.schemeCategory10[index],
         height: 40,
