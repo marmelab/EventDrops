@@ -6,6 +6,7 @@ export default (config, xScale) => selection => {
         label: { width: labelWidth },
         line: { height: lineHeight },
         drop: { date: dropDate },
+        indicators: { previousText, nextText },
     } = config;
 
     const dateBounds = xScale.domain().map(d => new Date(d));
@@ -30,14 +31,14 @@ export default (config, xScale) => selection => {
         .attr('dx', d => (d === 'before' ? 0 : -25))
         .attr('y', lineHeight / 2)
         .attr('dy', '0.25em')
-        .text(d => (d === 'before' ? '◀' : '▶'));
+        .text(d => (d === 'before' ? previousText : nextText));
 
     indicators
         .attr('x', d => (d === 'before' ? labelWidth : '100%'))
         .attr('dx', d => (d === 'before' ? 0 : -25))
         .attr('y', lineHeight / 2)
         .attr('dy', '0.25em')
-        .text(d => (d === 'before' ? '◀' : '▶'));
+        .text(d => (d === 'before' ? previousText : nextText));
 
     indicators.exit().remove();
 };

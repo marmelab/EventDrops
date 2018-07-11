@@ -6,6 +6,7 @@ export default (config, xScale) => selection => {
         metaballs,
         label: { text: labelText, padding: labelPadding, width: labelWidth },
         line: { color: lineColor, height: lineHeight },
+        indicators,
     } = config;
 
     const lines = selection.selectAll('.drop-line').data(d => d);
@@ -55,12 +56,14 @@ export default (config, xScale) => selection => {
     lines.selectAll('.line-label').text(labelText);
     lines.selectAll('.drops').call(drop(config, xScale));
 
-    g
-        .append('g')
-        .classed('indicators', true)
-        .call(indicator(config, xScale));
+    if (indicators) {
+        g
+            .append('g')
+            .classed('indicators', true)
+            .call(indicator(config, xScale));
 
-    lines.selectAll('.indicators').call(indicator(config, xScale));
+        lines.selectAll('.indicators').call(indicator(config, xScale));
+    }
 
     lines.exit().remove();
 };
