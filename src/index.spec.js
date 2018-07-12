@@ -176,6 +176,15 @@ describe('EventDrops', () => {
         ]);
     });
 
+    it('should give access to current breakpoint label', () => {
+        const chart = EventDrops(defaultConfig);
+
+        const root = d3.select('div').data([[{ data: [] }]]);
+        root.call(chart);
+
+        expect(chart.currentBreakpointLabel).toEqual('extra');
+    });
+
     afterEach(() => {
         document.body.innerHTML = '';
         jest.restoreAllMocks();

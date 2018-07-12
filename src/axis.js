@@ -1,15 +1,5 @@
 import { timeFormat } from 'd3-time-format';
 
-export const getBreakpointLabel = (breakpoints, point) => {
-    for (const label in breakpoints) {
-        if (point <= breakpoints[label]) {
-            return label;
-        }
-    }
-
-    return 'extra';
-};
-
 export const tickFormat = (date, formats, d3) => {
     if (d3.timeSecond(date) < date) {
         return d3.timeFormat(formats.milliseconds)(date);
@@ -42,7 +32,7 @@ export const tickFormat = (date, formats, d3) => {
     return d3.timeFormat(formats.year)(date);
 };
 
-export default (d3, config, xScale, breakpoint) => {
+export default (d3, config, xScale, breakpointLabel) => {
     const {
         label: { width: labelWidth },
         axis: { formats },
@@ -58,7 +48,7 @@ export default (d3, config, xScale, breakpoint) => {
         const axisTop = d3
             .axisTop(xScale)
             .tickFormat(d => tickFormat(d, formats, d3))
-            .ticks(numberDisplayedTicks[breakpoint]);
+            .ticks(numberDisplayedTicks[breakpointLabel]);
 
         axis
             .enter()
