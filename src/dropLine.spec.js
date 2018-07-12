@@ -214,7 +214,7 @@ describe('Drop Line', () => {
         });
     });
 
-    describe.only('Indicators', () => {
+    describe('Indicators', () => {
         it('should add indicators container for each line if enabled', () => {
             const selection = d3
                 .select('svg')
