@@ -1,6 +1,7 @@
 import defaultsDeep from 'lodash.defaultsdeep';
 
 import axis from './axis';
+import { getBreakpointLabel } from './breakpoint';
 import bounds from './bounds';
 import defaultConfiguration from './config';
 import dropLine from './dropLine';
@@ -12,7 +13,12 @@ import { withinRange } from './withinRange';
 
 // do not export anything else here to keep window.eventDrops as a function
 export default ({ d3 = window.d3, ...customConfiguration }) => {
-    const chart = selection => {
+    const initChart = selection => {
+        selection.selectAll('svg').remove();
+
+        const root = selection.selectAll('svg').data(selection.data());
+        root.exit().remove();
+
         const config = defaultsDeep(
             customConfiguration || {},
             defaultConfiguration(d3)
@@ -27,6 +33,7 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
             line: { height: lineHeight },
             range: { start: rangeStart, end: rangeEnd },
             margin,
+            breakpoints,
         } = config;
 
         const getEvent = () => d3.event; // keep d3.event mutable see https://github.com/d3/d3/issues/2733
@@ -40,10 +47,10 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
             .range([0, width - labelWidth]);
 
         chart._scale = xScale;
-
-        const root = selection.selectAll('svg').data(selection.data());
-
-        root.exit().remove();
+        chart.currentBreakpointLabel = getBreakpointLabel(
+            breakpoints,
+            global.innerWidth
+        );
 
         const svg = root
             .enter()
@@ -73,8 +80,19 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
             .call(draw(config, xScale));
     };
 
+    const chart = selection => {
+        chart._initialize = () => initChart(selection);
+        chart._initialize();
+
+        global.addEventListener('resize', chart._initialize, true);
+    };
+
     chart.scale = () => chart._scale;
     chart.filteredData = () => chart._filteredData;
+    chart.destroy = (callback = () => {}) => {
+        global.removeEventListener('resize', chart._initialize, true);
+        callback();
+    };
 
     const draw = (config, scale) => selection => {
         const { drop: { date: dropDate } } = config;
@@ -112,7 +130,7 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
             .data(filteredData)
             .call(dropLine(config, scale))
             .call(bounds(config, scale))
-            .call(axis(d3, config, scale));
+            .call(axis(d3, config, scale, chart.currentBreakpointLabel));
     };
 
     chart.draw = draw;

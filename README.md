@@ -82,11 +82,13 @@ You can either use D3 as a specific import (specifying it in first argument of `
 
 **[Configuration Reference](./docs/configuration.md)**
 
-In addition to this configuration object, it also exposes some public methods allowing you to customize your application based on filtered data:
+In addition to this configuration object, it also exposes some public members allowing you to customize your application based on filtered data:
 
-* **scale()** provides the horizontal scale, allowing you to retrieve bounding dates thanks to `.scale().domain()`,
-* **filteredData()** returns an object with both `data` and `fullData` keys containing respectively bounds filtered data and full dataset.
-* **draw(config, scale)** redraw chart using given configuration and `d3.scaleTime` scale
+*   **scale()** provides the horizontal scale, allowing you to retrieve bounding dates thanks to `.scale().domain()`,
+*   **filteredData()** returns an object with both `data` and `fullData` keys containing respectively bounds filtered data and full dataset.
+*   **draw(config, scale)** redraws chart using given configuration and `d3.scaleTime` scale
+*   **destroy()** execute this function before to removing the chart from DOM. It prevents some memory leaks due to event listeners.
+*   **currentBreakpointLabel** returns current breakpoint (for instance `small`) among a [list of breakpoints](./docs/configuration.md#breakpoints).
 
 Hence, if you want to display number of displayed data and time bounds as in the [demo](https://marmelab.com/EventDrops/), you can use the following code:
 

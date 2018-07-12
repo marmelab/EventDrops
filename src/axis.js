@@ -32,8 +32,13 @@ export const tickFormat = (date, formats, d3) => {
     return d3.timeFormat(formats.year)(date);
 };
 
-export default (d3, config, xScale) => {
-    const { label: { width: labelWidth }, axis: { formats }, locale } = config;
+export default (d3, config, xScale, breakpointLabel) => {
+    const {
+        label: { width: labelWidth },
+        axis: { formats },
+        locale,
+        numberDisplayedTicks,
+    } = config;
     d3.timeFormatDefaultLocale(locale);
     return selection => {
         const axis = selection.selectAll('.axis').data(d => d);
@@ -42,7 +47,8 @@ export default (d3, config, xScale) => {
 
         const axisTop = d3
             .axisTop(xScale)
-            .tickFormat(d => tickFormat(d, formats, d3));
+            .tickFormat(d => tickFormat(d, formats, d3))
+            .ticks(numberDisplayedTicks[breakpointLabel]);
 
         axis
             .enter()

@@ -16,6 +16,7 @@ const defaultConfig = {
     margin: {},
     axis: {},
     locale: {},
+    numberDisplayedTicks: {},
 };
 
 describe('EventDrops', () => {
@@ -173,6 +174,15 @@ describe('EventDrops', () => {
             new Date('2010-01-01'),
             new Date('2011-01-01'),
         ]);
+    });
+
+    it('should give access to current breakpoint label', () => {
+        const chart = EventDrops(defaultConfig);
+
+        const root = d3.select('div').data([[{ data: [] }]]);
+        root.call(chart);
+
+        expect(chart.currentBreakpointLabel).toEqual('extra');
     });
 
     afterEach(() => {

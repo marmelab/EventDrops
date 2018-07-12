@@ -60,4 +60,16 @@ export default d3 => ({
         minimumScale: 0,
         maximumScale: Infinity,
     },
+    numberDisplayedTicks: {
+        small: 3,
+        medium: 5,
+        large: 7,
+        extra: 12,
+    },
+    breakpoints: {
+        small: 576,
+        medium: 768,
+        large: 992,
+        extra: 1200,
+    },
 });
