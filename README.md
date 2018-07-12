@@ -82,7 +82,7 @@ You can either use D3 as a specific import (specifying it in first argument of `
 
 **[Configuration Reference](./docs/configuration.md)**
 
-In addition to this configuration object, it also exposes some public methods allowing you to customize your application based on filtered data:
+In addition to this configuration object, it also exposes some public members allowing you to customize your application based on filtered data:
 
 *   **scale()** provides the horizontal scale, allowing you to retrieve bounding dates thanks to `.scale().domain()`,
 *   **filteredData()** returns an object with both `data` and `fullData` keys containing respectively bounds filtered data and full dataset.
