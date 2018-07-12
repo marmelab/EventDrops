@@ -1,6 +1,6 @@
 import defaultsDeep from 'lodash.defaultsdeep';
 
-import axis from './axis';
+import axis, { getBreakpointLabel } from './axis';
 import bounds from './bounds';
 import defaultConfiguration from './config';
 import dropLine from './dropLine';
@@ -32,6 +32,7 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
             line: { height: lineHeight },
             range: { start: rangeStart, end: rangeEnd },
             margin,
+            breakpoints,
         } = config;
 
         const getEvent = () => d3.event; // keep d3.event mutable see https://github.com/d3/d3/issues/2733
@@ -45,6 +46,7 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
             .range([0, width - labelWidth]);
 
         chart._scale = xScale;
+        chart._breakpoint = getBreakpointLabel(breakpoints, window.innerWidth);
 
         const svg = root
             .enter()
@@ -124,7 +126,7 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
             .data(filteredData)
             .call(dropLine(config, scale))
             .call(bounds(config, scale))
-            .call(axis(d3, config, scale));
+            .call(axis(d3, config, scale, chart._breakpoint));
     };
 
     chart.draw = draw;

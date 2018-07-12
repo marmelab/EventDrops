@@ -42,18 +42,16 @@ export const tickFormat = (date, formats, d3) => {
     return d3.timeFormat(formats.year)(date);
 };
 
-export default (d3, config, xScale) => {
+export default (d3, config, xScale, breakpoint) => {
     const {
         label: { width: labelWidth },
         axis: { formats },
         locale,
         numberDisplayedTicks,
-        breakpoints,
     } = config;
     d3.timeFormatDefaultLocale(locale);
     return selection => {
         const axis = selection.selectAll('.axis').data(d => d);
-        const breakpoint = getBreakpointLabel(breakpoints, window.innerWidth);
 
         axis.exit().remove();
 
