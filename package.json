@@ -1,106 +1,110 @@
 {
-    "name": "event-drops",
-    "version": "1.1.1",
-    "description": "A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time.",
-    "main": "dist/index.js",
-    "files": [
-        "dist/",
-        "*.md"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/marmelab/EventDrops"
-    },
-    "peerDependencies": {
-        "d3": "~4.7.0"
-    },
-    "dependencies": {
-        "d3-time-format": "^2.1.1",
-        "date-fns": "^1.29.0",
-        "debounce": "^1.1.0",
-        "lodash.defaultsdeep": "^4.6.0",
-        "lodash.uniqby": "^4.7.0"
-    },
-    "devDependencies": {
-        "async": "^2.6.1",
-        "babel-core": "^6.26.3",
-        "babel-jest": "^23.0.1",
-        "babel-loader": "^7.1.4",
-        "babel-plugin-transform-require-ignore": "^0.1.1",
-        "babel-preset-es2015": "^6.24.1",
-        "babel-preset-stage-0": "^6.24.1",
-        "configurable.js": "0.1.0",
-        "css-loader": "^0.28.1",
-        "d3": "~4.7.0",
-        "eslint": "3.19.0",
-        "eslint-config-airbnb": "14.1.0",
-        "eslint-config-prettier": "^2.9.0",
-        "eslint-plugin-import": "2.2.0",
-        "eslint-plugin-jest": "^21.4.2",
-        "eslint-plugin-jsx-a11y": "4.0.0",
-        "eslint-plugin-react": "6.10.3",
-        "html-webpack-plugin": "^3.2.0",
-        "husky": "0.13.2",
-        "jasmine-core": "2.5.2",
-        "jest": "^21.2.1",
-        "lint-staged": "3.4.0",
-        "prettier": "^1.10.2",
-        "rollup": "0.41.6",
-        "rollup-plugin-babel": "2.7.1",
-        "rollup-plugin-commonjs": "8.0.2",
-        "rollup-plugin-css-only": "0.2.0",
-        "rollup-plugin-json": "^2.3.0",
-        "rollup-plugin-node-resolve": "3.0.0",
-        "rollup-plugin-uglify": "2.0.1",
-        "scss-loader": "0.0.1",
-        "style-loader": "^0.21.0",
-        "webpack": "^4.10.2",
-        "webpack-cli": "^2.1.4",
-        "webpack-dev-server": "^3.1.4"
-    },
-    "bugs": {
-        "url": "https://github.com/marmelab/EventDrops/issues"
-    },
-    "homepage": "https://github.com/marmelab/EventDrops",
-    "scripts": {
-        "precommit": "lint-staged",
-        "start": "webpack-dev-server --config webpack.demo.js --colors --devtool cheap-module-inline-source-map --host=0.0.0.0",
-        "karma": "karma start test/karma/karma.conf.js",
-        "test": "jest",
-        "test-watch": "jest --watch",
-        "run": "npm start"
-    },
-    "lint-staged": {
-        "*.{js,css,md}": [
-            "prettier --write --tab-width 4 --single-quote --trailing-comma es5",
-            "git add"
-        ]
-    },
-    "author": "Thiery Michel <thiery@marmelab.com>",
-    "contributors": [
-        "Jonathan Petitcolas (https://github.com/jpetitcolas)",
-        "ThieryMichel (https://github.com/ThieryMichel)",
-        "Francois Zaninotto (https://github.com/fzaninotto)",
-        "Kmaschta (https://github.com/Kmaschta)",
-        "Ohad (https://github.com/osadan)",
-        "Gildas Garcia (https://github.com/djhi)",
-        "Robin Bressan (https://github.com/RobinBressan)",
-        "Tristan Newmann (https://github.com/twisty-n)",
-        "Julien Demangeon (https://github.com/jdemangeon)",
-        "Chad Ramos (https://github.com/chad-ramos)",
-        "Sedy Bot (https://github.com/sedy-bot)",
-        "Juliano Alves de Oliveira (https://github.com/JulianoEngineer)",
-        "Christian Gass (https://github.com/gassc)",
-        "Chulki Lee (https://github.com/chulkilee)",
-        "Emmanuel Quentin (https://github.com/manuquentin)",
-        "Joan Yin (https://github.com/JoanYin)",
-        "Korney Czukowski (https://github.com/czukowski)",
-        "Nathan Breit (https://github.com/nathanathan)",
-        "Sam Lai (https://github.com/slai)",
-        "Simon Hartcher (https://github.com/deevus)",
-        "Mélodie Benmouffek (https://github.com/benmoufm)",
-        "marmelab-bot (https://github.com/marmelab-bot)",
-        "messense (https://github.com/messense)"
-    ],
-    "license": "MIT"
+  "name": "event-drops",
+  "version": "1.1.1",
+  "description": "A time based / event series interactive visualization using d3.js. Use drag and zoom to navigate in time.",
+  "main": "dist/index.js",
+  "files": [
+    "dist/",
+    "*.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marmelab/EventDrops"
+  },
+  "peerDependencies": {
+    "d3": "~4.7.0"
+  },
+  "dependencies": {
+    "d3-time-format": "^2.1.1",
+    "date-fns": "^1.29.0",
+    "debounce": "^1.1.0",
+    "lodash.defaultsdeep": "^4.6.0",
+    "lodash.uniqby": "^4.7.0"
+  },
+  "devDependencies": {
+    "async": "^2.6.1",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.0.1",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-require-ignore": "^0.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "configurable.js": "0.1.0",
+    "css-loader": "^0.28.1",
+    "d3": "~4.7.0",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb": "14.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jest": "^21.4.2",
+    "eslint-plugin-jsx-a11y": "4.0.0",
+    "eslint-plugin-react": "6.10.3",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "0.13.2",
+    "jasmine-core": "2.5.2",
+    "jest": "^21.2.1",
+    "lint-staged": "3.4.0",
+    "prettier": "^1.10.2",
+    "rollup": "0.41.6",
+    "rollup-plugin-babel": "2.7.1",
+    "rollup-plugin-commonjs": "8.0.2",
+    "rollup-plugin-css-only": "0.2.0",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-resolve": "3.0.0",
+    "rollup-plugin-uglify": "2.0.1",
+    "scss-loader": "0.0.1",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.10.2",
+    "webpack-cli": "^2.1.4",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "bugs": {
+    "url": "https://github.com/marmelab/EventDrops/issues"
+  },
+  "homepage": "https://github.com/marmelab/EventDrops",
+  "scripts": {
+    "precommit": "lint-staged",
+    "start": "webpack-dev-server --config webpack.demo.js --colors --devtool cheap-module-inline-source-map --host=0.0.0.0",
+    "karma": "karma start test/karma/karma.conf.js",
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "run": "npm start"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": [
+      "prettier --write --tab-width 4 --single-quote --trailing-comma es5",
+      "git add"
+    ]
+  },
+  "author": "Thiery Michel <thiery@marmelab.com>",
+  "contributors": [
+    "Jonathan Petitcolas <petitcolas.jonathan@gmail.com> (https://github.com/jpetitcolas)",
+    "ThieryMichel (https://github.com/ThieryMichel)",
+    "Francois Zaninotto (https://github.com/fzaninotto)",
+    "Kmaschta (https://github.com/Kmaschta)",
+    "Ohad <sadanoh@gmail.com> (https://github.com/osadan)",
+    "Gildas Garcia <gildas.garcia@gmail.com> (https://github.com/djhi)",
+    "Robin Bressan (https://github.com/RobinBressan)",
+    "Julien Demangeon <julien@marmelab.com> (https://github.com/jdemangeon)",
+    "Florian F. (https://github.com/floo51)",
+    "Tristan Newmann (https://github.com/twisty-n)",
+    "Abdoulaye Siby (https://github.com/asiby)",
+    "Chad Ramos (https://github.com/chad-ramos)",
+    "Sedy Bot (https://github.com/sedy-bot)",
+    "Juliano Alves de Oliveira <julianoalvesde@hotmail.com> (https://github.com/JulianoEngineer)",
+    "Christian Gass (https://github.com/gassc)",
+    "Chulki Lee (https://github.com/chulkilee)",
+    "Emmanuel Quentin (https://github.com/manuquentin)",
+    "Joan Yin (https://github.com/JoanYin)",
+    "jbschlosser (https://github.com/jbschlosser)",
+    "Korney Czukowski (https://github.com/czukowski)",
+    "kwesterfeld2 (https://github.com/kwesterfeld2)",
+    "Nathan Breit <nath@nathanathan.com> (https://github.com/nathanathan)",
+    "Sam Lai (https://github.com/slai)",
+    "Simon Hartcher <simon@simonhartcher.com> (https://github.com/deevus)",
+    "Mélodie Benmouffek (https://github.com/benmoufm)",
+    "marmelab-bot (https://github.com/marmelab-bot)",
+    "messense <messense@icloud.com> (https://github.com/messense)"
+  ],
+  "license": "MIT"
 }
