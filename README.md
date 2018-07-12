@@ -88,7 +88,7 @@ In addition to this configuration object, it also exposes some public members al
 *   **filteredData()** returns an object with both `data` and `fullData` keys containing respectively bounds filtered data and full dataset.
 *   **draw(config, scale)** redraws chart using given configuration and `d3.scaleTime` scale
 *   **destroy** execute this function before to removing the chart from DOM. It prevents some memory leaks due to event listeners.
-*   **currentBreakpointLabel** returns a label of current breakpoint, [list of breakpoints](./docs/configuration.md#breakpoints).
+*   **currentBreakpointLabel** returns current breakpoint (for instance `small`) among a [list of breakpoints](./docs/configuration.md#breakpoints).
 
 Hence, if you want to display number of displayed data and time bounds as in the [demo](https://marmelab.com/EventDrops/), you can use the following code:
 
