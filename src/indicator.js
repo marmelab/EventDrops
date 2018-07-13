@@ -19,7 +19,6 @@ export default (config, xScale) => selection => {
         if (d.fullData.some(event => isAfter(dropDate(event), dateBounds))) {
             data.push('after');
         }
-        // console.log(d, data, dateBounds);
         return data;
     });
 

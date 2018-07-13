@@ -1,4 +1,4 @@
-export default (config, xScale) => {
+export default (chart, selection, config) => {
     const {
         d3,
         margin,
@@ -8,7 +8,7 @@ export default (config, xScale) => {
     } = config;
 
     return function(viewport) {
-        const numberRows = viewport.data()[0].length;
+        const numberRows = selection.data()[0].length;
 
         viewport.selectAll('.bound').remove();
 
@@ -22,7 +22,7 @@ export default (config, xScale) => {
                     margin.top})`
             )
             .append('text')
-            .text(dateFormat(xScale.domain()[0]));
+            .text(dateFormat(chart.scale.domain()[0]));
 
         viewport
             .append('g')
@@ -34,8 +34,8 @@ export default (config, xScale) => {
                     margin.top})`
             )
             .append('text')
-            .attr('x', xScale.range()[1] - margin.right)
+            .attr('x', chart.scale.range()[1] - margin.right)
             .attr('text-anchor', 'end')
-            .text(dateFormat(xScale.domain()[1]));
+            .text(dateFormat(chart.scale.domain()[1]));
     };
 };

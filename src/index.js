@@ -43,7 +43,7 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
         const draw = data => selection => {
             const svg = selection.selectAll('.viewport').data(data);
 
-            svg.exit().remove();
+            // svg.exit().remove();
 
             const enteringSvg = svg
                 .enter()
@@ -63,13 +63,15 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
 
             enteringViewport
                 .merge(selection.selectAll('.viewport'))
-                .call(dropLine(config, xScale))
-                .call(axis(d3, config, xScale))
-                .call(bounds(config, xScale));
+                .call(dropLine(chart, config))
+                .call(axis(chart, d3, config))
+                .call(bounds(chart, selection, config));
 
-            // if (zoomConfig) {
-            //     selection.call(zoom(d3, config, xScale, draw, getEvent));
-            // }
+            if (zoomConfig) {
+                selection.call(
+                    zoom(chart, selection, d3, config, draw, getEvent)
+                );
+            }
 
             if (metaballs) {
                 enteringViewport.call(addMetaballsDefs(config));
@@ -77,6 +79,7 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
         };
 
         chart.draw = draw;
+        chart.scale = xScale;
 
         draw(selection.data())(selection);
     };

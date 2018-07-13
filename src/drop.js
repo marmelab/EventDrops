@@ -2,7 +2,7 @@ import uniqBy from 'lodash.uniqby';
 import { withinRange } from './withinRange';
 
 const filterDrops = (xScale, dropDate) => d => {
-    const dateBounds = xScale.domain().map(d => console.log(d) || new Date(d));
+    const dateBounds = xScale.domain().map(d => new Date(d));
     const withinRangeData = d.data.filter(data =>
         withinRange(dropDate(data), dateBounds)
     );

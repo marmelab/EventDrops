@@ -2,7 +2,7 @@ import { lineSeparatorFactory } from './lines/lineSeparator';
 import { labelFactory } from './lines/label';
 import { dropsAreaFactory } from './lines/dropsArea';
 
-export default (config, xScale) => {
+export default (chart, config) => {
     const {
         metaballs,
         label: { text: labelText, padding: labelPadding, width: labelWidth },
@@ -11,7 +11,7 @@ export default (config, xScale) => {
     } = config;
 
     return function(viewport) {
-        const lines = viewport.selectAll('.drop-line').data(d => d);
+        const lines = viewport.selectAll('.drop-line').data(d => d, d => d.sha);
 
         lines.exit().remove();
 
@@ -30,6 +30,6 @@ export default (config, xScale) => {
             .merge(lines)
             .each(lineSeparatorFactory(config))
             .each(labelFactory(config))
-            .each(dropsAreaFactory(config, xScale));
+            .each(dropsAreaFactory(config, chart.scale));
     };
 };

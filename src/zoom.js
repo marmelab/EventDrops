@@ -15,7 +15,7 @@ export const getShiftedTransform = (
         .translate(labelsWidth + labelsPadding, 0); // put origin at its original position
 };
 
-export default (d3, config, xScale, callback, getEvent) => {
+export default (chart, selection, d3, config, callback, getEvent) => {
     const {
         label: { width: labelsWidth, padding: labelsPadding },
         zoom: { onZoomStart, onZoom, onZoomEnd, minimumScale, maximumScale },
@@ -33,8 +33,8 @@ export default (d3, config, xScale, callback, getEvent) => {
             d3
         );
 
-        const newScale = transform.rescaleX(xScale);
-        d3.select(this).call(callback(xScale));
+        chart.scale = transform.rescaleX(chart.scale);
+        d3.select(this).call(callback(selection));
 
         if (onZoom) {
             onZoom(data);

@@ -32,12 +32,12 @@ export const tickFormat = (date, formats, d3) => {
     return d3.timeFormat(formats.year)(date);
 };
 
-export default (d3, config, xScale) => {
+export default (chart, d3, config) => {
     const { label: { width: labelWidth }, axis: { formats }, locale } = config;
     d3.timeFormatDefaultLocale(locale);
 
     const axisTop = d3
-        .axisTop(xScale)
+        .axisTop(chart.scale)
         .tickFormat(d => tickFormat(d, formats, d3));
 
     return function(viewport) {
