@@ -1,7 +1,7 @@
 import uniqBy from 'lodash.uniqby';
 
 const filterOverlappingDrop = (xScale, dropDate) => d =>
-    uniqBy(d.data, data => Math.round(xScale(dropDate(data))));
+    uniqBy(d.data, data => xScale(dropDate(data)));
 
 export default (config, xScale) => selection => {
     const {
@@ -30,6 +30,10 @@ export default (config, xScale) => selection => {
         .on('mouseout', onMouseOut)
         .merge(drops)
         .attr('cx', d => xScale(dropDate(d)));
+
+    drops
+        .attr('r', dropRadius)
+        .attr('fill', dropColor);
 
     drops
         .exit()
