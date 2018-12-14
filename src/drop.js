@@ -23,12 +23,12 @@ export default (config, xScale) => selection => {
         .enter()
         .append('circle')
         .classed('drop', true)
-        .attr('r', dropRadius)
-        .attr('fill', dropColor)
         .on('click', onClick)
         .on('mouseover', onMouseOver)
         .on('mouseout', onMouseOut)
         .merge(drops)
+        .attr('r', dropRadius)
+        .attr('fill', dropColor)
         .attr('cx', d => xScale(dropDate(d)));
 
     drops
