@@ -20,6 +20,8 @@ export default d3 => ({
             months: '%B',
             year: '%Y',
         },
+        verticalGrid: false,
+        tickPadding: 6,
     },
     drops: row => row.data,
     drop: {

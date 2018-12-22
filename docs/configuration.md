@@ -305,6 +305,18 @@ const chart = eventDrops({
 });
 ```
 
+### verticalGrid
+
+_Default: `false`_
+
+Display vertical grid lines. Height of line is equal to number of lines times height of line.
+
+### tickPadding
+
+_Default: 6_
+
+Same as D3 .tickPadding(), allows to set the padding of the tick. This is the y offset of the label for the axis.
+
 ## zoom
 
 This section is related to `zoom` (and pan) behavior. If you want to disable interactivity on your chart, just set this parameter to `false`.

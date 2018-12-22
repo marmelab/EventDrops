@@ -18,9 +18,14 @@ const defaultConfig = {
             months: '%B',
             year: '%Y',
         },
+        verticalGrid: false,
+        tickPadding: 6,
     },
     numberDisplayedTicks: {
         extra: 12,
+    },
+    line: {
+        height: 40,
     },
 };
 
@@ -91,7 +96,10 @@ describe('Axis', () => {
     });
 
     it('should use tick formats passed in configuration', () => {
-        const ticksSpy = jest.fn(() => () => {});
+        const tickPaddingSpy = jest.fn(() => () => {});
+        const ticksSpy = jest.fn(() => ({
+            tickPadding: tickPaddingSpy,
+        }));
         const tickFormatSpy = jest.fn(() => ({
             ticks: ticksSpy,
         }));
@@ -145,7 +153,7 @@ describe('Axis', () => {
         const data = [[{ id: 'foo' }]];
         const selection = d3.select('svg').data(data);
 
-        let config = {
+        const config = {
             ...defaultConfig,
             numberDisplayedTicks: { extra: 9 },
         };
