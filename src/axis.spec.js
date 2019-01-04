@@ -162,6 +162,34 @@ describe('Axis', () => {
         expect(document.querySelectorAll('.tick').length).toBe(9);
     });
 
+    it('should display vertical grid lines if in configuration', () => {
+        const data = [[{ id: 'foo' }]];
+        const selection = d3.select('svg').data(data);
+
+        const config = {
+            ...defaultConfig,
+            axis: {
+                formats: {
+                    milliseconds: '.%L',
+                    seconds: ':%S',
+                    minutes: '%I:%M',
+                    hours: '%I %p',
+                    days: '%a %d',
+                    weeks: '%b %d',
+                    months: '%B',
+                    year: '%Y',
+                },
+                verticalGrid: true,
+                tickPadding: 6,
+            },
+        };
+
+        axis(d3, config, defaultScale, defaultBreakpointLabel)(selection);
+        const tickLineGroup = document.querySelectorAll('.tick line');
+        expect(tickLineGroup.length).toBe(9);
+        expect(tickLineGroup[0].attributes.y2.nodeValue).toBe('40');
+    });
+
     afterEach(() => {
         document.body.innerHTML = '';
         jest.restoreAllMocks();
