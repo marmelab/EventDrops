@@ -12,7 +12,11 @@ import './style.css';
 import { withinRange } from './withinRange';
 
 // do not export anything else here to keep window.eventDrops as a function
-export default ({ d3 = window.d3, ...customConfiguration }) => {
+export default ({
+    d3 = window.d3,
+    global = window,
+    ...customConfiguration
+}) => {
     const initChart = selection => {
         selection.selectAll('svg').remove();
 
@@ -66,15 +70,12 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
             svg.call(addMetaballsDefs(config));
         }
 
-        svg
-            .merge(root)
-            .attr(
-                'height',
-                d => (d.length + 1) * lineHeight + margin.top + margin.bottom
-            );
+        svg.merge(root).attr(
+            'height',
+            d => (d.length + 1) * lineHeight + margin.top + margin.bottom
+        );
 
-        svg
-            .append('g')
+        svg.append('g')
             .classed('viewport', true)
             .attr('transform', `translate(${margin.left},${margin.top})`)
             .call(draw(config, xScale));
@@ -95,7 +96,9 @@ export default ({ d3 = window.d3, ...customConfiguration }) => {
     };
 
     const draw = (config, scale) => selection => {
-        const { drop: { date: dropDate } } = config;
+        const {
+            drop: { date: dropDate },
+        } = config;
 
         const dateBounds = scale.domain().map(d => new Date(d));
         const filteredData = selection.data().map(dataSet => {
