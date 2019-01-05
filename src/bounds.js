@@ -11,34 +11,28 @@ export default (config, xScale) => selection => {
 
     bounds.exit().remove();
 
-    bounds
+    const boundTextGroup = bounds
         .enter()
         .filter((_, i) => !i)
         .append('g')
         .classed('bound', true)
-        .classed('start', true)
         .attr(
             'transform',
             `translate(${labelWidth}, ${lineHeight * numberRows + margin.top})`
-        )
+        );
+
+    boundTextGroup
         .append('text')
+        .classed('start', true)
         .text(dateFormat(xScale.domain()[0]));
 
-    bounds
-        .enter()
-        .filter((_, i) => !i)
-        .append('g')
-        .classed('bound', true)
-        .classed('end', true)
-        .attr(
-            'transform',
-            `translate(${labelWidth}, ${lineHeight * numberRows + margin.top})`
-        )
+    boundTextGroup
         .append('text')
+        .classed('end', true)
         .attr('x', xScale.range()[1] - margin.right)
         .attr('text-anchor', 'end')
         .text(dateFormat(xScale.domain()[1]));
 
-    bounds.selectAll('.bound.start text').text(dateFormat(xScale.domain()[0]));
-    bounds.selectAll('.bound.end text').text(dateFormat(xScale.domain()[1]));
+    bounds.selectAll('.bound text.start').text(dateFormat(xScale.domain()[0]));
+    bounds.selectAll('.bound text.end').text(dateFormat(xScale.domain()[1]));
 };

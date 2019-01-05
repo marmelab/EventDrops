@@ -25,19 +25,19 @@ describe('Bounds', () => {
         document.body.appendChild(document.createElement('svg'));
     });
 
-    it('should add a group classed ".bound.start"', () => {
+    it('should add a group classed ".bound"', () => {
         const selection = d3.select('svg').data([[{}, {}]]);
 
         bounds(defaultConfig, defaultScale)(selection);
-        expect(document.querySelectorAll('g.bound.start').length).toBe(1);
+        expect(document.querySelectorAll('g.bound').length).toBe(1);
     });
 
-    it('should position start bound at bottom left, near the labels', () => {
+    it('should position group classed "bound" at bottom left near the labels', () => {
         const selection = d3.select('svg').data([[{}, {}, {}]]);
 
         bounds(defaultConfig, defaultScale)(selection);
 
-        const startBound = document.querySelector('g.bound.start');
+        const startBound = document.querySelector('g.bound');
         // translate(labelsWidth, three rows of data * lineHeight + margin.top)
         expect(startBound.getAttribute('transform')).toBe(
             'translate(200, 130)'
@@ -60,26 +60,16 @@ describe('Bounds', () => {
 
         bounds(config, scale)(selection);
 
-        const startBound = document.querySelector('g.bound.start');
+        const startBound = document.querySelector('g.bound text.start');
         expect(startBound.textContent).toBe('Formatted Bound');
         expect(formatStub).toHaveBeenCalledWith(new Date('2017-01-01'));
     });
 
-    it('should add a group classed ".bound.end"', () => {
+    it('should add text classed ".end" inside bound group', () => {
         const selection = d3.select('svg').data([[{}, {}]]);
 
         bounds(defaultConfig, defaultScale)(selection);
-        expect(document.querySelectorAll('g.bound.end').length).toBe(1);
-    });
-
-    it('should position start bound at bottom right', () => {
-        const selection = d3.select('svg').data([[{}, {}, {}]]);
-
-        bounds(defaultConfig, defaultScale)(selection);
-
-        const endBound = document.querySelector('g.bound.end');
-        // translate(labelsWidth, three rows of data * lineHeight + margin.top)
-        expect(endBound.getAttribute('transform')).toBe('translate(200, 130)');
+        expect(document.querySelectorAll('g.bound text.end').length).toBe(1);
     });
 
     it('should display correctly formatted scale domain end as an end bound', () => {
@@ -98,7 +88,7 @@ describe('Bounds', () => {
 
         bounds(config, scale)(selection);
 
-        const endBound = document.querySelector('g.bound.end');
+        const endBound = document.querySelector('g.bound text.end');
         expect(endBound.textContent).toBe('Formatted Bound');
         expect(formatStub).toHaveBeenCalledWith(new Date('2017-02-01'));
     });
@@ -109,7 +99,7 @@ describe('Bounds', () => {
         const scale = d3.scaleTime().range([200, 800]);
         bounds(defaultConfig, scale)(selection);
 
-        const endBound = document.querySelector('g.bound.end text');
+        const endBound = document.querySelector('g.bound text.end');
         expect(endBound.getAttribute('text-anchor')).toBe('end');
 
         // rangeEnd - marginRight
