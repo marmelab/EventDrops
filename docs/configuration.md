@@ -310,6 +310,8 @@ const chart = eventDrops({
 _Default: `false`_
 
 Display vertical grid lines. Height of line is equal to number of lines times height of line.
+The dropLines can be set to not show by customizing the CSS.
+![vertical grid](https://user-images.githubusercontent.com/15114362/50725403-6348da80-10fd-11e9-91f3-f1128b64d172.png)
 
 ### tickPadding
 
