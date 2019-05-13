@@ -78,6 +78,41 @@ describe('Zoom', () => {
         expect(zoom.scaleExtent()).toEqual([15, 25]);
     });
 
+    it('should set translate extent if restrictPan is true', () => {
+        const test = (config, translateExtent) => {
+            const width = 500,
+                height = 300;
+
+            const selection = d3.select('svg');
+            const zoomRestrict = zoomFactory(
+                d3,
+                selection,
+                config,
+                d3.zoom(),
+                {},
+                {},
+                {},
+                width,
+                height
+            );
+
+            expect(zoomRestrict.translateExtent()).toEqual(translateExtent);
+        };
+
+        const config = {
+            ...defaultConfig,
+            label: {
+                width: 100,
+                padding: 20,
+            },
+        };
+
+        test(config, [[-Infinity, -Infinity], [Infinity, Infinity]]);
+
+        config.zoom.restrictPan = true;
+        test(config, [[120, 0], [500, 300]]);
+    });
+
     /* These tests are skipped as I can't find any way to test D3 event at this point. */
     it('should update scale according to given D3 zoom event');
     it('should redraw chart using newly zoomed scale');

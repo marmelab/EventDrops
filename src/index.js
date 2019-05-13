@@ -64,13 +64,27 @@ export default ({
             .attr('width', width)
             .classed('event-drop-chart', true);
 
+        const height = parseFloat(svg.style('height'));
+
         if (id) {
             svg.attr('id', id);
         }
 
         if (zoomConfig) {
             const zoomObject = d3.zoom();
-            svg.call(zoom(d3, svg, config, zoomObject, xScale, draw, getEvent));
+            svg.call(
+                zoom(
+                    d3,
+                    svg,
+                    config,
+                    zoomObject,
+                    xScale,
+                    draw,
+                    getEvent,
+                    width,
+                    height
+                )
+            );
 
             chart._zoomToDomain = domain => {
                 const zoomIdentity = getDomainTransform(

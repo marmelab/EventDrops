@@ -351,7 +351,13 @@ _Default: Infinity_
 
 This parameter configures the maximum zoom level available. Set it to a lower value to prevent your users from zooming in too deeply.
 
-### numberDisplayedTicks
+### restrictPan
+
+_Default: false_
+
+If set to `true` will restrict panning (dragging behaviour) to the initial date range. If minimumZoom is set to less than 1, the date range can be zoomed out be larger than the initial. However, after the zoom is less than 1, the pan behaviour is disabled.
+
+## numberDisplayedTicks
 
 \_Default:
 
@@ -368,7 +374,7 @@ const chart = eventDrops({
 
 When reducing chart width, we need to display less labels on the horizontal axis to keep a readable chart. This parameter aims to solve the issue. Hence, on smallest devices, it displays only 3 labels by default at the same time.
 
-### breakpoints
+## breakpoints
 
 \_Default:
 

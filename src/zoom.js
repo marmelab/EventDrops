@@ -27,13 +27,40 @@ export function getDomainTransform(d3, config, zoom, domain, xScale, width) {
         .translate(-fullLabelWidth, 0);
 }
 
-export default (d3, svg, config, zoom, xScale, draw, getEvent) => {
+export default (
+    d3,
+    svg,
+    config,
+    zoom,
+    xScale,
+    draw,
+    getEvent,
+    width,
+    height
+) => {
     const {
         label: { width: labelsWidth, padding: labelsPadding },
-        zoom: { onZoomStart, onZoom, onZoomEnd, minimumScale, maximumScale },
+        zoom: {
+            onZoomStart,
+            onZoom,
+            onZoomEnd,
+            minimumScale,
+            maximumScale,
+            restrictPan,
+        },
     } = config;
 
+    const extentConstraint = [
+        [labelsWidth + labelsPadding, 0],
+        [width, height],
+    ];
+
     zoom.scaleExtent([minimumScale, maximumScale]);
+
+    //Restricts the pan area to be the specified start/end dates or initial if not set
+    if (restrictPan) {
+        zoom.translateExtent(extentConstraint).extent(extentConstraint);
+    }
 
     zoom.on('zoom.start', onZoomStart).on('zoom.end', onZoomEnd);
 
