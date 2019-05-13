@@ -1,4 +1,4 @@
-import zoomFactory, { getShiftedTransform } from './zoom';
+import zoomFactory, { getShiftedTransform, getDomainTransform } from './zoom';
 
 const defaultConfig = {
     label: {},
@@ -10,7 +10,7 @@ describe('Zoom', () => {
         document.body.appendChild(document.createElement('svg'));
     });
 
-    describe('getShiftedTransform', () => {
+    it('should correct shifted transform given original transform', () => {
         const originalTransform = {
             x: -120,
             y: 0,
@@ -28,6 +28,41 @@ describe('Zoom', () => {
         );
     });
 
+    it('should transform correctly given domain', () => {
+        const config = {
+            ...defaultConfig,
+            zoom: {
+                minimumScale: 15,
+                maximumScale: 25,
+            },
+            label: { width: 100, padding: 50 },
+        };
+
+        const rangeStartEnd = [new Date(2016, 0, 1), new Date(2019, 0, 1)];
+        const xScale = d3
+            .scaleTime()
+            .domain(rangeStartEnd)
+            .range([0, 100]);
+
+        const width = 400;
+        const zoomObject = d3.zoom();
+        const domain = [new Date(2017, 0, 1), new Date(2018, 0, 1)];
+        const zoomIdentity = getDomainTransform(
+            d3,
+            config,
+            zoomObject,
+            domain,
+            xScale,
+            width
+        );
+
+        expect(zoomIdentity).toEqual({
+            k: 9.008219178082191,
+            x: -1502.054794520548,
+            y: 0,
+        });
+    });
+
     it('should set scale extent based on given configuration', () => {
         const config = {
             ...defaultConfig,
@@ -37,8 +72,9 @@ describe('Zoom', () => {
             },
         };
 
+        const zoomObject = d3.zoom();
         const selection = d3.select('svg');
-        const zoom = zoomFactory(d3, selection, config);
+        const zoom = zoomFactory(d3, selection, config, zoomObject);
         expect(zoom.scaleExtent()).toEqual([15, 25]);
     });
 

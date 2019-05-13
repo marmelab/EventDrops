@@ -24,6 +24,22 @@ describe('EventDrops', () => {
         resetDom();
     });
 
+    it('should add id if present in config', () => {
+        const config = {
+            ...defaultConfig,
+            id: 'test_id',
+        };
+
+        const chart = EventDrops(config);
+
+        const root = d3.select('div').data([[{ data: [] }]]);
+
+        root.call(chart);
+        const svg = document.querySelector('svg');
+
+        expect(svg.attributes.id.value).toEqual('test_id');
+    });
+
     it('should enable zoom if and only if zoomConfig is not falsy', () => {
         const test = (zoomConfig, shouldZoomBeCalled) => {
             resetDom();
@@ -59,6 +75,24 @@ describe('EventDrops', () => {
             new Date('2011-01-01'),
         ]);
     });
+
+    // it('should zoom to correct domain on zoomToDomain', () => {
+    //     const chart = EventDrops({
+    //         zoom: {},
+    //         range: {
+    //             start: new Date('2010-01-01'),
+    //             end: new Date('2011-01-01'),
+    //         },
+    //     });
+    //
+    //     const root = d3.select('div').data([[{ data: [] }]]);
+    //     root.call(chart);
+    //
+    //     const domain = [new Date('2010-04-01'), new Date('2010-09-01')];
+    //     chart.zoomToDomain(domain);
+    //
+    //     expect(chart.scale().domain()).toEqual(domain);
+    // });
 
     it('should allow to select custom data properties', () => {
         const chart = EventDrops({

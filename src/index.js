@@ -6,6 +6,7 @@ import bounds from './bounds';
 import defaultConfiguration from './config';
 import dropLine from './dropLine';
 import zoom from './zoom';
+import { getDomainTransform } from './zoom';
 import { addMetaballsDefs } from './metaballs';
 
 import './style.css';
@@ -29,6 +30,7 @@ export default ({
         );
 
         const {
+            id,
             drops,
             zoom: zoomConfig,
             drop: { onClick, onMouseOut, onMouseOver },
@@ -62,20 +64,40 @@ export default ({
             .attr('width', width)
             .classed('event-drop-chart', true);
 
+        if (id) {
+            svg.attr('id', id);
+        }
+
         if (zoomConfig) {
-            svg.call(zoom(d3, svg, config, xScale, draw, getEvent));
+            const zoomObject = d3.zoom();
+            svg.call(zoom(d3, svg, config, zoomObject, xScale, draw, getEvent));
+
+            chart._zoomToDomain = domain => {
+                const zoomIdentity = getDomainTransform(
+                    d3,
+                    config,
+                    zoomObject,
+                    domain,
+                    xScale,
+                    width
+                );
+                svg.call(zoomObject.transform, zoomIdentity);
+            };
         }
 
         if (metaballs) {
             svg.call(addMetaballsDefs(config));
         }
 
-        svg.merge(root).attr(
-            'height',
-            d => (d.length + 1) * lineHeight + margin.top + margin.bottom
-        );
+        svg
+            .merge(root)
+            .attr(
+                'height',
+                d => (d.length + 1) * lineHeight + margin.top + margin.bottom
+            );
 
-        svg.append('g')
+        svg
+            .append('g')
             .classed('viewport', true)
             .attr('transform', `translate(${margin.left},${margin.top})`)
             .call(draw(config, xScale));
@@ -90,15 +112,18 @@ export default ({
 
     chart.scale = () => chart._scale;
     chart.filteredData = () => chart._filteredData;
+    chart.zoomToDomain = domain => {
+        if (chart._zoomToDomain) {
+            chart._zoomToDomain(domain);
+        }
+    };
     chart.destroy = (callback = () => {}) => {
         global.removeEventListener('resize', chart._initialize, true);
         callback();
     };
 
     const draw = (config, scale) => selection => {
-        const {
-            drop: { date: dropDate },
-        } = config;
+        const { drop: { date: dropDate } } = config;
 
         const dateBounds = scale.domain().map(d => new Date(d));
         const filteredData = selection.data().map(dataSet => {

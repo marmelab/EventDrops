@@ -15,13 +15,25 @@ export const getShiftedTransform = (
         .translate(labelsWidth + labelsPadding, 0); // put origin at its original position
 };
 
-export default (d3, svg, config, xScale, draw, getEvent) => {
+export function getDomainTransform(d3, config, zoom, domain, xScale, width) {
+    const { label: { width: labelsWidth, padding: labelsPadding } } = config;
+
+    const fullLabelWidth = labelsWidth + labelsPadding;
+    // For the reason of two additional translate see getShiftedTransform for explanation
+    return d3.zoomIdentity
+        .translate(fullLabelWidth, 0)
+        .scale((width - labelsWidth) / (xScale(domain[1]) - xScale(domain[0])))
+        .translate(-xScale(domain[0]), 0)
+        .translate(-fullLabelWidth, 0);
+}
+
+export default (d3, svg, config, zoom, xScale, draw, getEvent) => {
     const {
         label: { width: labelsWidth, padding: labelsPadding },
         zoom: { onZoomStart, onZoom, onZoomEnd, minimumScale, maximumScale },
     } = config;
 
-    const zoom = d3.zoom().scaleExtent([minimumScale, maximumScale]);
+    zoom.scaleExtent([minimumScale, maximumScale]);
 
     zoom.on('zoom.start', onZoomStart).on('zoom.end', onZoomEnd);
 

@@ -1,6 +1,7 @@
 import enLocale from 'd3-time-format/locale/en-US.json';
 
 export default d3 => ({
+    id: '',
     locale: enLocale,
     metaballs: {
         blurDeviation: 10,
