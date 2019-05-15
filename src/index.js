@@ -86,7 +86,7 @@ export default ({
                 )
             );
 
-            chart._zoomToDomain = domain => {
+            chart._zoomToDomain = (domain, duration, delay, ease) => {
                 const zoomIdentity = getDomainTransform(
                     d3,
                     config,
@@ -95,7 +95,12 @@ export default ({
                     xScale,
                     width
                 );
-                svg.call(zoomObject.transform, zoomIdentity);
+                svg
+                    .transition()
+                    .ease(ease)
+                    .delay(delay)
+                    .duration(duration)
+                    .call(zoomObject.transform, zoomIdentity);
             };
         }
 
@@ -126,9 +131,14 @@ export default ({
 
     chart.scale = () => chart._scale;
     chart.filteredData = () => chart._filteredData;
-    chart.zoomToDomain = domain => {
+    chart.zoomToDomain = (
+        domain,
+        duration = 0,
+        delay = 0,
+        ease = d3.easeLinear
+    ) => {
         if (chart._zoomToDomain) {
-            chart._zoomToDomain(domain);
+            chart._zoomToDomain(domain, duration, delay, ease);
         }
     };
     chart.destroy = (callback = () => {}) => {
