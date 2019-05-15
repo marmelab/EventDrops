@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 1.4.0 (Unreleased)
+
+*   [#262](https://github.com/marmelab/EventDrops/pull/262): Fixed issue where right bound text would disappear.
+*   [#259](https://github.com/marmelab/EventDrops/pull/259): Fixed issue where color was flickering and global was undefined.
+
 ### 1.1.x
 
 **1.1.2:**

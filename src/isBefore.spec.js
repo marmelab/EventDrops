@@ -7,11 +7,11 @@ describe('isBefore', () => {
             expect(isBefore(date, dateRange)).toBe(expectedResult);
         };
 
-        test('2018-01-01', true);
-        test('2018-05-19', false);
-        test('2018-05-01', false);
-        test('2018-04-19', false);
-        test('2018-04-01', false);
+        test(new Date('2018-01-01'), true);
+        test(new Date('2018-05-19'), false);
+        test(new Date('2018-05-01'), false);
+        test(new Date('2018-04-19'), false);
+        test(new Date('2018-04-01'), false);
     });
 
     it('should return true if date is before given reverse date range (start date older than end date)', () => {
@@ -20,10 +20,10 @@ describe('isBefore', () => {
             expect(isBefore(date, dateRange)).toBe(expectedResult);
         };
 
-        test('2018-01-01', true);
-        test('2018-05-19', false);
-        test('2018-05-01', false);
-        test('2018-04-19', false);
-        test('2018-04-01', false);
+        test(new Date('2018-01-01'), true);
+        test(new Date('2018-05-19'), false);
+        test(new Date('2018-05-01'), false);
+        test(new Date('2018-04-19'), false);
+        test(new Date('2018-04-01'), false);
     });
 });
