@@ -109,7 +109,7 @@ describe('Zoom', () => {
 
         test(config, [[-Infinity, -Infinity], [Infinity, Infinity]]);
 
-        config.zoom.restrictPan = true;
+        config.zoom.restrictpan = true;
         test(config, [[120, 0], [500, 300]]);
     });
 

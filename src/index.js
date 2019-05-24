@@ -5,7 +5,7 @@ import { getBreakpointLabel } from './breakpoint';
 import bounds from './bounds';
 import defaultConfiguration from './config';
 import dropLine from './dropLine';
-import zoom from './zoom';
+import zoomFactory from './zoom';
 import { getDomainTransform } from './zoom';
 import { addMetaballsDefs } from './metaballs';
 
@@ -30,7 +30,6 @@ export default ({
         );
 
         const {
-            id,
             drops,
             zoom: zoomConfig,
             drop: { onClick, onMouseOut, onMouseOver },
@@ -66,18 +65,14 @@ export default ({
 
         const height = parseFloat(svg.style('height'));
 
-        if (id) {
-            svg.attr('id', id);
-        }
-
         if (zoomConfig) {
-            const zoomObject = d3.zoom();
+            const zoom = d3.zoom();
             svg.call(
-                zoom(
+                zoomFactory(
                     d3,
                     svg,
                     config,
-                    zoomObject,
+                    zoom,
                     xScale,
                     draw,
                     getEvent,
@@ -90,7 +85,7 @@ export default ({
                 const zoomIdentity = getDomainTransform(
                     d3,
                     config,
-                    zoomObject,
+                    zoom,
                     domain,
                     xScale,
                     width
@@ -100,7 +95,7 @@ export default ({
                     .ease(ease)
                     .delay(delay)
                     .duration(duration)
-                    .call(zoomObject.transform, zoomIdentity);
+                    .call(zoom.transform, zoomIdentity);
             };
         }
 
@@ -137,8 +132,12 @@ export default ({
         delay = 0,
         ease = d3.easeLinear
     ) => {
-        if (chart._zoomToDomain) {
+        if (typeof chart._zoomToDomain === 'function') {
             chart._zoomToDomain(domain, duration, delay, ease);
+        } else {
+            throw new Error(
+                'Calling "zoomToDomain" requires zooming to be enabled.'
+            );
         }
     };
     chart.destroy = (callback = () => {}) => {

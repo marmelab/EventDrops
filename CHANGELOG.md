@@ -2,8 +2,16 @@
 
 ### 1.4.0 (Unreleased)
 
-*   [#262](https://github.com/marmelab/EventDrops/pull/262): Fixed issue where right bound text would disappear.
-*   [#259](https://github.com/marmelab/EventDrops/pull/259): Fixed issue where color was flickering and global was undefined.
+[#269](https://github.com/marmelab/EventDrops/pull/269):
+
+* Removed `new Date()` in isAfter, isBefore and withinRange (objects were already a date).
+* Fixed TravisCI build.
+* Restrict panning. Option in config to restrict the zooming and panning, so it will only be between start and end in range.
+* Zoom to domain. Exposed a function to zoom to domain, as well as the option to add in a transition.
+
+[#262](https://github.com/marmelab/EventDrops/pull/262): Fixed issue where right bound text would disappear.
+
+[#259](https://github.com/marmelab/EventDrops/pull/259): Fixed issue where color was flickering and global was undefined.
 
 ### 1.1.x
 
@@ -33,25 +41,25 @@
 
 ## 1.0.0
 
-*   Huge performance boost (almost 10 times faster when zooming or panning)
-*   Review configuration to get more intuitive naming
-*   Simplify tick format configuration passing only time formats instead of a whole function
-*   Fix zoom and panning center
-*   Better integration with module bundlers (allowing to pass a local D3 object instead of the global one)
+* Huge performance boost (almost 10 times faster when zooming or panning)
+* Review configuration to get more intuitive naming
+* Simplify tick format configuration passing only time formats instead of a whole function
+* Fix zoom and panning center
+* Better integration with module bundlers (allowing to pass a local D3 object instead of the global one)
 
 We took profit of this major version change to improve the API - unfortunately, we couldn't keep backwards compatibility. See the [migration guide](./MIGRATION-4.0.md) for more informations.
 
 ## 0.3.0
 
-*   API Change: The data for each event line object must now be in the `data` property (was `date`).
-*   Pass any data object to each drop and specify the date property with a callback.
-*   The SVG is now responsive and fit with its parent
-*   Rename `eventHover`, `eventClick` and `eventZoom` events to `mouseover`, `click` and `zoomend` respectively.
-*   Adding `mouseout` handler
+* API Change: The data for each event line object must now be in the `data` property (was `date`).
+* Pass any data object to each drop and specify the date property with a callback.
+* The SVG is now responsive and fit with its parent
+* Rename `eventHover`, `eventClick` and `eventZoom` events to `mouseover`, `click` and `zoomend` respectively.
+* Adding `mouseout` handler
 
 ## 0.2.0
 
-*   Display metaballs by default instead of simple dots
-*   Adding `eventClick` event handler on drops
-*   Use of Webpack instead of Babel for development tasks
-*   Full rewrite of the code base for better code splitting (may cause some BC breaks)
+* Display metaballs by default instead of simple dots
+* Adding `eventClick` event handler on drops
+* Use of Webpack instead of Babel for development tasks
+* Full rewrite of the code base for better code splitting (may cause some BC breaks)

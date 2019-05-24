@@ -19,12 +19,6 @@ const chart = eventDrops({ d3 });
 
 If you use EventDrops without any module bundler, just include D3 script before EventDrops, and everything should work out of the box.
 
-## id
-
-_Default: '' (not added to svg)_
-
-Convince to add id to the SVG element. This is especially useful if connecting to EventDrops chart together with zoom (through `zoomToDomain`).
-
 ## locale
 
 _Default: English locale_
@@ -351,7 +345,7 @@ _Default: Infinity_
 
 This parameter configures the maximum zoom level available. Set it to a lower value to prevent your users from zooming in too deeply.
 
-### restrictPan
+### restrictpan
 
 _Default: false_
 

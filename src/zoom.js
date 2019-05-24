@@ -46,7 +46,7 @@ export default (
             onZoomEnd,
             minimumScale,
             maximumScale,
-            restrictPan,
+            restrictpan,
         },
     } = config;
 
@@ -58,7 +58,7 @@ export default (
     zoom.scaleExtent([minimumScale, maximumScale]);
 
     //Restricts the pan area to be the specified start/end dates or initial if not set
-    if (restrictPan) {
+    if (restrictpan) {
         zoom.translateExtent(extentConstraint).extent(extentConstraint);
     }
 
