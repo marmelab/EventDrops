@@ -1,5 +1,6 @@
 import dropLine from './dropLine';
 import indicator from './indicator';
+import drop from './drop';
 
 const defaultConfig = {
     metaballs: true,
@@ -211,6 +212,99 @@ describe('Drop Line', () => {
             expect(textIndex).not.toBe(-1);
             expect(dropsIndex).not.toBe(-1);
             expect(textIndex > dropsIndex).toBe(true);
+        });
+
+        it('should call `onMouseOver` configuration listener when hovering a label', () => {
+            const selection = d3.select('svg').data([[{ name: 'foo' }]]);
+
+            const config = {
+                ...defaultConfig,
+                label: {
+                    ...defaultConfig.label,
+                    onMouseOver: jest.fn(),
+                },
+            };
+
+            dropLine(config, defaultScale)(selection);
+
+            const labelElement = d3.select('.line-label').node();
+            const event = new MouseEvent('SVGEvents', {});
+            event.initMouseEvent(
+                'mouseover',
+                true,
+                true,
+                global,
+                0,
+                10,
+                10,
+                10,
+                10,
+                false,
+                false,
+                false,
+                false,
+                null,
+                labelElement
+            );
+            labelElement.dispatchEvent(event);
+
+            expect(config.label.onMouseOver).toHaveBeenCalled();
+        });
+
+        it('should call `onMouseOut` configuration listener when blurring a label', () => {
+            const selection = d3.select('svg').data([[{ name: 'foo' }]]);
+
+            const config = {
+                ...defaultConfig,
+                label: {
+                    ...defaultConfig.label,
+                    onMouseOut: jest.fn(),
+                },
+            };
+
+            dropLine(config, defaultScale)(selection);
+
+            const labelElement = d3.select('.line-label').node();
+            const event = new MouseEvent('SVGEvents', {});
+            event.initMouseEvent(
+                'mouseout',
+                true,
+                true,
+                global,
+                0,
+                10,
+                10,
+                10,
+                10,
+                false,
+                false,
+                false,
+                false,
+                null,
+                labelElement
+            );
+            labelElement.dispatchEvent(event);
+
+            expect(config.label.onMouseOut).toHaveBeenCalled();
+        });
+
+        it('should call `onClick` configuration listener when clicking on label', () => {
+            const selection = d3.select('svg').data([[{ name: 'foo' }]]);
+
+            const config = {
+                ...defaultConfig,
+                label: {
+                    ...defaultConfig.label,
+                    onClick: jest.fn(),
+                },
+            };
+
+            dropLine(config, defaultScale)(selection);
+
+            const labelElement = d3.select('.line-label').node();
+            labelElement.click();
+
+            expect(config.label.onClick).toHaveBeenCalled();
         });
     });
 

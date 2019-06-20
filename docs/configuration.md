@@ -239,6 +239,60 @@ const chart = eventDrops({
 });
 ```
 
+### onMouseOver
+
+_Default: () => {}_
+
+Function to be executed when user moves the mouse on a label. By default, it does nothing. The object for that dropLine is passed as the first argument:
+
+```js
+const chart = eventDrops({
+    label: {
+        onMouseOver: label => {
+            showTooltip(label);
+        },
+    },
+});
+```
+
+Where `label` argument is the `{ "name": "EventDrops, "data": [...] }` etc. depending on configuration.
+
+This is the function you are looking for if you want to display a tooltip describing the label (either in detail or due to too long name).
+
+### onMouseOut
+
+_Default: () => {}_
+
+Function to be executed when user moves the mouse out of a label. By default, it does nothing. The object for that dropLine is passed as the first argument:
+
+```js
+const chart = eventDrops({
+    label: {
+        onMouseOut: label => {
+            hideTooltip(label);
+        },
+    },
+});
+```
+
+This is the function you are looking for if you want to hide a tooltip you previously displayed with `onMouseOver`.
+
+### onClick
+
+_Default: () => {}_
+
+Function to be executed when user clicks on a label. By default, it does nothing. The object for that dropLine is passed as the first argument:
+
+```js
+const chart = eventDrops({
+    label: {
+        onClick: label => {
+            Console.log(`${label} data is clicked.`);
+        },
+    },
+});
+```
+
 ## indicator
 
 _Default: indicator configuration object_

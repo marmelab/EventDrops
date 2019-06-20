@@ -33,6 +33,9 @@ export default d3 => ({
     label: {
         padding: 20,
         text: d => `${d.name} (${d.data.length})`,
+        onMouseOver: () => {},
+        onMouseOut: () => {},
+        onClick: () => {},
         width: 200,
     },
     indicator: {

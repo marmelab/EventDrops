@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 1.4.0 (Unreleased)
+
+[#270](https://github.com/marmelab/EventDrops/pull/270): Added `onMouseOver`, `onMouseOut` and `onClick` to label text.
+
 ### 1.1.x
 
 **1.1.2:**
