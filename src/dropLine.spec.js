@@ -1,6 +1,4 @@
 import dropLine from './dropLine';
-import indicator from './indicator';
-import drop from './drop';
 
 const defaultConfig = {
     metaballs: true,
