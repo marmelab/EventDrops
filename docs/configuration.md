@@ -305,6 +305,20 @@ const chart = eventDrops({
 });
 ```
 
+### verticalGrid
+
+_Default: `false`_
+
+Display vertical grid lines. Height of line is equal to number of lines times height of line.
+The dropLines can be set to not show by customizing the CSS.
+![vertical grid](https://user-images.githubusercontent.com/15114362/50725403-6348da80-10fd-11e9-91f3-f1128b64d172.png)
+
+### tickPadding
+
+_Default: 6_
+
+Same as D3 .tickPadding(), allows to set the padding of the tick. This is the y offset of the label for the axis.
+
 ## zoom
 
 This section is related to `zoom` (and pan) behavior. If you want to disable interactivity on your chart, just set this parameter to `false`.

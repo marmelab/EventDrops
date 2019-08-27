@@ -18,9 +18,14 @@ const defaultConfig = {
             months: '%B',
             year: '%Y',
         },
+        verticalGrid: false,
+        tickPadding: 6,
     },
     numberDisplayedTicks: {
         extra: 12,
+    },
+    line: {
+        height: 40,
     },
 };
 
@@ -91,7 +96,10 @@ describe('Axis', () => {
     });
 
     it('should use tick formats passed in configuration', () => {
-        const ticksSpy = jest.fn(() => () => {});
+        const tickPaddingSpy = jest.fn(() => () => {});
+        const ticksSpy = jest.fn(() => ({
+            tickPadding: tickPaddingSpy,
+        }));
         const tickFormatSpy = jest.fn(() => ({
             ticks: ticksSpy,
         }));
@@ -145,13 +153,41 @@ describe('Axis', () => {
         const data = [[{ id: 'foo' }]];
         const selection = d3.select('svg').data(data);
 
-        let config = {
+        const config = {
             ...defaultConfig,
             numberDisplayedTicks: { extra: 9 },
         };
 
         axis(d3, config, defaultScale, defaultBreakpointLabel)(selection);
         expect(document.querySelectorAll('.tick').length).toBe(9);
+    });
+
+    it('should display vertical grid lines if in configuration', () => {
+        const data = [[{ id: 'foo' }]];
+        const selection = d3.select('svg').data(data);
+
+        const config = {
+            ...defaultConfig,
+            axis: {
+                formats: {
+                    milliseconds: '.%L',
+                    seconds: ':%S',
+                    minutes: '%I:%M',
+                    hours: '%I %p',
+                    days: '%a %d',
+                    weeks: '%b %d',
+                    months: '%B',
+                    year: '%Y',
+                },
+                verticalGrid: true,
+                tickPadding: 6,
+            },
+        };
+
+        axis(d3, config, defaultScale, defaultBreakpointLabel)(selection);
+        const tickLineGroup = document.querySelectorAll('.tick line');
+        expect(tickLineGroup.length).toBe(9);
+        expect(tickLineGroup[0].attributes.y2.nodeValue).toBe('40');
     });
 
     afterEach(() => {

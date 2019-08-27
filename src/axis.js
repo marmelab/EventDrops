@@ -1,5 +1,3 @@
-import { timeFormat } from 'd3-time-format';
-
 export const tickFormat = (date, formats, d3) => {
     if (d3.timeSecond(date) < date) {
         return d3.timeFormat(formats.milliseconds)(date);
@@ -35,9 +33,10 @@ export const tickFormat = (date, formats, d3) => {
 export default (d3, config, xScale, breakpointLabel) => {
     const {
         label: { width: labelWidth },
-        axis: { formats },
+        axis: { formats, verticalGrid, tickPadding },
         locale,
         numberDisplayedTicks,
+        line: { height: lineHeight },
     } = config;
     d3.timeFormatDefaultLocale(locale);
     return selection => {
@@ -48,10 +47,13 @@ export default (d3, config, xScale, breakpointLabel) => {
         const axisTop = d3
             .axisTop(xScale)
             .tickFormat(d => tickFormat(d, formats, d3))
-            .ticks(numberDisplayedTicks[breakpointLabel]);
+            .ticks(numberDisplayedTicks[breakpointLabel])
+            .tickPadding(tickPadding);
 
-        axis
-            .enter()
+        if (verticalGrid)
+            axisTop.tickSizeInner(-(selection.data()[0].length * lineHeight));
+
+        axis.enter()
             .filter((_, i) => !i)
             .append('g')
             .classed('axis', true)

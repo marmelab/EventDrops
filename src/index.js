@@ -131,9 +131,9 @@ export default ({
 
         selection
             .data(filteredData)
+            .call(axis(d3, config, scale, chart.currentBreakpointLabel))
             .call(dropLine(config, scale))
-            .call(bounds(config, scale))
-            .call(axis(d3, config, scale, chart.currentBreakpointLabel));
+            .call(bounds(config, scale));
     };
 
     chart.draw = draw;

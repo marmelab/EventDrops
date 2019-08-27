@@ -4,7 +4,14 @@
     stroke-width: 1px;
 }
 
-.line-separator, .x-axis {
+.axis g.tick line {
+    stroke: #777;
+    fill: none;
+    stroke-width: 1px;
+}
+
+.line-separator,
+.x-axis {
     stroke: #777;
     fill: none;
     stroke-width: 1px;
