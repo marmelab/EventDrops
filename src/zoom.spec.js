@@ -45,12 +45,10 @@ describe('Zoom', () => {
             .range([0, 100]);
 
         const width = 400;
-        const zoomObject = d3.zoom();
         const domain = [new Date(2017, 0, 1), new Date(2018, 0, 1)];
         const zoomIdentity = getDomainTransform(
             d3,
             config,
-            zoomObject,
             domain,
             xScale,
             width

@@ -7,10 +7,10 @@ describe('withinRange', () => {
             expect(withinRange(date, dateRange)).toBe(expectedResult);
         };
 
-        test(new Date('2018-04-19'), true);
-        test(new Date('2018-04-01'), true);
-        test(new Date('2018-05-01'), true);
-        test(new Date('2018-05-19'), false);
+        test('2018-04-19', true);
+        test('2018-04-01', true);
+        test('2018-05-01', true);
+        test('2018-05-19', false);
     });
 
     it('should return true if date is in given reverse date range (start date older than end date)', () => {
@@ -19,9 +19,9 @@ describe('withinRange', () => {
             expect(withinRange(date, dateRange)).toBe(expectedResult);
         };
 
-        test(new Date('2018-04-19'), true);
-        test(new Date('2018-04-01'), true);
-        test(new Date('2018-05-01'), true);
-        test(new Date('2018-05-19'), false);
+        test('2018-04-19', true);
+        test('2018-04-01', true);
+        test('2018-05-01', true);
+        test('2018-05-19', false);
     });
 });

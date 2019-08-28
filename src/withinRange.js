@@ -4,5 +4,6 @@ export const withinRange = (date, dateBounds) => {
     const startingDate = Math.min(...dateBounds);
     const endingDate = Math.max(...dateBounds);
 
-    return isWithinRange(date, startingDate, endingDate);
+    // @TODO: remove the `new Date()` constructor in the next major version: we need to force it at configuration level.
+    return isWithinRange(new Date(date), startingDate, endingDate);
 };
