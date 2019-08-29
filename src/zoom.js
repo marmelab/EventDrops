@@ -33,9 +33,7 @@ export const getShiftedTransform = (
  *  //transform: { x: 1.234, y: 0.323, k: 2.34 }
  */
 export function getDomainTransform(d3, config, domain, xScale, width) {
-    const {
-        label: { width: labelsWidth, padding: labelsPadding },
-    } = config;
+    const { label: { width: labelsWidth, padding: labelsPadding } } = config;
 
     const fullLabelWidth = labelsWidth + labelsPadding;
     // For the reason of two additional translate see getShiftedTransform for explanation
@@ -65,7 +63,7 @@ export default (
             onZoomEnd,
             minimumScale,
             maximumScale,
-            restrictpan,
+            restrictPan,
         },
     } = config;
 
@@ -77,7 +75,7 @@ export default (
     zoom.scaleExtent([minimumScale, maximumScale]);
 
     //Restricts the pan area to be the specified start/end dates or initial if not set
-    if (restrictpan) {
+    if (restrictPan) {
         zoom.translateExtent(extentConstraint).extent(extentConstraint);
     }
 

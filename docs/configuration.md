@@ -345,7 +345,7 @@ _Default: Infinity_
 
 This parameter configures the maximum zoom level available. Set it to a lower value to prevent your users from zooming in too deeply.
 
-### restrictpan
+### restrictPan
 
 _Default: false_
 
