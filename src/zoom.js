@@ -15,7 +15,7 @@ export const getShiftedTransform = (
         .translate(labelsWidth + labelsPadding, 0); // put origin at its original position
 };
 
-export default (d3, svg, config, xScale, draw, getEvent) => {
+export default (d3, svg, config, xScale, draw) => {
     const {
         label: { width: labelsWidth, padding: labelsPadding },
         zoom: { onZoomStart, onZoom, onZoomEnd, minimumScale, maximumScale },
@@ -25,9 +25,9 @@ export default (d3, svg, config, xScale, draw, getEvent) => {
 
     zoom.on('zoom.start', onZoomStart).on('zoom.end', onZoomEnd);
 
-    zoom.on('zoom', args => {
+    zoom.on('zoom', (ev, args) => {
         const transform = getShiftedTransform(
-            getEvent().transform,
+            ev.transform,
             labelsWidth,
             labelsPadding,
             d3
