@@ -1,4 +1,4 @@
-import * as d3 from 'd3/build/d3';
+import * as d3 from 'd3';
 
 import eventDrops from '../src';
 import '../src/style.css';
@@ -34,7 +34,7 @@ const chart = eventDrops({
     },
     drop: {
         date: d => new Date(d.date),
-        onMouseOver: commit => {
+        onMouseOver: (ev, commit) => {
             tooltip
                 .transition()
                 .duration(200)
@@ -66,8 +66,8 @@ const chart = eventDrops({
                     </div>
                 `
                 )
-                .style('left', `${d3.event.pageX - 30}px`)
-                .style('top', `${d3.event.pageY + 20}px`);
+                .style('left', `${ev.pageX - 30}px`)
+                .style('top', `${ev.pageY + 20}px`);
         },
         onMouseOut: () => {
             tooltip
