@@ -4,10 +4,10 @@ const fs = require('fs');
 const exec = require('child_process').exec;
 
 const repositories = [
-    { name: 'admin-on-rest', identifier: 'marmelab/admin-on-rest' },
-    { name: 'EventDrops', identifier: 'marmelab/EventDrops' },
-    { name: 'sedy', identifier: 'marmelab/sedy' },
-    { name: 'comfy', identifier: 'marmelab/comfygure' },
+    { name: 'react-admin', identifier: 'marmelab/react-admin' },
+    { name: 'JSONGraphQLServer', identifier: 'marmelab/json-graphql-server' },
+    { name: 'FakeREST', identifier: 'marmelab/FakeRest' },
+    { name: 'Awesome_REST', identifier: 'marmelab/awesome-rest' },
 ];
 
 const setup = cb => {
@@ -23,12 +23,12 @@ const clone = (repository, cb) => {
     );
 };
 
-const oneYearAgo = new Date();
-oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+const twoYearsAgo = new Date();
+twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
 
 const commitsHistory = (repository, cb) => {
     const command = `cd /tmp/event-drops/${repository.name} && \
-    git log --since="${oneYearAgo.toISOString()}" --pretty=format:'{\
+    git log --since="${twoYearsAgo.toISOString()}" --pretty=format:'{\
         "sha": "%H",\
         "message": "%f",\
         "author": {"name": "%aN", "email": "%aE" },\
