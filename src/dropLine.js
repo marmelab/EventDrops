@@ -4,7 +4,14 @@ import indicator from './indicator';
 export default (config, xScale) => selection => {
     const {
         metaballs,
-        label: { text: labelText, padding: labelPadding, width: labelWidth },
+        label: {
+            text: labelText,
+            padding: labelPadding,
+            onMouseOver: labelOnMouseOver,
+            onMouseOut: labelOnMouseOut,
+            onClick: labelOnClick,
+            width: labelWidth,
+        },
         line: { color: lineColor, height: lineHeight },
         indicator: indicatorEnabled,
     } = config;
@@ -51,7 +58,10 @@ export default (config, xScale) => selection => {
         .attr('y', lineHeight / 2)
         .attr('dy', '0.25em')
         .attr('text-anchor', 'end')
-        .text(labelText);
+        .text(labelText)
+        .on('mouseover', labelOnMouseOver)
+        .on('mouseout', labelOnMouseOut)
+        .on('click', labelOnClick);
 
     lines.selectAll('.line-label').text(labelText);
     lines.selectAll('.drops').call(drop(config, xScale));
