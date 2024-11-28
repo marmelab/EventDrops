@@ -5,7 +5,8 @@ import { getBreakpointLabel } from './breakpoint';
 import bounds from './bounds';
 import defaultConfiguration from './config';
 import dropLine from './dropLine';
-import zoom from './zoom';
+import zoomFactory from './zoom';
+import { getDomainTransform } from './zoom';
 import { addMetaballsDefs } from './metaballs';
 
 import './style.css';
@@ -62,8 +63,38 @@ export default ({
             .attr('width', width)
             .classed('event-drop-chart', true);
 
+        const height = parseFloat(svg.style('height'));
+
         if (zoomConfig) {
-            svg.call(zoom(d3, svg, config, xScale, draw, getEvent));
+            const zoom = d3.zoom();
+            svg.call(
+                zoomFactory(
+                    d3,
+                    svg,
+                    config,
+                    zoom,
+                    xScale,
+                    draw,
+                    getEvent,
+                    width,
+                    height
+                )
+            );
+
+            chart._zoomToDomain = (domain, duration, delay, ease) => {
+                const zoomIdentity = getDomainTransform(
+                    d3,
+                    config,
+                    domain,
+                    xScale,
+                    width
+                );
+                svg.transition()
+                    .ease(ease)
+                    .delay(delay)
+                    .duration(duration)
+                    .call(zoom.transform, zoomIdentity);
+            };
         }
 
         if (metaballs) {
@@ -90,6 +121,20 @@ export default ({
 
     chart.scale = () => chart._scale;
     chart.filteredData = () => chart._filteredData;
+    chart.zoomToDomain = (
+        domain,
+        duration = 0,
+        delay = 0,
+        ease = d3.easeLinear
+    ) => {
+        if (typeof chart._zoomToDomain === 'function') {
+            chart._zoomToDomain(domain, duration, delay, ease);
+        } else {
+            throw new Error(
+                'Calling "zoomToDomain" requires zooming to be enabled.'
+            );
+        }
+    };
     chart.destroy = (callback = () => {}) => {
         global.removeEventListener('resize', chart._initialize, true);
         callback();

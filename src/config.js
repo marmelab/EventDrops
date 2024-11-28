@@ -61,6 +61,7 @@ export default d3 => ({
         onZoomEnd: null,
         minimumScale: 0,
         maximumScale: Infinity,
+        restrictPan: false,
     },
     numberDisplayedTicks: {
         small: 3,
